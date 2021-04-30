@@ -1,5 +1,7 @@
 /*!
  *  file : 20210429°1531
+ *  version : Initial
+ *  status : First attempt, much room for fine tuning
  */
 
 /**
@@ -14,7 +16,6 @@
  */
 var Terminal;
 
-Terminal._input; // ?
 
 /**
  * @type {Function} —

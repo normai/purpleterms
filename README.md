@@ -1,26 +1,27 @@
-﻿# TerminalJs <sup><sub>v0.2.6.rc</sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.6</sub></sup>
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
-_The description in below box is the original one **left unchanged**,
+_The **changes** compared to the
+ [original project](https://github.com/eosterberg/terminaljs) are :_
+
+- _Supplement a **prompt sign** at the beginning of an input line to signal readiness to receive input_
+
+- _Integrate Österberg's **`beep.mp3` as base64 variable** inside the code.
+   Pro: No more external link needed for beeping.
+   Con: Incompatible with IE<10_
+
+- _Make it work with Google-Closure-Compiler in **advanced mode**_
+
+- _Adjust coding and documentation **style** to my personal taste_
+
+_The description in below box is the original one, left **unchanged**
 except for striking the now invalid link to the read-more-page._
 
 _In the meanwhile, below description may deviate from the facts in the current fork.
 But [`terminal.js`](./terminal.js)
 should still be fully **backward-compatible** for any use cases.
 At least the unchanged original page [`test.html`](./test.html) still works fine with it._
-
-_The **main changes** compared to the original project are :_
-
-- _Supplement a **prompt sign** at the beginning of an input line to signal readiness to receive input_
-
-- _Integrate Österberg's `beep.mp3` as **base64 variable** inside the code.
-   Pro: No more external link needed for beeping.
-   Con: Incompatible with IE<10_
-
-- _Make it work with Google-Closure-Compiler in **advanced** mode ([externs.js](./externs.js))_
-
-- _Adjust coding and documentation **style** to my personal taste_
 
 ---
 

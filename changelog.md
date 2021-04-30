@@ -3,7 +3,7 @@
 _The history of **TerminalJs**
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
-##### version 20210430°0911 — v0.2.6rc 'Closure-Compiler Advanced'
+##### version 20210430°1212 — v0.2.6 'Closure-Compiler Advanced'
 * Make [Closure-Compiler](https://developers.google.com/closure/compiler/)
   work in [advanced mode](https://developers.google.com/closure/compiler/docs/api-tutorial3).
   Notes: (1) The size reduction is not worth the effort (only from 78 KB to 60 KB).
