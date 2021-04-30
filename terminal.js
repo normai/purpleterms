@@ -1,35 +1,23 @@
 /*!
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
- * Modified 2019 by Norbert C. Maier https://github.com/normai/terminaljs/
- * version 0.2.5
- * license : MIT License
+ * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
+ * Version : 0.2.6.rc
+ * License : MIT License
  */
 
 /**
- * This file hosts class Terminal plus some helper sequences
- *
- * id : file 20190208°1921
+ * file : 20190208°1921 terminaljs/terminal.js
  * encoding : UTF-8-without-BOM
- * changes :
- *    • Supplement semicolons
- *    • Add beep.mp3 and beep.ogg [files 20190208°1845]
- *       from http://www.erikosterberg.com/terminaljs/
- *    • Add function getThisScriptFolder. The script tag in the
- *       page now must define attribute id="TerminalJsScriptTag"
- *    • Cosmetics for input prompt (see seq 20190312°0441)
- * Versions 
- *    • 20210429°0931 v0.2.5 — Casual streamlining
- *    • 20210428°1141 v0.2.4 — Casual streamlining — Broken
- *    • 20190326°0111 v0.2.3 — Operational proof-of-concept
  */
 
 /**
  * This class provides a div with terminal functionalities
  *
- * id : class 20190208°1923
+ * @id 20190208°1923
  */
-var Terminal = (function () {
+Terminal = (function () {
+
    // PROMPT_TYPE
    var PROMPT_INPUT = 1, PROMPT_PASSWORD = 2, PROMPT_CONFIRM = 3;
 
@@ -46,7 +34,7 @@ var Terminal = (function () {
    };
 
    var firstPrompt = true;
-   promptInput = function (terminalObj, message, PROMPT_TYPE, callback) {
+      var promptInput = function (terminalObj, message, PROMPT_TYPE, callback) {
       var shouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
       var inputField = document.createElement('input');
 
@@ -126,17 +114,7 @@ var Terminal = (function () {
       if (! terminalBeep) {
          terminalBeep = document.createElement('audio');
 
-         // // // Retrieve path to this script [line 20190209°1313]
-         // // var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.';
-         // // terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">';
-         // // var sAudioUrl = Trekta.getThisScriptFolder() + 'beep.';
-         // //
-         // // // [line 20190209°1315]
-         // // terminalBeep.innerHTML = '<source src="' + sAudioUrl + 'mp3" type="audio/mpeg">'
-         // //                         + '<source src="' + sAudioUrl + 'ogg" type="audio/ogg">'
-         // //                          ;
-
-         // [line 20190325°0753]
+         // Provide beep file [line 20190325°0753]
          // note : The exact mime-type of an MP3 file is a matter of discussion
          var sData = 'data:audio/mp3;base64,' + sBase64_Beep_Mp3;
          terminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
@@ -1019,29 +997,5 @@ var Terminal = (function () {
 
             return TerminalConstructor;
 }());
-
-/**
- * Use existing namespace or create it
- *
- * @id 20190209°0211
- * @c_o_n_s_t — Namespace
- */
-/*
-Trekta = window.Trekta || {};
-*/
-
-/**
- * Retrieve URL of the folder where this script resides
- *
- * @id 20190209°0221
- */
-/*
-Trekta.getThisScriptFolder = ( function() {
-   var sThisScriptUrl = document.getElementById('TerminalJsScriptTag').src;
-   sThisScriptUrl = sThisScriptUrl.substring(0, sThisScriptUrl.length - 'terminal.js'.length );
-   return function() {
-      return sThisScriptUrl;
-   };
-*/
 
 /* eof */

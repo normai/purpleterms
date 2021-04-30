@@ -1,0 +1,2 @@
+# Add line with your actual Googel-Closure-Compiler path.
+G:/work/gipsydrive/app.composer/trunk/bin/goclocom/closure-compiler-v20210406.jar

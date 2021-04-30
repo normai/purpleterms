@@ -1,11 +1,30 @@
-﻿# TerminalJs <sup><sub><sub>v0.2.4 — 20210428°1141</sub></sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.6.rc</sub></sup>
+
+_The present fork is by Norbert C. Maier 2019 - 2021._
+
+_The description in below box is the original one **left unchanged**,
+except for striking the now invalid link to the read-more-page._
+
+_In the meanwhile, below description may deviate from the facts in the current fork.
+But [`terminal.js`](./terminal.js)
+should still be fully **backward-compatible** for any use cases.
+At least the unchanged original page [`test.html`](./test.html) still works fine with it._
+
+_The **main changes** compared to the original project are :_
+
+- _Supplement a **prompt sign** at the beginning of an input line to signal readiness to receive input_
+
+- _Integrate Österberg's `beep.mp3` as **base64 variable** inside the code.
+   Pro: No more external link needed for beeping.
+   Con: Incompatible with IE<10_
+
+- _Make it work with Google-Closure-Compiler in **advanced** mode ([externs.js](./externs.js))_
+
+- _Adjust coding and documentation **style** to my personal taste_
+
+---
 
 terminal.js by Erik Österberg is a dead simple JavaScript library for emulating a shell environment.
-
-_The present flavour is a derivative by Norbert C. Maier 2019. The changes are :_
-- _Beep file is embedded (IE >=10)_
-- _Some cursor cosmetics_
-- _Minified version created with Google Closure Compiler_
 
 ### Initialization
 
@@ -47,7 +66,7 @@ All the ".set" methods accepts any CSS-compliant value.
     .blinkingCursor(boolean)
 Set to true by default.
 
-Read more at: [erikosterberg.com/terminaljs](http://www.erikosterberg.com/terminaljs)
+Read more at: <del>http://www.erikosterberg.com/terminaljs</del>
 
 ### License
 
@@ -73,4 +92,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-<sup><sub>܀[project 20190213°0211][file 20190208°1941]</sub></sup>
+---
+
+<sup><sub>[project 20190213°0211 file 20190208°1941]</sub></sup>
