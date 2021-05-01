@@ -68,9 +68,20 @@ Terminal = (function () {
       };
 
       inputField.onkeydown = function (e) {
-         if (e.which === 37 || e.which === 39 || e.which === 38 || e.which === 40 || e.which === 9) {
+         ////if (e.which === 37 || e.which === 39 || e.which === 38 || e.which === 40 || e.which === 9) {
+         if (   ( e.code === 'ArrowLeft' || e.which === 37 )
+             || ( e.code === 'ArrowUp' || e.which === 38 )
+             || ( e.code === 'ArrowRight' || e.which === 39 )
+             || ( e.code === 'ArrowDown' || e.which === 40 )
+             || ( e.code === 'Tab' || e.which === 9 )
+               )                                                       // [chg 20210430°1551`01]
+         {
             e.preventDefault();
-         } else if (shouldDisplayInput && e.which !== 13) {
+         ////} else if (shouldDisplayInput && e.which !== 13) {
+         }
+         else if ( shouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02]
+         {
+            // Echo after 1 millisecond
             setTimeout(function () {
                terminalObj._inputLine.textContent = inputField.value;
             }, 1);
@@ -78,7 +89,8 @@ Terminal = (function () {
       };
 
       inputField.onkeyup = function (e) {
-         if (PROMPT_TYPE === PROMPT_CONFIRM || e.which === 13) {
+         ////if (PROMPT_TYPE === PROMPT_CONFIRM || e.which === 13) {
+         if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03]
             terminalObj._input.style.display = 'none';
             var inputValue = inputField.value;
             if (shouldDisplayInput) {
@@ -147,11 +159,6 @@ Terminal = (function () {
 
       this.print = function (message) {
          var newLine = document.createElement('div');
-
-         // Experiment [seq 20190312°0443] does not work as expected
-         ///newLine.style = "background-color:Red;";
-         ///newLine.className = 'TerminalPrint';
-
          newLine.textContent = message;
          this._output.appendChild(newLine);
       };

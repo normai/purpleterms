@@ -39,6 +39,9 @@ for file in ['./terminal.min.js', './terminal.min.js.map'] :
       if os.path.getmtime('./terminal.js') > os.path.getmtime(file) :
          bBuild = True
 
+# Force build anyway? (normall, this is outcommented, activate it only if needed)
+bBuild = True
+
 # Assemble commandline
 sCmd = 'java.exe -jar' + ' ' + sBinGoCloCom                            \
       + ' ' + './externs.js'                                           \

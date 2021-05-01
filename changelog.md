@@ -1,7 +1,52 @@
-﻿# Changelog
+﻿<style>
+   span.Time12Stamp { font-size:x-small; color:LightSlateGray; font-style:italic; white-space:nowrap; font-weight:normal; vertical-align:super; }
+   span.Time12Hidden { display:none; }
+</style>
+
+# Changelog
 
 _The history of **TerminalJs**
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
+
+
+
+##### version .. 'Work off pull requests'
+
+Try to integrate pending pull requests
+
+* [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
+   by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22
+  <span class="Time12Stamp">[ref 20210430°1514]</span>
+
+* [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
+  by [commanddotcom](https://github.com/commanddotcom) on 2020-Sep-07
+  from his [fork](https://github.com/commanddotcom/terminaljs)
+  <span class="Time12Stamp">[ref 20210430°1515]</span>
+
+
+
+##### chg 20210430°1641 — 'Pull request 2015-Feb-25 Additional Functions'
+
+* Processing pull request
+  [Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)
+  by [MarkIvanowich](https://github.com/MarkIvanowich) on 2015-Feb-25
+  from this [fork](https://github.com/MarkIvanowich/terminaljs)
+  <span class="Time12Stamp">[ref 20210430°1513]</span>
+  <br>
+  . . .
+
+##### chg 20210430°1551 — 'Pull request 2020-Oct-19 KeyCodes'
+
+* Work off pull request
+  [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)
+  by [gumbarros](https://github.com/gumbarros) on 2020-Oct-19
+  <span class="Time12Hidden">[ref 20210430°1516]</span>.
+  I did not follow exactly the pull request,
+  but left the old style beside the new style to
+  savinge IE10 compatibility.
+  See note [Retrieving keystrokes](./notes.md#retrieving_keystrokes).
+
+
 
 ##### version 20210430°1212 — v0.2.6 'Closure-Compiler Advanced'
 * Make [Closure-Compiler](https://developers.google.com/closure/compiler/)
@@ -36,21 +81,25 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
      from [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/))
      to  [github.&#8203;com/&#8203;normai/&#8203;terminaljs](https://github.com/normai/terminaljs/))
 
-#### version 2017-05-03'23:32 — v2.0 'Final'
-- Eric Österberg : Merge pull request 2017-04-18'06:14.GMT+2 from Santiag Castro.
+### version 2017-05-03'23:32 — v2.0 'Final'
+- Eric Österberg : Merge pull request 2017-04-18'06:14.GMT+2 from Santiago Castro.
   This is the version showing up today (2021-04-30) on
   [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/))
 
 ##### log 2017-04-18'06:14.GMT+2
-- Commit by Santiag Castro : 'Fix broken Markdown'
+- Commit by Santiago Castro : 'Fix broken Markdown'
      on https://github.com/bryant1410/terminaljs
 
 ##### log 2016-11-16'20:07.GMT+1
 - Eric Österberg — Commit ...
+
+##### log 2014-11-12'04:36.GMT+1
+- DarwinSenior — Added and documented password feature
 
 ##### log 2013-04-05'10:06.GMT+2
 - Eric Österberg — First commit to
 [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/)
 
 ---
+
 <sup><sub>[file 20210429°0911] ܀Ω</sub></sup>
