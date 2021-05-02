@@ -5,6 +5,14 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
+
+##### version 2021xxxx°xxxx — v0.2.7.~~ ''
+- Supplement documentation comments [chg 20210502°0911]
+
+
+
+
+
 ##### version 20210501°1112 — v0.2.7 'Started working off pull requests'
 - Started to work off the
   [pending pull requests](https://github.com/eosterberg/terminaljs/pulls).

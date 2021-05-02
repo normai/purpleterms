@@ -24,14 +24,13 @@ but I envisage it as my very next step with TerminalJs (however fast this will b
 
 Actually, this feature is the reason why I got my hands dirty with `terminal.js` in the first place.
 
-And indeed I have already written a backend caller for myself.
-My implementation leaves `terminal.js` untouched,
-instead consists of a parallel custom JS module not visible here.
+I have already written a backend caller for myself,
+it leaves `terminal.js` untouched,
+instead consists of a parallel custom JS module not visible (yet) here.
 It runs only on localhost so far. The file is
 [`daftari/jsi/dafterm.js`](https://downtown.trilo.de/svn/daftaridev/trunk/daftari/jsi/dafterm.js).
 
 Yevgen's code will ease the load on my custom module.
-
 I am not sure about the details yet. I guess, my construction goes even one step further.
 The backend shall use the terminal autonomously for output, while still allowing user intervention.
 
@@ -88,7 +87,7 @@ The involved changes are :
 - New function **`this.empty()`** — Prints a blank line. Nice-to-have but not vital.
 
 - New function **`this.printraw(html)`**
-  — Allows arbitrary formatting the output, including e.g. images.
+  — Allows arbitrary output formatting, including e.g. images.
   Surely nice! But I suspect, this is a much more advanced feature
   than a _dead simple library_ in it's initial state can bear.
   It might open the field for voluminous conditions,
@@ -100,7 +99,6 @@ The involved changes are :
 - New function `this.clearHistory()` — Wanted in connection with the history feature
 
 - New array **`this.history`** with appendage  — Repeating former input with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority!
-
 
 
 ## About Retrieving Keystrokes <a name="about_retrieving_keystrokes"></a><sup><sup><sub>[article 20210430°1601]</sub></sup></sup>
@@ -119,12 +117,14 @@ _See it in [`terminal.js`](./terminal.js) by searching `20210430°1551`_.
 
 
 For reading keyboard input, two questions are to tackle:
-1. For detecting key strokes, there exist multiple functions.
-    Notably, there is no simple function like `getKey()`,
-    instead only the halfe-done events `e.onkeydown()` and/or `e.onkeyup()'.
-    **How exactly can keys be retrieved?**
-2. Once a key event is caught, there are numerous ways to identify it's content.
-    **Which constants can identify the pressed key?**
+1. **How exactly can keys be retrieved?**
+   For detecting key strokes, there exist multiple functions.
+   Notably, there is no simple function like `getKey()`,
+   instead only the halfe-done events `e.onkeydown()` and/or `e.onkeyup()`.
+    
+2. **Which constants can identify the retrieved key?**
+   Once a key event is caught, there are numerous ways to identify it's content.
+    
 
 For question one, if `e` is a
 [GlobalEventHandler](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers)

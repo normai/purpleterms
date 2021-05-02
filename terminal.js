@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.7
+ * Version : 0.2.7.~~
  * License : MIT License
  */
 
@@ -16,11 +16,41 @@
  *
  * @id 20190208°1923
  */
-Terminal = (function () {
+Terminal = ( function () {
 
-   // PROMPT_TYPE
-   var PROMPT_INPUT = 1, PROMPT_PASSWORD = 2, PROMPT_CONFIRM = 3;
+   /**
+    * Prompt Type ..
+    *
+    * @id ..
+    * @type {number} —
+    * ////@constant —
+    */
+   var PROMPT_INPUT = 1;
 
+   /**
+    * Prompt Type ..
+    *
+    * @id ..
+    * @type {number} —
+    * @constant —
+    */
+   var PROMPT_PASSWORD = 2;
+
+   /**
+    * Prompt Type ..
+    * @id ..
+    * @type {number} —
+    * @constant —
+    */
+   var PROMPT_CONFIRM = 3;
+
+   /**
+    * ..
+    * @id ..
+    * @param {Element} inputField —
+    * @param {Object} terminalObj —
+    * @return {undefined} —
+    */
    var fireCursorInterval = function (inputField, terminalObj) {
       var cursor = terminalObj._cursor;
       setTimeout(function () {
@@ -33,8 +63,24 @@ Terminal = (function () {
       }, 500);
    };
 
+   /**
+    * ..
+    * @id ..
+    * @type {boolean} —
+    */
    var firstPrompt = true;
-      var promptInput = function (terminalObj, message, PROMPT_TYPE, callback) {
+
+   /**
+    * ..
+    * @id ..
+    * @param {Object} terminalObj —
+    * @param {string} message —
+    * @param {number} PROMPT_TYPE —
+    * @param {Function} callback —
+    * @return {undefined} —
+    */
+   var promptInput = function (terminalObj, message, PROMPT_TYPE, callback) {
+
       var shouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
       var inputField = document.createElement('input');
 
@@ -67,6 +113,12 @@ Terminal = (function () {
          inputField.focus();
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {Event} e —
+       * @return {undefined} —
+       */      
       inputField.onkeydown = function (e) {
          ////if (e.which === 37 || e.which === 39 || e.which === 38 || e.which === 40 || e.which === 9) {
          if (   ( e.code === 'ArrowLeft' || e.which === 37 )
@@ -88,6 +140,12 @@ Terminal = (function () {
          }
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {Event} e —
+       * @return {undefined} —
+       */
       inputField.onkeyup = function (e) {
          ////if (PROMPT_TYPE === PROMPT_CONFIRM || e.which === 13) {
          if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03]
@@ -113,16 +171,21 @@ Terminal = (function () {
       }
    };
 
+   /**
+    * ..
+    * @id ..
+    * @type {Element} —
+    */
    var terminalBeep;
 
    /**
-    * This class provides a div with terminal functionalities
-    *
-    * id :
+    * This class provides the div with the terminal functionalities
+    * id : ..
     * @param {number} id —
     * @constructor —
     */
    var TerminalConstructor = function (id) {
+
       if (! terminalBeep) {
          terminalBeep = document.createElement('audio');
 
@@ -152,62 +215,142 @@ Terminal = (function () {
 
       this._shouldBlinkCursor = true;
 
+      /**
+       * ..
+       * @id ..
+       * @return {undefined} —
+       */
       this.beep = function () {
          terminalBeep.load();
          terminalBeep.play();
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} message —
+       * @return {undefined} —
+       */
       this.print = function (message) {
          var newLine = document.createElement('div');
          newLine.textContent = message;
          this._output.appendChild(newLine);
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} message —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
       this.input = function (message, callback) {
          promptInput(this, message, PROMPT_INPUT, callback);
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} message —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
       this.password = function (message, callback) {
          promptInput(this, message, PROMPT_PASSWORD, callback);
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} message —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
       this.confirm = function (message, callback) {
          promptInput(this, message, PROMPT_CONFIRM, callback);
       };
 
+      /**
+       * ..
+       * @id ..
+       * @return {undefined} —
+       */
       this.clear = function () {
          this._output.innerHTML = '';
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {number} milliseconds —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
       this.sleep = function (milliseconds, callback) {
          setTimeout(callback, milliseconds);
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} size —
+       * @return {undefined} —
+       */
       this.setTextSize = function (size) {
          this._output.style.fontSize = size;
          this._input.style.fontSize = size;
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} col —
+       * @return {undefined} —
+       */
       this.setTextColor = function (col) {
          this.html.style.color = col;
          this._cursor.style.background = col;
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} col —
+       * @return {undefined} —
+       */
       this.setBackgroundColor = function (col) {
          this.html.style.background = col;
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} width —
+       * @return {undefined} —
+       */
       this.setWidth = function (width) {
          this.html.style.width = width;
       };
 
+      /**
+       * ..
+       * @id ..
+       * @param {string} height —
+       * @return {undefined} —
+       */
       this.setHeight = function (height) {
          this.html.style.height = height;
       };
 
-      this.blinkingCursor = function (bool) {
-         bool = bool.toString().toUpperCase();
-         this._shouldBlinkCursor = (bool === 'TRUE' || bool === '1' || bool === 'YES');
+      /**
+       * ..
+       * @id ..
+       * @param {string} sBool —
+       * @return {undefined} —
+       */
+      this.blinkingCursor = function (sBool) {
+         sBool = sBool.toString().toUpperCase();
+         this._shouldBlinkCursor = ( sBool === 'TRUE' || sBool === '1' || sBool === 'YES' );
       };
 
       this._input.appendChild(this._inputLine);
@@ -228,14 +371,14 @@ Terminal = (function () {
       this._input.style.margin = '0';
       this._output.style.margin = '0';
       this._cursor.style.background = 'white';
-      this._cursor.innerHTML = 'C'; // put something in the cursor..
-      this._cursor.style.display = 'none'; // then hide it
+      this._cursor.innerHTML = 'C';                                    // put something in the cursor ..
+      this._cursor.style.display = 'none';                             // .. then hide it
       this._input.style.display = 'none';
    };
 
    /**
-    * This const holds http://www.erikosterberg.com/terminaljs/beep.mp3
-    *  in its base64-encoded version (58 512 bytes)
+    * This const holds beep.mp3 in its base64-encoded version (58 512 bytes)
+    *  (formerly http:/ /www.erikosterberg.com/terminaljs/beep.mp3)
     *
     * Browser compatibility (with audio as base64 embedded)
     *  • OGG : Chrome64 yes, Edge42 no, FF66 yes, IE9 no, IE10 no, Opera58 yes

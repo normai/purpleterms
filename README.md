@@ -1,4 +1,4 @@
-﻿# TerminalJs <sup><sub>v0.2.7</sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.7.~~</sub></sup>
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
@@ -34,6 +34,11 @@ terminal.js by Erik Österberg is a dead simple JavaScript library for emulating
     var myTerminal = new Terminal(id)
 
 ### Properties and methods
+
+    .connect(url)
+You can set an URL address to get all responses with the XHR.
+When you are running the terminal with connect(), things become real
+— It means that now your backend is in charge of the terminal output.
 
     .html
 This is the top DOM element of the terminal instance. If you want to modify styling via CSS, all instances belong to a .Terminal class. The element will also get the ID from the constructor argument.
