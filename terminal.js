@@ -21,16 +21,16 @@ Terminal = ( function () {
    /**
     * Prompt Type ..
     *
-    * @id ..
+    * @id 20170501°0311
     * @type {number} —
-    * ////@constant —
+    * @constant —
     */
    var PROMPT_INPUT = 1;
 
    /**
     * Prompt Type ..
     *
-    * @id ..
+    * @id 20170501°0321
     * @type {number} —
     * @constant —
     */
@@ -38,7 +38,7 @@ Terminal = ( function () {
 
    /**
     * Prompt Type ..
-    * @id ..
+    * @id 20170501°0331
     * @type {number} —
     * @constant —
     */
@@ -46,7 +46,7 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id ..
+    * @id 20170501°0341
     * @param {Element} inputField —
     * @param {Object} terminalObj —
     * @return {undefined} —
@@ -65,14 +65,14 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id ..
+    * @id 20170501°0351
     * @type {boolean} —
     */
    var firstPrompt = true;
 
    /**
     * ..
-    * @id ..
+    * @id 20170501°0411
     * @param {Object} terminalObj —
     * @param {string} message —
     * @param {number} PROMPT_TYPE —
@@ -115,7 +115,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0421
        * @param {Event} e —
        * @return {undefined} —
        */      
@@ -142,7 +142,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0431
        * @param {Event} e —
        * @return {undefined} —
        */
@@ -173,7 +173,7 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id ..
+    * @id 20170501°0441
     * @type {Element} —
     */
    var terminalBeep;
@@ -217,7 +217,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0451
        * @return {undefined} —
        */
       this.beep = function () {
@@ -227,7 +227,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0511
        * @param {string} message —
        * @return {undefined} —
        */
@@ -239,7 +239,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0521
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -250,7 +250,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0531
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -261,7 +261,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0541
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -272,7 +272,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0551
        * @return {undefined} —
        */
       this.clear = function () {
@@ -281,7 +281,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0611
        * @param {number} milliseconds —
        * @param {Function} callback —
        * @return {undefined} —
@@ -292,7 +292,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0621
        * @param {string} size —
        * @return {undefined} —
        */
@@ -303,7 +303,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0631
        * @param {string} col —
        * @return {undefined} —
        */
@@ -314,7 +314,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0641
        * @param {string} col —
        * @return {undefined} —
        */
@@ -324,7 +324,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0651
        * @param {string} width —
        * @return {undefined} —
        */
@@ -334,7 +334,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0711
        * @param {string} height —
        * @return {undefined} —
        */
@@ -344,7 +344,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id ..
+       * @id 20170501°0721
        * @param {string} sBool —
        * @return {undefined} —
        */
