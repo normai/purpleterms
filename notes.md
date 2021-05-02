@@ -5,10 +5,110 @@
 
 # Notes
 
-This file makes room to store considerations around `terminal.js`.
-If any statement grows lengthy, it should be outsourced.
+Subchapters : &nbsp;
+• [Pull Request 'Backend via XHR'](#pull_request_backend_via_xhr) &nbsp;
+• [Pull Request 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
+• [Pull Request 'Additional functions'](#pull_request_additional_functions) &nbsp;
+• [About Retrieving Keystrokes](#about_retrieving_keystrokes)
 
-## Retrieving keystrokes <a name="retrieving_keystrokes"></a><span class="Time12Stamp">[article 20210430°1601]</span>
+This file makes room to store considerations around `terminal.js`.
+If any statement grows lengthy and generic,
+like article [About Retrieving Keystrokes](#about_retrieving_keystrokes),
+it should be outsourced.
+
+## Pull Request 'Backend via XHR' <a name="pull_request_backend_via_xhr"></a><span class="Time12Stamp">[article 20210430°1711]</span>
+
+Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
+by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
+([fork](https://github.com/commanddotcom/terminaljs))
+is about to communicate with a PHP or any other backend.
+
+**Bottom line**.
+High priority! I won't come off the cuff implementing it,
+but I envisage it as my very next step with TerminalJs (however fast this will be).
+
+Actually, this feature is the reason why I got my hands dirty with `terminal.js` in the first place.
+
+And indeed I have already written a backend caller for myself.
+My implementation leaves `terminal.js` untouched,
+instead consists of a parallel custom JS module not visible here.
+It runs only on localhost so far. The file is
+[`daftari/jsi/dafterm.js`](https://downtown.trilo.de/svn/daftaridev/trunk/daftari/jsi/dafterm.js).
+
+Yevgen's code will ease the load on my custom module.
+
+I am not sure about the details yet. I guess, my construction goes even one step further.
+The backend shall use the terminal autonomously for output, while still allowing user intervention.
+
+## Pull Request 'Add printHTML' <a name="pull_request_add_printhtml"></a><span class="Time12Stamp">[article 20210430°1811]</span>
+
+Pull request
+[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
+by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22
+consists of one single commit
+[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6/commits/af16ce1c913afdea95c551ae81b2f23827c0c0db)
+.
+
+This is just a naming proposal. MarkIvanowich's function `this.printraw()`
+might get the better suiting name `this.printHTML()`.
+
+**Bottom line**. I cannot not see the need of this
+function additional to the already existing output facility.
+I guess, it offers better formatting options, which were really nice.
+But this has no priority for me right now.
+Thus I postpone the thorough processing.
+
+Remember the project slogan
+'_A dead simple simple JavaScript library ..._'.
+This points out to be extremely strict with new features.
+
+## Pull Request 'Additional functions' <a name="pull_request_additional_functions"></a><span class="Time12Stamp">[article 20210430°1821]</span>
+
+In pull request [Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)
+from 2015-Feb-25, [MarkIvanowich](https://github.com/MarkIvanowich)
+offers multiple nice features.
+
+**Bottom line**. There are about 120 meaningful new lines to consider.
+Sorrily I had not the capacity to process this quick enough,
+so I had to postpone thorough processing.
+At least below is an overview compiled, what I found.
+
+This are three commits :
+
+ 1. [Adding functions and loading bar](https://github.com/eosterberg/terminaljs/pull/2/commits/7b6d0f3d69c9980ab9d62594a6069a452e2c4270)
+    — In here is the core of the matter
+
+ 2. [Cleaned comments, empty lines](https://github.com/eosterberg/terminaljs/pull/2/commits/9843e480934086e5beb9bb2fd662480dd3065977)
+    — This does not matter here
+
+ 3. [Update README.md](https://github.com/eosterberg/terminaljs/pull/2/commits/b129084e5a8be545b8aebfd5247fda48046c3444)
+    — Mentions `this.empty()` and `this.printraw(html)`
+
+The involved changes are :
+
+- New prompt type `PROMPT_LOAD = 4` — Needed for the pylon
+
+- New function `processCheck()` — Internally used
+
+- New function **`this.empty()`** — Prints a blank line. Nice-to-have but not vital.
+
+- New function **`this.printraw(html)`**
+  — Allows arbitrary formatting the output, including e.g. images.
+  Surely nice! But I suspect, this is a much more advanced feature
+  than a _dead simple library_ in it's initial state can bear.
+  It might open the field for voluminous conditions,
+  for accidentially providing erroneous HTML
+  and last not least for security concerns.
+
+- New function `this.load()` — Generates a pylon. Nice-to-have but not vital
+
+- New function `this.clearHistory()` — Wanted in connection with the history feature
+
+- New array **`this.history`** with appendage  — Repeating former input with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority!
+
+
+
+## About Retrieving Keystrokes <a name="about_retrieving_keystrokes"></a><span class="Time12Stamp">[article 20210430°1601]</span>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)

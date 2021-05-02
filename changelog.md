@@ -5,47 +5,53 @@
 
 # Changelog
 
-_The history of **TerminalJs**
+_The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
 
-##### version .. 'Work off pull requests'
-
-Try to integrate pending pull requests
-
-* [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
-   by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22
-  <span class="Time12Stamp">[ref 20210430°1514]</span>
-
-* [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
-  by [commanddotcom](https://github.com/commanddotcom) on 2020-Sep-07
-  from his [fork](https://github.com/commanddotcom/terminaljs)
-  <span class="Time12Stamp">[ref 20210430°1515]</span>
+##### version 20210501°1111 — v0.2.7 'Inspect all pull requests'
+- Try to integrate or at least inspect the
+[pending pull requests](https://github.com/eosterberg/terminaljs/pulls)
+. . .
 
 
-
-##### chg 20210430°1641 — 'Pull request 2015-Feb-25 Additional Functions'
-
-* Processing pull request
-  [Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)
-  by [MarkIvanowich](https://github.com/MarkIvanowich) on 2015-Feb-25
-  from this [fork](https://github.com/MarkIvanowich/terminaljs)
-  <span class="Time12Stamp">[ref 20210430°1513]</span>
-  <br>
-  . . .
-
-##### chg 20210430°1551 — 'Pull request 2020-Oct-19 KeyCodes'
-
+##### chg 20210430°1551 — Pull request 2020-Oct-19 'KeyCodes'
 * Work off pull request
-  [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)
+  '[Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)'
   by [gumbarros](https://github.com/gumbarros) on 2020-Oct-19
   <span class="Time12Hidden">[ref 20210430°1516]</span>.
-  I did not follow exactly the pull request,
-  but left the old style beside the new style to
-  savinge IE10 compatibility.
-  See note [Retrieving keystrokes](./notes.md#retrieving_keystrokes).
+  I did not follow the pull request exactly,  instead left the old
+  style beside the new style in order to save IE10 compatibility.
+  See note [Retrieving keystrokes](./notes.md#about_retrieving_keystrokes).
 
+
+##### log 20210430°1331 — Pull request 2020-Sep-07 'HTTP backend via XHR'
+- Inspecting pull request
+  *[HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)*
+  by [commanddotcom](https://github.com/commanddotcom) on 2020-Sep-07
+  from his [fork](https://github.com/commanddotcom/terminaljs)
+  <span class="Time12Stamp">[ref 20210430°1515]</span>.
+  Hight priority. To be implemented as soon as possible.
+  See note [Pull Request 'Backend via XHR'](./notes.md#pull_request_backend_via_xhr).
+
+
+##### log 20210430°1321 — Pull request 2017-Dec-22 'Add printHTML'
+- Inspecting pull request
+  '[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)'
+   by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22
+  <span class="Time12Stamp">[ref 20210430°1514]</span>.
+  Not sure I want implement this.
+  See note [Pull Request 'Add printHTML'](./notes.md#pull_request_add_printhtml).
+
+
+##### log 20210430°1311 — Pull request 2015-Feb-25 'Additional Functions'
+* Inspecting pull request
+  '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
+  by [MarkIvanowich](https://github.com/MarkIvanowich) on 2015-Feb-25.
+  The changes in this pull request were too extensive
+  to be quickly processed, I have to postpone this.
+  Details see note [Pull Request 'Additional functions'](./notes.md#pull_request_additional_functions).
 
 
 ##### version 20210430°1212 — v0.2.6 'Closure-Compiler Advanced'
@@ -59,6 +65,7 @@ Try to integrate pending pull requests
    [`path-to-closure-compiler.txt`](./path-to-closure-compiler.txt),
    so individual pathes can be provided without touching the build script
 * Styling : Replace all tabs by triple-blanks
+
 
 ##### version 20210429°0931 — v0.2.5 'Add Minification'
 - Supplement Python build script [`build.py`](./build.py) calling Closure-Compiler in simple mode

@@ -1,4 +1,4 @@
-﻿# TerminalJs <sup><sub>v0.2.6</sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.7</sub></sup>
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
