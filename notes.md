@@ -1,8 +1,3 @@
-﻿<style>
-   span.Time12Stamp { font-size:x-small; color:LightSlateGray; font-style:italic; white-space:nowrap; font-weight:normal; vertical-align:super; }
-   span.Time12Hidden { display:none; }
-</style>
-
 # Notes
 
 Subchapters : &nbsp;
@@ -11,12 +6,12 @@ Subchapters : &nbsp;
 • [Pull Request 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [About Retrieving Keystrokes](#about_retrieving_keystrokes)
 
-This file makes room to store considerations around `terminal.js`.
+_This file makes room to store considerations around `terminal.js`.
 If any statement grows lengthy and generic,
 like article [About Retrieving Keystrokes](#about_retrieving_keystrokes),
-it should be outsourced.
+it should be outsourced._
 
-## Pull Request 'Backend via XHR' <a name="pull_request_backend_via_xhr"></a><span class="Time12Stamp">[article 20210430°1711]</span>
+## Pull Request 'Backend via XHR' <a name="pull_request_backend_via_xhr"></a><sup><sup><sub>[article 20210430°1711]</sub></sup></sup>
 
 Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
 by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
@@ -40,7 +35,7 @@ Yevgen's code will ease the load on my custom module.
 I am not sure about the details yet. I guess, my construction goes even one step further.
 The backend shall use the terminal autonomously for output, while still allowing user intervention.
 
-## Pull Request 'Add printHTML' <a name="pull_request_add_printhtml"></a><span class="Time12Stamp">[article 20210430°1811]</span>
+## Pull Request 'Add printHTML' <a name="pull_request_add_printhtml"></a><sup><sup><sub>[article 20210430°1811]</sub></sup></sup>
 
 Pull request
 [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
@@ -62,7 +57,7 @@ Remember the project slogan
 '_A dead simple simple JavaScript library ..._'.
 This points out to be extremely strict with new features.
 
-## Pull Request 'Additional functions' <a name="pull_request_additional_functions"></a><span class="Time12Stamp">[article 20210430°1821]</span>
+## Pull Request 'Additional functions' <a name="pull_request_additional_functions"></a><sup><sup><sub>[article 20210430°1821]</sub></sup></sup>
 
 In pull request [Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)
 from 2015-Feb-25, [MarkIvanowich](https://github.com/MarkIvanowich)
@@ -108,7 +103,7 @@ The involved changes are :
 
 
 
-## About Retrieving Keystrokes <a name="about_retrieving_keystrokes"></a><span class="Time12Stamp">[article 20210430°1601]</span>
+## About Retrieving Keystrokes <a name="about_retrieving_keystrokes"></a><sup><sup><sub>[article 20210430°1601]</sub></sup></sup>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)
@@ -152,15 +147,15 @@ For question two, players to identify a key are :
 Further reference(s) :
 
 - Maria D. Campbell's articles [e.keyCode || e.which?](https://www.mariadcampbell.com/blog/e-keycode-e-which/)
-  <span class="Time12Hidden">[ref 20210430°1622]</span> from 2018-Feb-05 and
+  <sup hidden>[ref 20210430°1622]</sup> from 2018-Feb-05 and
   [Guess the keys](https://www.mariadcampbell.com/blog/guess-the-keys/)
-  <span class="Time12Hidden">[ref 20210430°1624]</span>
+  <sup hidden>[ref 20210430°1624]</sup>
   from 2018-Feb-05 with the corresponding game
   [Guess the keys and press them!](https://interglobalmedia.github.io/guess-the-keys/)
-  <span class="Time12Hidden">[ref 20210430°1625]</span>
+  <sup hidden>[ref 20210430°1625]</sup>
   plus the associated code in
   [`keypress.js`](https://interglobalmedia.github.io/guess-the-keys/keypress.js).
-  <span class="Time12Hidden">[ref 20210430°1626]</span>
+  <sup hidden>[ref 20210430°1626]</sup>
   Interestingly she does not use `e.code` but **`e.keyCode`**.
 
 ---

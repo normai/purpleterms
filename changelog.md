@@ -1,7 +1,3 @@
-﻿<style>
-   span.Time12Stamp { font-size:x-small; color:LightSlateGray; font-style:italic; white-space:nowrap; font-weight:normal; vertical-align:super; }
-   span.Time12Hidden { display:none; }
-</style>
 
 # Changelog
 
@@ -9,43 +5,45 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
+##### version 20210501°1112 — v0.2.7 'Started working off pull requests'
+- Started to work off the
+  [pending pull requests](https://github.com/eosterberg/terminaljs/pulls).
+  The current status is : • PR 2020-Oct-19 '[KeyCodes](./notes.md#about_retrieving_keystrokes)' integrated and closed
+  • PR 2020-Sep-07 '[Backend XHR](./notes.md#pull_request_backend_via_xhr)' inspected and flagged high priority
+  • PR 2017-Dec-22 '[Add printHTML](./notes.md#pull_request_add_printhtml)' inspected
+  • PR 2015-Feb-25 '[Additional Functions](./notes.md#pull_request_additional_functions)' inspected and postponed
 
-##### version 20210501°1111 — v0.2.7 'Inspect all pull requests'
-- Try to integrate or at least inspect the
-[pending pull requests](https://github.com/eosterberg/terminaljs/pulls)
-. . .
 
-
-##### chg 20210430°1551 — Pull request 2020-Oct-19 'KeyCodes'
+##### chg 20210430°1551 — Work off PR 2020-Oct-19 'KeyCodes'
 * Work off pull request
   '[Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)'
   by [gumbarros](https://github.com/gumbarros) on 2020-Oct-19
-  <span class="Time12Hidden">[ref 20210430°1516]</span>.
+  <sup>[ref 20210430°1516]</sup>.
   I did not follow the pull request exactly,  instead left the old
   style beside the new style in order to save IE10 compatibility.
   See note [Retrieving keystrokes](./notes.md#about_retrieving_keystrokes).
 
 
-##### log 20210430°1331 — Pull request 2020-Sep-07 'HTTP backend via XHR'
+##### log 20210430°1331 — Inspect PR 2020-Sep-07 'Backend XHR'
 - Inspecting pull request
   *[HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)*
   by [commanddotcom](https://github.com/commanddotcom) on 2020-Sep-07
   from his [fork](https://github.com/commanddotcom/terminaljs)
-  <span class="Time12Stamp">[ref 20210430°1515]</span>.
-  Hight priority. To be implemented as soon as possible.
+  <sup>[ref 20210430°1515]</sup>.
+  Flagged with hight priority.
   See note [Pull Request 'Backend via XHR'](./notes.md#pull_request_backend_via_xhr).
 
 
-##### log 20210430°1321 — Pull request 2017-Dec-22 'Add printHTML'
+##### log 20210430°1321 — Inspect PR 2017-Dec-22 'Add printHTML'
 - Inspecting pull request
   '[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)'
    by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22
-  <span class="Time12Stamp">[ref 20210430°1514]</span>.
+  <sup>[ref 20210430°1514]]</sup>.
   Not sure I want implement this.
   See note [Pull Request 'Add printHTML'](./notes.md#pull_request_add_printhtml).
 
 
-##### log 20210430°1311 — Pull request 2015-Feb-25 'Additional Functions'
+##### log 20210430°1311 — Inspect PR 2015-Feb-25 'Additional Functions'
 * Inspecting pull request
   '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
   by [MarkIvanowich](https://github.com/MarkIvanowich) on 2015-Feb-25.
@@ -83,15 +81,17 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 ##### version 20190208°1847 — v0.2.0 'Getting familiar'
 - Remove some NetBeans warnings
 
-##### log 2019-02-08'18:44 — 'Forking'
+##### log 2019-02-08'18:44 — 'Fork project'
 - NorMai : Clone version v2.0
      from [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/))
      to  [github.&#8203;com/&#8203;normai/&#8203;terminaljs](https://github.com/normai/terminaljs/))
 
-### version 2017-05-03'23:32 — v2.0 'Final'
-- Eric Österberg : Merge pull request 2017-04-18'06:14.GMT+2 from Santiago Castro.
-  This is the version showing up today (2021-04-30) on
-  [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/))
+### version 2017-05-03'23:32 — v2.0 Final
+- Eric Österberg committed 'Merge pull request #5 from bryant1410/master'.
+  This is the longterm version on
+  [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/).
+  This version is conserved as well in tag
+  [v2.0 — Final 2017](https://github.com/normai/terminaljs/releases/tag/v2.0).
 
 ##### log 2017-04-18'06:14.GMT+2
 - Commit by Santiago Castro : 'Fix broken Markdown'
