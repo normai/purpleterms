@@ -40,7 +40,7 @@ for file in ['./terminal.min.js', './terminal.min.js.map'] :
          bBuild = True
 
 # Force build anyway? (normall, this is outcommented, activate it only if needed)
-bBuild = True
+## bBuild = True
 
 # Assemble commandline
 sCmd = 'java.exe -jar' + ' ' + sBinGoCloCom                            \

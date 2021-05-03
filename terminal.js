@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.7.~~
+ * Version : 0.2.7.~~~
  * License : MIT License
  */
 
@@ -19,7 +19,7 @@
 Terminal = ( function () {
 
    /**
-    * Prompt Type ..
+    * Prompt mode 'Input'
     *
     * @id 20170501°0311
     * @type {number} —
@@ -28,7 +28,7 @@ Terminal = ( function () {
    var PROMPT_INPUT = 1;
 
    /**
-    * Prompt Type ..
+    * Prompt mode 'Password'
     *
     * @id 20170501°0321
     * @type {number} —
@@ -37,12 +37,21 @@ Terminal = ( function () {
    var PROMPT_PASSWORD = 2;
 
    /**
-    * Prompt Type ..
+    * Prompt mode 'Confirmation'
     * @id 20170501°0331
     * @type {number} —
     * @constant —
     */
    var PROMPT_CONFIRM = 3;
+
+   /**
+    * Just a helper to avoid validation warnings 'unreachable code'.
+    *  Sometimes I like to keep dead code as for possible later reviving.
+    * @id 20210502°1711
+    * @type {boolean} —
+    * @constant —
+    */
+   var bTrue = true;
 
    /**
     * ..
@@ -91,9 +100,9 @@ Terminal = ( function () {
       inputField.style.opacity = '0';
       inputField.style.fontSize = '0.2em';
 
-		terminalObj._inputLine.textPrefix = '$ ';                               // [chg 20210502°1111`11]
+      terminalObj._inputLine.textPrefix = '$ ';                               // [chg 20210502°1111`11]
       ////terminalObj._inputLine.textContent = '';                            // original line
-		terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix; // [chg 20210502°1111`12]
+      terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix; // [chg 20210502°1111`12]
       
       terminalObj._input.style.display = 'block';
       terminalObj.html.appendChild(inputField);
@@ -154,7 +163,7 @@ Terminal = ( function () {
        * ..
        * @id 20170501°0431
        * @param {Event} e —
-       * @return {undefined} —
+       * @return {boolean|undefined} —
        */
       inputField.onkeyup = function (e) {
          if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03 e.code]
@@ -162,11 +171,11 @@ Terminal = ( function () {
             var inputValue = inputField.value;
 
             // [seq 20210502°1221] [chg 20210502°1111`13]
-				if (inputValue === terminalObj._inputLine.textPrefix + 'clear') {
-					terminalObj.clear();
-					terminalObj.input('', false);
-					return true;
-				}
+            if (inputValue === terminalObj._inputLine.textPrefix + 'clear') {
+               terminalObj.clear();
+               terminalObj.input('', false);
+               return true;
+            }
 
             if (shouldDisplayInput) {
                terminalObj.print(inputValue);
@@ -174,22 +183,22 @@ Terminal = ( function () {
             terminalObj.html.removeChild(inputField);
             
             // Process remote or local?
-				if ( terminalObj._backend ) {                              // [chg 20210502°1111`14 new flag]
+            if ( terminalObj._backend ) {                              // [chg 20210502°1111`14 new flag]
 
                // Ship AJAX request [seq 20210502°1231]
                var xhr = new XMLHttpRequest();
-					xhr.open("POST", terminalObj._backend, true);
-					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // This possibly needs to be variable for general purpose [issue 20210502°1311 AJAX mime type]
-					xhr.onreadystatechange = function() {
-						if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Add failure catching [issue 20210502°1321 catch AJAX error]
-							terminalObj.print(xhr.responseText);
-							terminalObj.input('', false);
-						}
-					};
+               xhr.open("POST", terminalObj._backend, true);
+               xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // This possibly needs to be variable for general purpose [issue 20210502°1311 AJAX mime type]
+               xhr.onreadystatechange = function() {
+                  if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Add failure catching [issue 20210502°1321 catch AJAX error]
+                     terminalObj.print(xhr.responseText);
+                     terminalObj.input('', false);
+                  }
+               };
                xhr.send( "prefix=" + terminalObj._inputLine.textPrefix + "&ssh=" + inputValue );
             }
-	   	   else if (typeof(callback) === 'function') {
-               // Traditioinal processing [seq 20210502°12xx]
+            else if (typeof(callback) === 'function') {
+               // Traditional processing [seq 20170501°0731]
                if (PROMPT_TYPE === PROMPT_CONFIRM) {
                   callback(inputValue.toUpperCase()[0] === 'Y' ? true : false);
                } else callback(inputValue);
@@ -213,7 +222,7 @@ Terminal = ( function () {
    var terminalBeep;
 
    /**
-    * This class provides the div with the terminal functionalities
+    * This function provides the div with the terminal functionalities
     * id : ..
     * @param {number} id —
     * @constructor —
@@ -236,8 +245,12 @@ Terminal = ( function () {
          this.html.id = id;
       };
 
-      ////this._innerWindow = document.createElement('div');
-      this._innerWindow = document.createElement('pre');               // [chg 20210502°1111`15] Is this necessary? Is this a good idea? Which impact has it? Do we need a flag to select one or the other? [issue 20210502°1331 'Div or Pre?']
+      if (! bTrue) {
+         this._innerWindow = document.createElement('div');
+      }
+      else {
+         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 div to pre] Is this necessary? Is this a good idea? Which impact has it? Do we need a flag to select one or the other? [issue 20210502°1331 'Div or Pre?']
+      }
       this._output = document.createElement('p');
       this._inputLine = document.createElement('span');                // The span element where the users input is put
       this._cursor = document.createElement('span');
@@ -277,10 +290,10 @@ Terminal = ( function () {
        * @param {string} url —
        * @return {undefined} —
        */
-		this.connect = function (url) {                                  // [chg 20210502°1111`16]
-			this._backend = url;
-			promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
-		};
+      this.connect = function (url) {                                  // [chg 20210502°1111`16]
+         this._backend = url;
+         promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
+      };
 
       /**
        * ..
