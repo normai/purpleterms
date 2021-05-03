@@ -19,9 +19,18 @@
 Terminal = ( function () {
 
    /**
+    * Prompt mode 'Confirmation'
+    *
+    * @id 20170501°0211
+    * @type {number} —
+    * @constant —
+    */
+   var PROMPT_CONFIRM = 3;
+
+   /**
     * Prompt mode 'Input'
     *
-    * @id 20170501°0311
+    * @id 20170501°0221
     * @type {number} —
     * @constant —
     */
@@ -30,23 +39,16 @@ Terminal = ( function () {
    /**
     * Prompt mode 'Password'
     *
-    * @id 20170501°0321
+    * @id 20170501°0231
     * @type {number} —
     * @constant —
     */
    var PROMPT_PASSWORD = 2;
 
    /**
-    * Prompt mode 'Confirmation'
-    * @id 20170501°0331
-    * @type {number} —
-    * @constant —
-    */
-   var PROMPT_CONFIRM = 3;
-
-   /**
-    * Just a helper to avoid validation warnings 'unreachable code'.
+    * Ugly helper var to avoid validation warnings 'unreachable code'.
     *  Sometimes I like to keep dead code as for possible later reviving.
+    *
     * @id 20210502°1711
     * @type {boolean} —
     * @constant —
@@ -55,7 +57,15 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id 20170501°0341
+    * @id 20170501°0241
+    * @type {boolean} —
+    */
+   var firstPrompt = true;
+
+   /**
+    * ..
+    *
+    * @id 20170501°0251
     * @param {Element} inputField —
     * @param {Object} terminalObj —
     * @return {undefined} —
@@ -74,14 +84,7 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id 20170501°0351
-    * @type {boolean} —
-    */
-   var firstPrompt = true;
-
-   /**
-    * ..
-    * @id 20170501°0411
+    * @id 20170501°0311
     * @param {Object} terminalObj —
     * @param {string} message —
     * @param {number} PROMPT_TYPE —
@@ -127,7 +130,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id 20170501°0421
+       * @id 20170501°0321
        * @param {Event} e —
        * @return {undefined} —
        */      
@@ -161,7 +164,7 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id 20170501°0431
+       * @id 20170501°0331
        * @param {Event} e —
        * @return {boolean|undefined} —
        */
@@ -198,7 +201,7 @@ Terminal = ( function () {
                xhr.send( "prefix=" + terminalObj._inputLine.textPrefix + "&ssh=" + inputValue );
             }
             else if (typeof(callback) === 'function') {
-               // Traditional processing [seq 20170501°0731]
+               // Traditional processing [seq 20170501°0341]
                if (PROMPT_TYPE === PROMPT_CONFIRM) {
                   callback(inputValue.toUpperCase()[0] === 'Y' ? true : false);
                } else callback(inputValue);
@@ -216,7 +219,7 @@ Terminal = ( function () {
 
    /**
     * ..
-    * @id 20170501°0441
+    * @id 20170501°0351
     * @type {Element} —
     */
    var terminalBeep;
@@ -239,33 +242,85 @@ Terminal = ( function () {
          terminalBeep.volume = 0.05;
       }
 
+      /**
+       * ..
+       *
+       * @id 20170501°0411
+       * @type {Element} —
+       */
       this.html = document.createElement('div');
       this.html.className = 'Terminal';
       if (typeof(id) === 'string') {
          this.html.id = id;
       };
 
+      /**
+       * ..
+       *
+       * @id 20170501°0421
+       * @type {Element} —
+       */
+      this._cursor = document.createElement('span');
+
+      /**
+       * ..
+       *
+       * @note Is a Pre necessary? Is it a good idea? E.g. Divs and Spans,
+       *       which follow later, may be no valid HTML5 inside the Pre.
+       *       As a quick foothold, I prepare a possible flag to select the
+       *       one or the other. [issue 20210502°1331 'Div or Pre?']
+       * @id 20170501°0431
+       * @type {Element} —
+       */
+      this._innerWindow = null;                                        // allow the type annotation
       if (! bTrue) {
          this._innerWindow = document.createElement('div');
       }
       else {
-         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 div to pre] Is this necessary? Is this a good idea? Which impact has it? Do we need a flag to select one or the other? [issue 20210502°1331 'Div or Pre?']
+         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 div to pre]
       }
-      this._output = document.createElement('p');
-      this._inputLine = document.createElement('span');                // The span element where the users input is put
-      this._cursor = document.createElement('span');
-      this._input = document.createElement('p');                       // The full element administering the user input, including cursor
 
-      // Cosmetics for the input prompt [seq 20190312°0441]
-      // note : The CSS is provisory set in tools.html (ruleset 20190312°0451)
-      // note : See todo 20190312°0441 'do style definitions inside terminal.js'
+      /**
+       * The full element administering the user input, including cursor
+       *
+       * @id 20170501°0441
+       * @type {Element} —
+       */
+      this._input = document.createElement('p');
+
+      /**
+       * The span element where the users input is put
+       *
+       * @id 20170501°0451
+       * @id 20190312°0441
+       * @note [ncm] The CSS is provisory set in tools.html (ruleset 20190312°0451)
+       * @note [ncm] See todo 20190312°0441 'Do style definitions inside terminal.js'
+       * @type {Element} —
+       */
+      this._inputLine = document.createElement('span');
       this._inputLine.className = 'TerminalInput';
-
-      this._shouldBlinkCursor = true;
 
       /**
        * ..
-       * @id 20170501°0451
+       *
+       * @id 20170501°0511
+       * @type {Element} —
+       */
+      this._output = document.createElement('p');
+
+      /**
+       * Cosmetics for the input prompt
+       *
+       * @id 20190312°0443
+       * @type {boolean} —
+       */
+      this._shouldBlinkCursor = true;
+
+
+      /**
+       * Emit a retro sound
+       *
+       * @id 20170501°0521
        * @return {undefined} —
        */
       this.beep = function () {
@@ -274,8 +329,30 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       * Switch cursor blinking on/off
+       * @id 20170501°0531
+       * @param {string} sBool —
+       * @return {undefined} —
+       */
+      this.blinkingCursor = function (sBool) {
+         sBool = sBool.toString().toUpperCase();
+         this._shouldBlinkCursor = ( sBool === 'TRUE' || sBool === '1' || sBool === 'YES' );
+      };
+
+      /**
+       * Empty the terminal lines
+       *
        * @id 20170501°0541
+       * @return {undefined} —
+       */
+      this.clear = function () {
+         this._output.innerHTML = '';
+      };
+
+      /**
+       * ..
+       *
+       * @id 20170501°0551
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -285,7 +362,8 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       * Switch on XHR mode and provide backend address
+       *
        * @id 20210502°1211
        * @param {string} url —
        * @return {undefined} —
@@ -297,19 +375,8 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id 20170501°0511
-       * @param {string} message —
-       * @return {undefined} —
-       */
-      this.print = function (message) {
-         var newLine = document.createElement('div');
-         newLine.textContent = message;
-         this._output.appendChild(newLine);
-      };
-
-      /**
-       * ..
-       * @id 20170501°0521
+       *
+       * @id 20170501°0611
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -320,7 +387,8 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id 20170501°0531
+       *
+       * @id 20170501°0621
        * @param {string} message —
        * @param {Function} callback —
        * @return {undefined} —
@@ -330,45 +398,16 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
-       * @id 20170501°0551
-       * @return {undefined} —
-       */
-      this.clear = function () {
-         this._output.innerHTML = '';
-      };
-
-      /**
-       * ..
-       * @id 20170501°0611
-       * @param {number} milliseconds —
-       * @param {Function} callback —
-       * @return {undefined} —
-       */
-      this.sleep = function (milliseconds, callback) {
-         setTimeout(callback, milliseconds);
-      };
-
-      /**
-       * ..
-       * @id 20170501°0621
-       * @param {string} size —
-       * @return {undefined} —
-       */
-      this.setTextSize = function (size) {
-         this._output.style.fontSize = size;
-         this._input.style.fontSize = size;
-      };
-
-      /**
-       * ..
+       * Output a line
+       *
        * @id 20170501°0631
-       * @param {string} col —
+       * @param {string} message —
        * @return {undefined} —
        */
-      this.setTextColor = function (col) {
-         this.html.style.color = col;
-         this._cursor.style.background = col;
+      this.print = function (message) {
+         var newLine = document.createElement('div');
+         newLine.textContent = message;
+         this._output.appendChild(newLine);
       };
 
       /**
@@ -384,16 +423,6 @@ Terminal = ( function () {
       /**
        * ..
        * @id 20170501°0651
-       * @param {string} width —
-       * @return {undefined} —
-       */
-      this.setWidth = function (width) {
-         this.html.style.width = width;
-      };
-
-      /**
-       * ..
-       * @id 20170501°0711
        * @param {string} height —
        * @return {undefined} —
        */
@@ -403,13 +432,45 @@ Terminal = ( function () {
 
       /**
        * ..
-       * @id 20170501°0721
-       * @param {string} sBool —
+       * @id 20170501°0711
+       * @param {string} col —
        * @return {undefined} —
        */
-      this.blinkingCursor = function (sBool) {
-         sBool = sBool.toString().toUpperCase();
-         this._shouldBlinkCursor = ( sBool === 'TRUE' || sBool === '1' || sBool === 'YES' );
+      this.setTextColor = function (col) {
+         this.html.style.color = col;
+         this._cursor.style.background = col;
+      };
+
+      /**
+       * ..
+       * @id 20170501°0721
+       * @param {string} size —
+       * @return {undefined} —
+       */
+      this.setTextSize = function (size) {
+         this._output.style.fontSize = size;
+         this._input.style.fontSize = size;
+      };
+
+      /**
+       * ..
+       * @id 20170501°0731
+       * @param {string} width —
+       * @return {undefined} —
+       */
+      this.setWidth = function (width) {
+         this.html.style.width = width;
+      };
+
+      /**
+       * ..
+       * @id 20170501°0741
+       * @param {number} milliseconds —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
+      this.sleep = function (milliseconds, callback) {
+         setTimeout(callback, milliseconds);
       };
 
       // ~~ Assemble the terminal div element
