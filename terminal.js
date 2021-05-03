@@ -318,7 +318,7 @@ Terminal = ( function () {
 
 
       /**
-       * Emit a retro sound
+       * Plays a retro digital tone
        *
        * @id 20170501°0521
        * @return {undefined} —

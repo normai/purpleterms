@@ -70,13 +70,19 @@ At least below is an overview compiled, what I found.
 This are three commits :
 
  1. [Adding functions and loading bar](https://github.com/eosterberg/terminaljs/pull/2/commits/7b6d0f3d69c9980ab9d62594a6069a452e2c4270)
-    — In here is the core of the matter
+    — Here is the code. Adds
+    • `.empty()`
+    • `.printraw(html)`
+    • `.load(name, message, width, progress, callback`
+    • `.clearhistory()`
+    • `.history`
+    • `.lasthistory`
 
  2. [Cleaned comments, empty lines](https://github.com/eosterberg/terminaljs/pull/2/commits/9843e480934086e5beb9bb2fd662480dd3065977)
-    — This does not matter here
+    — Some streamlining
 
  3. [Update README.md](https://github.com/eosterberg/terminaljs/pull/2/commits/b129084e5a8be545b8aebfd5247fda48046c3444)
-    — Mentions `this.empty()` and `this.printraw(html)`
+    — Some documentation fixes
 
 The involved changes are :
 

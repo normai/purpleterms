@@ -7,9 +7,8 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
 ##### version 2021xxxx°xxxx — v0.2.7.~~ ''
-- Supplement documentation comments [chg 20210502°0911]
 - Fill in PR 2020-Sep-07 'Backend XHR' [chg 20210502°1111]
-
+- ..
 
 
 

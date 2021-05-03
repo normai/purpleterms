@@ -14,29 +14,38 @@
 /**
  * This class provides a div with terminal functionalities
  *
- * @id 20190208°1923
+ * @id 20190208°1923`12
+ * @type {Object}
  */
 var Terminal;
 
-
 /**
+ * ..
+ *
+ * @id 20170501°0521`12
  * @type {Function} —
  * @_return {undefined} —
  */
-Terminal.beep;
+Terminal.beep();
 
 /**
+ * ..
+ *
+ * @id 20170501°0531`12
  * @type {Function} —
  * @param {boolean} —
- * @_returns {undefined} —
+ * @_return {undefined} —
  */
-Terminal.blinkingCursor;
+Terminal.blinkingCursor();
 
 /**
+ * ..
+ *
+ * @id  20170501°0541`12
  * @type {Function} —
- * @_returns {undefined} —
+ * @_return {undefined} —
  */
-Terminal.clear;
+Terminal.clear();
 
 /*
    issue 20210430°1531 'JSC_TYPE_PARSE_ERROR'
@@ -54,68 +63,116 @@ Terminal.clear;
 */
 
 /**
+ * ..
+ *
+ * @id 20170501°0551`12
  * @type {Function} —
  * @note Remember issue 20210430°1531 'JSC_TYPE_PARSE_ERROR'
  * @param {string} // [message] —
  * @param {Function} // [callback] —
- * @_returns {undefined} —
+ * @_return {undefined} —
  */
-Terminal.confirm;
+Terminal.confirm();
 
 /**
+ * Switch on XHR mode and provide backend address
+ *
+ * @id 20210502°1211`12
+ * @param {string} url —
+ * @return {undefined} —
+ */
+Terminal.connect();
+
+/**
+ * ..
+ *
+ * @id 20170501°0411`12
  * @type {Node} —
  */
 Terminal.html;
 
 /**
+ * ..
+ *
+ * @id 20170501°0611`12
  * @type {Function} —
  * @param {string} // message —
  * @param {Function} // callback —
- * @_returns {undefined} —
+ * @_return {undefined} —
  */
-Terminal.input;
+Terminal.input();
 
 /**
+ * ..
+ *
+ * @id 20170501°0621
  * @type {Function} —
  * @param {string} // message —
  * @param {Function} // callback —
- * @_returns {undefined} —
+ * @_return {undefined} —
  */
-Terminal.password;
+Terminal.password();
 
 /**
+ * ..
+ *
+ * @id 20170501°0631`12
  * @param {string} —
  * @type {Function} —
  */
-Terminal.setBackgroundColor;
+Terminal.print();
 
 /**
+ * ..
+ *
+ * @id 20170501°0641`12
  * @param {string} —
  * @type {Function} —
  */
-Terminal.setHeight;
+Terminal.setBackgroundColor();
 
 /**
+ * ..
+ *
+ * @id 20170501°0651`12
  * @param {string} —
  * @type {Function} —
  */
-Terminal.setWidth;
+Terminal.setHeight();
 
 /**
+ * ..
+ *
+ * @id 20170501°0711`12
  * @param {string} —
  * @type {Function} —
  */
-Terminal.setTextSize;
+Terminal.setTextColor();
 
 /**
+ * ..
+ *
+ * @id 20170501°0721`12
  * @param {string} —
  * @type {Function} —
  */
-Terminal.setTextColor;
+Terminal.setTextSize();
 
 /**
+ * ..
+ *
+ * @id 20170501°0731`12
+ * @param {string} —
  * @type {Function} —
  */
-Terminal.sleep;
+Terminal.setWidth();
+
+/**
+ * ..
+ *
+ * @id 20170501°0741`12
+ * @type {Function} —
+ */
+Terminal.sleep();
 
 /* eof */

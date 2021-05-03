@@ -36,10 +36,12 @@ for file in ['./terminal.min.js', './terminal.min.js.map'] :
    if not os.path.isfile(file) :
       bBuild = True
    else :
-      if os.path.getmtime('./terminal.js') > os.path.getmtime(file) :
+      if os.path.getmtime('./terminal.js') > os.path.getmtime(file)    \
+          or os.path.getmtime('./externs.js') > os.path.getmtime(file) \
+           :
          bBuild = True
 
-# Force build anyway? (normall, this is outcommented, activate it only if needed)
+# Force build anyway? (normally, this is outcommented, activate it if needed)
 ## bBuild = True
 
 # Assemble commandline

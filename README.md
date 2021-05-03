@@ -8,8 +8,7 @@ Below :
 ◦ [Accessors](#api_accessors)
 • [License](#license)
 
-Slogan : Terminal.js by Erik Österberg and contributors
-is a dead simple JavaScript library for emulating a shell environment.
+Slogan : Terminal.js is a dead simple JavaScript library for emulating a shell environment.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
@@ -20,20 +19,20 @@ _This are the **changes** compared to the
    Pro: No more external link for beeping.
    Con: Breaks IE<10_
 
-- _Build with Google-Closure-Compiler in **advanced mode**_
-
 - _Adjust coding and documentation **style** to my personal taste_
 
-- _Refactor **key codes** (inspired by pull requests [#12](https://github.com/eosterberg/terminaljs/pull/12))_
+- _Build with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**_
 
-- _Integrate **XHR** feature (after pull requests [#11](https://github.com/eosterberg/terminaljs/pull/11)).
+- _Refactor **key codes** (inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12))_
+
+- _Integrate **XHR** feature (after pull request [#11](https://github.com/eosterberg/terminaljs/pull/11)).
   Not yet tested._
 
 - _Rename repository branch 'master' to '**main**'_
 
-_Though I have stirred the code violently, it shall be left fully **backward-compatible**.
-Just replace the old by the new [`terminal.js`](./terminal.js)
-or by [`terminal.min.js`](./terminal.min.js) and bingo._
+_I have stirred the code violently but kept it fully **backward-compatible**.
+Just replace your old by the new [`terminal.js`](./terminal.js)
+or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully)._
 
 <a name="api_doc"></a>
 ## API Documentation
@@ -143,4 +142,4 @@ SOFTWARE.
 
 ---
 
-<sup><sub>[project 20190213°0211 file 20190208°1941]</sub></sup>
+<sup><sub>[project ~20190208°1711 file 20190213°0211]</sub></sup>
