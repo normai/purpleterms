@@ -1,82 +1,123 @@
 ﻿# TerminalJs <sup><sub>v0.2.7.~~</sub></sup>
 
+Below :
+• [API Documentation](#api_doc)
+◦ [Initialization](#api_initialization)
+◦ [Properties](#api_properties)
+◦ [Methods](#api_methods)
+◦ [Accessors](#api_accessors)
+• [License](#license)
+
+Slogan : Terminal.js by Erik Österberg and contributors
+is a dead simple JavaScript library for emulating a shell environment.
+
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
 _This are the **changes** compared to the
  [original project](https://github.com/eosterberg/terminaljs) :_
 
-- _Integrate Österberg's **`beep.mp3` as base64 variable**.
-   Pro: No more external link needed for beeping.
-   Con: Incompatible with IE<10_
+- _Integrate **`beep.mp3`** as base64 variable.
+   Pro: No more external link for beeping.
+   Con: Breaks IE<10_
 
-- _Make it work with Google-Closure-Compiler in **advanced mode**_
-
-- _Supplement a **prompt sign** on input line beginning to signal readiness to receive input_
+- _Build with Google-Closure-Compiler in **advanced mode**_
 
 - _Adjust coding and documentation **style** to my personal taste_
 
-- _Started to work off the pending **pull requests**_
+- _Refactor **key codes** (inspired by pull requests [#12](https://github.com/eosterberg/terminaljs/pull/12))_
 
-_The description in below box is the original one, left **unchanged** so far,
-except for striking the today invalid link to the read-more-page._
+- _Integrate **XHR** feature (after pull requests [#11](https://github.com/eosterberg/terminaljs/pull/11)).
+  Not yet tested._
 
-_In the meanwhile, below description may deviate from the facts in the current fork.
-But [`terminal.js`](./terminal.js)
-should still be fully **backward-compatible** for any use cases.
-At least the unchanged original page [`test.html`](./test.html) still works fine with it._
+- _Rename repository branch 'master' to '**main**'_
 
----
+_Though I have stirred the code violently, it shall be left fully **backward-compatible**.
+Just replace the old by the new [`terminal.js`](./terminal.js)
+or by [`terminal.min.js`](./terminal.min.js) and bingo._
 
-terminal.js by Erik Österberg is a dead simple JavaScript library for emulating a shell environment.
+<a name="api_doc"></a>
+## API Documentation
 
+<a name="api_initialization"></a>
 ### Initialization
 
     var myTerminal = new Terminal(id)
 
-### Properties and methods
-
-    .connect(url)
-You can set an URL address to get all responses with the XHR.
-When you are running the terminal with connect(), things become real
-— It means that now your backend is in charge of the terminal output.
+<a name="api_properties"></a>
+### Properties
 
     .html
-This is the top DOM element of the terminal instance. If you want to modify styling via CSS, all instances belong to a .Terminal class. The element will also get the ID from the constructor argument.
 
-    .print(message)
-Prints the message on a new line.
+This is the top DOM element of the terminal instance.
+If you want to modify styling via CSS, all instances belong to a Terminal class.
+The element will also get the ID from the constructor argument.
 
-    .input(message, callback)
-Prints the message, and shows a prompt where the user can write. When the user presses enter, the callback function fires. The callback takes one argument, which is the user input.
-
-    .password(message, callback)
-The same as input but the input of the user will be hidden just like an old-fashioned terminal.
-
-    .confirm(message, callback)
-Displays a confirm message, with a " (y/n)" automatically appended at the end. The callback receives the yes/no value as a boolean.
-
-    .clear()
-Clears the screen.
-
-    .sleep(milliseconds, callback)
-Works exactly like the JavaScript "setTimeout" function. Waits for the number of milliseconds given, then executes the callback.
+<a name="api_methods"></a>
+### Methods
 
     .beep()
-Plays a retro digital tone.
 
-    .setTextSize()
-    .setTextColor()
-    .setBackgroundColor()
-    .setWidth()
-    .setHeight()
-All the ".set" methods accepts any CSS-compliant value.
+Plays a retro digital tone.
 
     .blinkingCursor(boolean)
 Set to true by default.
 
-Read more at: <del>http://www.erikosterberg.com/terminaljs</del>
+    .clear()
 
-### License
+Clears the screen.
+
+    .confirm(message, callback)
+
+Displays a confirm message, with a " (y/n)" automatically appended at the end. The callback receives the yes/no value as a boolean.
+
+    .connect(url)
+
+You can set an URL address to get all responses with the XHR.
+When you are running the terminal with connect(), things become real
+— It means that now your backend is in charge of the terminal output.
+
+    .input(message, callback)
+
+Prints the message, and shows a prompt where the user can write. When the user presses enter, the callback function fires. The callback takes one argument, which is the user input.
+
+    .password(message, callback)
+
+The same as input but the input of the user will be hidden just like an old-fashioned terminal.
+
+    .print(message)
+
+Prints the message on a new line.
+
+    .sleep(milliseconds, callback)
+
+Works exactly like the JavaScript "setTimeout" function.
+Waits for the number of milliseconds given, then executes the callback.
+
+<a name="api_accessors"></a>
+### Accessors
+
+    .setBackgroundColor()
+ 
+Accepts CSS-compliant color value
+
+    .setHeight()
+
+Accepts CSS-compliant dimension value
+
+    .setTextColor()
+
+Accepts CSS-compliant color value
+
+    .setTextSize()
+
+Accepts CSS-compliant dimension value
+
+    .setWidth()
+
+Accepts CSS-compliant dimension value
+
+<a name="license"></a>
+## License
 
 The MIT License (MIT)
 
