@@ -159,5 +159,13 @@ Further reference(s) :
   Interestingly she does not use `e.code` but **`e.keyCode`**.
 
 ---
+```
+   todo 20210502°1411 'Sort members'
+   do : Inside Terminal and inside TerminalConstructor, sort vars and members,
+         e.g. constants, fields, methods (additional ids were of 20170501°0000).
+   priority : Low
+   status : Open
+```
+---
 
 <sup><sub>[file 20210430°1551] ܀Ω</sub></sup>

@@ -91,7 +91,10 @@ Terminal = ( function () {
       inputField.style.opacity = '0';
       inputField.style.fontSize = '0.2em';
 
-      terminalObj._inputLine.textContent = '';
+		terminalObj._inputLine.textPrefix = '$ ';                               // [chg 20210502°1111`11]
+      ////terminalObj._inputLine.textContent = '';                            // original line
+		terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix; // [chg 20210502°1111`12]
+      
       terminalObj._input.style.display = 'block';
       terminalObj.html.appendChild(inputField);
       fireCursorInterval(inputField, terminalObj);
@@ -120,8 +123,16 @@ Terminal = ( function () {
        * @return {undefined} —
        */      
       inputField.onkeydown = function (e) {
-         ////if (e.which === 37 || e.which === 39 || e.which === 38 || e.which === 40 || e.which === 9) {
-         if (   ( e.code === 'ArrowLeft' || e.which === 37 )
+         if ( ( ( e.code === 'Backspace' || e.which === 8)              // [chg 20210430°1551`01]  Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
+                  && inputField.value.length === inputField.value.length
+              )
+              || inputField.value.length <= terminalObj._inputLine.textPrefix
+            )
+         {
+            terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix;
+            e.preventDefault();
+         }
+         else if ( ( e.code === 'ArrowLeft' || e.which === 37 )
              || ( e.code === 'ArrowUp' || e.which === 38 )
              || ( e.code === 'ArrowRight' || e.which === 39 )
              || ( e.code === 'ArrowDown' || e.which === 40 )
@@ -129,7 +140,6 @@ Terminal = ( function () {
                )                                                       // [chg 20210430°1551`01]
          {
             e.preventDefault();
-         ////} else if (shouldDisplayInput && e.which !== 13) {
          }
          else if ( shouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02]
          {
@@ -147,15 +157,39 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       inputField.onkeyup = function (e) {
-         ////if (PROMPT_TYPE === PROMPT_CONFIRM || e.which === 13) {
-         if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03]
+         if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03 e.code]
             terminalObj._input.style.display = 'none';
             var inputValue = inputField.value;
+
+            // [seq 20210502°1221] [chg 20210502°1111`13]
+				if (inputValue === terminalObj._inputLine.textPrefix + 'clear') {
+					terminalObj.clear();
+					terminalObj.input('', false);
+					return true;
+				}
+
             if (shouldDisplayInput) {
                terminalObj.print(inputValue);
             }
             terminalObj.html.removeChild(inputField);
-            if (typeof(callback) === 'function') {
+            
+            // Process remote or local?
+				if ( terminalObj._backend ) {                              // [chg 20210502°1111`14 new flag]
+
+               // Ship AJAX request [seq 20210502°1231]
+               var xhr = new XMLHttpRequest();
+					xhr.open("POST", terminalObj._backend, true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // This possibly needs to be variable for general purpose [issue 20210502°1311 AJAX mime type]
+					xhr.onreadystatechange = function() {
+						if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Add failure catching [issue 20210502°1321 catch AJAX error]
+							terminalObj.print(xhr.responseText);
+							terminalObj.input('', false);
+						}
+					};
+               xhr.send( "prefix=" + terminalObj._inputLine.textPrefix + "&ssh=" + inputValue );
+            }
+	   	   else if (typeof(callback) === 'function') {
+               // Traditioinal processing [seq 20210502°12xx]
                if (PROMPT_TYPE === PROMPT_CONFIRM) {
                   callback(inputValue.toUpperCase()[0] === 'Y' ? true : false);
                } else callback(inputValue);
@@ -202,11 +236,12 @@ Terminal = ( function () {
          this.html.id = id;
       };
 
-      this._innerWindow = document.createElement('div');
+      ////this._innerWindow = document.createElement('div');
+      this._innerWindow = document.createElement('pre');               // [chg 20210502°1111`15] Is this necessary? Is this a good idea? Which impact has it? Do we need a flag to select one or the other? [issue 20210502°1331 'Div or Pre?']
       this._output = document.createElement('p');
-      this._inputLine = document.createElement('span'); // the span element where the users input is put
+      this._inputLine = document.createElement('span');                // The span element where the users input is put
       this._cursor = document.createElement('span');
-      this._input = document.createElement('p'); // the full element administering the user input, including cursor
+      this._input = document.createElement('p');                       // The full element administering the user input, including cursor
 
       // Cosmetics for the input prompt [seq 20190312°0441]
       // note : The CSS is provisory set in tools.html (ruleset 20190312°0451)
@@ -224,6 +259,28 @@ Terminal = ( function () {
          terminalBeep.load();
          terminalBeep.play();
       };
+
+      /**
+       * ..
+       * @id 20170501°0541
+       * @param {string} message —
+       * @param {Function} callback —
+       * @return {undefined} —
+       */
+      this.confirm = function (message, callback) {
+         promptInput(this, message, PROMPT_CONFIRM, callback);
+      };
+
+      /**
+       * ..
+       * @id 20210502°1211
+       * @param {string} url —
+       * @return {undefined} —
+       */
+		this.connect = function (url) {                                  // [chg 20210502°1111`16]
+			this._backend = url;
+			promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
+		};
 
       /**
        * ..
@@ -257,17 +314,6 @@ Terminal = ( function () {
        */
       this.password = function (message, callback) {
          promptInput(this, message, PROMPT_PASSWORD, callback);
-      };
-
-      /**
-       * ..
-       * @id 20170501°0541
-       * @param {string} message —
-       * @param {Function} callback —
-       * @return {undefined} —
-       */
-      this.confirm = function (message, callback) {
-         promptInput(this, message, PROMPT_CONFIRM, callback);
       };
 
       /**
@@ -353,27 +399,39 @@ Terminal = ( function () {
          this._shouldBlinkCursor = ( sBool === 'TRUE' || sBool === '1' || sBool === 'YES' );
       };
 
+      // ~~ Assemble the terminal div element
       this._input.appendChild(this._inputLine);
       this._input.appendChild(this._cursor);
       this._innerWindow.appendChild(this._output);
       this._innerWindow.appendChild(this._input);
       this.html.appendChild(this._innerWindow);
 
+      // ~~ Style the terminal
       this.setBackgroundColor('black');
+      this.setHeight('100%');
       this.setTextColor('white');
       this.setTextSize('1em');
       this.setWidth('100%');
-      this.setHeight('100%');
 
-      this.html.style.fontFamily = 'Monaco, Courier';
-      this.html.style.margin = '0';
+      // ~~ 
       this._innerWindow.style.padding = '10px';
+      this._input.style.display = 'none';
       this._input.style.margin = '0';
-      this._output.style.margin = '0';
       this._cursor.style.background = 'white';
       this._cursor.innerHTML = 'C';                                    // put something in the cursor ..
       this._cursor.style.display = 'none';                             // .. then hide it
-      this._input.style.display = 'none';
+      this._output.style.margin = '0';
+
+      // ~~
+      this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17]
+      this.html.style.margin = '0';
+      this.html.style.overflow = 'auto';                               // [chg 20210502°1111`18] Which exact impact will overflow have?  [issue 20210502°1351 Overflow]
+
+      /**
+       * 
+       */
+      this._backend = false;                                           // [chg 20210502°1111`19]
+   
    };
 
    /**
