@@ -1,6 +1,9 @@
-﻿# TerminalJs <sup><sub>v0.2.8</sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.8.2 &nbsp; <sup><sup>[v 20210503°1551]</sup></sup></sub></sup>
 
 Below :
+• [Usage](#usage)
+◦ [Simple](#usage_simple)
+◦ [Advanced](#usage_advanced)
 • [API Documentation](#api_doc)
 ◦ [Initialization](#api_initialization)
 ◦ [Properties](#api_properties)
@@ -33,6 +36,43 @@ _This are the **changes** compared to the
 _I have stirred the code violently but kept it fully **backward-compatible**.
 Just replace your old by the new [`terminal.js`](./terminal.js)
 or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully)._
+
+<a name="usage"></a>
+## Usage
+
+Include Terminal.js into your page header,
+either the minified version or the source version.
+The both operate equal, except for debugging.
+As a user, you prefer the minified version,
+which looks like this&nbsp;:
+
+```
+   <head>
+      <script src="terminaljs/terminal.min.js"></script>
+   </head>
+```
+
+As a developer, you prefer the source version :
+
+```
+      <script src="terminaljs/terminal.js"></script>
+```
+
+Now Terminal.js is ready to operate, and you can call it in the page's body.
+
+<a name="usage_simple"></a>
+### Simple Use Case
+
+..
+
+&nbsp;
+
+<a name="usage_advanced"></a>
+### Advanced Use Case
+
+..
+
+&nbsp;
 
 <a name="api_doc"></a>
 ## API Documentation

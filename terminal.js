@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.8
+ * Version : 0.2.8.2
  * License : MIT License
  */
 
@@ -57,6 +57,7 @@ Terminal = ( function () {
 
    /**
     * ..
+    *
     * @id 20170501°0241
     * @type {boolean} —
     */
@@ -84,16 +85,17 @@ Terminal = ( function () {
 
    /**
     * ..
+    *
     * @id 20170501°0311
-    * @param {Object} terminalObj —
+    * @param {Object} oTerm —
     * @param {string} message —
     * @param {number} PROMPT_TYPE —
     * @param {Function} callback —
     * @return {undefined} —
     */
-   var promptInput = function (terminalObj, message, PROMPT_TYPE, callback) {
+   var promptInput = function (oTerm, message, PROMPT_TYPE, callback) {
 
-      var shouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
+      var bShouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
       var inputField = document.createElement('input');
 
       inputField.style.position = 'absolute';
@@ -103,17 +105,17 @@ Terminal = ( function () {
       inputField.style.opacity = '0';
       inputField.style.fontSize = '0.2em';
 
-      terminalObj._inputLine.textPrefix = '$ ';                               // [chg 20210502°1111`11]
-      ////terminalObj._inputLine.textContent = '';                            // original line
-      terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix; // [chg 20210502°1111`12]
+      oTerm._inputLine.textPrefix = '$ ';                              // [chg 20210502°1111`11]
+      ////oTerm._inputLine.textContent = '';                           // original line
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12]
       
-      terminalObj._input.style.display = 'block';
-      terminalObj.html.appendChild(inputField);
-      fireCursorInterval(inputField, terminalObj);
+      oTerm._input.style.display = 'block';
+      oTerm.html.appendChild(inputField);
+      fireCursorInterval(inputField, oTerm);
 
       // [condition 20170501°0751]
       if (message.length) {
-         terminalObj.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
+         oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
 
       /**
@@ -123,7 +125,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */      
       inputField.onblur = function () {
-         terminalObj._cursor.style.display = 'none';
+         oTerm._cursor.style.display = 'none';
       };
 
       /**
@@ -133,8 +135,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */      
       inputField.onfocus = function () {
-         inputField.value = terminalObj._inputLine.textContent;
-         terminalObj._cursor.style.display = 'inline';
+         inputField.value = oTerm._inputLine.textContent;
+         oTerm._cursor.style.display = 'inline';
       };
 
       /**
@@ -143,7 +145,7 @@ Terminal = ( function () {
        * @id 20170501°0831
        * @return {undefined} —
        */      
-      terminalObj.html.onclick = function () {
+      oTerm.html.onclick = function () {
          inputField.focus();
       };
 
@@ -155,13 +157,13 @@ Terminal = ( function () {
        * @return {undefined} —
        */      
       inputField.onkeydown = function (e) {
-         if ( ( ( e.code === 'Backspace' || e.which === 8)              // [chg 20210430°1551`01]  Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
+         if ( ( ( e.code === 'Backspace' || e.which === 8)             // [chg 20210430°1551`01]  Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
                   && inputField.value.length === inputField.value.length
               )
-              || inputField.value.length <= terminalObj._inputLine.textPrefix
+              || inputField.value.length <= oTerm._inputLine.textPrefix
             )
          {
-            terminalObj._inputLine.textContent = terminalObj._inputLine.textPrefix;
+            oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;
             e.preventDefault();
          }
          else if ( ( e.code === 'ArrowLeft' || e.which === 37 )
@@ -173,11 +175,11 @@ Terminal = ( function () {
          {
             e.preventDefault();
          }
-         else if ( shouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02]
+         else if ( bShouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02]
          {
             // Echo after 1 millisecond
             setTimeout(function () {
-               terminalObj._inputLine.textContent = inputField.value;
+               oTerm._inputLine.textContent = inputField.value;
             }, 1);
          }
       };
@@ -194,40 +196,41 @@ Terminal = ( function () {
              || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 e.code]
               ) {
 
-            terminalObj._input.style.display = 'none';
+            oTerm._input.style.display = 'none';
             var inputValue = inputField.value;
 
             // [seq 20210502°1221] [chg 20210502°1111`13]
-            if (inputValue === terminalObj._inputLine.textPrefix + 'clear') {
-               terminalObj.clear();
-               terminalObj.input('', false);
+            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {
+               oTerm.clear();
+               oTerm.input('', false);
                return true;
             }
 
-            if ( shouldDisplayInput ) {
+            if ( bShouldDisplayInput ) {
 
-               // History feature [seq 20210503°0911 after Mark]
-               terminalObj._history.push(inputValue);
-               terminalObj.lasthistory = terminalObj._history.length;
-
-               terminalObj.print(inputValue);
+               // History feature [seq 20210503°0911 inserted after Mark]
+/*
+               oTerm._history.push(inputValue);
+               oTerm.lasthistory = oTerm._history.length;
+*/
+               oTerm.print(inputValue);
             }
-            terminalObj.html.removeChild(inputField);
-            
+            oTerm.html.removeChild(inputField);
+
             // Process remote or local?
-            if ( terminalObj._backend ) {                              // [chg 20210502°1111`14 new flag]
+            if ( oTerm._backend ) {                                    // [chg 20210502°1111`14 new flag]
 
                // Ship AJAX request [seq 20210502°1231]
                var xhr = new XMLHttpRequest();
-               xhr.open("POST", terminalObj._backend, true);
+               xhr.open("POST", oTerm._backend, true);
                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // This possibly needs to be variable for general purpose [issue 20210502°1311 AJAX mime type]
                xhr.onreadystatechange = function() {
                   if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Add failure catching [issue 20210502°1321 catch AJAX error]
-                     terminalObj.print(xhr.responseText);
-                     terminalObj.input('', false);
+                     oTerm.print(xhr.responseText);
+                     oTerm.input('', false);
                   }
                };
-               xhr.send( "prefix=" + terminalObj._inputLine.textPrefix + "&ssh=" + inputValue );
+               xhr.send( "prefix=" + oTerm._inputLine.textPrefix + "&ssh=" + inputValue );
             }
             else if (typeof(callback) === 'function') {
                // Traditional processing [seq 20170501°0341]
@@ -239,26 +242,28 @@ Terminal = ( function () {
                }
             }
 
+/*
             // History feature [seq 20210503°0912 after Mark]
             if ( PROMPT_TYPE === PROMPT_INPUT ) {
-               if ( e.which === 38 && terminalObj._historyLast != - 1) {
-                  inputField.value = terminalObj._history[(terminalObj._historyLast -= 1) > 0
-                                    ? terminalObj._historyLast
-                                     : terminalObj._historyLast = 0]
+               if ( e.which === 38 && oTerm._historyLast !== - 1) {
+                  inputField.value = oTerm._history[(oTerm._historyLast -= 1) > 0
+                                    ? oTerm._historyLast
+                                     : oTerm._historyLast = 0]
                                       ;
-                  terminalObj._inputLine.textContent = inputField.value;
+                  oTerm._inputLine.textContent = inputField.value;
                }
-               else if ( e.which === 40 && terminalObj._historyLast != -1) {
-                  inputField.value = terminalObj.history[(terminalObj._historyLast += 1) < terminalObj.history.length
-                                    ? terminalObj._historyLast
-                                     : terminalObj._historyLast = terminalObj.history.length]
+               else if ( e.which === 40 && oTerm._historyLast !== -1) {
+                  inputField.value = oTerm.history[(oTerm._historyLast += 1) < oTerm.history.length
+                                    ? oTerm._historyLast
+                                     : oTerm._historyLast = oTerm.history.length]
                                       ;
-                  if (terminalObj._historyLast == terminalObj.history.length) {
+                  if (oTerm._historyLast === oTerm.history.length) {
                      inputField.value = "";
                   }
-                  terminalObj._inputLine.textContent = inputField.value;
+                  oTerm._inputLine.textContent = inputField.value;
                }
             }
+*/
 
          }
       };
@@ -431,8 +436,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.clearHistory = function () {
-         this.history = [];
-         this.lasthistory = -1;
+         this.history = [];                           // Should be marked as private with underscore? [note 20210503°1521]
+         this.lasthistory = -1;                       // Should be marked as private with underscore? [note 20210503°1521`02]
       };
 
       /**

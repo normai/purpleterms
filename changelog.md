@@ -5,8 +5,9 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
-##### version 2021xxxx°xxxx — v0.2.x ''
-- ..
+##### commit 20210503°1551 — v0.2.8.2 ''
+- Add docs folder
+- Add demo1.html 'First-Encounter Demo'
 
 
 ##### version 20210503°1111 — v0.2.8 'Pull requests worked off'

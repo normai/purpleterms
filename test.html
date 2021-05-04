@@ -2,23 +2,51 @@
 <html lang="en" data-id="20190208°1931">
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
-   <title>TerminalJs Test</title> 
+   <title>Terminal.js Test</title> 
    <script src="./terminal.js"></script>
 </head>
 
 <body>
 
-   <h1>terminal.js test</h1>
+ <div style="margin:auto; max-width:780px; width:84%; margin:0 0 0 0;">
+  <p style="float:left; margin:0 0 0 0;">
+               <a href="./test.html" style="text-decoration:none; pointer-events:none; cursor:default; color:Gray;">Test</a> →
+               <a href="./docs/demo1.html">Demo One</a>
+  </p>
+  <p style="float:right; margin:0 0 0 0;">
+       <a href="./docs/demo1.html" style="text-decoration:none;">&#x25C0;&#xFE0F;</a>
+       <a href="./docs/demo1.html" style="text-decoration:none;">∆</a>
+       <a href="./docs/demo1.html" style="text-decoration:none;">&#x25B6;&#xFE0F;</a>
+  </p>
+ </div>
+
+   <h1 style="clear:both;">Terminal.js test.html</h1>
 
    <button onclick="t1.beep()">Play the beep!</button> <br> <br>
 
    <script>
 
+      // *** Box one ***
       var t1 = new Terminal();
       t1.setHeight("200px");
       t1.setWidth('600px');
       document.body.appendChild(t1.html);
+      t1.print('Hello, world!');
+      t1.input ( 'Whats your name?', function (input) {
+         t1.print('Welcome, ' + input);
+         t2.sleep(1234, function () {
+            t2.print('Hello again!');
+            t2.input('Whats your name again?', function (input) {
+               t2.print('Welcome again, ' + input);
+            }); 
+         });
 
+         // Test history feature after Mark [line 20210503°0941]
+         t1.input("Well " + input + ", Within this terminal, you can arrow up to see your previous input.");
+      });
+
+
+      // *** Box two ***
       var t2 = new Terminal();
       t2.setHeight("250px");
       t2.setWidth('650px');
@@ -26,52 +54,34 @@
       t2.blinkingCursor(false);
       document.body.appendChild(t2.html);
 
-      t1.print('Hello, world!');
 
-      t1.input ( 'Whats your name?', function (input)
-                  {
-                     t1.print('Welcome, ' + input);
-                     t2.sleep(1000, function ()
-                     {
-                          t2.print('Hello again!');
-                          t2.input('Whats your name again?', function (input)
-                          {
-                             t2.print('Welcome again, ' + input);
-                          }); 
-                     });
-
-                     // Test history feature after Mark [line 20210503°0941]
-                     t1.input("Well " + input + ", Within this terminal, you can arrow up to see your previous input.")
-
-                  });
-
+      // *** Box three ***
       var t3 = new Terminal('terminal_3');
       t3.setHeight("180px");
       t3.setWidth('550px');
       t3.setBackgroundColor('green');
       document.body.appendChild(t3.html);
-      t3.password('Enter password:', function (password)
-                        {
-                           t3.print('Your password is: ' + password);
-                        });
-
+      t3.password('Enter password:', function (password) {
+         t3.print('Your password is: ' + password);
+      });
       var paragraph = document.createElement("p");
       var t3bySelector = document.querySelector("#terminal_3");
       paragraph.innerHTML = t3bySelector && t3bySelector.id
-                           ? 'The 3rd terminal has id: ' + t3bySelector.id
-                            : 'Assigning an id at initialization doesnt semm to work!'
-                            ; 
+                           ? 'The terminal threed has ID: ' + t3bySelector.id
+                            : 'Assigning an ID at initialization doesnt seem to work!'
+                             ; 
       document.body.appendChild(paragraph);
 
+
+      // ** Box four ***
       var t4 = new Terminal('terminal_3');
       t4.setHeight("180px");
       t4.setWidth('550px');
       t4.setBackgroundColor('green');
       document.body.appendChild(t4.html);
-      t4.confirm('Are you sure?', function (didConfirm)
-                   {
-                      t4.print(didConfirm ? 'OK' : 'Why not?');
-                   });
+      t4.confirm('Are you sure?', function (didConfirm) {
+         t4.print(didConfirm ? 'OK' : 'Why not?');
+      });
 
    </script>
 

@@ -1,4 +1,4 @@
-Copyright (c) <year> <copyright holders>
+﻿Copyright (c) <year> <copyright holders>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -22,5 +22,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ---
 
-Annotation (ncm # 20120226.1234): Above text reads a copy of
+Annotation (ncm 20120226°1234): Above text reads a copy of
 the MIT license from http://www.opensource.org/licenses/MIT.

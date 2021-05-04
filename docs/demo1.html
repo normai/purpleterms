@@ -8,15 +8,16 @@
 
    <style>
       body { /* text-align:center; */ font-family:Verdana,Geneva,sans-serif; line-height:1.59em; } /* rule 20080710°2311 applying workaround 20100822°1323 */
-      body.BodyFace12Normal { font-family:verdana,sans-serif; background-color:NavajoWhite; } /* rule 20170925°0321 */
+      body.BodyFace12Normal { font-family:verdana,sans-serif; background-color:Gold; } /* rule 20170925°0321 */
       div.ChapterFace12Normal { margin:0 auto; max-width:780px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
+
       div.TopNavi1212Box  { margin:auto; max-width:780px; width:84%; } /* rule 20210418°1422 */
       p.TopNavi12Line   { float:left; font-size:large; margin:0.01em 0 0 0.7em; } /* rule 20141117°0511 (from ruleset 20080711°0531) */
       a.TopNavi12LinkSelf { color:Green; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
       a.TopNavi12LinkActive { color:Green; padding:0 0.4em 0 0.4em; font-weight:bold; } /* [rule 20210418°142x] */
-      /* p.TopNavi12Arrows { float:right; width:133px; padding-right:0.1em; border:1px solid Transparent; margin-top:0.1em; } */ /* rule 20210418°1421 */
       p.TopNavi13Arrows { float:right; width:133px; padding-right:0.7em; border:1px solid Transparent; margin-top:0.1em; font-size:1.4em; transform:scale(1.7, 1); } /* rule 20210503°1321 */
       p.TopNavi13Arrows a { text-decoration:none; } /* rule 20210503°1322 */
+
       p.TopTitle12Crumbs { color:#0000f0; font-size:1.20em; margin-bottom:0.2em; margin-top:0.2em; text-align:center; } /* rule 20080711°0523 */
       div.TopLogo12RightPlain { float:right; margin:-0.7em -0.7em 0 0; border:1px solid transparent; } /* rule 20200314°0413 */
       p.Good12Bye      { font-family: ComicJensWeb, "Comic Sans MS", "Comic Sans", sans-serif; margin-top:2.1em; font-size:small; clear:both; color:ForestGreen; } /* rule 20080710°2314 */
@@ -31,6 +32,7 @@
       h1, h2, h2 { text-align:center; color:DarkGreen; } /* rule 20210503°1311 */
       code { font-size:large; } /* rule 20170901°1141 */
    </style>
+   <script src="./../terminal.js" id="id20210503o1256"></script>
 </head>
 
 <body class="BodyFace12Normal" id="id20210503o1213">
@@ -44,13 +46,8 @@
 
   <p class="TopNavi13Arrows" id="id20210503o1233">
        <a href="./../test.html" id="id20210503o1234">&#x25C0;&#xFE0F;</a>
-       <!-- a href="./../test.html" id="id20210503o1234">⊲</a -->
-
-       <!-- a href="./demo1.html" style="color:LightGray;" id="id20210503o1235">&#x1F53C;</a -->
        <a href="./demo1.html" style="color:LightGray;" id="id20210503o1235">∆</a>
-
        <a href="./../test.html" id="id20210503o1236">&#x25B6;&#xFE0F;</a>
-       <!-- a href="./../test.html" id="id20210503o1236">⊳</a -->
   </p>
 
  </div>
@@ -62,22 +59,52 @@
   </div -->
 
   <h1 id="id20210503o1242">
-               Terminal.js → Demo One
+               Terminal.js First-Encounter Demo
   </h1>
 
   <p id="id20210503o1243">
-               This page shall demonstrate a standard use case.
+               This page demonstrates one use case.
   </p>
 
+   <script>
 
+      // Prologue [seq 20210503°1511]
+      var t1 = new Terminal();
+      t1.setHeight("500px"); // 200px
+      document.body.appendChild(t1.html);
+      t1.print('Welcome to the Terminal.js first-encounter demo!');
+      var sInput = '';
 
+      // Action [seq 20210503°1513]
+      t1.input ( "What's your name please? (q = quit)", function (sInpuz) {
+         holla(sInpuz);
+      });
 
+      // Reaction [func 20210503°1531]
+      function holla(sWhat) {
+         if (sWhat.toLowerCase() !== '$ q' ) { // '$ q' is provisory instead of 'q', as long as the prompt bug exists
+            t1.print('Aloha' + " '" + sWhat + "'!");
+            t1.input ( "Your name again? (q = quit)", function (sInpuz) {
+               holla(sInpuz);
+            });
+         }
+         else {
+            t1.print('Bye.');
+         }
+      }
 
+      /*
+      todo : Possibly merge Action and Reaction into one single sequence [todo 20210503°1541]
+      */
 
+   </script>
 
+  <p id="id20210503o1257">
+               FYI. Currently nags the prompt-bug, unjustly prepending all
+               input with '$ '. Hopefully, that will soon be cleared.
+  </p>
 
-
-  <p class="Good12Bye" id="id20210503o1244">
+  <p class="Good12Bye" style="display:none;" id="id20210503o1244">
                Bye.
   </p>
 
