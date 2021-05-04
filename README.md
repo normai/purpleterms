@@ -1,15 +1,21 @@
 ﻿# Terminal.js &nbsp; <sup><sub>v0.2.8.3 &nbsp; <sup><sup>[v 20210503°1555]</sup></sup></sub></sup>
 
-Below :
-• [Usage](#usage)
-◦ [Simple](#usage_simple)
-◦ [Advanced](#usage_advanced)
-• [API Documentation](#api_doc)
-◦ [Initialization](#api_initialization)
-◦ [Properties](#api_properties)
-◦ [Methods](#api_methods)
-◦ [Accessors](#api_accessors)
-• [License](#license)
+Navigate pages : 
+ • [Readme](#)
+ • [Changelog](./docs/changelog.md)
+ • [Notes](./docs/notes.md)
+ • [License](./license.md)
+
+Go below :
+ • [Usage](#usage)
+ ◦ [Simple](#usage_simple)
+ ◦ [Advanced](#usage_advanced)
+ • [API Documentation](#api_doc)
+ ◦ [Initialization](#api_initialization)
+ ◦ [Properties](#api_properties)
+ ◦ [Methods](#api_methods)
+ ◦ [Accessors](#api_accessors)
+ • [License](#license)
 
 Slogan : Terminal.js is a dead simple JavaScript library for emulating a shell environment.
 
