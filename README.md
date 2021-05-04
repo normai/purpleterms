@@ -1,4 +1,4 @@
-﻿# TerminalJs <sup><sub>v0.2.8.2 &nbsp; <sup><sup>[v 20210503°1551]</sup></sup></sub></sup>
+﻿# Terminal.js &nbsp; <sup><sub>v0.2.8.3 &nbsp; <sup><sup>[v 20210503°1555]</sup></sup></sub></sup>
 
 Below :
 • [Usage](#usage)
