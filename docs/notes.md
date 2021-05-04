@@ -1,4 +1,4 @@
-Pages : 
+Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • Notes &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
@@ -147,10 +147,10 @@ For reading keyboard input, two questions are to tackle:
    For detecting key strokes, there exist multiple functions.
    Notably, there is no simple function like `getKey()`,
    instead only the halfe-done events `e.onkeydown()` and/or `e.onkeyup()`.
-    
+
 2. **Which constant can then identify the caught key?**
    Once a key event is caught, there are numerous ways to identify it's content.
-    
+
 
 For question one, if `e` is a
 [GlobalEventHandler](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers)

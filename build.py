@@ -4,7 +4,7 @@
 # interpeter   : Python 3.7.8
 # requirements : • Closure Compiler on drive • Java path set • Python path set
 #                 • Path to Closure Compiler registered in config file
-# usage        : Write your Closure-Compiler path on a line in 
+# usage        : Write your Closure-Compiler path on a line in
 
 """
    This minifies TerminalJs

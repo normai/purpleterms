@@ -1,4 +1,4 @@
-Pages : 
+Pages : &nbsp;
  • [ReadMe](./README.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
@@ -31,13 +31,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </pre>
 
-Above MIT License text is available e.g. on
-[www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
-<sup><sub><sup>[ref&nbsp;20120226°1234]</sup></sub></sup>.
-
 Note. This fork is no more a contribution, rather a total rewrite, including
 significant extensions. Therefore, in some future release, I will likely take
-the liberty of replacing above one copyright line by the following two-liner :
+the liberty of replacing above copyright line by the following two-liner :
 
 ```
 Copyright (C) 2014 Erik Österberg
@@ -46,12 +42,17 @@ Copyright (C) 2021 Norbert C. Maier and contributors
 
 Note. Also in some future release, I like to replace the MIT License by the
 [BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause).
-That one is of the same liberty, it just additionally states three otherwise
-common sense cases explicitly. The BSD-3-Clause license has a tradition
-similiar to the MIT License, you can find it applied e.g. by
+That is equally permissive, just three otherwise common sense cases stated
+explicitly. The BSD-3-Clause license has a tradition similiar to the MIT
+License. You find it applied e.g. by
 [CMake](https://gitlab.kitware.com/cmake/cmake)
 or [Highlight.js](https://github.com/highlightjs/highlight.js).
 
+<span hidden>Above MIT License text is available e.g. on
+[www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
+<sup><sub><sup>[ref&nbsp;20120226°1234]</sup></sub></sup>.</span>
+
+&nbsp;
 
 ---
 

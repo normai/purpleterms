@@ -1,4 +1,4 @@
-﻿Pages : 
+﻿Pages : &nbsp;
 • ReadMe &nbsp;
 • [Notes](./docs/notes.md) &nbsp;
 • [ChangeLog](./docs/changelog.md) &nbsp;
@@ -140,7 +140,7 @@ Waits for the number of milliseconds given, then executes the callback.
 ### Accessors
 
     .setBackgroundColor()
- 
+
 Accepts CSS-compliant color value
 
     .setHeight()

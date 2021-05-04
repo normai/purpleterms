@@ -108,7 +108,7 @@ Terminal = ( function () {
       oTerm._inputLine.textPrefix = '$ ';                              // [chg 20210502°1111`11]
       ////oTerm._inputLine.textContent = '';                           // original line
       oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12]
-      
+
       oTerm._input.style.display = 'block';
       oTerm.html.appendChild(inputField);
       fireCursorInterval(inputField, oTerm);
@@ -123,7 +123,7 @@ Terminal = ( function () {
        *
        * @id 20170501°0811
        * @return {undefined} —
-       */      
+       */
       inputField.onblur = function () {
          oTerm._cursor.style.display = 'none';
       };
@@ -133,7 +133,7 @@ Terminal = ( function () {
        *
        * @id 20170501°0821
        * @return {undefined} —
-       */      
+       */
       inputField.onfocus = function () {
          inputField.value = oTerm._inputLine.textContent;
          oTerm._cursor.style.display = 'inline';
@@ -144,7 +144,7 @@ Terminal = ( function () {
        *
        * @id 20170501°0831
        * @return {undefined} —
-       */      
+       */
       oTerm.html.onclick = function () {
          inputField.focus();
       };
@@ -155,7 +155,7 @@ Terminal = ( function () {
        * @id 20170501°0321
        * @param {Event} e —
        * @return {undefined} —
-       */      
+       */
       inputField.onkeydown = function (e) {
          if ( ( ( e.code === 'Backspace' || e.which === 8)             // [chg 20210430°1551`01]  Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
                   && inputField.value.length === inputField.value.length
@@ -327,7 +327,7 @@ Terminal = ( function () {
        * @id 20210503°0921
        * @type {Array} —
        */
-		this._history = [];
+      this._history = [];
 
       /**
        * Counter into the history array (History feature after Mark)
@@ -336,7 +336,7 @@ Terminal = ( function () {
        * @id 20210503°0923
        * @type {number} —
        */
-		this._historyLast = -1;
+      this._historyLast = -1;
 
       /**
        * ..
@@ -578,7 +578,7 @@ Terminal = ( function () {
       this.setTextSize('1em');
       this.setWidth('100%');
 
-      // ~~ 
+      // ~~
       this._innerWindow.style.padding = '10px';
       this._input.style.display = 'none';
       this._input.style.margin = '0';
@@ -593,10 +593,10 @@ Terminal = ( function () {
       this.html.style.overflow = 'auto';                               // [chg 20210502°1111`18] Which exact impact will overflow have?  [issue 20210502°1351 Overflow]
 
       /**
-       * 
+       *
        */
       this._backend = false;                                           // [chg 20210502°1111`19]
-   
+
    };
 
    /**
