@@ -41,11 +41,20 @@ Terminal.blinkingCursor();
 /**
  * ..
  *
- * @id  20170501°0541`12
+ * @id 20170501°0541`12
  * @type {Function} —
  * @_return {undefined} —
  */
 Terminal.clear();
+
+/**
+ * Clear the history
+ *
+ * @id  20210503°0931`12
+ * @type {Function} —
+ * @_return {undefined} —
+ */
+Terminal.clearHistory();
 
 /*
    issue 20210430°1531 'JSC_TYPE_PARSE_ERROR'
@@ -105,7 +114,7 @@ Terminal.input();
 /**
  * ..
  *
- * @id 20170501°0621
+ * @id 20170501°0621`12
  * @type {Function} —
  * @param {string} // message —
  * @param {Function} // callback —

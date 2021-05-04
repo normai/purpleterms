@@ -5,14 +5,13 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
+##### version 20210503°1111 — v0.2.8 'Pull requests worked off'
+- Sort members in code and documentation
+- Implement XHR after PR 2020-Sep-07 'Backend XHR' [chg 20210502°1111]
+- Implement history after PR 2015-Feb-25 'Additional functions' [chg 20210503°0907]
 
-##### version 2021xxxx°xxxx — v0.2.7.~~ ''
-- Fill in PR 2020-Sep-07 'Backend XHR' [chg 20210502°1111]
-- ..
 
-
-
-##### version 20210501°1112 — v0.2.7 'Started working off pull requests'
+##### version 20210501°1112 — v0.2.7 'Start working off pull requests'
 - Started to work off the
   [pending pull requests](https://github.com/eosterberg/terminaljs/pulls).
   The current status is : • PR 2020-Oct-19 '[KeyCodes](./notes.md#about_retrieving_keystrokes)' integrated and closed

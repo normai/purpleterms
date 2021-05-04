@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.7.~~~
+ * Version : 0.2.8
  * License : MIT License
  */
 
@@ -111,25 +111,45 @@ Terminal = ( function () {
       terminalObj.html.appendChild(inputField);
       fireCursorInterval(inputField, terminalObj);
 
+      // [condition 20170501°0751]
       if (message.length) {
          terminalObj.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
 
+      /**
+       * ..
+       *
+       * @id 20170501°0811
+       * @return {undefined} —
+       */      
       inputField.onblur = function () {
          terminalObj._cursor.style.display = 'none';
       };
 
+      /**
+       * ..
+       *
+       * @id 20170501°0821
+       * @return {undefined} —
+       */      
       inputField.onfocus = function () {
          inputField.value = terminalObj._inputLine.textContent;
          terminalObj._cursor.style.display = 'inline';
       };
 
+      /**
+       * ..
+       *
+       * @id 20170501°0831
+       * @return {undefined} —
+       */      
       terminalObj.html.onclick = function () {
          inputField.focus();
       };
 
       /**
        * ..
+       *
        * @id 20170501°0321
        * @param {Event} e —
        * @return {undefined} —
@@ -169,7 +189,11 @@ Terminal = ( function () {
        * @return {boolean|undefined} —
        */
       inputField.onkeyup = function (e) {
-         if (PROMPT_TYPE === PROMPT_CONFIRM || ( e.code === 'Enter' || e.which === 13 )) { // [chg 20210430°1551`03 e.code]
+
+         if ( PROMPT_TYPE === PROMPT_CONFIRM
+             || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 e.code]
+              ) {
+
             terminalObj._input.style.display = 'none';
             var inputValue = inputField.value;
 
@@ -180,7 +204,12 @@ Terminal = ( function () {
                return true;
             }
 
-            if (shouldDisplayInput) {
+            if ( shouldDisplayInput ) {
+
+               // History feature [seq 20210503°0911 after Mark]
+               terminalObj._history.push(inputValue);
+               terminalObj.lasthistory = terminalObj._history.length;
+
                terminalObj.print(inputValue);
             }
             terminalObj.html.removeChild(inputField);
@@ -204,8 +233,33 @@ Terminal = ( function () {
                // Traditional processing [seq 20170501°0341]
                if (PROMPT_TYPE === PROMPT_CONFIRM) {
                   callback(inputValue.toUpperCase()[0] === 'Y' ? true : false);
-               } else callback(inputValue);
+               }
+               else {
+                  callback(inputValue);
+               }
             }
+
+            // History feature [seq 20210503°0912 after Mark]
+            if ( PROMPT_TYPE === PROMPT_INPUT ) {
+               if ( e.which === 38 && terminalObj._historyLast != - 1) {
+                  inputField.value = terminalObj._history[(terminalObj._historyLast -= 1) > 0
+                                    ? terminalObj._historyLast
+                                     : terminalObj._historyLast = 0]
+                                      ;
+                  terminalObj._inputLine.textContent = inputField.value;
+               }
+               else if ( e.which === 40 && terminalObj._historyLast != -1) {
+                  inputField.value = terminalObj.history[(terminalObj._historyLast += 1) < terminalObj.history.length
+                                    ? terminalObj._historyLast
+                                     : terminalObj._historyLast = terminalObj.history.length]
+                                      ;
+                  if (terminalObj._historyLast == terminalObj.history.length) {
+                     inputField.value = "";
+                  }
+                  terminalObj._inputLine.textContent = inputField.value;
+               }
+            }
+
          }
       };
 
@@ -261,6 +315,23 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._cursor = document.createElement('span');
+
+      /**
+       * Storage for the history feature after Mark
+       *
+       * @id 20210503°0921
+       * @type {Array} —
+       */
+		this._history = [];
+
+      /**
+       * Counter into the history array (History feature after Mark)
+       *  (-1 by default, 0 is a valuable number)
+       *
+       * @id 20210503°0923
+       * @type {number} —
+       */
+		this._historyLast = -1;
 
       /**
        * ..
@@ -330,7 +401,10 @@ Terminal = ( function () {
 
       /**
        * Switch cursor blinking on/off
+       *
        * @id 20170501°0531
+       * @note Comment 20210503°0925 by Mark: 'Why convert to string? Why?'
+       *     github.com/MarkIvanowich/terminaljs/blob/master/terminal.js#L194-L197
        * @param {string} sBool —
        * @return {undefined} —
        */
@@ -347,6 +421,18 @@ Terminal = ( function () {
        */
       this.clear = function () {
          this._output.innerHTML = '';
+      };
+
+      /**
+       * Clears the history
+       *
+       * @note History feature after Mark
+       * @id 20210503°0931
+       * @return {undefined} —
+       */
+      this.clearHistory = function () {
+         this.history = [];
+         this.lasthistory = -1;
       };
 
       /**

@@ -1,4 +1,4 @@
-﻿# TerminalJs <sup><sub>v0.2.7.~~</sub></sup>
+﻿# TerminalJs <sup><sub>v0.2.8</sub></sup>
 
 Below :
 • [API Documentation](#api_doc)
@@ -59,11 +59,16 @@ The element will also get the ID from the constructor argument.
 Plays a retro digital tone.
 
     .blinkingCursor(boolean)
+
 Set to true by default.
 
     .clear()
 
 Clears the screen.
+
+    .clearHistory()
+
+Clears the history.
 
     .confirm(message, callback)
 
@@ -118,6 +123,7 @@ Accepts CSS-compliant dimension value
 <a name="license"></a>
 ## License
 
+<pre style="border:1px solid LightSlateGrey; border-radius:0.7em;">
 The MIT License (MIT)
 
 Copyright (c) 2014 Erik Österberg
@@ -139,7 +145,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
+</pre>
 ---
 
 <sup><sub>[project ~20190208°1711 file 20190213°0211]</sub></sup>
