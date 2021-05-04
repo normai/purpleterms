@@ -11,7 +11,7 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
-##### commit 20210503°1813 — v0.2.8.5 'Intermediate'
+##### commit 20210503°1815 — v0.2.8.6 'Intermediate'
 - Add docs folder
 - Shift files around
 - Set up Aloha Demo

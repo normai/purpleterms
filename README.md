@@ -5,7 +5,7 @@
 • [Credits](./docs/credits.md) &nbsp;
 • [License](./license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.8.5 &nbsp; <sup><sup>[v 20210503°1813]</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.8.6 &nbsp; <sup><sup>[v 20210503°1815]</sup></sup></sub></sup>
 
 Below :
  • [Usage](#usage)
@@ -14,6 +14,13 @@ Below :
  ◦ [Methods](#api_methods)
  ◦ [Accessors](#api_accessors)
  ◦ [Properties](#api_properties)
+
+
+<div style="border:2px solid Red; border-radius:0.7em; padding:0 0.7em 0 0.7em;">
+Attention. Currently nags a prompt-bug, prepending all input by '<code>$&nbsp;</code>'.
+This shall be cleard next.
+</div>
+
 
 Slogan : Terminal.js is a single-file JavaScript library for emulating a shell environment.
 
