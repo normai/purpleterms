@@ -1,13 +1,13 @@
 Pages : 
- • [ReadMe](./readme.md)
- • [Notes](./docs/notes.md)
- • [ChangeLog](./docs/changelog.md)
- • Credits
+ • [ReadMe](./../README.md) &nbsp;
+ • [Notes](./notes.md) &nbsp;
+ • [ChangeLog](./changelog.md) &nbsp;
+ • Credits &nbsp;
  • [License](./../license.md)
 
 # Credits
 
-We would like to thank the following people for their contributions :
+The following people contributed to Terminal.js :
 
 - [Gustavo Mauricio de Barros](https://github.com/gumbarros)
 

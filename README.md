@@ -1,11 +1,11 @@
 ﻿Pages : 
-• ReadMe
-• [Notes](./docs/notes.md)
-• [ChangeLog](./docs/changelog.md)
-• [Credits](./docs/credits.md)
+• ReadMe &nbsp;
+• [Notes](./docs/notes.md) &nbsp;
+• [ChangeLog](./docs/changelog.md) &nbsp;
+• [Credits](./docs/credits.md) &nbsp;
 • [License](./license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.8.4 &nbsp; <sup><sup>[v 20210503°1811]</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.8.5 &nbsp; <sup><sup>[v 20210503°1813]</sup></sup></sub></sup>
 
 Below :
  • [Usage](#usage)

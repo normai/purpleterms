@@ -1,8 +1,8 @@
 Pages : 
- • [ReadMme](./../readme.md)
- • [Notes](./notes.md)
- • ChangeLog.md
- • [Credits](./credits.md)
+ • [ReadMme](./../README.md) &nbsp;
+ • [Notes](./notes.md) &nbsp;
+ • ChangeLog.md &nbsp;
+ • [Credits](./credits.md) &nbsp;
  • [License](./../license.md)
 
 # Changelog
@@ -11,14 +11,10 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
-##### commit 20210503°1811 — v0.2.8.4 'Intermediate'
-- Shift files around
-- Set up demo pages
-
-
-##### commit 20210503°1555 — v0.2.8.3 'Intermediate'
+##### commit 20210503°1813 — v0.2.8.5 'Intermediate'
 - Add docs folder
-- Add demo1.html 'First-Encounter Demo'
+- Shift files around
+- Set up Aloha Demo
 
 
 ##### version 20210503°1111 — v0.2.8 'Pull requests worked off'

@@ -1,8 +1,8 @@
 Pages : 
- • [ReadMe](./../readme.md)
- • Notes
- • [ChangeLog](./changelog.md)
- • [Credits](./credits.md)
+ • [ReadMe](./../README.md) &nbsp;
+ • Notes &nbsp;
+ • [ChangeLog](./changelog.md) &nbsp;
+ • [Credits](./credits.md) &nbsp;
  • [License](./../license.md)
 
 # Notes

@@ -1,8 +1,8 @@
 Pages : 
- • [ReadMe](./readme.md)
- • [Notes](./docs/notes.md)
- • [ChangeLog.md](./docs/changelog.md)
- • [Credits](./docs/credits.md)
+ • [ReadMe](./README.md) &nbsp;
+ • [Notes](./docs/notes.md) &nbsp;
+ • [ChangeLog](./docs/changelog.md) &nbsp;
+ • [Credits](./docs/credits.md) &nbsp;
  • License
 
 # License
@@ -36,8 +36,8 @@ Above MIT License text is available e.g. on
 <sup><sub><sup>[ref&nbsp;20120226°1234]</sup></sub></sup>.
 
 Note. This fork is no more a contribution, rather a total rewrite, including
-significant extensions. Therefore, in a future issue, I will likely take the
-liberty of replacing above one copyright line by the following two-liner :
+significant extensions. Therefore, in some future release, I will likely take
+the liberty of replacing above one copyright line by the following two-liner :
 
 ```
 Copyright (C) 2014 Erik Österberg
