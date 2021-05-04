@@ -1,3 +1,10 @@
+Pages : 
+ • [ReadMe](./../readme.md)
+ • Notes
+ • [ChangeLog](./changelog.md)
+ • [Credits](./credits.md)
+ • [License](./../license.md)
+
 # Notes
 
 Subchapters : &nbsp;

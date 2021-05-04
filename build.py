@@ -3,11 +3,15 @@
 # encoding     : UTF-8-with-BOM
 # interpeter   : Python 3.7.8
 # requirements : • Closure Compiler on drive • Java path set • Python path set
+#                 • Path to Closure Compiler registered in config file
 # usage        : Write your Closure-Compiler path on a line in 
 
 """
    This minifies TerminalJs
 """
+
+# In this file register your Closure Compiler binary path
+sConfigFile = './docs/path-to-closure-compiler.txt'
 
 import os, sys
 
@@ -18,7 +22,7 @@ print('* TerminalJs build *')
 # (.) Get bin path
 # (.1) Read lines                                                      # [seq 20210429°1511]
 sBinGoCloCom = ''
-with open('./path-to-closure-compiler.txt') as f:
+with open(sConfigFile) as f:
     lines = [line.rstrip() for line in f]
 # (.2) Find correct line
 for line in lines :

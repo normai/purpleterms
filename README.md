@@ -1,23 +1,25 @@
-﻿# Terminal.js &nbsp; <sup><sub>v0.2.8.3 &nbsp; <sup><sup>[v 20210503°1555]</sup></sup></sub></sup>
+﻿Pages : 
+• ReadMe
+• [Notes](./docs/notes.md)
+• [ChangeLog](./docs/changelog.md)
+• [Credits](./docs/credits.md)
+• [License](./license.md)
 
-Navigate pages : 
- • [Readme](#)
- • [Changelog](./docs/changelog.md)
- • [Notes](./docs/notes.md)
- • [License](./license.md)
+# Terminal.js &nbsp; <sup><sub>v0.2.8.4 &nbsp; <sup><sup>[v 20210503°1811]</sup></sup></sub></sup>
 
-Go below :
+Below :
  • [Usage](#usage)
- ◦ [Simple](#usage_simple)
- ◦ [Advanced](#usage_advanced)
  • [API Documentation](#api_doc)
  ◦ [Initialization](#api_initialization)
- ◦ [Properties](#api_properties)
  ◦ [Methods](#api_methods)
  ◦ [Accessors](#api_accessors)
- • [License](#license)
+ ◦ [Properties](#api_properties)
 
-Slogan : Terminal.js is a dead simple JavaScript library for emulating a shell environment.
+Slogan : Terminal.js is a single-file JavaScript library for emulating a shell environment.
+
+License : The MIT License
+
+Status : In renovation
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
@@ -67,16 +69,16 @@ As a developer, you prefer the source version :
 Now Terminal.js is ready to operate, and you can call it in the page's body.
 
 <a name="usage_simple"></a>
-### Simple Use Case
+##### Simple Use Case
 
-..
+*<span style="color:LightGray;">.. Todo: Fill in content. ..</span>*
 
 &nbsp;
 
 <a name="usage_advanced"></a>
-### Advanced Use Case
+##### Advanced Use Case
 
-..
+*<span style="color:LightGray;">.. Todo: Fill in content. ..</span>*
 
 &nbsp;
 
@@ -87,15 +89,6 @@ Now Terminal.js is ready to operate, and you can call it in the page's body.
 ### Initialization
 
     var myTerminal = new Terminal(id)
-
-<a name="api_properties"></a>
-### Properties
-
-    .html
-
-This is the top DOM element of the terminal instance.
-If you want to modify styling via CSS, all instances belong to a Terminal class.
-The element will also get the ID from the constructor argument.
 
 <a name="api_methods"></a>
 ### Methods
@@ -166,32 +159,15 @@ Accepts CSS-compliant dimension value
 
 Accepts CSS-compliant dimension value
 
-<a name="license"></a>
-## License
+<a name="api_properties"></a>
+### Properties
 
-<pre style="border:1px solid LightSlateGrey; border-radius:0.7em;">
-The MIT License (MIT)
+    .html
 
-Copyright (c) 2014 Erik Österberg
+This is the top DOM element of the terminal instance.
+If you want to modify styling via CSS, all instances belong to a Terminal class.
+The element will also get the ID from the constructor argument.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-</pre>
 ---
 
 <sup><sub>[project ~20190208°1711 file 20190213°0211]</sub></sup>
