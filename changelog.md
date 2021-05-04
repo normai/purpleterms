@@ -5,6 +5,10 @@ _The history of `terminal.js`
 from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 
 
+##### version 2021xxxx°xxxx — v0.2.x ''
+- ..
+
+
 ##### version 20210503°1111 — v0.2.8 'Pull requests worked off'
 - Sort members in code and documentation
 - Implement XHR after PR 2020-Sep-07 'Backend XHR' [chg 20210502°1111]
@@ -74,9 +78,11 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
 ##### version 20210429°0931 — v0.2.5 'Add Minification'
 - Supplement Python build script [`build.py`](./build.py) calling Closure-Compiler in simple mode
 
+
 ##### version 20190326°0111 — v0.2.3 'Standalone script'
 - Integrate `beep.mp3` as a base64-encoded string into `terminal.js`
 - Cosmetics for an input prompt (see sequence 20190312°0441)
+
 
 ##### version 20190213°0333 — v0.2.1 'Self-sufficient folder'
 - Add `beep.mp3` and `beep.ogg` from www.erikosterberg.com/terminaljs/
@@ -84,13 +90,16 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
       an attribute `id="TerminalJsScriptTag"`. _[This is soon removed again]_
 - Styling : Supplement semicolons
 
+
 ##### version 20190208°1847 — v0.2.0 'Getting familiar'
 - Remove some NetBeans warnings
+
 
 ##### log 2019-02-08'18:44 — 'Fork project'
 - NorMai : Clone version v2.0
      from [github.&#8203;com/&#8203;eosterberg/&#8203;terminaljs](https://github.com/eosterberg/terminaljs/))
      to  [github.&#8203;com/&#8203;normai/&#8203;terminaljs](https://github.com/normai/terminaljs/))
+
 
 ### version 2017-05-03'23:32 — v2.0 Final
 - Eric Österberg committed 'Merge pull request #5 from bryant1410/master'.
@@ -99,15 +108,19 @@ from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
   This version is conserved as well in tag
   [v2.0 — Final 2017](https://github.com/normai/terminaljs/releases/tag/v2.0).
 
+
 ##### log 2017-04-18'06:14.GMT+2
 - Commit by Santiago Castro : 'Fix broken Markdown'
      on https://github.com/bryant1410/terminaljs
 
+
 ##### log 2016-11-16'20:07.GMT+1
 - Eric Österberg — Commit ...
 
+
 ##### log 2014-11-12'04:36.GMT+1
 - DarwinSenior — Added and documented password feature
+
 
 ##### log 2013-04-05'10:06.GMT+2
 - Eric Österberg — First commit to
