@@ -1,6 +1,6 @@
 ﻿Pages : &nbsp;
  • ReadMe &nbsp;
- • [API Doc](./docs/api.md) &nbsp;
+ • [API Doc](./docs/apidoc.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)

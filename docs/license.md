@@ -1,8 +1,8 @@
 Pages : &nbsp;
- • [ReadMe](./README.md) &nbsp;
- • [API Doc](./docs/api.md) &nbsp;
- • [Notes](./docs/notes.md) &nbsp;
- • [ChangeLog](./docs/changelog.md) &nbsp;
+ • [ReadMe](./../README.md) &nbsp;
+ • [API Doc](./apidoc.md) &nbsp;
+ • [Notes](./notes.md) &nbsp;
+ • [ChangeLog](./changelog.md) &nbsp;
  • License
 
 Below : &nbsp;
