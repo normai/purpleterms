@@ -1,8 +1,8 @@
 Pages : &nbsp;
  • [ReadMe](./README.md) &nbsp;
- • [API Doc](./docs/api.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
+ • [Contributing](./docs/contributing.md) &nbsp;
  • License
 
 # License
@@ -63,8 +63,6 @@ The following people contributed to Terminal.js :
 - [theLMGN](https://github.com/theLMGN) ([thelmgn.com](http://thelmgn.com/))
 
 - [Yevgen Shevchenko](https://github.com/commanddotcom) ([www.workshop200.com](http://www.workshop200.com/))
-
-- [Dingcheng Yue](https://github.com/DarwinSenior)
 
 - ..
 

@@ -1,23 +1,21 @@
 Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
+ • [API Doc](./api.md) &nbsp;
  • Notes &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
- • [Contributing](./contributing.md) &nbsp;
  • [License](./../license.md)
-
-<img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="96" height="96" alt="Grainy Dummy">
 
 # Notes
 
-Subchapters : &nbsp;
-• [Pull Request 'Backend via XHR'](#pull_request_backend_via_xhr) &nbsp;
-• [Pull Request 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
-• [Pull Request 'Additional functions'](#pull_request_additional_functions) &nbsp;
-• [About Retrieving Keystrokes](#about_retrieving_keystrokes)
+Below : &nbsp;
+• [PR 'Backend via XHR'](#pull_request_backend_via_xhr) &nbsp;
+• [PR 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
+• [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
+• [Retrieving Keystrokes](#retrieving_keystrokes)
 
 _This file makes room to store considerations around `terminal.js`.
 If any statement grows lengthy and generic,
-like article [About Retrieving Keystrokes](#about_retrieving_keystrokes),
+like article [About Retrieving Keystrokes](#retrieving_keystrokes),
 it should be outsourced._
 
 ## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a><sup><sup><sub>[article 20210430°1711]</sub></sup></sup>
@@ -128,8 +126,7 @@ Details found in the commits :
 - New array **`this.history`** with appendage  — Repeating former input
   with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority.
 
-
-## About Retrieving Keystrokes <a name="about_retrieving_keystrokes"></a><sup><sup><sub>[article 20210430°1601]</sub></sup></sup>
+## Retrieving Keystrokes <a name="retrieving_keystrokes"></a><sup><sup><sub>[article 20210430°1601]</sub></sup></sup>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)
@@ -187,6 +184,9 @@ Further reference(s) :
   Interestingly she does not use `e.code` but **`e.keyCode`**.
 
 ---
+
+<img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" align="right" width="64" height="64" alt="Grainy Dummy">
+
 ```
    todo 20210502°1411 'Sort members'
    do : In code and documentation, sort members alphabetically.
@@ -203,8 +203,6 @@ Further reference(s) :
    status : Open
    ܀
 ```
-
-
 
 ---
 

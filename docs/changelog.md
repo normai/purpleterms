@@ -1,8 +1,8 @@
 Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
+ • [API Doc](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • ChangeLog.md &nbsp;
- • [Contributing](./contributing.md) &nbsp;
  • [License](./../license.md)
 
 # Changelog
@@ -27,7 +27,7 @@ Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of 
 ##### version 20210501°1112 — v0.2.7 'Start working off pull requests'
 - Started to work off the
   [pending pull requests](https://github.com/eosterberg/terminaljs/pulls).
-  The current status is : • PR 2020-Oct-19 '[KeyCodes](./notes.md#about_retrieving_keystrokes)' integrated and closed
+  The current status is : • PR 2020-Oct-19 '[KeyCodes](./notes.md#retrieving_keystrokes)' integrated and closed
   • PR 2020-Sep-07 '[Backend XHR](./notes.md#pull_request_backend_via_xhr)' inspected and flagged high priority
   • PR 2017-Dec-22 '[Add printHTML](./notes.md#pull_request_add_printhtml)' inspected
   • PR 2015-Feb-25 '[Additional Functions](./notes.md#pull_request_additional_functions)' inspected and postponed
@@ -40,7 +40,7 @@ Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of 
   <sup>[ref 20210430°1516]</sup>.
   I did not follow the pull request exactly,  instead left the old
   style beside the new style in order to save IE10 compatibility.
-  See note [Retrieving keystrokes](./notes.md#about_retrieving_keystrokes).
+  See note [Retrieving keystrokes](./notes.md#retrieving_keystrokes).
 
 
 ##### log 20210430°1331 — Inspect PR 2020-Sep-07 'Backend XHR'
