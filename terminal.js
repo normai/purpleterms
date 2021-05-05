@@ -551,7 +551,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.setOutputPrompt = function (sOutPrompt) {
-         this.html.style.height = sOutPrompt;
+         //
       };
 
       /**

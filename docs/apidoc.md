@@ -77,6 +77,17 @@ Accepts CSS-compliant color value
 
 Accepts CSS-compliant dimension value
 
+    .setInputPrompt()
+
+Lets you set an input prompt. This setter was a quick fix for
+ *[issue 20210502°1121](./docs/notes.md#id20210502o1121)* 'Input prepended by dollar'.
+ The prompt feature is not consolidated nor tested.
+ If you use this, your input values will be prepended with the prompt value.
+
+    .setHeight()
+
+Lets you set an output prompt. Feature is not yet implemented.
+
     .setTextColor()
 
 Accepts CSS-compliant color value
