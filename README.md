@@ -1,11 +1,11 @@
 ﻿Pages : &nbsp;
-• ReadMe &nbsp;
-• [Notes](./docs/notes.md) &nbsp;
-• [ChangeLog](./docs/changelog.md) &nbsp;
-• [Credits](./docs/credits.md) &nbsp;
-• [License](./license.md)
+ • ReadMe &nbsp;
+ • [Notes](./docs/notes.md) &nbsp;
+ • [ChangeLog](./docs/changelog.md) &nbsp;
+ • [Contributing](./docs/contributing.md) &nbsp;
+ • [License](./license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.8.6 &nbsp; <sup><sup>[v 20210503°1815]</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.8.7 &nbsp; <sup><sup>[v 20210503°1817]</sup></sup></sub></sup>
 
 Below :
  • [Usage](#usage)
@@ -16,11 +16,10 @@ Below :
  ◦ [Properties](#api_properties)
 
 
-<div style="border:2px solid Red; border-radius:0.7em; padding:0 0.7em 0 0.7em;">
-Attention. Currently nags a prompt-bug, prepending all input by '<code>$&nbsp;</code>'.
-This shall be cleard next.
-</div>
-
+```
+Oops. Currently nags a prompt-bug, prepending all input by '$'
+([issue 20210502°1121](./docs/notes.md#id20210502o1121)).
+```
 
 Slogan : Terminal.js is a single-file JavaScript library for emulating a shell environment.
 
@@ -30,7 +29,7 @@ Status : In renovation
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
-_This are the **changes** compared to the
+_Here are the **changes** compared to the
  [original project](https://github.com/eosterberg/terminaljs) :_
 
 - _Integrate **`beep.mp3`** as base64 variable.

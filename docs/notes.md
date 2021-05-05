@@ -2,8 +2,10 @@ Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • Notes &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
- • [Credits](./credits.md) &nbsp;
+ • [Contributing](./contributing.md) &nbsp;
  • [License](./../license.md)
+
+<img src="./terminaljs/docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="96" height="96" alt="Grainy Dummy">
 
 # Notes
 
@@ -190,7 +192,20 @@ Further reference(s) :
    do : In code and documentation, sort members alphabetically.
    priority : Low
    status : Done ~2021-04-02
+   ܀
 ```
+
+<a name="id20210502o1121"></a>
+```
+   issue 20210502°1121 'Dollar prompt'
+   matter : Change 20210502°1111 for the XHR implementation prefixes each
+       input line with '$ '. This infiltrates the original workflows.
+   status : Open
+   ܀
+```
+
+
+
 ---
 
 <sup><sub>[file 20210430°1551] ܀Ω</sub></sup>

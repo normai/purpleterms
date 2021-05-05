@@ -2,7 +2,7 @@ Pages : &nbsp;
  • [ReadMe](./README.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
- • [Credits](./docs/credits.md) &nbsp;
+ • [Contributing](./docs/contributing.md) &nbsp;
  • License
 
 # License
@@ -42,9 +42,9 @@ Copyright (C) 2021 Norbert C. Maier and contributors
 
 Note. Also in some future release, I like to replace the MIT License by the
 [BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause).
-That is equally permissive, just three otherwise common sense cases stated
-explicitly. The BSD-3-Clause license has a tradition similiar to the MIT
-License. You find it applied e.g. by
+That is equally permissive, it just states three otherwise common sense
+cases explicitly. It has a tradition similiar to that of the MIT License.
+Other projects applying it are e.g.
 [CMake](https://gitlab.kitware.com/cmake/cmake)
 or [Highlight.js](https://github.com/highlightjs/highlight.js).
 
@@ -52,8 +52,24 @@ or [Highlight.js](https://github.com/highlightjs/highlight.js).
 [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
 <sup><sub><sup>[ref&nbsp;20120226°1234]</sup></sub></sup>.</span>
 
+# Credits
+
+The following people contributed to Terminal.js :
+
+- [Gustavo Mauricio de Barros](https://github.com/gumbarros)
+
+- [Mark Ivanowich](https://github.com/MarkIvanowich) ([mark.ivanowich.dev](https://mark.ivanowich.dev/))
+
+- [theLMGN](https://github.com/theLMGN) ([thelmgn.com](http://thelmgn.com/))
+
+- [Yevgen Shevchenko](https://github.com/commanddotcom) ([www.workshop200.com](http://www.workshop200.com/))
+
+- ..
+
+- *<span style="color:LightGray;">.. Todo: Complete list. ..</span>*
+
 &nbsp;
 
 ---
 
-<sup><sub>[file 20190213°0211]</sub></sup>
+<sup><sub><sup>*file 20190213°0211*</sup></sub></sup>

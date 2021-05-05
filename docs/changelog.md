@@ -1,17 +1,18 @@
 Pages : &nbsp;
- • [ReadMme](./../README.md) &nbsp;
+ • [ReadMe](./../README.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • ChangeLog.md &nbsp;
- • [Credits](./credits.md) &nbsp;
+ • [Contributing](./contributing.md) &nbsp;
  • [License](./../license.md)
 
 # Changelog
 
-_The history of `terminal.js`
-from the perspective of [NorMai's fork](https://github.com/normai/terminaljs)_
+Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
+##### commit
+- ..
 
-##### commit 20210503°1815 — v0.2.8.6 'Intermediate'
+##### commit 20210503°1815 — v0.2.8.7 'Intermediate'
 - Add docs folder
 - Shift files around
 - Set up Aloha Demo

@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.8.6
+ * Version : 0.2.8.7
  * License : MIT License
  */
 
@@ -107,7 +107,7 @@ Terminal = ( function () {
 
       oTerm._inputLine.textPrefix = '$ ';                              // [chg 20210502°1111`11]
       ////oTerm._inputLine.textContent = '';                           // original line
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12]
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // See issue 20210502°1121 'Dollar prompt' [chg 20210502°1111`12]
 
       oTerm._input.style.display = 'block';
       oTerm.html.appendChild(inputField);
