@@ -17,8 +17,7 @@ Below :
 
 
 ```
-Oops. Currently nags a prompt-bug, prepending all input by '$'
-([issue 20210502°1121](./docs/notes.md#id20210502o1121)).
+Oops. Currently nags a prompt-bug, prepending all input by '$'.
 ```
 
 Slogan : Terminal.js is a single-file JavaScript library for emulating a shell environment.
