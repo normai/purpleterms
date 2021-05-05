@@ -5,7 +5,7 @@ Pages : &nbsp;
  • [Contributing](./contributing.md) &nbsp;
  • [License](./../license.md)
 
-<img src="./terminaljs/docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="96" height="96" alt="Grainy Dummy">
+<img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="96" height="96" alt="Grainy Dummy">
 
 # Notes
 
