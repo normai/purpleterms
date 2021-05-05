@@ -53,14 +53,14 @@
 
       // Reaction [func 20210503°1531]
       function holla(sWhat) {
-         if (sWhat.toLowerCase() !== '$ q' ) { // '$ q' is provisory instead of 'q', as long as the prompt bug exists
+         if (sWhat.toLowerCase() !== 'q' ) {
             t1.print('Aloha' + " '" + sWhat + "'!");
             t1.input ( "Your name again? (q = quit)", function (sInpuz) {
                holla(sInpuz);
             });
          }
          else {
-            t1.print('Bye.');
+            t1.print('Finished.');
          }
       }
 
@@ -71,9 +71,10 @@
    </script>
 
   <p>
-               Oops. Currently nags the prompt-bug, prepending all
-               input with '<code>$&nbsp;</code>'.
-               (Issue 20210502°1121 'Dollar prompt')
+               What is missing? (1) A prompt.
+               (2) If the user comes below the bottom edge,
+               the last line shall automatically stay inside the visible area,
+               not be brought in by manual scrolling.
   </p>
 
   <p class="Good12Bye" style="display:none;">

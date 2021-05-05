@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.8.7~
+ * Version : 0.2.8.8
  * License : MIT License
  */
 
@@ -105,9 +105,14 @@ Terminal = ( function () {
       inputField.style.opacity = '0';
       inputField.style.fontSize = '0.2em';
 
-      oTerm._inputLine.textPrefix = '$ ';                              // [chg 20210502°1111`11]
-      ////oTerm._inputLine.textContent = '';                           // original line
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // See issue 20210502°1121 'Dollar prompt' [chg 20210502°1111`12]
+      // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+      // This prop appears 4 times below, twice in inputField.onkeydown, twice in inputField.onkeyup
+      ////oTerm._inputLine.textPrefix = '$ ';                              // New var introduced [chg 20210502°1111`11 xhr]
+
+      ////oTerm._inputLine.textContent = '';                           // Original line
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr] See issue 20210502°1121 'Input prepended by dollar'
+      ////oTerm._inputLine.textContent = '';                               // Restored original line [fix 20210504°1031]
+      // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
       oTerm._input.style.display = 'block';
       oTerm.html.appendChild(inputField);
@@ -157,25 +162,26 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       inputField.onkeydown = function (e) {
-         if ( ( ( e.code === 'Backspace' || e.which === 8)             // [chg 20210430°1551`01]  Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
+         // Newly introduced with [seq 20210502°12xx] [chg 20210502°1111`xx xhr]
+         // [] Check — Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
+         if ( ( ( e.code === 'Backspace' || e.which === 8)
                   && inputField.value.length === inputField.value.length
               )
               || inputField.value.length <= oTerm._inputLine.textPrefix
-            )
-         {
+            ) {
             oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;
             e.preventDefault();
          }
-         else if ( ( e.code === 'ArrowLeft' || e.which === 37 )
+         // Traditional sequence
+         else if ( ( e.code === 'ArrowLeft' || e.which === 37 )        // [chg 20210430°1551`01 key code]
              || ( e.code === 'ArrowUp' || e.which === 38 )
              || ( e.code === 'ArrowRight' || e.which === 39 )
              || ( e.code === 'ArrowDown' || e.which === 40 )
              || ( e.code === 'Tab' || e.which === 9 )
-               )                                                       // [chg 20210430°1551`01]
-         {
+               ) {
             e.preventDefault();
          }
-         else if ( bShouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02]
+         else if ( bShouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02 key code]
          {
             // Echo after 1 millisecond
             setTimeout(function () {
@@ -193,13 +199,13 @@ Terminal = ( function () {
       inputField.onkeyup = function (e) {
 
          if ( PROMPT_TYPE === PROMPT_CONFIRM
-             || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 e.code]
+             || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 key code]
               ) {
 
             oTerm._input.style.display = 'none';
             var inputValue = inputField.value;
 
-            // [seq 20210502°1221] [chg 20210502°1111`13]
+            // [seq 20210502°1221] [chg 20210502°1111`13 xhr]
             if (inputValue === oTerm._inputLine.textPrefix + 'clear') {
                oTerm.clear();
                oTerm.input('', false);
@@ -218,7 +224,7 @@ Terminal = ( function () {
             oTerm.html.removeChild(inputField);
 
             // Process remote or local?
-            if ( oTerm._backend ) {                                    // [chg 20210502°1111`14 new flag]
+            if ( oTerm._backend ) {                                    // [chg 20210502°1111`14 xhr] new flag
 
                // Ship AJAX request [seq 20210502°1231]
                var xhr = new XMLHttpRequest();
@@ -353,7 +359,7 @@ Terminal = ( function () {
          this._innerWindow = document.createElement('div');
       }
       else {
-         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 div to pre]
+         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 xhr] div to pre
       }
 
       /**
@@ -459,7 +465,7 @@ Terminal = ( function () {
        * @param {string} url —
        * @return {undefined} —
        */
-      this.connect = function (url) {                                  // [chg 20210502°1111`16]
+      this.connect = function (url) {                                  // [chg 20210502°1111`16 xhr]
          this._backend = url;
          promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
       };
@@ -503,6 +509,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0641
        * @param {string} col —
        * @return {undefined} —
@@ -513,6 +520,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0651
        * @param {string} height —
        * @return {undefined} —
@@ -522,7 +530,33 @@ Terminal = ( function () {
       };
 
       /**
+       *  This lets the user set an input prompt, e.g. '$ '.
+       *
+       * @id 20210504°1011
+       * @param {string} sInPrompt —
+       * @return {undefined} —
+       */
+      this.setInputPrompt = function (sInPrompt) {
+         this._inputLine.textPrefix = sInPrompt;
+      };
+
+      /**
+       *  This lets the user set an output prompt.
+       *
+       *  While introducing func 20210504°1011 setInputPrompt(), I right off
+       *  provide the facility for a symmetric output prompt.
+       *
+       * @id 20210504°1021
+       * @param {string} sOutPrompt —
+       * @return {undefined} —
+       */
+      this.setOutputPrompt = function (sOutPrompt) {
+         this.html.style.height = sOutPrompt;
+      };
+
+      /**
        * ..
+       *
        * @id 20170501°0711
        * @param {string} col —
        * @return {undefined} —
@@ -534,6 +568,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0721
        * @param {string} size —
        * @return {undefined} —
@@ -545,6 +580,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0731
        * @param {string} width —
        * @return {undefined} —
@@ -555,6 +591,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0741
        * @param {number} milliseconds —
        * @param {Function} callback —
@@ -588,14 +625,14 @@ Terminal = ( function () {
       this._output.style.margin = '0';
 
       // ~~
-      this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17]
+      this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17 xhr]
       this.html.style.margin = '0';
-      this.html.style.overflow = 'auto';                               // [chg 20210502°1111`18] Which exact impact will overflow have?  [issue 20210502°1351 Overflow]
+      this.html.style.overflow = 'auto';                               // [chg 20210502°1111`18 xhr] Which exact impact will overflow have?  [issue 20210502°1351 Overflow]
 
       /**
        *
        */
-      this._backend = false;                                           // [chg 20210502°1111`19]
+      this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
    };
 

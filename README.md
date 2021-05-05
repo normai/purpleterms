@@ -5,15 +5,11 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.8.7~ &nbsp; <sup><sup>[v 20210503°1817~]</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.8.8 &nbsp; <sup><sup>[v 20210504°1111]</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
  • [Usage](#usage)
-
-```
-Oops. Currently nags a prompt-bug, prepending all input by '$'.
-```
 
 <a name="synopsis"></a>
 ## Synopsis

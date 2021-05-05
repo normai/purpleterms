@@ -25,9 +25,12 @@ by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
 ([fork](https://github.com/commanddotcom/terminaljs))
 is about to communicate with a PHP or any other backend.
 
-Status: **Implemented**.
+Status : **Implemented**.
 
-Actually, such feature is the reason why I got my hands dirty
+Critique : The PR silently carried a second feature, the dollar prompt, which
+ lead to *[issue 20210502°1121](#id20210502o1121)* 'Input prepended by dollar'.
+
+Actually, such XHR feature is the reason why I got my hands dirty
 with Terminal.js in the first place. I have written a backend caller for myself,
 which is different in such a way, that it leaves `terminal.js` untouched.
 Instead, it consists of a custom JS file, not located here, but there. The file is
@@ -185,24 +188,51 @@ Further reference(s) :
 
 ---
 
+Test image -- It seems impossible with GitHub Markdown to get the image aligned right.
+
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" align="right" width="64" height="64" alt="Grainy Dummy">
 
-```
-   todo 20210502°1411 'Sort members'
-   do : In code and documentation, sort members alphabetically.
-   priority : Low
-   status : Done ~2021-04-02
-   ܀
-```
+---
+
+<a name="id20210504o1041"></a>
+issue 20210504°1041 'Simplify input prompt handling'
+ - Matter : This is a follow up on closed *[issue 20210502°1121](#id20210502o1121)*
+   'Input prepended by dollar'. Though the bug there is fixed, I noticed
+   complexities with the prompt handling, which might be reduced. ('Complexities'
+   mean in plain language: I did not understand the conditions quickly ;)
+ - Type : Refactoring.
+ - Status : Open.
+
+---
 
 <a name="id20210502o1121"></a>
-```
-   issue 20210502°1121 'Dollar prompt'
-   matter : Change 20210502°1111 for the XHR implementation prefixes each
-       input line with '$ '. This infiltrates the original workflows.
-   status : Open
+issue 20210502°1121 'Input prepended by dollar'
+ - matter : Change 20210502°1111 for the XHR implementation prefixes each
+   input line with '$ '. This infiltrates the original workflows.
+ - solution : I removed that dollar sign prefix again. Instead, quick'n'dirty(?),
+      provided a setter setInputPrompt(string), where a user who needs it,
+      can individually prepend the prompt with some string [fix 20210504°1031].
+ - note : The additional setter(s) blow up the setter bunch. I think about
+      whether it were perhaps appropriate, to replace the setter bunch by one
+      single options object, which could be written as JSON. But anyway --
+      it would not save lines on user sid, nor in the documentation.
+ - note : While I am writing setInputPrompt(), I write a setOutputPrompt().
+      right off, since I like to flag output symmetrically to input.
+ - note : While scanning the 96 forks, I noticed the prompt as a recurring
+      topic. About 5 forks have written solutions for this, including myself.
+ - note : The solution of myself does not touch Terminal.js, but operates only
+      on user code side. For final solution, I should review at least my
+      own code (I haven't done yet), not to mention that of other forks.
+ - resume : The solution with function 20210504°1011 setInputPrompt was quickly
+      done, without really analysing the complexity of the involved sequences.
+      I suspect, those could still be reduced or even eliminated. Calculating
+      string width of the input to determinate the prompt seems no good solution
+      for me. It mixes two concerns. Somehow the prompt and the input value
+      should be two clearly demarcated entities, not distuinguished by string
+      length calculations. (See *[issue 20210504°1041](#id20210504o1041)*
+      'Simplify input prompt handling'.)
+ - status : Closed with fix 20210504°1031 'introduce setInputPrompt()'
    ܀
-```
 
 ---
 
