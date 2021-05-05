@@ -3,7 +3,7 @@ Pages : &nbsp;
  • [API Doc](./api.md) &nbsp;
  • Notes &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
- • [License](./../license.md)
+ • [License](./license.md)
 
 # Notes
 

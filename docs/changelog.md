@@ -3,14 +3,17 @@ Pages : &nbsp;
  • [API Doc](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • ChangeLog.md &nbsp;
- • [License](./../license.md)
+ • [License](./license.md)
 
 # Changelog
 
 Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
+
 ##### commit
+- Outsource API Documentation from `readme.md` to dedicated page
 - ..
+
 
 ##### commit 20210503°1815 — v0.2.8.7 'Intermediate'
 - Add docs folder

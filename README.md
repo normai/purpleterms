@@ -3,7 +3,7 @@
  • [API Doc](./docs/api.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
- • [License](./license.md)
+ • [License](./docs/license.md)
 
 # Terminal.js &nbsp; <sup><sub>v0.2.8.7~ &nbsp; <sup><sup>[v 20210503°1817~]</sup></sup></sub></sup>
 
