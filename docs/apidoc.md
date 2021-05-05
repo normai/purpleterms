@@ -6,7 +6,7 @@ Pages : &nbsp;
  • [License](./license.md)
 
 Below : &nbsp;
- • [API Doc](api_doc) &nbsp;
+ • [API Doc](#api_doc) &nbsp;
  ◦ [Initialization](#api_initialization) &nbsp;
  ◦ [Methods](#api_methods) &nbsp;
  ◦ [Accessors](#api_accessors) &nbsp;
