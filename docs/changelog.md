@@ -10,6 +10,10 @@ Pages : &nbsp;
 Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
+#### version 20210505°1751 — v0.2.9 'Set up Forks Suite'
+- Set up Forks Suite
+
+
 #### commit 20210503°1815 — v0.2.8.8 'Intermediate'
 - Outsource API Documentation from `readme.md` to dedicated page
 - issue 20210502°1121 'Input prepended by dollar'

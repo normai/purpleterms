@@ -5,21 +5,22 @@
    <title>Terminal.js → Aloha</title>
    <script src="./terminal.js"></script>
    <!-- link rel="shortcut icon" href="./" -->
-   <link rel="stylesheet" href="./docs/styles.css" />
+   <link rel="stylesheet" href="./docs/styles.css">
 </head>
 
 <body class="BodyFace12Normal">
 
  <div class="TopNavi12Box">
   <p class="TopNavi12Line">
-               <a href="./aloha.html" class="TopNavi12LinkSelf">Aloha</a> →
-               <a href="./docs/demo2.html" class="TopNavi12LinkActive">DemoTwo</a>
-               <a href="./docs/demo3.html" class="TopNavi12LinkActive">DemoThree</a>
+               <a href="./aloha.html" class="TopNavi12Self">Aloha</a> &nbsp; → &nbsp;
+               <a href="./docs/demo2.html" class="TopNavi12Normal">DemoTwo</a> &nbsp;
+               <a href="./docs/demo3.html" class="TopNavi12Normal">DemoThree</a> &nbsp;
+               <a href="./forks/suite.html" class="TopNavi12Normal">Forks Suite</a>
   </p>
   <p class="TopNavi13Arrows">
-       <a href="./docs/demo3.html">&#x25C0;&#xFE0F;</a>
-       <a href="./aloha.html" style="color:LightGray;">∆</a>
-       <a href="./docs/demo2.html">&#x25B6;&#xFE0F;</a>
+       <a href="./forks/suite.html">ᐊ</a>
+       <a href="./aloha.html" style="color:LightGray;">ᐃ</a>
+       <a href="./docs/demo2.html">ᐅ</a>
   </p>
  </div>
 
@@ -30,18 +31,24 @@
   </div -->
 
   <h1>
-               Aloha
+               Terminal.js Aloha
   </h1>
 
   <p>
-               This is <b>DemoOne</b> with a first Terminal.js use case.
+               This is the introductory  NorMai fork
+               <a href="https://github.com/normai/terminaljs/">Terminal.js</a>
+               use case.
+  </p>
+
+  <p style="font-family:Monospace, Monospace; font-size:1.04em; color:Crimson; font-weight:bold;">
+               Case in development — Expect Turbulences.
   </p>
 
    <script>
 
       // Prologue [seq 20210503°1511]
       var t1 = new Terminal();
-      t1.setHeight("500px"); // 200px
+      t1.setHeight("400px"); // 200px
       document.body.appendChild(t1.html);
       t1.print('Welcome to the Terminal.js first-encounter demo!');
       var sInput = '';
@@ -71,10 +78,10 @@
    </script>
 
   <p>
-               What is missing? (1) A prompt.
-               (2) If the user comes below the bottom edge,
-               the last line shall automatically stay inside the visible area,
-               not be brought in by manual scrolling.
+               Features missing? • A prompt.
+               • If you come below the bottom edge,
+               the last line should automatically stay inside the visible area,
+               not be brought in by your manual scrolling.
   </p>
 
   <p class="Good12Bye" style="display:none;">
