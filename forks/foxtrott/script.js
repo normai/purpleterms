@@ -1,4 +1,4 @@
-var t1 = new Terminal()
+﻿var t1 = new Terminal()
 t1.setHeight("400px")
 t1.setWidth('1200px')
 document.body.appendChild(t1.html)

@@ -13,8 +13,8 @@
  <div class="TopNavi12Box">
   <p class="TopNavi12Line">
                <a href="./aloha.html" class="TopNavi12Self">Aloha</a> &nbsp; → &nbsp;
-               <a href="./docs/demo2.html" class="TopNavi12Normal">DemoTwo</a> &nbsp;
-               <a href="./docs/demo3.html" class="TopNavi12Normal">DemoThree</a> &nbsp;
+               <a href="./docs/demo2.html" class="TopNavi12Normal">Demo Two</a> &nbsp;
+               <a href="./docs/demo3.html" class="TopNavi12Normal">Demo Three</a> &nbsp;
                <a href="./forks/suite.html" class="TopNavi12Normal">Forks Suite</a>
   </p>
   <p class="TopNavi13Arrows">
@@ -35,57 +35,71 @@
   </h1>
 
   <p>
-               This is the introductory NorMai's
+               This is NorMai's
                <a href="https://github.com/normai/terminaljs/">Terminal.js</a>
-               use case.
+               introductory use case, or Demo One respectively.
   </p>
 
   <p class="FontAttention">
-               Case in development — Turbulences to be expected.
+               Cases in development — Turbulences to be expected.
   </p>
 
-   <script>
+   <div style="font-size:1.3em;" id="PutTerminalHere">
+   </div>
+
+  <script>
 
       // Prologue [seq 20210503°1511]
       var t1 = new Terminal();
-      t1.setHeight("400px"); // 200px
-      document.body.appendChild(t1.html);
+      t1.setHeight("500px");
+      t1.setBackgroundColor("Blue");
+      var elTarget = document.getElementById('PutTerminalHere');
+      elTarget.appendChild(t1.html);
       t1.print('Welcome to the Terminal.js first-encounter demo!');
       var sInput = '';
 
       // Action [seq 20210503°1513]
-      t1.input ( "What's your name please? (q = quit)", function (sInpuz) {
+      t1.input ( "What's your name please? (p = pause, q = quit)", function (sInpuz) {
          holla(sInpuz);
       });
 
       // Reaction [func 20210503°1531]
       function holla(sWhat) {
-         if (sWhat.toLowerCase() !== 'q' ) {
+         if (sWhat.toLowerCase() == 'p' ) {
+            t1.input ( 'Take a breath. Continue with any input.', function (sInpuz) {
+               keepgoing();
+            });
+         }
+         else if (sWhat.toLowerCase() == 'q' ) {
+            t1.print('Finished. You need to refresh your page to start again.');
+         }
+         else {
             t1.print('Aloha' + " '" + sWhat + "'!");
-            t1.input ( "Your name again? (q = quit)", function (sInpuz) {
+            t1.input ( "Your name again? (p = pause, q = quit)", function (sInpuz) {
                holla(sInpuz);
             });
          }
-         else {
-            t1.print('Finished.');
-         }
       }
 
-      /*
-      todo : Possibly merge Action and Reaction into one single sequence [todo 20210503°1541]
-      */
+      // Continue after break [func 20210506°0911]
+      function keepgoing() {
+         t1.print('Have you had a good rest?');
+         t1.input ( "Ahem, your name again please? (p = pause, q = quit)", function (sInpuz) {
+            holla(sInpuz);
+         });
+      }
 
    </script>
 
   <p>
-               Waht are the features missing most? • A prompt.
+               What are features missing most? • An input prompt.
                • Functional scrolling. If you come below the bottom edge,
                the last line should automatically stay inside the visible area,
                not be brought in by your manual scrolling.
   </p>
 
-  <p class="Good12Bye" style="display:none;">
-               Bye.
+  <p class="Good12Bye">
+               Have fun.
   </p>
 
  </div>
