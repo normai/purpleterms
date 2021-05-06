@@ -10,7 +10,7 @@ Pages : &nbsp;
 Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
-#### commit 2021xxxx°xxxx —
+#### ..
 - ..
 
 #### version 20210505°1752 — v0.2.9 'Set up Forks Suite'

@@ -33,8 +33,13 @@ span.Footer13PageId:before { content:'page\00A0'; }
 span.Footer13PageId:after { content:''; }
 
 code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
+.FontAttention { font-family: Monospace, Monospace; font-size:1.04em; color:Crimson; font-size:1.3em; } /* [rule 20100826°210102] */
 .FontFat { font-weight:bold; } /* rule 20180518°1042 */
-.FontTimestamp { color:RoyalBlue; font-size:small; font-family: Georgia, serif; font-style:italic; } /* [rule 20100826°2121] */
+.FontHuge { font-size:x-large; } /* rule 20150321°0344 (not for monospace styles) */
+.FontItalic { font-style:italic; } /* rule 20180518°1043 */
+.FontLarge { font-size:large; }/* rule 20150321°0342 (not for monospace styles) */
+.FontSmall { font-size:small; } /* rule 20150321°0346 (not for monospace styles) */
+.FontTimestamp { color:RoyalBlue; font-size:small; font-family: Georgia, serif; font-style:italic; position:relative; bottom:0.3em; } /* [rule 20100826°2121] */
 
 
 /* eof */
