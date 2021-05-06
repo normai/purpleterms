@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<link href="../jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+		<title>terminaljs test2</title>
+		<script src="terminal.js"></script>
+	</head>
+	<body>
+		<div class="terminal"></div>
+		<script>
+			var t1 = new Terminal()
+			document.body.appendChild(t1.html)
+
+
+			t1.print('Hello, world!')
+			t1.input('Whats your name?', function (input) {
+				t1.print('Welcome, ' + input)
+
+				//t2.sleep(1000, function () {
+					//t2.print('Hello again!')
+					//t2.input('Whats your name again?', function (input) {
+						//t2.print('Welcome again, ' + input)
+					//})
+				//})
+			})
+
+		</script>
+	</body>
+</html>

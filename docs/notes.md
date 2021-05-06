@@ -27,8 +27,9 @@ is about to communicate with a PHP or any other backend.
 
 Status : **Implemented**.
 
-Critique : The PR silently carried a second feature, the dollar prompt, which
- lead to *[issue 20210502°1121](#id20210502o1121)* 'Input prepended by dollar'.
+Note. The PR silently carried two more features, the dollar prompt, which
+ lead to *[issue 20210502°1121](#id20210502o1121)* 'Input prepended by dollar',
+ and the utilization of the Backspace key.
 
 Actually, such XHR feature is the reason why I got my hands dirty
 with Terminal.js in the first place. I have written a backend caller for myself,

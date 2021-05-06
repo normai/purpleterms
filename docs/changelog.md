@@ -11,11 +11,14 @@ Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of 
 
 
 #### commit 20210503°1815 — v0.2.8.8 'Intermediate'
-- Add docs folder
 - Outsource API Documentation from `readme.md` to dedicated page
+- issue 20210502°1121 'Input prepended by dollar'
+
+
+##### commit 20210503°1813 — v0.2.8.7 'Intermediate'
+- Add docs folder
 - Shift files around
 - Set up Aloha Demo
-- issue 20210502°1121 'Input prepended by dollar'
 
 
 #### version 20210503°1111 — v0.2.8 'Pull requests worked off'

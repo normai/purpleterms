@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>terminal.js test</title>
+		<script src="terminal.js"></script>
+	</head>
+	<body>
+		<h1>terminal.js test</h1>
+
+		<button onclick="t1.beep()">Play the beep!</button>
+		<br>
+		<br>
+
+		<script>
+			var t1 = new Terminal()
+			t1.setHeight("200px")
+			t1.setWidth('100%')
+			t1.setTextColor('green')
+			t1.setBackgroundColor('#333')
+			t1.setBorderRadius('10px')
+			t1.setTextSize('12px')
+			document.body.appendChild(t1.html)
+			var messageArray = [
+				{
+					message: 'Hello',
+					color: 'yellow',
+					bold: true,
+					italic: true
+				},
+				{
+					message: 'Wrold',
+					bold: true,
+					color: 'red'
+				}
+			]
+			t1.print('Hello, world!')
+			t1.printWithOptions('Hello, world! With differenct Color', {color: 'white'})
+			t1.printArray(messageArray, true)
+			t1.printArray(messageArray, false)
+		</script>
+
+	</body>
+</html>
