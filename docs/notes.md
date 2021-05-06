@@ -191,9 +191,10 @@ Further reference(s) :
 
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
-Here are some experiments with GitHub Markdown — entirely unrelated to Terminal.js.
-Can an image be right aligned?
-
+Here is a little experiment with GitHub Markdown, entirely unrelated to Terminal.js.
+Can an image be right aligned? Findings: Not with `style="float:right;"`,
+but with the legacy `align="right"`.
+<sup><sub><sup>*Paragraph 20210506°0931*</sup></sub></sup>
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="clear:both" align="right" width="64" height="64" alt="Grainy Dummy 2">
 
 ---
