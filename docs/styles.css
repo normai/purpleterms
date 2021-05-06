@@ -5,7 +5,7 @@
  */
 
 body { /* text-align:center; */ font-family: Verdana, Geneva,sans-serif; line-height:1.59em; } /* rule 20080710°2311 applying workaround 20100822°1323 */
-body.BodyFace12Normal { font-family: Verdana, sans-serif; background-color:#d0ff50; } /* d0ff70 */ /* rule 20170925°0321 */
+body.BodyFace12Normal { font-family: Verdana, sans-serif; background-color:PaleGreen; } /* #d0ff50 */ /* rule 20170925°0321 */
 div.ChapterFace12Normal { margin:0 auto; max-width:780px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 
 div.TopNavi12Box  { margin:auto; max-width:780px; width:94%; } /* rule 20210418°1422 */
@@ -13,9 +13,9 @@ p.TopNavi12Line   { float:left; font-size:large; margin:0.01em 0 0 0.7em; } /* r
 
 a.TopNavi12Normal { color:Green; padding:0 0.4em 0 0.4em; font-weight:bold; } /* [rule 20210418°1423] */
 a.TopNavi12Self { color:Green; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
-a.TopNavi12None { color:LightGray; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
+a.TopNavi12None { color:Gray; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
 
-p.TopNavi13Arrows { float:right; width:133px; padding-right:0.7em; border:1px solid Transparent; margin-top:0.1em; font-size:1.4em; transform:scale(1.7, 1); } /* rule 20210503°1321 */
+p.TopNavi13Arrows { float:right; width:133px; padding-right:0.7em; border:1px solid Transparent; margin-top:0.1em; font-size:1.4em; transform:scale(1.7, 1); font-weight:bold; } /* rule 20210503°1321 */
 p.TopNavi13Arrows a { text-decoration:none; } /* rule 20210503°1322 */
 
 p.TopTitle12Crumbs { color:#0000f0; font-size:1.20em; margin-bottom:0.2em; margin-top:0.2em; text-align:center; } /* rule 20080711°0523 */
@@ -32,7 +32,9 @@ span.Footer13PageId { margin:0 0 0 0.4em; font-size:x-small; font-style:italic; 
 span.Footer13PageId:before { content:'page\00A0'; }
 span.Footer13PageId:after { content:''; }
 
-code { font-size:large; } /* rule 20170901°1141 */
+code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
 .FontFat { font-weight:bold; } /* rule 20180518°1042 */
+.FontTimestamp { color:RoyalBlue; font-size:small; font-family: Georgia, serif; font-style:italic; } /* [rule 20100826°2121] */
+
 
 /* eof */

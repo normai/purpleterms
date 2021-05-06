@@ -38,13 +38,13 @@ The following people contribute to Terminal.js :
 
 - [Gustavo Mauricio de Barros](https://github.com/gumbarros)
 
-- [Mark Ivanowich](https://github.com/MarkIvanowich) &nbsp; _([mark.ivanowich.dev](https://mark.ivanowich.dev/))_
+- [Mark Ivanowich](https://github.com/MarkIvanowich) &nbsp; _[mark.ivanowich.dev](https://mark.ivanowich.dev/)_
 
-- [theLMGN](https://github.com/theLMGN) &nbsp; _([thelmgn.com](http://thelmgn.com/))_
+- [Santiago Castro](https://github.com/bryant1410) &nbsp; _[santi.uy](https://santi.uy/)_
 
-- [Yevgen Shevchenko](https://github.com/commanddotcom) &nbsp; _([www.workshop200.com](http://www.workshop200.com/))_
+- [theLMGN](https://github.com/theLMGN) &nbsp; _[thelmgn.com](http://thelmgn.com/)_
 
-- ..
+- [Yevgen Shevchenko](https://github.com/commanddotcom) &nbsp; _[www.workshop200.com](http://www.workshop200.com/)_
 
 - *<span style="color:LightGray;">.. Todo: Complete list. ..</span>*
 
