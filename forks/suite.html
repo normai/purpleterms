@@ -7,8 +7,9 @@
    <link rel="shortcut icon" href="./../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./../docs/styles.css" />
    <style>
-      td { vertical-align:top; }
-      span.ProjectBy { font-size:small; font-stlye:italic; padding-left:2.4em; white-space:nowrap; }
+      td { vertical-align:top; padding:0.4em 0 0.4em 0; } /* rule 20210506°0831 */
+      ul { margin-top:0.4em; } /* rule 20210506°0833 Reduce default distance, make gap to above text smaller */
+      span.ProjectBy { font-size:small; font-stlye:italic; padding-left:2.4em; white-space:nowrap; } /* rule 20210506°0835 */
    </style>
 </head>
 
@@ -95,11 +96,20 @@
     <td>
                Last activity 2020-Sep-08.
                <a href="https://github.com/eosterberg/terminaljs/pull/11">Pull request #11</a>,
-               not merged into reference version 'v2.0 — Final 2017'. Features :
-               <br> • AJAX request
-                • Dollar input prompt
-                • Backspace utilization.
-               The Features are integrated here. So <b>nothing new</b> to find.
+               not merged into reference version 'v2.0 — Final 2017',
+               but manually integrated here. So <b>nothing new</b> to find.
+               The features are :
+     <ul>
+      <li>
+               AJAX request
+      </li>
+      <li>
+               Dollar input prompt
+      </li>
+      <li>
+               Backspace utilization.
+      </li>
+     </ul>
     </td>
    </tr>
 
@@ -201,17 +211,16 @@
                This demonstrates :
      <ul>
       <li>
-               Provide <b>input prompt</b>. Solution with CSS pseudo-element <code>before</code>.
-               In <code>terminal.js</code> is only one unintrusive line added:
+               Input prompt. Solution with CSS pseudo-element <code>before</code>.
+               In <code>terminal.js</code> is only one line added:
                <code>this._inputLine.className = 'TerminalInput';</code>.
                Class TerminalInput with the pseudo-element is then defined in the page.
       </li>
       <li>
-               <b>AJAX</b>. Done by a custom module,
+               AJAX. Done by a custom module,
                does not touch <code>terminal.js</code>.
       </li>
      </ul>
-
     </td>
    </tr>
 
@@ -251,8 +260,14 @@
     </td>
     <td>
                Work from April 2020
-               <br> • Resizable terminal control
-               <br> • Cool animated GIF demo file
+     <ul>
+      <li>
+               Resizable terminal control
+      </li>
+      <li>
+               Cool animated GIF demo file
+      </li>
+     </ul>
     </td>
    </tr>
 
@@ -266,8 +281,14 @@
     </td>
     <td>
                Work from February 2020
-               <br> • Forked from November
-               <br> • Has rewritten <code>terminal.js</code> in <a href="https://haxe.org/">Haxe</a>
+     <ul>
+      <li>
+               Forked from November
+      </li>
+      <li>
+               Has rewritten <code>terminal.js</code> in <a href="https://haxe.org/">Haxe</a>
+      </li>
+     </ul>
     </td>
    </tr>
 

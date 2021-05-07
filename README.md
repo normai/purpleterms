@@ -14,7 +14,7 @@ Below :
 <a name="synopsis"></a>
 ## Synopsis
 
-Slogan : Terminal.js is a JavaScript library to provide a terminal.
+Slogan : Terminal.js is a JavaScript library to provide a terminal in the browser.
 
 License : The MIT License
 
