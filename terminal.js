@@ -620,8 +620,8 @@ Terminal = ( function () {
       this._input.style.display = 'none';
       this._input.style.margin = '0';
       this._cursor.style.background = 'white';
-      this._cursor.innerHTML = 'C';                                    // put something in the cursor ..
-      this._cursor.style.display = 'none';                             // .. then hide it
+      this._cursor.innerHTML = 'C';                                    // Put something in the cursor ..
+      this._cursor.style.display = 'none';                             // Then hide it
       this._output.style.margin = '0';
 
       // ~~

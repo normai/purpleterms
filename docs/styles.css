@@ -39,6 +39,7 @@ code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
 .FontItalic { font-style:italic; } /* rule 20180518°1043 */
 .FontLarge { font-size:large; }/* rule 20150321°0342 (not for monospace styles) */
 .FontSmall { font-size:small; } /* rule 20150321°0346 (not for monospace styles) */
+.FontTodo { color:Red; font-size:0.85em; } /* 0.77em */ /* [rule 20110924°1321] */
 .FontTimestamp { color:RoyalBlue; font-size:small; font-family: Georgia, serif; font-style:italic; position:relative; bottom:0.3em; } /* [rule 20100826°2121] */
 
 

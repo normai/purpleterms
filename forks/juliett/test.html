@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<title>Juliett terminal.js test</title>
-		<script src="terminal.js"></script>
-		<link rel="shortcut icon" href="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
-		<link rel="stylesheet" href="./../../docs/styles.css">
-	</head>
-	<body>
+   <head>
+      <meta charset="utf-8"/>
+      <title>Juliett terminal.js test</title>
+      <script src="terminal.js"></script>
+      <link rel="shortcut icon" href="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
+      <link rel="stylesheet" href="./../../docs/styles.css">
+   </head>
+   <body>
 
    <p>
-      <a href="./../suite.html" class="TopNavi12Normal">Forks Suite</a> : 
+      <a href="./../suite.html" class="TopNavi12Normal">Forks Suite</a> :
       <a href="./../charlie/test.html" class="TopNavi12Normal">Charlie</a>
       <a href="./../delta/test.html" class="TopNavi12Normal">Delta</a>
       <a href="./../echo/test.html" class="TopNavi12Normal">Echo</a>
@@ -29,43 +29,43 @@
       <a href="./../quebec/test.html" class="TopNavi12Normal">Quebec</a>
    </p>
 
-		<h1>terminal.js test</h1>
+      <h1>terminal.js test</h1>
 
-		<button onclick="t1.beep()">Play the beep!</button>
-		<br>
-		<br>
+      <button onclick="t1.beep()">Play the beep!</button>
+      <br>
+      <br>
 
-		<script>
-			var t1 = new Terminal()
-			t1.setHeight("200px")
-			t1.setWidth('100%')
-			t1.setTextColor('green')
-			t1.setBackgroundColor('#333')
-			t1.setBorderRadius('10px')
-			t1.setTextSize('12px')
-			document.body.appendChild(t1.html)
-			var messageArray = [
-				{
-					message: 'Hello',
-					color: 'yellow',
-					bold: true,
-					italic: true
-				},
-				{
-					message: 'Wrold',
-					bold: true,
-					color: 'red'
-				}
-			]
-			t1.print('Hello, world!')
-			t1.printWithOptions('Hello, world! With differenct Color', {color: 'white'})
-			t1.printArray(messageArray, true)
-			t1.printArray(messageArray, false)
-		</script>
+      <script>
+         var t1 = new Terminal()
+         t1.setHeight("200px")
+         t1.setWidth('100%')
+         t1.setTextColor('green')
+         t1.setBackgroundColor('#333')
+         t1.setBorderRadius('10px')
+         t1.setTextSize('12px')
+         document.body.appendChild(t1.html)
+         var messageArray = [
+            {
+               message: 'Hello',
+               color: 'yellow',
+               bold: true,
+               italic: true
+            },
+            {
+               message: 'Wrold',
+               bold: true,
+               color: 'red'
+            }
+         ]
+         t1.print('Hello, world!')
+         t1.printWithOptions('Hello, world! With differenct Color', {color: 'white'})
+         t1.printArray(messageArray, true)
+         t1.printArray(messageArray, false)
+      </script>
 
  <p class="Footer13Referer" style="padding-right:2.1em;">
                <span class="Footer13PageId">20210505°0921</span>
  </p>
 
-	</body>
+ </body>
 </html>

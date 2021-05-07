@@ -41,6 +41,15 @@ Daf = window.Daf || {};
 Daf.Term = Daf.Term || {};
 
 /**
+ * This property tells the input prompt to show
+ *
+ * @id 20210506°1231
+ * @callers
+ * @const {string} —
+ */
+Daf.Term.inputPrompt = '> ';
+
+/**
  * This method performs the AJAX request
  *
  * @id 20190209°0321
@@ -120,7 +129,7 @@ Daf.Term.execute = function()
    var eDiv = document.getElementById("Furniture_20190205o0211_Terminal");
    eDiv.appendChild(Daf.Term.t21.html);
 
-   //Launch [seq 20190205°0135]
+   // Launch [seq 20190205°0135]
    Daf.Term.t21.print('Welcome to the terminal.');
    Daf.Term.t21.print('Available commands: beep, spin');
    Daf.Term.t21.input('', Daf.Term.inputz);
@@ -140,7 +149,8 @@ Daf.Term.inputz = function(sCmd)
 
    // Process current input
    Daf.Term.t21.clear();
-   Daf.Term.t21.print('> ' + sCmd);
+   ////Daf.Term.t21.print('> ' + sCmd);
+   Daf.Term.t21.print(Daf.Term.inputPrompt + sCmd);                    // '> '
 
    // Do job
    var sRet = Daf.Term.interpret(sCmd);

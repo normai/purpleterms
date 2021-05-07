@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<title>November terminal.js example</title>
-		<script src="terminal.js"></script>
-		<link rel="shortcut icon" href="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
-		<link rel="stylesheet" href="./../../docs/styles.css">
-	</head>
-	<body>
+   <head>
+      <meta charset="utf-8"/>
+      <title>November terminal.js example</title>
+      <script src="terminal.js"></script>
+      <link rel="shortcut icon" href="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
+      <link rel="stylesheet" href="./../../docs/styles.css">
+   </head>
+   <body>
 
    <p>
-      <a href="./../suite.html" class="TopNavi12Normal">Forks Suite</a> : 
+      <a href="./../suite.html" class="TopNavi12Normal">Forks Suite</a> :
       <a href="./../charlie/test.html" class="TopNavi12Normal">Charlie</a>
       <a href="./../delta/test.html" class="TopNavi12Normal">Delta</a>
       <a href="./../echo/test.html" class="TopNavi12Normal">Echo</a>
@@ -29,29 +29,29 @@
       <a href="./../quebec/test.html" class="TopNavi12Normal">Quebec</a>
    </p>
 
-		<h1>terminal.js example</h1>
+      <h1>terminal.js example</h1>
 
-		<br>
-		<br>
+      <br>
+      <br>
 
-		<script>
-			let t = new Terminal();
-			t.setHeight("200px");
-			t.setWidth('600px');
-			document.body.appendChild(t.html);
+      <script>
+         let t = new Terminal();
+         t.setHeight("200px");
+         t.setWidth('600px');
+         document.body.appendChild(t.html);
 
-			t.print('Hello, world!');
+         t.print('Hello, world!');
 
             t.input(function (input) {
                 if (input !== "") {
                     t.print("I received the following : " + input);
                 }
             });
-		</script>
+      </script>
 
  <p class="Footer13Referer" style="padding-right:2.1em;">
                <span class="Footer13PageId">20210505°1321</span>
  </p>
 
-	</body>
+ </body>
 </html>

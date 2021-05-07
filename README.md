@@ -18,7 +18,7 @@ Slogan : Terminal.js is a single-file JavaScript library for emulating a shell e
 
 License : The MIT License
 
-Status : In renovation. 
+Status : In renovation.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 

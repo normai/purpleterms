@@ -562,7 +562,7 @@ Trekta.Utils = Trekta.Utils || {
       {
          // List after ref 20190412°0132 'MDN → XMLHttp​Request​.ready​State'
          if ( xmlHttp.readyState === 0 ) {
-            // State = UNSENT	— Client has been created. open() not called yet
+            // State = UNSENT — Client has been created. open() not called yet
          }
          else if ( xmlHttp.readyState === 1 ) {
             // State = OPENED — open() has been called
