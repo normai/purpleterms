@@ -1,15 +1,16 @@
 <?php
 /**
- * This module constitutes the Daftari PHP entry point
+ * Originally, this module constitutes the Daftari PHP entry point,
+ *  now it is stripped down and adjusted to serve in a Terminal.js demo
  *
- * id        : file 20120906°1241
- * license   : GNU AGPL v3
+ * file      : 20210506°1111 (after 20120906°1241)
+ * license   : BSD-3-Clause //// (formerly GNU AGPL v3)
  * copyright : © 2012 - 2021 Norbert C. Maier
  * authors   : ncm
  * status    : Applicable
  * encoding  : UTF-8-without-BOM
- * todo      : Implement folder hierarchy level detection to allow pages from all levels
- * callers   : All HTML pages headers
+ * //// todo : Implement folder hierarchy level detection to allow pages from all levels
+ * callers   : Only the Terminal.js demo page //// All HTML pages headers
  */
 
 /**
@@ -51,45 +52,46 @@ class Go
       $sCmd = $aQuery['cmd'];
       switch ($sCmd)
       {
-         // [seq 20190205°0548]
-         case 'cakecrumbsbag' :
-            include(__DIR__ . '/core/JsiCrumbs.php');
-            JsiCrumbs::crmbsExecute($aQuery);
-            break;
+         //// // [seq 20190205°0548]
+         //// case 'cakecrumbsbag' :
+         ////    include(__DIR__ . '/core/JsiCrumbs.php');
+         ////    JsiCrumbs::crmbsExecute($aQuery);
+         ////    break;
 
-         case 'edit' :
-            include(__DIR__ . '/core/JsiEdit.php');
-            JsiEdit::execute();
-            break;
+         //// case 'edit' :
+         ////    include(__DIR__ . '/core/JsiEdit.php');
+         ////    JsiEdit::execute();
+         ////    break;
 
-         // Get physical page file path [case 20190417°0141]
-         // note : Workaround for not yet succeeded feature 20180512°0721 'open page in local text editor'
-         // For opening an editor, see issue 20180512°0751 'php exec/system/passthru fails'
-         case 'get-physical' :
-            include_once(__DIR__ . '/core/JsiPhysical.php');
-            $sSuperGetFile = $_GET[Glb::GET_KEY_AJX_file];             // Compare var 20170903°0311
-            $sPagePhysical = JsiPhysical::getPagePhysical($sSuperGetFile);
-            $sReturn = $sPagePhysical;
-            break;
+         //// // Get physical page file path [case 20190417°0141]
+         //// // note : Workaround for not yet succeeded feature 20180512°0721 'open page in local text editor'
+         //// // For opening an editor, see issue 20180512°0751 'php exec/system/passthru fails'
+         //// case 'get-physical' :
+         ////    include_once(__DIR__ . '/core/JsiPhysical.php');
+         ////    $sSuperGetFile = $_GET[Glb::GET_KEY_AJX_file];             // Compare var 20170903°0311
+         ////    $sPagePhysical = JsiPhysical::getPagePhysical($sSuperGetFile);
+         ////    $sReturn = $sPagePhysical;
+         ////    break;
 
          case 'spin' :
-            include_once(__DIR__ . '/galari/Spider.php');
+            ////include_once(__DIR__ . '/galari/Spider.php');
+            include_once(__DIR__ . '/Spider.php');
 
             // Execute command, then pipeline response to centralized echo on line 20190312°0513
             $sReturn = TD\Spider::spin('');
             break;
 
-         case 'simple-html-dom-demo' :
-            include(__DIR__ . '/utils/jsi-demo-pshdp.php');
-            break;
+         //// case 'simple-html-dom-demo' :
+         ////    include(__DIR__ . '/utils/jsi-demo-pshdp.php');
+         ////    break;
 
-         case 'jsi-demo-dom-doc' :
-            include(__DIR__ . '/utils/jsi-demo-dom-doc.php');
-            break;
+         //// case 'jsi-demo-dom-doc' :
+         ////    include(__DIR__ . '/utils/jsi-demo-dom-doc.php');
+         ////    break;
 
-         case 'jsi-demo-dom-gen' :
-            include(__DIR__ . '/utils/jsi-demo-dom-gen.php');
-            break;
+         //// case 'jsi-demo-dom-gen' :
+         ////    include(__DIR__ . '/utils/jsi-demo-dom-gen.php');
+         ////    break;
 
          default :
       }
@@ -99,19 +101,23 @@ class Go
 
    /**
     * This method processes all calls of this script.
-    *  (This shall become the eye of a needle, but is not yet)
+    *  ////(This shall become the eye of a needle, but is not yet)
     *
     * @id 20190205°0321
     * @callers Only • this script level
     */
    public static function enter()
    {
+// Provisory shutdown [chg 20210506°1311]
+/*
       // Must be first line of code [line 20121028°181111]
       include_once(__DIR__ . '/core/Session.php');
-
+*/
       // [var 20190312°0511]
       $sReturn = '';
 
+// Provisory shutdown [chg 20210506°1312]
+/*
       // So far allow edit only on localhost [seq 20120814°1414]
       // todo : If here is the eye of the needls, eliminate all other occurrences of this seqence
       if (Glb::$Lgn_bHostIsLocalhost !== TRUE)
@@ -119,13 +125,16 @@ class Go
          echo 'Edit is not possible.';
          return;
       }
+*/
 
-      // Experiment [seq 20120925°1121]
-      include_once(__DIR__ . '/core/Configo.php');
-      $cfg = TD\Configo::getInstance();                                // [issue 20190312°0631 'something is wrong, or is is fine?']
-      $canary = $cfg->cfg_canary_variable;
-      //echo('<p>debug cfg_canary_variable = "' . $canary . '"</p>');
+      //// // Experiment [seq 20120925°1121]
+      //// include_once(__DIR__ . '/core/Configo.php');
+      //// $cfg = TD\Configo::getInstance();                                // [issue 20190312°0631 'something is wrong, or is is fine?']
+      //// $canary = $cfg->cfg_canary_variable;
+      //// //echo('<p>debug cfg_canary_variable = "' . $canary . '"</p>');
 
+// Provisory shutdown [chg 20210506°1313]
+/*
       // Determine this page's filename [seq 20120814°1403]
       $sScriptfile = $_SERVER[Glb::SVR_KEY_SCRIPT_FILENAME];
       // e.g. 'X:/workspaces/daftaridev/trunk/daftari/docs/blogs.html'
@@ -136,6 +145,7 @@ class Go
          print('<p>[Error 20120814°1405] Program flow error with ' . $sScriptfile . '</p>');
          return;
       }
+*/
 
       // Perform the wanted job [line 20190205°0551]
       $sReturn = self::readCommand();
@@ -211,86 +221,86 @@ class Go
       return $sReturn;
    }
 
-   /**
-    * This runs PageAlbum.php to provide the fields wanted by gallery56album.html
-    *
-    * @id 20190205°0631
-    * @callers Only gallery56album.html
-    */
-   public static function runGalleryAlbumPage()
-   {
-      include(__DIR__ . '/galari/PageAlbum.php');
+   //// /**
+   ////  * This runs PageAlbum.php to provide the fields wanted by gallery56album.html
+   ////  *
+   ////  * @id 20190205°0631
+   ////  * @callers Only gallery56album.html
+   ////  */
+   //// public static function runGalleryAlbumPage()
+   //// {
+   ////    include(__DIR__ . '/galari/PageAlbum.php');
+   ////
+   ////    // Call the former script-level code [line 20190203°0311]
+   ////    TD\PageAlbum::doPageAlbum();
+   //// }
 
-      // Call the former script-level code [line 20190203°0311]
-      TD\PageAlbum::doPageAlbum();
-   }
+   //// /**
+   ////  * This runs PageObject.php to provide the fields wanted by gallery56object.html
+   ////  *
+   ////  * @id 20190205°0631
+   ////  * @callers Only gallery56object.html
+   ////  */
+   //// public static function runGalleryObjectPage()
+   //// {
+   ////    include(__DIR__ . '/galari/PageObject.php');
+   //// 
+   ////    // Execute former script-level code [line 20190202°1231]
+   ////    PageObject::doPageObject();
+   //// }
 
-   /**
-    * This runs PageObject.php to provide the fields wanted by gallery56object.html
-    *
-    * @id 20190205°0631
-    * @callers Only gallery56object.html
-    */
-   public static function runGalleryObjectPage()
-   {
-      include(__DIR__ . '/galari/PageObject.php');
+   //// /**
+   ////  * This gets the HTML payload for the Gallery Raw Folder page
+   ////  *
+   ////  * @id 20190205°0611
+   ////  * @note Compared with • runGalleryAlbumPage and • runGalleryObjectPage,
+   ////  *    this • runGalleryRawPage has different Design. It directly returns
+   ////  *    the wanted value. The other two prepare fields to be read afterwards.
+   ////  * @callers Only gallery56raw.html
+   ////  * @return string The wanted HTML fragment
+   ////  */
+   //// public static function runGalleryRawPage()
+   //// {
+   ////    $sRet = '';
+   ////
+   ////    include(__DIR__ . '/galari/PageRaw.php');
+   ////
+   ////    // Execute former script-level code [line 20190202°0331]
+   ////    TD\PageRaw::doPageRaw();
+   ////
+   ////    $sRet = TD\PageRaw::$sOutMain;
+   ////
+   ////    return $sRet;
+   //// }
 
-      // Execute former script-level code [line 20190202°1231]
-      PageObject::doPageObject();
-   }
+   //// /**
+   ////  * This function delivers a cakecrumbs block for the page head.
+   ////  *
+   ////  * @id 20120917°1712
+   ////  * @callers HTML files or Breadcrumbs/Cakecrumbs
+   ////  * @return string The wanted cakecrumbs HTML fragment
+   ////  */
+   //// public static function wafailiBrick_Breadcrumbs()
+   //// {
+   ////    require_once(__DIR__ . '/core/Cakecrumbs.php');
+   ////    $s = TD\Cakecrumbs::getBreadcrumbs();
+   ////    return $s;
+   //// }
 
-   /**
-    * This gets the HTML payload for the Gallery Raw Folder page
-    *
-    * @id 20190205°0611
-    * @note Compared with • runGalleryAlbumPage and • runGalleryObjectPage,
-    *    this • runGalleryRawPage has different Design. It directly returns
-    *    the wanted value. The other two prepare fields to be read afterwards.
-    * @callers Only gallery56raw.html
-    * @return string The wanted HTML fragment
-    */
-   public static function runGalleryRawPage()
-   {
-      $sRet = '';
-
-      include(__DIR__ . '/galari/PageRaw.php');
-
-      // Execute former script-level code [line 20190202°0331]
-      TD\PageRaw::doPageRaw();
-
-      $sRet = TD\PageRaw::$sOutMain;
-
-      return $sRet;
-   }
-
-   /**
-    * This function delivers a cakecrumbs block for the page head.
-    *
-    * @id 20120917°1712
-    * @callers HTML files or Breadcrumbs/Cakecrumbs
-    * @return string The wanted cakecrumbs HTML fragment
-    */
-   public static function wafailiBrick_Breadcrumbs()
-   {
-      require_once(__DIR__ . '/core/Cakecrumbs.php');
-      $s = TD\Cakecrumbs::getBreadcrumbs();
-      return $s;
-   }
-
-   /**
-    * This function provides global variables for the HTML.
-    *
-    * @id 20120917°1701
-    * @callers HTML files or Cakecrumbs
-    * @return string User info HTML fragment
-    */
-   public static function wafailiBrick_UserInfo()
-   {
-      $s = '<small>';
-      $s .= Glb::getUserInfoBrick();
-      $s .= '</small>';
-      return $s;
-   }
+   //// /**
+   ////  * This function provides global variables for the HTML.
+   ////  *
+   ////  * @id 20120917°1701
+   ////  * @callers HTML files or Cakecrumbs
+   ////  * @return string User info HTML fragment
+   ////  */
+   //// public static function wafailiBrick_UserInfo()
+   //// {
+   ////    $s = '<small>';
+   ////    $s .= Glb::getUserInfoBrick();
+   ////    $s .= '</small>';
+   ////    return $s;
+   //// }
 
 }
 

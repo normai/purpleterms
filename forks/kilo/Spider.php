@@ -3,7 +3,7 @@
 /**
  * This module hosts class Spider
  *
- * file      : 20190209°0411
+ * file      : 20210506°1211 (after 20190209°0411)
  * license   : GNU AGPL v3
  * copyright : © 2019 - 2021 Norbert C. Maier
  * authors   : ncm
@@ -79,16 +79,17 @@ class Spider
    {
       $sRet = "";
 
-      // [line 20190312°0731]
-      self::$cfg = Configo::getInstance();
-
-      // Guarantee valid folder value [seq 20190312°0521]
-      $a = self::analyseCurrent($sTarget_);
-      $sCurrFolder = $a[0];                                            // Must be an existing folder
-      $sCurrFile = $a[1];                                              // Does not need to exist
+      //// // [line 20190312°0731]
+      //// self::$cfg = Configo::getInstance();
+      ////
+      //// // Guarantee valid folder value [seq 20190312°0521]
+      //// $a = self::analyseCurrent($sTarget_);
+      //// $sCurrFolder = $a[0];                                            // Must be an existing folder
+      //// $sCurrFile = $a[1];                                              // Does not need to exist
 
       // [seq 20190312°0531]
-      $sNext = self::getNextEntry($sCurrFolder, $sCurrFile);
+      ////$sNext = self::getNextEntry($sCurrFolder, $sCurrFile);
+      $sNext = self::getNextEntry();
 
       // Build answer
       $sRet = "Spin " . time() . " " . $sNext;
@@ -96,8 +97,8 @@ class Spider
       // Does not work, the pointed brackets are converted to HTML entities
       ///$sRet = $sRet . '<br />' . $sFolder;
 
-      // Write back current scan address
-      self::$cfg->setValue('SpiderCurrentFolder', $sNext);
+      //// // Write back current scan address
+      //// self::$cfg->setValue('SpiderCurrentFolder', $sNext);
 
       return $sRet;
    }
@@ -116,24 +117,26 @@ class Spider
     * @param $sFile {String} The current file
     * @return {String} The wanted next entry
     */
-   private static function getNextEntry($sFolder, $sFile) : string
+   ////private static function getNextEntry($sFolder, $sFile) : string
+   private static function getNextEntry() : string
    {
       //
       $sNext = 'äkjölkj.xyz';
 
       // [seq 20190312°0551]
-      $aEntries = scandir($sFolder);
-
+      ////$aEntries = scandir($sFolder);
+      $iNext = rand(100, 999);                                         // [chg 20210506°1221]
+      $sNext = strval($iNext);                                         // [chg 20210506°1221`02]
 
       return $sNext;
    }
 
-   /**
-    * @id 20190312°0721
-    * @todo Possibly create and store this in Go.php, since there is the single entry point
-    * @var {Object} Store the Configo instance
-    */
-   private static $cfg = NULL;
+   //// /**
+   ////  * @id 20190312°0721
+   ////  * @todo Possibly create and store this in Go.php, since there is the single entry point
+   ////  * @var {Object} Store the Configo instance
+   ////  */
+   //// private static $cfg = NULL;
 
 }
 

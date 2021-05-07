@@ -52,11 +52,12 @@ Daf.Term.ajaxRequest = function()
    'use strict';
 
    // () Assemble shipment ingredients [seq 20190209°0322]
-   var sTargetUrl = Trekta.Utils.s_DaftariBaseFolderRel
-                   + '/' + Daf.Const.s_DAFTARI_OFFSET_PHP_SCRIPTS
-                    + '/' + 'Go.php'
-                     + '?cmd=' + 'spin'
-                      ;
+   //// var sTargetUrl = Trekta.Utils.s_DaftariBaseFolderRel
+   ////                 + '/' + Daf.Const.s_DAFTARI_OFFSET_PHP_SCRIPTS
+   ////                  + '/' + 'Go.php'
+   ////                   + '?cmd=' + 'spin'
+   ////                    ;
+   var sTargetUrl = './Go.php' + '?cmd=' + 'spin';
    var sMsgToSend = 'Hello spin ..';
 
    // Get Ajax performer object [seq 20190209°0323]
@@ -165,7 +166,7 @@ Daf.Term.interpret = function(sCmd)
    var sRet = '';
    switch (sCmd)
    {
-      case 'beep' : Daf.Term.t21.beep(); sRet = "It is beeping .."; break;
+      case 'beep' : Daf.Term.t21.beep(); sRet = "It shall be beeping .."; break;
       case 'spin' :
          Daf.Term.bSpinAutoRun = true;
          Daf.Term.runSpin();
