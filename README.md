@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.3 &nbsp; <sup><sup>20210506°0951</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.3~ &nbsp; <sup><sup>20210506°0951~</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -40,9 +40,14 @@ _Here are the **changes** compared to the
 
 - _Rename repository branch 'master' to '**main**'_
 
+- _Added the <a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/forks/suite.html">Forks Suite</a> for investigating solutions_
+
 _I have stirred the code violently but kept it fully **backward-compatible**.
 Just replace your old by the new [`terminal.js`](./terminal.js)
 or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully)._
+
+_The project got a bit inflated with files for infrastructure. Don't let
+it distract you — All that matters is the one single file: **terminal.js**!_
 
 <a name="usage"></a>
 ## Usage
