@@ -211,7 +211,7 @@ Daf.Term.bSpinAutoRun = false;
 Daf.Term.sDebugWelcome = "[Debug 20190205°0141] Hello, namespace Daf.Term is loaded.";
 
 /**
- * This variable stores the terminal object — Seems no where used?!
+ * This variable stores the terminal object — Seems nowhere used?!
  *
  * @id 20190205°0143
  * @callers
