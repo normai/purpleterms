@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.3~ &nbsp; <sup><sup>20210506°0951~</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.4 &nbsp; <sup><sup>20210506°1511</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -14,40 +14,40 @@ Below :
 <a name="synopsis"></a>
 ## Synopsis
 
-Slogan : Terminal.js is a single-file JavaScript library for emulating a shell environment.
+Slogan : Terminal.js is a JavaScript library to provide a terminal.
 
 License : The MIT License
 
-Status : In renovation.
+Status : Under overhaul. The goal is, to lift it from a toy to a tool.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
-_Here are the **changes** compared to the
- [original project](https://github.com/eosterberg/terminaljs) :_
+This are the **changes** compared to the
+ [original project](https://github.com/eosterberg/terminaljs) :
 
-- _Integrate **`beep.mp3`** as base64 variable.
+- Integrate **`beep.mp3`** as base64 variable.
    Pro: No more external link for beeping.
-   Con: Breaks IE<10_
+   Con: Breaks IE<10
 
-- _Adjust coding and documentation **style** to my personal taste_
+- Adjust coding and documentation **style** to my personal taste
 
-- _Build with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**_
+- Build with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**
 
-- _Refactor **key codes** (inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12))_
+- Refactor **key codes** (inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12))
 
-- _Integrate **XHR** feature (after pull request [#11](https://github.com/eosterberg/terminaljs/pull/11)).
-  Not yet tested._
+- Integrate **XHR** feature (after pull request [#11](https://github.com/eosterberg/terminaljs/pull/11)).
+  Not yet tested.
 
-- _Rename repository branch 'master' to '**main**'_
+- Rename repository branch 'master' to '**main**'
 
-- _Added the <a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/forks/suite.html">Forks Suite</a> for investigating solutions_
+- Added the <a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/forks/suite.html">Forks Suite</a> for investigating solutions
 
-_I have stirred the code violently but kept it fully **backward-compatible**.
-Just replace your old by the new [`terminal.js`](./terminal.js)
-or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully)._
+I have stirred the code violently but kept it fully **backward-compatible**.
+ Just replace your old by the new [`terminal.js`](./terminal.js)
+ or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully).
 
-_The project got a bit inflated with files for infrastructure. Don't let
-it distract you — All that matters is the one single file: **terminal.js**!_
+The project got a bit inflated with files for infrastructure. Don't let this
+ distract you. All that matters and all you need, is one single file: **`terminal.js`**!
 
 <a name="usage"></a>
 ## Usage

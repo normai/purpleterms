@@ -6,6 +6,19 @@
    <script src="./terminal.js"></script>
    <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./docs/styles.css">
+
+      <style>
+
+         /**
+          * ruleset 20190312°0451
+          * See terminal.js seq 20190312°0441
+          * See todo 20190312°0445 'Do style definitions not in HTML page but inside terminal.js'
+          */
+         span.TerminalInput { }
+         span.TerminalInput:before { content:'\003e\00a0'; } /* "> " — \003e = '>', \00a0 = NO-BREAK SPACE */
+
+      </style>
+
 </head>
 
 <body class="BodyFace12Normal">
@@ -92,10 +105,11 @@
    </script>
 
   <p>
-               What are features missing most? • An input prompt.
+               What are features missing most? • Functional backspace.
                • Functional scrolling. If you come below the bottom edge,
                the last line should automatically stay inside the visible area,
                not be brought in by your manual scrolling.
+               • The input prompt should not go away, after the input is entered.
   </p>
 
   <p class="Good12Bye">
