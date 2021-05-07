@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.2 &nbsp; <sup><sup>20210506°0921</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.3 &nbsp; <sup><sup>20210506°0951</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
