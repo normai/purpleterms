@@ -6,6 +6,7 @@
 
 body { /* text-align:center; */ font-family: Verdana, Geneva,sans-serif; line-height:1.59em; } /* rule 20080710°2311 applying workaround 20100822°1323 */
 body.BodyFace12Normal { font-family: Verdana, sans-serif; background-color:Aquamarine; } /* #d0ff50 */ /* rule 20170925°0321 */
+body.BodyFace44Suite { font-family: Verdana, sans-serif; background-color:#d0fcd0; } /* PaleGreen=98fb98 */ /* rule 20170925°0321`12 */
 div.ChapterFace12Normal { margin:0 auto; max-width:780px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 
 div.TopNavi12Box  { margin:auto; max-width:780px; width:94%; } /* rule 20210418°1422 */
