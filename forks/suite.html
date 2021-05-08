@@ -10,7 +10,7 @@
       td { vertical-align:top; padding:0.4em 0 0.4em 0; } /* rule 20210506°0831 */
       ul { margin-top:0.4em; } /* rule 20210506°0833 Reduce default distance, make gap to above text smaller */
       span.ProjectBy { font-size:small; font-stlye:italic; padding-left:2.4em; white-space:nowrap; } /* rule 20210506°0835 */
-      a.WorkedOff { color:LightSkyBlue; } /* rule 20210506°1721 */
+      a.WorkedOff { color:LightSkyBlue; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210506°1721 */
    </style>
 </head>
 
@@ -53,10 +53,10 @@
   </h1>
 
   <p>
-               This folder brings together all active Terminal.js forks into one compilation. It shall make visible,
-               which solutions the colleagues have deviced for an input prompt (see issue
+               This folder compiles Terminal.js forks to make visible,
+               which solutions the colleagues have deviced for an input prompt (issue
                <a href="https://github.com/normai/terminaljs/blob/main/docs/notes.md#id20210504o1041">Simplify input prompt handling</a>
-               ). You can seek other inspiration as well.
+               ). It may be inspiring otherwise as well.
   </p>
 
   <table style="border:1px solid Gray; border-radius:0.7em; padding:0.7em;">
@@ -91,14 +91,25 @@
                <a href="./golf/test.html" class="FontHuge FontFat">Golf</a>
                <br>
                <span class="ProjectBy">by
-               <a href="https://github.com/MarkIvanowich/terminaljs">MarkIvanowich</a>
+               <a href="https://github.com/MarkIvanowich/terminaljs">MarkIvanowich</a>&nbsp;
                </span>
     </td>
     <td>
+               Last commit in 2016. Pull request
+               <a href="https://github.com/eosterberg/terminaljs/pull/2">#2</a> 'Added some functions'.
                Points of interest :
      <ul>
       <li>
                History
+      </li>
+      <li>
+               load() for a Pylon
+      </li>
+      <li>
+               printRaw() for formatted output
+      </li>
+      <li>
+               empty() ?
       </li>
       <li>
                <span class="FontTodo">Todo : Inspect project.</span>
@@ -116,7 +127,7 @@
                </span>
     </td>
     <td>
-               Pull request ..
+               Pull request .. Fork of Golf.
                Points of interest :
      <ul>
       <li>
@@ -333,19 +344,15 @@
                </span>
     </td>
     <td>
-               The Terminal.js <b>reference version</b>
-               <a href="https://github.com/normai/terminaljs/releases/tag/v2.0">v2.0 — Final 2017</a>
+               The Terminal.js <b>reference version
+               <a href="https://github.com/normai/terminaljs/releases/tag/v2.0">v2.0 — Final 2017</a></b>
                , adjusted to the present pages.
-               .
     </td>
    </tr>
 
-   <tr>
-    <td colspan="2" style="text-align:center;">
-                — — — — — — Worked off projects — — — — — —
-                <br> &nbsp;
-    </td>
-   </tr>
+  </table>
+
+  <table style="border:1px solid Gray; border-radius:0.7em; padding:0.7em; margin-top:0.7em;">
 
    <tr>
     <td style="min-width:7.1em; padding-bottom:1.1em;">
@@ -358,9 +365,8 @@
     <td>
                Last commit on 2017-Apr-18,
                <a href="https://github.com/eosterberg/terminaljs/pull/5">pull request #5</a>
-               'Fix .. in Markdown files',
-               merged on 2017-May-03 into reference version v2.0.
-               So <b>nothing new</b> here.
+               'Fix .. in Markdown files', merged on 2017-May-03.
+               Worked off.
     </td>
    </tr>
 
@@ -376,12 +382,13 @@
     <td>
                Last commit 2020-Sep-08.
                <a href="https://github.com/eosterberg/terminaljs/pull/11">Pull request #11</a>,
-               not yet merged into reference <code>terminal.js</code>,
-               but manually integrated here. So <b>nothing new</b>.
+               not merged. Manually integrated here.
                The features are :
                • AJAX request
                • Dollar input prompt
                • Backspace utilization.
+               Worked off.
+
     </td>
    </tr>
 
@@ -396,18 +403,16 @@
     <td>
                Last commit 2014-Nov-12.
                <a href="https://github.com/eosterberg/terminaljs/pull/1">Pull request #1</a>
-               'Added password feature' was merged into reference version on 2014-Nov-14.
-               So <b>nothing new</b> here. The project seems broken.
-               (Thus possibly review the merge.)
+               'Added password feature' merged on 2014-Nov-14.
+               The project seems broken. Worked off.
     </td>
    </tr>
 
   </table>
 
   <p>
-               This is a temporary folder (~4.4 MB). It shall be disposed
-               after cherrypicking is accomplished.
-               I have no idea, how long this will take (e.g. one year?).
+               This is a temporary folder. It shall be disposed after it has served its purpose.
+               I have no idea, how long this will take.
   </p>
 
   <p class="FontAttention" style="font-size:1.1em;">
@@ -469,9 +474,9 @@
   </ul>
 
   <p>
-               After above sweeping modifications, we may go to partially modify the code.
-               Those modifications shall be marked with comments in the sources,
-               typically with quadruple slashes <code>////</code> and/or equipped with a timestamp.
+               After those sweeping modifications, the code is partially modified.
+               Those modifications shall be marked with comments,
+               typically with quadruple slashes (<code>////</code>).
   </p>
 
   <p class="FontFat">

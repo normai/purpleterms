@@ -12,7 +12,7 @@ td.TopNavi14Line   { font-size:large; border:2px solid transparent; } /* rule 20
 a.TopNavi14None { color:Gray; padding:0 0.1em 0 0.1em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
 a.TopNavi14Normal { color:Green; padding:0 0.1em 0 0.1em; font-weight:bold; } /* [rule 20210418°1423] */
 a.TopNavi14Parent { color:RoyalBlue; padding:0 0.1em 0 0.1em; font-weight:bold; font-size:1.1em; } /* rule 20210503°1323 */
-a.TopNavi14Self { color:Red; padding:0 0.1em 0 0.1em; font-weight:bold; font-style:italic; font-size:1.1em;  pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
+a.TopNavi14Self { color:Red; padding:0 0.1em 0 0.1em; font-weight:bold; font-style:italic; font-size:1.1em; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
 
 td.TopNavi14Arrows { border:2px solid transparent; font-size:1.6em; transform:scale(2.1, 1); padding:0 1.9em 0 1.1em; font-weight:bold; white-space:nowrap; vertical-align:top; text-align:right; } /* rule 20210503°1321 */
 a.TopNavi14ArrowGray { color:LightGray; text-decoration:none; pointer-events:none; cursor:default; } /* rule 20210503°1324 */
