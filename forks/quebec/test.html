@@ -2,86 +2,99 @@
 <html lang="en">
    <head>
       <meta charset="utf-8"/>
-      <title>Quebec terminal.js test</title>
+      <title>Quebec Sample</title>
       <script src="terminal.js"></script>
       <link rel="shortcut icon" href="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
       <link rel="stylesheet" href="./../../docs/styles.css">
    </head>
-   <body class="BodyFace44Suite">
+   <body class="BodyFace12Normal">
 
-   <p>
-      <a href="./../suite.html" class="TopNavi12Normal">Forks Suite</a> :
-      <a href="./../charlie/test.html" class="TopNavi12Normal">Charlie</a>
-      <a href="./../delta/test.html" class="TopNavi12Normal">Delta</a>
-      <a href="./../echo/test.html" class="TopNavi12Normal">Echo</a>
-      <a href="./../foxtrott/index.html" class="TopNavi12Normal">Foxtrott</a>
-      <a href="./../golf/test.html" class="TopNavi12Normal">Golf</a>
-      <a href="./../hotel/test.html" class="TopNavi12Normal">Hotel</a>
-      <a href="./../india/test.html" class="TopNavi12Normal">India1</a>
-      <a href="./../india/test2.html" class="TopNavi12Normal">India2</a>
-      <a href="./../juliett/test.html" class="TopNavi12Normal">Juliett</a>
-      <a href="./../kilo/tools.html" class="TopNavi12Normal">Kilo</a>
-      <a href="./../lima/test.html" class="TopNavi12Normal">Lima</a>
-      <a href="./../mike/test.html" class="TopNavi12Normal">Mike</a>
-      <a href="./../november/example.html" class="TopNavi12Normal">November</a>
-      <a href="./../oscar/test/example.html" class="TopNavi12Normal">Oskar</a>
-      <a href="./../papa/test.html" class="TopNavi12Normal">Papa</a>
-      <a href="./../quebec/test.html" class="TopNavi12Self">Quebec</a>
-   </p>
+ <table class="TopNavi14Box">
+  <tr>
+   <td class="TopNavi14Line">
+               <a href="./../../aloha.html" class="TopNavi14Normal">Aloha</a> →
+               <a href="./../suite.html" class="TopNavi14Parent">Supply Suite</a> →
+               <a href="./../foxtrot/index.html" class="TopNavi14Normal">Foxtrot</a>
+               <a href="./../golf/test.html" class="TopNavi14Normal">Golf</a>
+               <a href="./../hotel/test.html" class="TopNavi14Normal">Hotel</a>
+               <a href="./../india/test.html" class="TopNavi14Normal">India1</a>
+               <a href="./../india/test2.html" class="TopNavi14Normal">2</a>
+               <a href="./../juliett/test.html" class="TopNavi14Normal">Juliett</a>
+               <a href="./../kilo/tools.html" class="TopNavi14Normal">Kilo</a>
+               <a href="./../lima/test.html" class="TopNavi14Normal">Lima</a>
+               <a href="./../mike/test.html" class="TopNavi14Normal">Mike</a>
+               <a href="./../november/example.html" class="TopNavi14Normal">November</a>
+               <a href="./../oscar/test/example.html" class="TopNavi14Normal">Oskar</a>
+               <a href="./../papa/test.html" class="TopNavi14Normal">Papa</a>
+               <a href="./../quebec/test.html" class="TopNavi14Self">Quebec</a>
+   </td>
+   <td class="TopNavi14Arrows">
+                <a href="./../papa/test.html" class="TopNavi14ArrowNormal">ᐊ</a>
+                <a href="./../suite.html" class="TopNavi14ArrowNormal">ᐃ</a>
+                <a href="./../../aloha.html" class="TopNavi14ArrowNormal">ᐅ</a>
+   </td>
+  </tr>
+ </table>
+ <div class="TopNavi14Logo">
+               <img src="./../../docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" width="64" height="64" alt="Grainy Dummy Logo">
+ </div>
 
-      <h1>terminal.js test</h1>
+      <h1>Quebe  Sample</h1>
 
       <button onclick="t1.beep()">Play the beep!</button>
       <br>
       <br>
 
       <script>
-         var t1 = new Terminal()
-         t1.setHeight("200px")
-         t1.setWidth('600px')
-         document.body.appendChild(t1.html)
+         var t1 = new Terminal();
+         t1.setHeight("200px");
+         t1.setWidth('600px');
+         document.body.appendChild(t1.html);
 
-         var t2 = new Terminal()
-         t2.setHeight("250px")
-         t2.setWidth('650px')
-         t2.setBackgroundColor('blue')
-         t2.blinkingCursor(false)
-         document.body.appendChild(t2.html)
+         var t2 = new Terminal();
+         t2.setHeight("250px");
+         t2.setWidth('650px');
+         t2.setBackgroundColor('blue');
+         t2.blinkingCursor(false);
+         document.body.appendChild(t2.html);
 
-         t1.print('Hello, world!')
+         t1.print('Hello, world!');
          t1.input('Whats your name?', function (input) {
-            t1.print('Welcome, ' + input)
+            t1.print('Welcome, ' + input);
 
             t2.sleep(1000, function () {
-               t2.print('Hello again!')
+               t2.print('Hello again!');
                t2.input('Whats your name again?', function (input) {
-                  t2.print('Welcome again, ' + input)
-               })
-            })
-         })
+                  t2.print('Welcome again, ' + input);
+               });
+            });
+         });
 
-         var t3 = new Terminal('terminal_3')
-         t3.setHeight("180px")
-         t3.setWidth('550px')
-         t3.setBackgroundColor('green')
-         document.body.appendChild(t3.html)
+         var t3 = new Terminal('terminal_3');
+         t3.setHeight("180px");
+         t3.setWidth('550px');
+         t3.setBackgroundColor('green');
+         document.body.appendChild(t3.html);
          t3.password('Enter password:', function (password) {
-            t3.print('Your password is: ' + password)
-         })
+            t3.print('Your password is: ' + password);
+         });
 
-         var paragraph = document.createElement("p")
-         var t3bySelector = document.querySelector("#terminal_3")
-         paragraph.innerHTML = t3bySelector && t3bySelector.id ? 'The 3rd terminal has id: ' + t3bySelector.id : 'Assigning an id at initialization doesnt semm to work!'
-         document.body.appendChild(paragraph)
+         var paragraph = document.createElement("p");
+         var t3bySelector = document.querySelector("#terminal_3");
+         paragraph.innerHTML = t3bySelector && t3bySelector.id ? 'The 3rd terminal has id: ' + t3bySelector.id : 'Assigning an id at initialization doesnt semm to work!';
+         document.body.appendChild(paragraph);
 
-         var t4 = new Terminal('terminal_3')
-         t4.setHeight("180px")
-         t4.setWidth('550px')
-         t4.setBackgroundColor('green')
-         document.body.appendChild(t4.html)
+         var t4 = new Terminal('terminal_3');
+         t4.setHeight("180px");
+         t4.setWidth('550px');
+         t4.setBackgroundColor('green');
+         document.body.appendChild(t4.html);
          t4.confirm('Are you sure?', function (didConfirm) {
-            t4.print(didConfirm ? 'OK' : 'Why not?')
-         })
+            t4.print(didConfirm ? 'OK' : 'Why not?');
+         });
+
+         // Convenience scrolling [line 20210506°1642`09]
+         window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 
       </script>
 

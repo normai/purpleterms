@@ -6,29 +6,29 @@
 
 body { /* text-align:center; */ font-family: Verdana, Geneva,sans-serif; line-height:1.59em; } /* rule 20080710°2311 applying workaround 20100822°1323 */
 body.BodyFace12Normal { font-family: Verdana, sans-serif; background-color:Aquamarine; } /* #d0ff50 */ /* rule 20170925°0321 */
-body.BodyFace44Suite { font-family: Verdana, sans-serif; background-color:#d0fcd0; } /* PaleGreen=98fb98 */ /* rule 20170925°0321`12 */
-div.ChapterFace12Normal { margin:0 auto; max-width:780px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 
-div.TopNavi12Box  { margin:auto; max-width:780px; width:94%; } /* rule 20210418°1422 */
-p.TopNavi12Line   { float:left; font-size:large; margin:0.01em 0 0 0.7em; } /* rule 20141117°0511 (from ruleset 20080711°0531) */
+table.TopNavi14Box  { margin:auto; max-width:790px; width:100%; border:2px solid Transparent; } /* rule 20210418°1422 */
+td.TopNavi14Line   { font-size:large; border:2px solid transparent; } /* rule 20141117°0511 (from ruleset 20080711°0531) */
+a.TopNavi14None { color:Gray; padding:0 0.1em 0 0.1em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
+a.TopNavi14Normal { color:Green; padding:0 0.1em 0 0.1em; font-weight:bold; } /* [rule 20210418°1423] */
+a.TopNavi14Parent { color:RoyalBlue; padding:0 0.1em 0 0.1em; font-weight:bold; font-size:1.1em; } /* rule 20210503°1323 */
+a.TopNavi14Self { color:Red; padding:0 0.1em 0 0.1em; font-weight:bold; font-style:italic; font-size:1.1em;  pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
 
-a.TopNavi12Normal { color:Green; padding:0 0.4em 0 0.4em; font-weight:bold; } /* [rule 20210418°1423] */
-a.TopNavi12Self { color:Green; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
-a.TopNavi12None { color:Gray; padding:0 0.4em 0 0.4em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
+td.TopNavi14Arrows { border:2px solid transparent; font-size:1.6em; transform:scale(2.1, 1); padding:0 1.9em 0 1.1em; font-weight:bold; white-space:nowrap; vertical-align:top; text-align:right; } /* rule 20210503°1321 */
+a.TopNavi14ArrowGray { color:LightGray; text-decoration:none; pointer-events:none; cursor:default; } /* rule 20210503°1324 */
+a.TopNavi14ArrowNormal { color:Green; text-decoration:none; border:2px solid transparent; margin:0 -0.2em 0 -0.2em; } /* rule 20210503°1322 */
 
-p.TopNavi13Arrows { float:right; width:133px; padding-right:0.7em; border:1px solid Transparent; margin-top:0.1em; font-size:1.4em; transform:scale(1.7, 1); font-weight:bold; } /* rule 20210503°1321 */
-p.TopNavi13Arrows a { text-decoration:none; } /* rule 20210503°1322 */
+div.TopNavi14Logo { float:right; top:2.1em; right:1.1em; border:2px solid transparent; position:absolute; top:3.7em; } /* transparent */ /* rule 20200314°0413 */
 
-p.TopTitle12Crumbs { color:#0000f0; font-size:1.20em; margin-bottom:0.2em; margin-top:0.2em; text-align:center; } /* rule 20080711°0523 */
-div.TopLogo12RightPlain { float:right; margin:-0.7em -0.7em 0 0; border:1px solid transparent; } /* rule 20200314°0413 */
+div.ChapterFace14Normal { margin:0 auto; max-width:790px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 
-h1 { text-align:center; color:Green; } /*  */ /* rule 20210503°1311 */
+h1 { text-align:center; color:Green; } /* clear:both; */ /* rule 20210503°1311 */
 
 p.Good12Bye      { font-family: ComicJensWeb, "Comic Sans MS", "Comic Sans", sans-serif; margin-top:2.1em; font-size:small; clear:both; color:ForestGreen; } /* rule 20080710°2314 */
 p.Footer13Referer    { font-size:small; border-top:1px solid; color:#808080; margin:1.7em 1.1em 1.6em 0; text-align:right; } /* rule 20080710°2312 */
 span.Footer13Copy    { margin-left:0.6em; white-space:nowrap; } /* rule 20141116°0512 */
 span.Footer13Url    { margin-left:0.6em; font-family: 'Arial Narrow', Arial, sans-serif; } /* rule 20200318°0613 */
-span.Footer13Url    { margin-top:-1.6em; margin-left:0.6em;  white-space:nowrap; } /* rule 20150211°0513 */
+span.Footer13Url    { margin-top:-1.6em; margin-left:0.6em; white-space:nowrap; } /* rule 20150211°0513 */
 span.Footer13PageId { margin:0 0 0 0.4em; font-size:x-small; font-style:italic; font-family: 'ComicJensWeb', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', sans-serif; white-space:nowrap; } /* 20210503°1321 */
 span.Footer13PageId:before { content:'page\00A0'; }
 span.Footer13PageId:after { content:''; }

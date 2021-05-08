@@ -1,4 +1,5 @@
-terminal = (function () {
+////terminal = (function () {                                          //// Original line
+Terminal = (function () {                                              //// Fixed line
    "use strict";
    var theFirstTerminalInstance = true;
 
@@ -88,7 +89,7 @@ terminal = (function () {
                }
                terminal_window.removeChild(inputField);
                clearInterval(cursorInterval);
-               if (typeof callback == 'function') {
+               if (typeof callback === 'function') {
                   callback(inputField.value);
                }
             }

@@ -9,7 +9,7 @@ let Terminal = (function () {
             terminal._cursor.style.visibility = 'visible';
          }
 
-         triggerCursor(inputField, terminal, blinkRate)
+         triggerCursor(inputField, terminal, blinkRate);
       }, blinkRate);
    };
 
@@ -31,16 +31,16 @@ let Terminal = (function () {
       terminal._cursor.style.display = 'inline';
 
       terminal.html.onclick = function () {
-         inputField.focus()
+         inputField.focus();
       };
 
       inputField.onkeydown = function (e) {
          if (e.key === "LeftArrow" || e.key === "UpArrow" || e.key === "RightArrow" || e.key === "DownArrow" || e.key === "Tab") {
-            e.preventDefault()
+            e.preventDefault();
          } else if (e.key !== "Enter") {
             setTimeout(function () {
-               terminal._inputLine.textContent = inputField.value
-            }, 1)
+               terminal._inputLine.textContent = inputField.value;
+            }, 1);
          }
       };
       inputField.onkeyup = function (e) {
@@ -50,7 +50,7 @@ let Terminal = (function () {
             inputField.value = '';
 
             terminal.print(terminal._preCursor + inputValue);
-            callback(inputValue)
+            callback(inputValue);
          }
       };
    }
@@ -58,7 +58,7 @@ let Terminal = (function () {
    return function (id) {
       this.html = document.createElement('div');
       this.html.className = 'Terminal';
-      if (typeof(id) === 'string') { this.html.id = id }
+      if (typeof(id) === 'string') { this.html.id = id; }
 
       this._innerWindow = document.createElement('div');
       this._output = document.createElement('p');
@@ -80,16 +80,16 @@ let Terminal = (function () {
       };
 
       this.input = function(callback) {
-         initInput(this, callback)
+         initInput(this, callback);
       };
 
       this.clear = function () {
-         this._output.innerHTML = ''
+         this._output.innerHTML = '';
       };
 
       this.setTextSize = function (size) {
          this._output.style.fontSize = size;
-         this._input.style.fontSize = size
+         this._input.style.fontSize = size;
       };
 
       this.setTextColor = function (col) {
@@ -103,24 +103,24 @@ let Terminal = (function () {
       };
 
       this.setWidth = function (width) {
-         this.html.style.width = width
+         this.html.style.width = width;
       };
 
       this.setHeight = function (height) {
-         this.html.style.height = height
+         this.html.style.height = height;
       };
 
       this.setPreCursor = function (precursor) {
-         this._preCursor = precursor
+         this._preCursor = precursor;
       };
 
       this.setCursorBlinkRate = function (blinkRate) {
-         this._cursorBlinkRate = blinkRate
+         this._cursorBlinkRate = blinkRate;
       };
 
       this.blinkingCursor = function (bool) {
          bool = bool.toString().toUpperCase();
-         this._shouldBlinkCursor = (bool === 'TRUE' || bool === '1' || bool === 'YES')
+         this._shouldBlinkCursor = (bool === 'TRUE' || bool === '1' || bool === 'YES');
       };
 
       this._input.appendChild(this._inputLinePre);
