@@ -28,7 +28,18 @@
 
   <h1 style="clear:both;">Demo Three</h1>
 
+  <p>
+               This is the Terminal.js genuine test page, running with the current Terminal.js.
+               This is testing backward-compatibility.
+               You can also see the genuine test page
+               running with Terminal.js 'v0.2 Final 2017' in the
+               <a href="./../forks/quebec.test.html">Quebec Demo</a>.
+  </p>
+
    <button onclick="t1.beep()">Play the beep!</button> <br> <br>
+
+   <div style="font-size:1.3em;" id="Div_For_Terminals">
+   </div>
 
    <script>
 
@@ -36,7 +47,11 @@
       var t1 = new Terminal();
       t1.setHeight("200px");
       t1.setWidth('600px');
-      document.body.appendChild(t1.html);
+
+      ////document.body.appendChild(t1.html);                          // Original line
+      var eTerms = document.getElementById('Div_For_Terminals');       // New [line 20210506°1631]
+      eTerms.appendChild(t1.html);                                     // New [line 20210506°1632]
+
       t1.print('Hello, world!');
       t1.input ( 'Whats your name?', function (input) {
          t1.print('Welcome, ' + input);
@@ -58,7 +73,8 @@
       t2.setWidth('650px');
       t2.setBackgroundColor('blue');
       t2.blinkingCursor(false);
-      document.body.appendChild(t2.html);
+      ////document.body.appendChild(t2.html);                          // Original line
+      eTerms.appendChild(t2.html);                                     // New [line 20210506°1632`02]
 
 
       // *** Box three ***
@@ -66,14 +82,15 @@
       t3.setHeight("180px");
       t3.setWidth('550px');
       t3.setBackgroundColor('green');
-      document.body.appendChild(t3.html);
+      ////document.body.appendChild(t3.html);                          // Original line
+      eTerms.appendChild(t3.html);                                     // New [line 20210506°1632`03]
       t3.password('Enter password:', function (password) {
          t3.print('Your password is: ' + password);
       });
       var paragraph = document.createElement("p");
       var t3bySelector = document.querySelector("#terminal_3");
       paragraph.innerHTML = t3bySelector && t3bySelector.id
-                           ? 'The terminal threed has ID: ' + t3bySelector.id
+                           ? 'The terminal three has ID: ' + t3bySelector.id
                             : 'Assigning an ID at initialization doesnt seem to work!'
                              ;
       document.body.appendChild(paragraph);
@@ -85,9 +102,17 @@
       t4.setWidth('550px');
       t4.setBackgroundColor('green');
       document.body.appendChild(t4.html);
+      ////document.body.appendChild(t4.html);                          // Original line
+      eTerms.appendChild(t4.html);                                     // New [line 20210506°1632`04]
       t4.confirm('Are you sure?', function (didConfirm) {
          t4.print(didConfirm ? 'OK' : 'Why not?');
       });
+
+
+      // Convenience [line 20210506°1641]
+      // Compatibility : Function window.scroll is not available for IE and Safari.
+      // Reference : https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 
    </script>
 

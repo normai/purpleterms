@@ -18,7 +18,7 @@ Slogan : Terminal.js is a JavaScript library to provide a terminal in the browse
 
 License : The MIT License
 
-Status : Under overhaul. The goal is, to lift it from a toy to a tool.
+Status : Under overhaul. The goal is, to lift the library from a toy to a tool.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
@@ -31,7 +31,7 @@ This are the **changes** compared to the
 
 - Adjust coding and documentation **style** to my personal taste
 
-- Build with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**
+- Build it with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**
 
 - Refactor **key codes** (inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12))
 
@@ -52,11 +52,9 @@ The project got a bit inflated with files for infrastructure. Don't let this
 <a name="usage"></a>
 ## Usage
 
-Include Terminal.js into your page header,
-either the minified version or the source version.
+Include `terminal.js` or `terminal.min.js` into your page header.
 The both operate equal, except for debugging.
-As a user, you prefer the minified version,
-which looks like this&nbsp;:
+As a user, you prefer the minified version, which looks like this&nbsp;:
 
 ```
    <head>
