@@ -10,6 +10,10 @@ Pages : &nbsp;
 Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
+##### commit 20210507°0951 — v0.2.9.5 Intermediate
+- Streamline Supply Suite pages
+- Restore 'Play the beep'
+
 ##### commit 20210506°1512 — v0.2.9.4 Intermediate
 - Add files for Kilo Demo
 
