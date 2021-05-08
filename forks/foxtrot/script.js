@@ -1,13 +1,13 @@
-﻿var t1 = new Terminal();
+var t1 = new Terminal();
 t1.setHeight("400px");
-t1.setWidth('1200px');
-document.body.appendChild(t1.html);                                    //// Origingal line --
-////var eTerm = document.getElementById('Div_For_Terminal');           //// New [seq 20210506°1631`xx] Hard to get going [issue 20210506°1633 'Set location']
-////eTerm.appendChild(t1.html);                                        ////
+t1.setWidth('700px');                                                  //// Original value 1200px
+////document.body.appendChild(t1.html);                                //// Origingal line --
+var eTerm = document.getElementById('Div_For_Terminal');               //// Position randomly [seq 20210506°1632`06]
+eTerm.appendChild(t1.html);                                            ////
 
 var song = document.createElement('audio');
 ////song.innerHTML = '<source src="MI.mp3" type="audio/mpeg">'         //// Original line (3.3 MB)
-song.innerHTML = '<source src="./20190209o1233.beep.mp3" type="audio/mpeg">'; //// Replacement (42.7 KB)
+song.innerHTML = '<source src="./../../docs/20190209o1233.beep.mp3" type="audio/mpeg">'; //// Replacement
 song.volume = 0.1;
 var myPlay = function() {
   song.load();
@@ -83,3 +83,5 @@ t1.sleep(3000, function(){
         }
     });
 });
+
+////};

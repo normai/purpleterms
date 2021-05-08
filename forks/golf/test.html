@@ -84,7 +84,10 @@
 
          var paragraph = document.createElement("p");
          var t3bySelector = document.querySelector("#terminal_3");
-         paragraph.innerHTML = t3bySelector && t3bySelector.id ? 'The 3rd terminal has id: ' + t3bySelector.id : 'Assigning an id at initialization doesnt semm to work!';
+         paragraph.innerHTML = t3bySelector && t3bySelector.id
+                              ? 'The 3rd terminal has id: ' + t3bySelector.id
+                               : 'Assigning an id at initialization doesnt semm to work!'
+                                ;
          document.body.appendChild(paragraph);
 
          var t4 = new Terminal('terminal_3');

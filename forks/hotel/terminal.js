@@ -33,9 +33,9 @@ var Terminal = (function () {
       //I know I may have bad form in here. I need to review and revise. I am using message as a carrier for additional data.
       if(typeof(message) === 'object'){
          if (PROMPT_TYPE === PROMPT_LOAD){
-               if(!message.width) message.width=20;
+               if(!message.width) message.width = 20;
                if(!message.text.length) message.text='Loading...';
-               terminalObj.printraw('<span id=\''+message.name+'\'>'+message.text + '<span>');
+               terminalObj.printraw('<span id=\'' + message.name + '\'>' + message.text + '<span>');
                var lastProgress = 0;
                var bar = document.getElementById(message.name);
                function processCheck(){
@@ -116,7 +116,8 @@ var Terminal = (function () {
    var TerminalConstructor = function (id) {
       if (!terminalBeep) {
          terminalBeep = document.createElement('audio');
-         var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.';
+         ////var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.';
+         var source = '<source src="./../../docs/20190209o1233.beep.'; ////
          terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">';
          terminalBeep.volume = 0.05;
       }

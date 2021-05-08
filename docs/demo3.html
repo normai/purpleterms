@@ -53,8 +53,16 @@
       t1.setHeight("200px");
       t1.setWidth('600px');
 
+      /*
+       * Changes 20210506°1631 'Positon randomly'
+       *
+       * The original demos placed the terminals just to the body bottom.
+       * This looks not so nice. Thus I routinly replaced it by inserting
+       * the terminal to a dedicated elelment. See sequences 20210506°1632.
+       */
+
       ////document.body.appendChild(t1.html);                          //// Original line
-      var eTerms = document.getElementById('Div_For_Terminals');       //// New [seq 20210506°1631]
+      var eTerms = document.getElementById('Div_For_Terminals');       //// Position randomly [seq 20210506°1632`02]
       eTerms.appendChild(t1.html);                                     ////
 
       t1.print('Hello, world!');
@@ -79,7 +87,7 @@
       t2.setBackgroundColor('blue');
       t2.blinkingCursor(false);
       ////document.body.appendChild(t2.html);                          // Original line
-      eTerms.appendChild(t2.html);                                     // New [line 20210506°1632`02]
+      eTerms.appendChild(t2.html);                                     // Position randomly [line 20210506°1632`03]
 
 
       // *** Box three ***
@@ -88,7 +96,7 @@
       t3.setWidth('550px');
       t3.setBackgroundColor('green');
       ////document.body.appendChild(t3.html);                          // Original line
-      eTerms.appendChild(t3.html);                                     // New [line 20210506°1632`03]
+      eTerms.appendChild(t3.html);                                     // Position randomly [line 20210506°1632`04]
       t3.password('Enter password:', function (password) {
          t3.print('Your password is: ' + password);
       });
@@ -108,7 +116,7 @@
       t4.setBackgroundColor('green');
       document.body.appendChild(t4.html);
       ////document.body.appendChild(t4.html);                          // Original line
-      eTerms.appendChild(t4.html);                                     // New [line 20210506°1632`04]
+      eTerms.appendChild(t4.html);                                     // Position randomly [line 20210506°1632`05]
       t4.confirm('Are you sure?', function (didConfirm) {
          t4.print(didConfirm ? 'OK' : 'Why not?');
       });

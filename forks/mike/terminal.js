@@ -93,7 +93,8 @@ var Terminal = (function () {
         if (!terminalBeep) {
             terminalBeep = document.createElement('audio');
             // TODO: fix the beep
-            var source = '<source src="/static/beep.';
+            ////var source = '<source src="/static/beep.';
+            var source = '<source src="./../../docs/20190209o1233.beep.'; ////
             terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">';
             terminalBeep.volume = 0.05;
         }

@@ -93,7 +93,8 @@ var Terminal = (function () {
         if (!terminalBeep) {
             terminalBeep = document.createElement('audio');
             // TODO: fix the beep
-            var source = '<source src="/static/beep.';
+            ////var source = '<source src="/static/beep.';
+            var source = '<source src="./../../docs/20190209o1233.beep.'; ////
             terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">';
             terminalBeep.volume = 0.05;
         }
@@ -108,9 +109,9 @@ var Terminal = (function () {
         this._innerWindow = document.createElement('div');
         this._output = document.createElement('p');
         this._prompt = document.createElement('span');
-        this._inputLine = document.createElement('span'); //the span element where the users input is put
+        this._inputLine = document.createElement('span'); // the span element where the users input is put
         this._cursor = document.createElement('span');
-        this._input = document.createElement('p'); //the full element administering the user input, including cursor
+        this._input = document.createElement('p'); // the full element administering the user input, including cursor
 
         this._shouldBlinkCursor = true;
 
@@ -201,8 +202,8 @@ var Terminal = (function () {
         this._input.style.margin = '0';
         this._output.style.margin = '0';
         this._cursor.style.background = 'white';
-        this._cursor.innerHTML = 'C'; //put something in the cursor..
-        this._cursor.style.display = 'none'; //then hide it
+        this._cursor.innerHTML = 'C'; // put something in the cursor..
+        this._cursor.style.display = 'none'; // then hide it
         this._input.style.display = 'none';
     };
 

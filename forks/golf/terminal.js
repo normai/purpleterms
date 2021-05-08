@@ -116,7 +116,8 @@ var Terminal = (function () {
    var TerminalConstructor = function (id) {
       if (!terminalBeep) {
          terminalBeep = document.createElement('audio');
-         var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.';
+         ////var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.';
+         var source = '<source src="./../../docs/20190209o1233.beep.'; ////
          terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">';
          terminalBeep.volume = 0.05;
       }
@@ -125,9 +126,9 @@ var Terminal = (function () {
       if (typeof(id) === 'string') { this.html.id = id; }
       this._innerWindow = document.createElement('div');
       this._output = document.createElement('p');
-      this._inputLine = document.createElement('span'); //the span element where the users input is put
+      this._inputLine = document.createElement('span'); // the span element where the users input is put
       this._cursor = document.createElement('span');
-      this._input = document.createElement('p'); //the full element administering the user input, including cursor
+      this._input = document.createElement('p'); // the full element administering the user input, including cursor
       this._shouldBlinkCursor = true;
       this.history = [];
       this.lasthistory = -1; //-1 by default. 0 is a valuable number.

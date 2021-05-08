@@ -40,10 +40,10 @@ class Terminal {
       this.PROMPT_PASSWORD = 2;
       this.PROMPT_CONFIRM = 3;
       //if (!terminalBeep) {
-         //terminalBeep = document.createElement('audio')
-         //var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.'
-         //terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">'
-         //terminalBeep.volume = 0.05
+      //   terminalBeep = document.createElement('audio')
+      //   var source = '<source src="http://www.erikosterberg.com/terminaljs/beep.'
+      //   terminalBeep.innerHTML = source + 'mp3" type="audio/mpeg">' + source + 'ogg" type="audio/ogg">'
+      //   terminalBeep.volume = 0.05
       //}
       this.shells = [];
       this.interpreters = [];
