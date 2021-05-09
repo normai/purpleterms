@@ -1,4 +1,0 @@
--cp src
--cp test
--js dist/terminal.js
-terminaljs.Terminal

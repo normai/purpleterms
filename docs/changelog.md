@@ -10,6 +10,10 @@ Pages : &nbsp;
 Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
+##### commit 2021xxxx°xxxx — v0.2.9.x
+- Replace excessive Supply Suite pages by paragraph in notes.md
+- ..
+
 ##### commit 20210507°0951 — v0.2.9.5 Intermediate
 - Streamline Supply Suite pages
 - Restore 'Play the beep'

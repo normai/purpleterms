@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.9.5
+ * Version : 0.2.9.5~
  * License : MIT License
  */
 
@@ -214,7 +214,7 @@ Terminal = ( function () {
 
             if ( bShouldDisplayInput ) {
 
-               // History feature [seq 20210503°0911 inserted after Mark]
+               // History [seq 20210503°0911 Inserted after Mark
 /*
                oTerm._history.push(inputValue);
                oTerm.lasthistory = oTerm._history.length;
@@ -248,8 +248,8 @@ Terminal = ( function () {
                }
             }
 
-/*
-            // History feature [seq 20210503°0912 after Mark]
+            /*
+            // History [seq 20210503°0912 after Mark]
             if ( PROMPT_TYPE === PROMPT_INPUT ) {
                if ( e.which === 38 && oTerm._historyLast !== - 1) {
                   inputField.value = oTerm._history[(oTerm._historyLast -= 1) > 0
@@ -269,7 +269,7 @@ Terminal = ( function () {
                   oTerm._inputLine.textContent = inputField.value;
                }
             }
-*/
+            */
 
          }
       };
@@ -297,11 +297,14 @@ Terminal = ( function () {
     */
    var TerminalConstructor = function (id) {
 
+      // Create audio element [seq 20170501°0841]
       if (! terminalBeep) {
          terminalBeep = document.createElement('audio');
 
          // Provide beep file [line 20190325°0753]
          // note : The exact mime-type of an MP3 file is a matter of discussion
+         // note : Remember the audio element creation in terminal.js v2.0 with
+         //         the interesting mp3/ogg alternative [note 20210507°1621]
          var sData = 'data:audio/mp3;base64,' + sBase64_Beep_Mp3;
          terminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
          terminalBeep.volume = 0.05;
@@ -1405,7 +1408,7 @@ Terminal = ( function () {
             + 'AAAAAAAAAAA='
              ;
 
-            return TerminalConstructor;
+   return TerminalConstructor;
 }());
 
 /* eof */

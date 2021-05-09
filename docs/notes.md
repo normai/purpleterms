@@ -8,17 +8,70 @@ Pages : &nbsp;
 # Notes
 
 Below : &nbsp;
-• [PR 'Backend via XHR'](#pull_request_backend_via_xhr) &nbsp;
+• [Fork list](#fork_list) &nbsp;
+• [PR 'XHR'](#pull_request_backend_via_xhr) &nbsp;
 • [PR 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
 • [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
 
-_This file makes room to store considerations around `terminal.js`.
-If any statement grows lengthy and generic,
-like article [About Retrieving Keystrokes](#retrieving_keystrokes),
-it should be outsourced._
+_This file is for miscellanesous notes and considerations._
 
-## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a><sup><sup><sub>[article 20210430°1711]</sub></sup></sup>
+
+## Fork List <a name="fork_list"></a> <sup><sup><sub><sup>Paragraph 20210507°1611</sup></sub></sup></sup>
+
+This is a list of forks, which have been active somehow (as of May 2021).
+ I compiled it to find out, which solutions colleagues deviced for the input
+ prompt feature, and what they have done otherwise with `terminal.js`.
+
+ - [bryant1410](https://github.com/bryant1410/terminaljs) —
+   [PR #5 Fix .. Markdown files](https://github.com/eosterberg/terminaljs/pull/5)
+   , merged on 2017-May-03. *Worked off.*
+
+ - [commanddotcom](https://github.com/commanddotcom/terminaljs) —
+   [PR #11 XHR](https://github.com/eosterberg/terminaljs/pull/11)
+   , not merged but integrated here.
+   • AJAX request
+   • Dollar input prompt
+   • Backspace utilization.
+   *Worked off.*
+
+ - [DarwinSenior](https://github.com/DarwinSenior/terminaljs) —
+   Last commit 2014-Nov-12
+   , [PR #1 Added password feature](https://github.com/eosterberg/terminaljs/pull/1)
+   , merged on 2014-Nov-14. *Worked off.*
+
+ - [MarkIvanowich](https://github.com/MarkIvanowich/terminaljs) —
+   [PR #2 Added some functions](https://github.com/eosterberg/terminaljs/pull/2)
+   , not merged but partially integrated here. • History • Pylon • Formatted output.
+   *Worked off.*
+
+ - [wblommaert](https://github.com/wblommaert/terminaljs") , forked from MarkIvanowich —
+   • History • Pylon • Formatted output.
+   *Worked off.*
+
+ - [mdrunner](https://github.com/mdrunner/terminaljs) —
+   • History • Other interesting code ..
+
+ - [MrWooJ](https://github.com/MrWooJ/terminaljs) —
+   • Colored output • Other features ..
+
+ - [oxalorg](https://github.com/oxalorg/terminaljs) —
+   • Input prompt
+
+ - [dvv](https://github.com/dvv/terminaljs) —
+   • ...
+
+ - [Samyoul](https://github.com/Samyoul/terminaljs) —
+   • Resizable box • Animated demo GIF • v3.0
+
+ - [gogoprog](https://github.com/gogoprog/terminaljs) , forked from Samyoul —
+   • Rewrite in [Haxe](https://haxe.org/)
+
+ - [ugurkodak](https://github.com/ugurkodak/terminaljs) —
+   • ...
+
+
+## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a><sup><sup><sub><sup>Paragraph 20210430°1711</sup></sub></sup></sup>
 
 Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
 by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
@@ -48,7 +101,7 @@ Is it already clear, what exactly Terminal.js should do, and what not?
 I will learn more about this questions, when attempting to switch my own
 use case from the custom module to Yevgen's interface function.
 
-## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a><sup><sup><sub>[article 20210430°1811]</sub></sup></sup>
+## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a><sup><sup><sub><sup>Paragraph 20210430°1811</sup></sub></sup></sup>
 
 Pull request
 [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
@@ -57,16 +110,14 @@ by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22 consists of one commit
 . It is a naming proposal to call Mark's function `this.printraw()`
 better suiting `this.printHTML()`.
 
-## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a><sup><sup><sub>[article 20210430°1821]</sub></sup></sup>
+## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a><sup><sup><sub><sup>Paragraph 20210430°1821</sup></sub></sup></sup>
 
 In pull request '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
 from 2015-Feb-25, [MarkIvanowich](https://github.com/MarkIvanowich)
 proposes multiple features.
 
 **Bottom line**. This are about 120 new code lines to consider.
-Here is an overview on what I found.
-
-The PR consists of three commits :
+ The PR consists of three commits :
 
  1. [Adding functions and loading bar](https://github.com/eosterberg/terminaljs/pull/2/commits/7b6d0f3d69c9980ab9d62594a6069a452e2c4270)
     — In this commit is the code. It adds
@@ -130,7 +181,7 @@ Details found in the commits :
 - New array **`this.history`** with appendage  — Repeating former input
   with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority.
 
-## Retrieving Keystrokes <a name="retrieving_keystrokes"></a><sup><sup><sub>[article 20210430°1601]</sub></sup></sup>
+## Retrieving Keystrokes <a name="retrieving_keystrokes"></a><sup><sup><sub><sup>Article 20210430°1601</sup></sub></sup></sup>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)

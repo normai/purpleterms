@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.5 &nbsp; <sup><sup>20210507°0951</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.5~ &nbsp; <sup><sup>20210507°0951~</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -18,7 +18,7 @@ Slogan : Terminal.js is a JavaScript library to provide a terminal in the browse
 
 License : The MIT License
 
-Status : Under overhaul. The goal is, to lift the library from a toy to a tool.
+Status : Under overhaul.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
