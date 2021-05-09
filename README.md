@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.6 &nbsp; <sup><sup>20210507°1731</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.7 &nbsp; <sup><sup>20210507°1733</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -40,7 +40,7 @@ This are the **changes** compared to the
 
 - Rename repository branch 'master' to '**main**'
 
-- Added the <a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/forks/suite.html">Forks Suite</a> for investigating solutions
+- Input prompt (by dynamically created CSS rules)
 
 I have stirred the code violently but kept it fully **backward-compatible**.
  Just replace your old by the new [`terminal.js`](./terminal.js)

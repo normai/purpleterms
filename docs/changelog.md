@@ -10,7 +10,7 @@ Pages : &nbsp;
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
-##### commit 20210507°1731 — v0.2.9.6
+##### commit 20210507°1733 — v0.2.9.7
 - Replace excessive forks pages by paragraph in notes.md
 - Dynamic CSS rules proof-of-concept
 
