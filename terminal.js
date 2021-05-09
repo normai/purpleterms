@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.9.5~
+ * Version : 0.2.9.6
  * License : MIT License
  */
 
@@ -62,6 +62,33 @@ Terminal = ( function () {
     * @type {boolean} —
     */
    var firstPrompt = true;
+
+   /**
+    * This function dynamically provides CSS rules
+    *  Provisory implementation, see todos.
+    *
+    * @id  20210507°1641
+    * @todo Either this must be called from a place where it is called only once
+    *        or it must shield itself from multiple execution. [todo 20210507°1711]
+    * @todo Breaks full-backward-compatibility, because prompt is unconditionally
+    *        served. Prompt must be choosen via the setter. [todo 20210507°1721]
+    * @return {undefined}
+    */
+   var _mountCssRules = function () {
+
+      var eStyle = document.createElement('style');
+      eStyle.type = 'text/css';
+
+      // Provide input prompt rule [ruleset 20190312°0451]
+      // Build "> " from  '\003e' = '>' and '\00a0' = NO-BREAK-SPACE
+      // But what in CSS must read "{ content:'\003e\00a0'; }", will print
+      //  garbage here, so I found "{ content:'>" + "\\00a0" + "'; }" work.
+      eStyle.innerHTML = "span.TerminalInput { }" + ' '
+                        + "span.TerminalInput:before { content:'>" + "\\00a0" + "'; }"
+                         ;
+
+      document.getElementsByTagName('head')[0].appendChild(eStyle);
+   };
 
    /**
     * ..
@@ -270,7 +297,6 @@ Terminal = ( function () {
                }
             }
             */
-
          }
       };
 
@@ -285,9 +311,9 @@ Terminal = ( function () {
    /**
     * ..
     * @id 20170501°0351
-    * @type {Element} —
+    * @type {Element|null} —
     */
-   var terminalBeep;
+   var terminalBeep = null;
 
    /**
     * This function provides the div with the terminal functionalities
@@ -310,6 +336,15 @@ Terminal = ( function () {
          terminalBeep.volume = 0.05;
       }
 
+      // Provide style(s) [line 20210507°1631]
+      // note : Here the function is called with each terminal created on the
+      //    page, which is not good. It shall be called exactly once per page
+      //    load. But first I want get it work at all. Then, be best option is
+      //    to put it somewhere, where it is called only once. The second best
+      //    option is, tht the function shields itsels from double mounting.
+      _mountCssRules();
+      
+      
       /**
        * ..
        *
@@ -342,7 +377,7 @@ Terminal = ( function () {
        * Counter into the history array (History feature after Mark)
        *  (-1 by default, 0 is a valuable number)
        *
-       * @id 20210503°0923
+       * @id line 20210503°0923
        * @type {number} —
        */
       this._historyLast = -1;

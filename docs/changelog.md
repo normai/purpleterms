@@ -7,12 +7,12 @@ Pages : &nbsp;
 
 # Changelog
 
-Here is the history of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
+History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 
-##### commit 2021xxxx°xxxx — v0.2.9.x
-- Replace excessive Supply Suite pages by paragraph in notes.md
-- ..
+##### commit 20210507°1731 — v0.2.9.6
+- Replace excessive forks pages by paragraph in notes.md
+- Dynamic CSS rules proof-of-concept
 
 ##### commit 20210507°0951 — v0.2.9.5 Intermediate
 - Streamline Supply Suite pages

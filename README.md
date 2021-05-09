@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.5~ &nbsp; <sup><sup>20210507°0951~</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.6 &nbsp; <sup><sup>20210507°1731</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -86,4 +86,4 @@ Now Terminal.js is ready to operate, and you can call it in the page's body.
 
 ---
 
-<sup><sub>[project ~20190208°1711 file 20190213°0211]</sub></sup>
+<sup><sub>*project 20190208°1711 file 20190213°0211*</sub></sup>

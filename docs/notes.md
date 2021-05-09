@@ -17,7 +17,7 @@ Below : &nbsp;
 _This file is for miscellanesous notes and considerations._
 
 
-## Fork List <a name="fork_list"></a> <sup><sup><sub><sup>Paragraph 20210507°1611</sup></sub></sup></sup>
+## Fork List <a name="fork_list"></a> <sup><sub><sup><sup>Paragraph 20210507°1611</sup></sup></sub></sup>
 
 This is a list of forks, which have been active somehow (as of May 2021).
  I compiled it to find out, which solutions colleagues deviced for the input
@@ -71,7 +71,7 @@ This is a list of forks, which have been active somehow (as of May 2021).
    • ...
 
 
-## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a><sup><sup><sub><sup>Paragraph 20210430°1711</sup></sub></sup></sup>
+## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a><sup><sub><sup><sup>Paragraph 20210430°1711</sup></sup></sub></sup>
 
 Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
 by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
@@ -101,7 +101,7 @@ Is it already clear, what exactly Terminal.js should do, and what not?
 I will learn more about this questions, when attempting to switch my own
 use case from the custom module to Yevgen's interface function.
 
-## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a><sup><sup><sub><sup>Paragraph 20210430°1811</sup></sub></sup></sup>
+## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a><sup><sub><sup><sup>Paragraph 20210430°1811</sup></sup></sub></sup>
 
 Pull request
 [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
@@ -110,7 +110,7 @@ by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22 consists of one commit
 . It is a naming proposal to call Mark's function `this.printraw()`
 better suiting `this.printHTML()`.
 
-## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a><sup><sup><sub><sup>Paragraph 20210430°1821</sup></sub></sup></sup>
+## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a><sup><sub><sup><sup>Paragraph 20210430°1821</sup></sup></sub></sup>
 
 In pull request '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
 from 2015-Feb-25, [MarkIvanowich](https://github.com/MarkIvanowich)
@@ -181,7 +181,7 @@ Details found in the commits :
 - New array **`this.history`** with appendage  — Repeating former input
   with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority.
 
-## Retrieving Keystrokes <a name="retrieving_keystrokes"></a><sup><sup><sub><sup>Article 20210430°1601</sup></sub></sup></sup>
+## Retrieving Keystrokes <a name="retrieving_keystrokes"></a><sup><sub><sup><sup>Article 20210430°1601</sup></sup></sub></sup>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)

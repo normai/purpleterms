@@ -6,19 +6,15 @@
    <script src="./terminal.js"></script>
    <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./docs/styles.css">
-
-      <style>
-
-         /**
-          * ruleset 20190312°0451
-          * See terminal.js seq 20190312°0441
-          * See todo 20190312°0445 'Do style definitions not in HTML page but inside terminal.js'
-          */
-         span.TerminalInput { }
-         span.TerminalInput:before { content:'\003e\00a0'; } /* "> " — \003e = '>', \00a0 = NO-BREAK SPACE */
-
-      </style>
-
+   <style>
+      /**
+       * ruleset 20190312°0451
+       * See terminal.js seq 20190312°0441
+       * See todo 20190312°0445 'Do style definitions not in HTML page but inside terminal.js'
+       */
+      /* span.TerminalInput { } */
+      /* span.TerminalInput:before { content:'\003e\00a0'; } */ /* "> " — \003e = '>', \00a0 = NO-BREAK SPACE */
+   </style>
 </head>
 
 <body class="BodyFace12Normal">
@@ -54,10 +50,10 @@
   </p>
 
   <p class="FontAttention">
-               Cases in development — Turbulences be expected.
+               Under development — Turbulences be expected.
   </p>
 
-   <div style="font-size:1.3em;" id="PutTerminalHere">
+   <div style="font-size:1.3em;" id="Put_Terminal_Here">
    </div>
 
   <script>
@@ -66,7 +62,7 @@
       var t1 = new Terminal();
       t1.setHeight("500px");
       t1.setBackgroundColor("Blue");
-      var elTarget = document.getElementById('PutTerminalHere');       //// Position randomly [seq 20210506°1632`01]
+      var elTarget = document.getElementById('Put_Terminal_Here');     //// Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
       t1.print('Welcome to the Terminal.js first-encounter demo!');
       var sInput = '';
