@@ -14,25 +14,23 @@ Below : &nbsp;
 # License
 
 <pre style="border:1px solid LightSlateGrey; border-radius:0.7em;">
-The MIT License (MIT)
+BSD 3-Clause License
+
 Copyright (c) 2014 Erik Österberg
+Copyright (c) 2021 Norbert C. Maier and contributors
+All rights reserved.
 </pre>
 
-For the full text see the plain file [`license.txt`](./../license.txt) please.
- _(Why is the license text split off? Because only from a very simple license file
- like that, GitHub will automatically recognize the license, not from a file with
- additional text, like here. See GitHub explanation
- '[Detecting a license](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository#detecting-a-license)'
-.)_
+For the full text see file [`license.txt`](./../license.txt) please.
 
-<span hidden>Above MIT License text is available e.g. on
-[www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
-<sup><sub><sup>[ref&nbsp;20120226°1234]</sup></sub></sup>.</span>
+ _Why is the license text split off? Because only from a plain file, GitHub
+ will recognize the license automatically, not from one with additional text, like here. See
+ '[Detecting a license](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository#detecting-a-license)'._
 
 <a name="credits"></a>
 # Credits
 
-The following people contribute to Terminal.js :
+The following authors contributed to Terminal.js :
 
 - [Dingcheng Yue](https://github.com/DarwinSenior)
 
@@ -51,22 +49,25 @@ The following people contribute to Terminal.js :
 <a name="remarks"></a>
 # Remarks
 
-Note. This fork is no more a contribution, rather a total rewrite, including
-significant extensions. Therefore, in some future release, I will likely take
-the liberty of replacing above copyright line by the following two-liner :
+Why have I changed the **license** from 'MIT License' to 'BSD 3-Clause License'?
+The BSD 3-Clause License is very similar to the MIT License,
+ but it states three common sense cases explicitly.
 
-```
-Copyright (C) 2014 Erik Österberg
-Copyright (C) 2021 Norbert C. Maier and contributors
-```
-
-Note. Also in some future release, I like to replace the MIT License by the
-[BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause).
-That is equally permissive, it just states three otherwise common sense
-cases explicitly. It has a tradition similiar to that of the MIT License.
-Other projects applying it are e.g.
+The license text was taken from the GitHub service
+[choosealicense.com](https://choosealicense.com/licenses/bsd-3-clause/).
+Other projects applying BSD 3-Clause License are e.g.
 [CMake](https://gitlab.kitware.com/cmake/cmake)
 or [Highlight.js](https://github.com/highlightjs/highlight.js).
+
+Why have I added my name in the **copyright** lines?
+This fork is no more a contribution, but a total rewrite, including
+significant extensions.
+
+About the '`and contributors`' phrase you find an instructive thread on
+[StackExchange](https://opensource.stackexchange.com/questions/5508/what-does-and-contributors-in-the-copyright-byline-imply).
+In the GitHub Terms you also find a paragraph about
+[contributions](https://docs.github.com/en/github/site-policy/github-terms-of-service#6-contributions-under-repository-license).
+
 
 ---
 

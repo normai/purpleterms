@@ -9,31 +9,32 @@ Pages : &nbsp;
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
-##### commit
-- Implement debug borders proof-of-concept
+##### log 20210508°1234 — v0.2.9.8
+- Debug borders proof-of-concept
+- License change
 
-##### commit 20210507°1733 — v0.2.9.7
+##### log 20210507°1733 — v0.2.9.7
 - Replace excessive forks pages by paragraph in notes.md
 - Dynamic CSS rules proof-of-concept
 
-##### commit 20210507°0951 — v0.2.9.5 Intermediate
+##### log 20210507°0951 — v0.2.9.5 Intermediate
 - Streamline Supply Suite pages
 - Restore 'Play the beep'
 
-##### commit 20210506°1512 — v0.2.9.4 Intermediate
+##### log 20210506°1512 — v0.2.9.4 Intermediate
 - Add files for Kilo Demo
 
-##### commit 20210506°0921 — v0.2.9.3 Intermediate
+##### log 20210506°0921 — v0.2.9.3 Intermediate
 - Refine Aloha Demo
 
 #### version 20210505°1752 — v0.2.9 'Set up Forks Suite'
 - Set up Forks Suite
 
-#### commit 20210503°1815 — v0.2.8.8 'Intermediate'
+#### log 20210503°1815 — v0.2.8.8 'Intermediate'
 - Outsource API Documentation from `readme.md` to dedicated page
 - issue 20210502°1121 'Input prepended by dollar'
 
-##### commit 20210503°1813 — v0.2.8.7 'Intermediate'
+##### log 20210503°1813 — v0.2.8.7 'Intermediate'
 - Add docs folder
 - Shift files around
 - Set up Aloha Demo

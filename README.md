@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.7~ &nbsp; <sup><sup>20210507°1733~</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.8 &nbsp; <sup><sup>20210508°1234</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -16,35 +16,37 @@ Below :
 
 Slogan : Terminal.js is a JavaScript library to provide a terminal in the browser.
 
-License : The MIT License
+License : BSD 3-Clause License
 
 Status : Under overhaul.
 
 _The present fork is by Norbert C. Maier 2019 - 2021._
 
-This are the **changes** compared to the
+Here are the **changes** since forking from
  [original project](https://github.com/eosterberg/terminaljs) :
 
-- Integrate **`beep.mp3`** as base64 variable.
-   Pro: No more external link for beeping.
-   Con: Breaks IE<10
-
-- Adjust coding and documentation **style** to my personal taste
+- Integrate **`beep.mp3`** as base64.
+   Pro: No external link. Con: Breaks IE<10
 
 - Build it with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**
 
-- Refactor **key codes** (inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12))
+- Adjust **style** to my personal taste
 
-- Integrate **XHR** feature (after pull request [#11](https://github.com/eosterberg/terminaljs/pull/11)).
+- Refactor **key codes** inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12)
+
+- Integrate **XHR** after pull request [#11](https://github.com/eosterberg/terminaljs/pull/11).
   Not yet tested.
+
+- Integrate **history** after pull request [#2](https://github.com/eosterberg/terminaljs/pull/2).
+  Not yet functional.
 
 - Rename repository branch 'master' to '**main**'
 
-- Input prompt (by dynamically created CSS rules)
+- Supplement **input prompt** by dynamic CSS rules
 
 I have stirred the code violently but kept it **backward-compatible**.
  Just replace your old by the new [`terminal.js`](./terminal.js)
- or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully).
+ or by [`terminal.min.js`](./terminal.min.js) — And bingo (hopefully).
 
 The project got a bit inflated with files. Don't let this distract you.
  All that matters and all you need, is one single file: `terminal.js`.
@@ -73,14 +75,20 @@ Now Terminal.js is ready to operate, and you can call it in the page's body.
 <a name="usage_simple"></a>
 ##### Simple Use Case
 
-*<span style="color:LightGray;">.. Todo: Fill in content. ..</span>*
+Until content here arrives, please inspect file
+[`docs/demo3.html`](./docs/demo3.html)
+
+*<span style="color:LightGray;">Todo: Fill in content. ..</span>*
 
 &nbsp;
 
 <a name="usage_advanced"></a>
 ##### Advanced Use Case
 
-*<span style="color:LightGray;">.. Todo: Fill in content. ..</span>*
+Until content here arrives, please inspect file
+[`aloha.html`](./aloha.html)
+
+*<span style="color:LightGray;">Todo: Fill in content. ..</span>*
 
 &nbsp;
 
