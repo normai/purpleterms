@@ -18,7 +18,7 @@ Below : &nbsp;
 _This file is for miscellanesous notes and considerations._
 
 
-## Fork List <a name="fork_list"></a> &nbsp; <sup><sub><sup><sup>Paragraph 20210507°1611</sup></sup></sub></sup>
+## Fork List <a name="fork_list"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210507°1611</sup></sup></sub></sup>_
 
 Here is a list of active forks (as of May 2021). The list helps to find
  out, which solutions the colleagues deviced for the input prompt feature
@@ -74,7 +74,7 @@ Here is a list of active forks (as of May 2021). The list helps to find
    Features: • ... *[Todo : Inspect.]*
 
 
-## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a> &nbsp; <sup><sub><sup><sup>Paragraph 20210430°1711</sup></sup></sub></sup>
+## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1711</sup></sup></sub></sup>_
 
 Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
 by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
@@ -104,7 +104,7 @@ Is it already clear, what exactly Terminal.js should do, and what not?
 I will learn more about this questions, when attempting to switch my own
 use case from the custom module to Yevgen's interface function.
 
-## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a> &nbsp; <sup><sub><sup><sup>Paragraph 20210430°1811</sup></sup></sub></sup>
+## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1811</sup></sup></sub></sup>_
 
 Pull request
 [Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
@@ -113,78 +113,48 @@ by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22 consists of one commit
 . It is a naming proposal to call Mark's function `this.printraw()`
 better suiting `this.printHTML()`.
 
-## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a> &nbsp; <sup><sub><sup><sup>Paragraph 20210430°1821</sup></sup></sub></sup>
+## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1821</sup></sup></sub></sup>_
 
-In pull request '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
-from 2015-Feb-25, [MarkIvanowich](https://github.com/MarkIvanowich)
-proposes multiple features.
+About working off pull request
+ '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
+ from 2015-Feb-25 by [MarkIvanowich](https://github.com/MarkIvanowich).
+ The PR contains four features :
 
-**Bottom line**. This are about 120 new code lines to consider.
- The PR consists of three commits :
+ - New feature **Input History** —
+  Status: Code **implemented** blindly on 2021-May-03. Does not (yet) work,
+  but also seems nothing to break. Needs debugging now to get going.
 
- 1. [Adding functions and loading bar](https://github.com/eosterberg/terminaljs/pull/2/commits/7b6d0f3d69c9980ab9d62594a6069a452e2c4270)
-    — In this commit is the code. It adds
-    • `.empty()`
-    • `.printraw(html)`
-    • `.load(name, message, width, progress, callback)`
-    • `.clearhistory()`
-    • `.history`
-    • `.lasthistory`
+ - New API function **`this.load()`** — Generates a pylon, means a process bar.
+  Status : Not implemented, looks too complex. See details below.
 
- 2. [Cleaned comments, empty lines](https://github.com/eosterberg/terminaljs/pull/2/commits/9843e480934086e5beb9bb2fd662480dd3065977)
-    — Some streamlining
+ - New API function **`this.printraw()`** —
+  Status : Not implemented. See concerns below.
 
- 3. [Update README.md](https://github.com/eosterberg/terminaljs/pull/2/commits/b129084e5a8be545b8aebfd5247fda48046c3444)
-    — Some documentation fixes
+ - New API function **`this.empty()`** — Prints a blank line.
+  Status : Not (yet) implemented. *Todo: Look again.*
 
-Status of four found features :
+Note on **`this.printraw()`**.
+ _Prints HTML formatted text on a new line. Links and images can be added
+ via respective HTML formatting._ I am afraid, it is a too advanced feature
+ for the present little project. We will not get away with the lines provided
+ in the pull request. The feature may introduce the need for voluminous
+ `if` conditions to prevent erroneous or even malicious HTML.
 
- - History — Code **implemented** blindly (2021-May-03). Does not yet work, but also
-   seems nothing to break. Needs debugging now to get going.
+Note on **`this.load()`**, generating a pylon.
+ The feature is cool, but I judge it too complex. It costs a new prompt type
+ `PROMPT_LOAD = 4`, an additional private function `processCheck()`
+ plus about 35 new lines, intertweened in existing conditions, complicating
+ maintenance significantly (see e.g.
+ [MarkIvanowich/&#8203;.../&#8203;terminal.js#&#8203;L33-&#8203;L59](https://github.com/MarkIvanowich/terminaljs/blob/master/terminal.js#L33-L59)
+ and [.../&#8203;test.html#&#8203;L66-&#8203;L80](https://github.com/MarkIvanowich/terminaljs/blob/master/test.html#L66-L80)).
 
- - Pylon (process bar) — **Not** implemented, seems too complex, see details below.
+ Oops. The pylon brings me to another suggestion. We have `this.print()`,
+ which prints a line. I'd like to add **`this.printChar()`**, which prints one
+ character at the end of the current line. This is a common console feature,
+ it would allow the user to animate a pylon herself via ordinary API calls.
 
- - `printRaw()` — **Not** implemented. See concerns below.
 
- - `empty()` — **Not** implemented. Cannot recognize the purpose, see details below.
-
-Details found in the commits :
-
-- New prompt type `PROMPT_LOAD = 4` — Needed for the pylon
-
-- New function `processCheck()` — Internally used (for pylon?)
-
-- New function **`this.empty()`** — Prints a blank line. I am not sure about the
-  difference to the already existing `.print()` giving that `&nbsp;` as parameter.
-
-- New function **`this.printraw(html)`**
-  — _Prints html-formatted text on a new line. Links and images can be added via respective HTML formatting._
-  This a really cool feature. But I am afraid, it is also a much more advanced
-  feature than the little project can lift at the moment. It will not be done
-  with the lines provided in the pull request. It may introduce the need for
-  voluminous `if` conditions to prevent erroneous or even malicious HTML.
-  Remember the project slogan '_A dead simple simple JavaScript library ..._'.
-
-- New function `this.load()` — Generate a **pylon** (progress bar).
-  Nice proposal, but I judge it too complex. It costs a new prompt type plus
-  about 35 new lines, intertweened in existing conditions, complicating
-  maintenance significantly (
-  [MarkIvanowich/\*/terminal.js#L33-L59](https://github.com/MarkIvanowich/terminaljs/blob/master/terminal.js#L33-L59)
-  and
-  [\*/test.html#L66-L80](https://github.com/MarkIvanowich/terminaljs/blob/master/test.html#L66-L80)
-   )
-  <br><br>
-  Oops. This brings me to another suggestion. So far we have `print()`,
-  printing a line. I'd like to add `printChar()`, printing one character at the
-  end of the current line, which is is a common console feature. That would
-  allow the user to animate a pylon herself via ordinary API calls.
-
-- New function `this.clearHistory()` — Wanted in connection with the history feature
-
-- New array **`this.history`** with appendage  — Repeating former input
-  with ArrowUp/&#8203;ArrowDown is a really cool feature. High priority.
-
-## Retrieving Keystrokes <a name="retrieving_keystrokes"></a> &nbsp; <sup><sub><sup><sup>Article 20210430°1601</sup></sup></sub></sup>
+## Retrieving Keystrokes <a name="retrieving_keystrokes"></a> &nbsp; _<sup><sub><sup><sup>Article 20210430°1601</sup></sup></sub></sup>_
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)

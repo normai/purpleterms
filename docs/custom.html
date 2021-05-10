@@ -3,7 +3,11 @@
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
    <title>Custom Demo</title>
+   <!-- ?php if (file_exists("./../../daftari/php/Go.php")) { include("./../../daftari/php/Go.php"); } ? -->
+   <?php if (file_exists("./custom.Go.php")) { include("./custom.Go.php"); } ?>
+   <script src="./custom.trektautils.js"></script>
    <script src="./../terminal.js"></script>
+   <script src="./custom.dafterm.js" data-note="Remember todo 20210429°0921 'Settle TerminalJs calling'"></script>
    <link rel="shortcut icon" href="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -11,7 +15,7 @@
 <body class="BodyFace12Normal">
 
  <table class="TopNavi14Box">
-  </tr>
+  <tr>
    <td class="TopNavi14Line">
                <a href="./../aloha.html" class="TopNavi14Parent">Aloha</a>  &nbsp; →  &nbsp;
                <a href="./simple.html" class="TopNavi14Normal">Simple</a>  &nbsp;
@@ -36,12 +40,33 @@
   </h1>
 
   <p style="margin-top:3.1em;">
-               This page shall demonstrate,
-               how Terminal.js can be integrated with custom files ...
+               This page is an example of integrating Terminal.js into
+               a <b>custom environment</b>. And it demonstrates <b>submitting
+               AJAX</b> requests, or XHR respectively, to a backend PHP module.
+               The AJAX/XHR feature here does not (yet) utilize the Terminal.js
+               built-in <code>connect()</code> function, but a custom module
+               <a href="./custom.dafterm.js">custom.dafterm.js</a>.
   </p>
 
-  <p style="color:LightSlateGray; margin:4.1em 0 7.1em 0;">
-               ... Todo: Fill page ...
+  <p id="i20160622o0422" style="margin:0px;">
+               The <code>beep</code> command should always work.
+               The <code>spin</code> command works <b>only with PHP available</b>,
+               e.g. in your local development environment.
+               The spinner has no <code>stop</code> command, it will stop after
+               erroneous input or page refresh.
+  </p>
+
+  <div style="border:2px solid SkyBlue; margin-top:1.1em;" id="Furniture_20190205o0211_Terminal">
+  </div>
+
+  <p id="id20210203o0412">
+               Currently exists no online version of this page with PHP available.
+  </p>
+
+  <p style="display:none;" id="id20210203o0414">
+               This page is taken from
+               <a href="https://downtown.trilo.de/svn/daftaridev/trunk/daftari/panels/tools.html">downtown.trilo.de/&#8203;svn/&#8203;daftaridev/&#8203;trunk/&#8203;daftari/&#8203;panels/&#8203;tools.html</a>,
+               then stripped down and adjusted to the present environment.
   </p>
 
   <p class="Good12Bye" style="display:none;">

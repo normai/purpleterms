@@ -12,6 +12,7 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 ##### log
 - Implement Simple Demo
+- Integrate Custom Demo
 - ..
 
 ##### log 20210508°1234 — v0.2.9.8

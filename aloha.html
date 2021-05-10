@@ -56,11 +56,11 @@
       t1.setBackgroundColor("Blue");
       var elTarget = document.getElementById('Put_Terminal_Here');     //// Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
-      t1.print('Welcome to the Terminal.js first-encounter demo!');
+      t1.print('Welcome to the Terminal.js Aloha Demo!');
       var sInput = '';
 
       // Action [seq 20210503°1513]
-      t1.input ( "What's your name please? (p = pause, q = quit)", function (sInpuz) {
+      t1.input ( "Please enter me any input? (p = pause, q = quit)", function (sInpuz) {
          holla(sInpuz);
       });
 
@@ -75,8 +75,8 @@
             t1.print('Finished. You need to refresh your page to start again.');
          }
          else {
-            t1.print('Aloha' + " '" + sWhat + "'!");
-            t1.input ( "Your name again? (p = pause, q = quit)", function (sInpuz) {
+            t1.print('Thank you for' + " '" + sWhat + "'!");
+            t1.input ( "Please more input .. (p = pause, q = quit)", function (sInpuz) {
                holla(sInpuz);
             });
          }
@@ -85,7 +85,7 @@
       // Continue after break [func 20210506°0911]
       function keepgoing() {
          t1.print('Have you had a good rest?');
-         t1.input ( "Ahem, your name again please? (p = pause, q = quit)", function (sInpuz) {
+         t1.input ( "Ahem, more input please .. (p = pause, q = quit)", function (sInpuz) {
             holla(sInpuz);
          });
       }
