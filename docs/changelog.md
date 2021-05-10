@@ -108,7 +108,7 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 #### version 20190326°0111 — v0.2.3 'Standalone script'
 - Integrate `beep.mp3` as a base64-encoded string into `terminal.js`
-- Cosmetics for an input prompt (see sequence 20190312°0441)
+- Cosmetics for an input prompt (sequence 20190312°0441)
 
 #### version 20190213°0333 — v0.2.1 'Self-sufficient folder'
 - Add `beep.mp3` and `beep.ogg` from www.erikosterberg.com/terminaljs/

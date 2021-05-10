@@ -56,8 +56,8 @@ Terminal = ( function () {
    /**
     *  This flag tells, whether debug borders are shown or not. Default = false
     *
-    * @todo : This were rather not an object property but a page global setting [todo 20210508°0931]
     * @id 20210508°0913
+    * @todo : This were rather not an object property but a page global setting [todo 20210508°0931]
     * @type {boolean} —
     */
    var _debugBorders = false;
@@ -99,17 +99,19 @@ Terminal = ( function () {
       eStyle.setAttributeNode(at);
 
       // Assemble debug frame(s) rule [ruleset 20190312°0451]
+      // This rule is used in seq 20190312°0441
+      // See todo 20190312°0445 'Do style definitions not in HTML page but inside terminal.js'
       // Build "> " from  '\003e' = '>' and '\00a0' = NO-BREAK-SPACE
       // But what in CSS must read "{ content:'\003e\00a0'; }", will print
       //  garbage here, so I found "{ content:'>" + "\\00a0" + "'; }" work.
-      var sRul = "span.TerminalInput { }"
-                + ' ' + "span.TerminalInput:before { content:'>" + "\\00a0" + "'; }"
+      var sRul = "span.Terminal_Input { }"
+                + ' ' + "span.Terminal_Input:before { content:'>" + "\\00a0" + "'; }"
                  ;
       if ( _debugBorders ) {
-         sRul  = "span.TerminalInput {"
+         sRul  = "span.Terminal_Input {"
                  + ' ' + 'border:1px solid Red; border-radius:0.3em; padding:0.2em;'
                   + ' ' + "}"
-                  + ' ' + "span.TerminalInput:before"
+                  + ' ' + "span.Terminal_Input:before"
                   + ' ' + "{"
                   + ' ' + "border:1px solid Orange; border-radius:0.2em;"
                    + ' ' + "padding:0.1em; content:'>" + "\\00a0"
@@ -439,16 +441,14 @@ Terminal = ( function () {
       this._input = document.createElement('p');
 
       /**
-       * The span element where the users input is put
+       * The input span element gets ruleset 20190312°0451 applied, which
+       *  is differrent according to the debug borders flag (var 20210508°0913)
        *
-       * @id 20170501°0451
        * @id 20190312°0441
-       * @note [ncm] The CSS is provisory set in tools.html (ruleset 20190312°0451)
-       * @note [ncm] See todo 20190312°0441 'Do style definitions inside terminal.js'
        * @type {Element} —
        */
       this._inputLine = document.createElement('span');
-      this._inputLine.className = 'TerminalInput';
+      this._inputLine.className = 'Terminal_Input';
 
       /**
        * ..
@@ -457,6 +457,7 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._output = document.createElement('p');
+      this._output.className = 'Terminal_Output';
 
       /**
        * Cosmetics for the input prompt
