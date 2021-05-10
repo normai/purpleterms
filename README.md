@@ -2,10 +2,11 @@
  • ReadMe &nbsp;
  • [API Doc](./docs/apidoc.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
+ • [Todos](./docs/todos.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.8 &nbsp; <sup><sup>20210508°1234</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.8~ &nbsp; <sup><sup>20210508°1234~</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)

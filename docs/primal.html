@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
-   <title>Terminal.js Test</title>
+   <title>Primal Demo</title>
    <script src="./../terminal.js"></script>
    <link rel="shortcut icon" href="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./styles.css" />
@@ -14,13 +14,15 @@
   <tr>
    <td class="TopNavi14Line">
                <a href="./../aloha.html" class="TopNavi14Parent">Aloha</a> &nbsp; → &nbsp;
-               <a href="./demo2.html" class="TopNavi14Normal">Demo Two</a> &nbsp;
-               <a href="./demo3.html" class="TopNavi14Self">Demo Three</a> &nbsp;
+               <a href="./easy.html" class="TopNavi14Normal">Easy</a> &nbsp;
+               <a href="./suite.html" class="TopNavi14Normal">Suite</a> &nbsp;
+               <a href="./custom.html" class="TopNavi14Normal">Custom</a> &nbsp;
+               <a href="./primal.html" class="TopNavi14Self">Primal</a>
    </td>
    <td class="TopNavi14Arrows">
-       <a href="./demo2.html" class="TopNavi14ArrowNormal">ᐊ</a>
-       <a href="./../aloha.html" class="TopNavi14ArrowNormal">ᐃ</a>
-       <a href="./../aloha.html" class="TopNavi14ArrowNormal">ᐅ</a>
+               <a href="./custom.html" class="TopNavi14ArrowNormal">ᐊ</a>
+               <a href="./../aloha.html" class="TopNavi14ArrowNormal">ᐃ</a>
+               <a href="./../aloha.html" class="TopNavi14ArrowNormal">ᐅ</a>
    </td>
   </tr>
  </table>
@@ -30,14 +32,17 @@
 
  <div class="ChapterFace14Normal" style="clear:both;">
 
-  <h1 style="clear:both;">Demo Three</h1>
+  <h1 style="clear:both;">
+               Primal Demo
+  </h1>
 
-  <p>
-               This is the Terminal.js genuine test page, running with the current Terminal.js.
-               This is testing backward-compatibility.
+  <p style="padding-right:3.1em;">
+               This page demonstrates, or tests respectively, <b>backward-compatibility</b>.
+               It is the primal <code>test.html</code> page (2017) with mostly unchanged code inside.
+               &nbsp;
+
+               <button onclick="t1.beep()">Play the beep!</button> <br> <br>
   </p>
-
-   <button onclick="t1.beep()">Play the beep!</button> <br> <br>
 
    <div style="font-size:1.3em;" id="Div_For_Terminals">
    </div>
@@ -46,7 +51,7 @@
 
       // *** Box one ***
       var t1 = new Terminal();
-      t1.setHeight("200px");
+      t1.setHeight("180px");
       t1.setWidth('600px');
 
       /*
@@ -71,16 +76,16 @@
             });
          });
 
-         // Test history feature after Mark [line 20210503°0941]
-         t1.input("Well " + input + ", Within this terminal, you can arrow up to see your previous input.");
+         //// // Test history feature after Mark [line 20210503°0941]
+         //// t1.input("Well " + input + ", Within this terminal, you can arrow up to see your previous input.");
       });
 
 
       // *** Box two ***
       var t2 = new Terminal();
-      t2.setHeight("250px");
+      t2.setHeight("180px");
       t2.setWidth('650px');
-      t2.setBackgroundColor('blue');
+      t2.setBackgroundColor('Blue');
       t2.blinkingCursor(false);
       ////document.body.appendChild(t2.html);                          // Original line
       eTerms.appendChild(t2.html);                                     // Position randomly [line 20210506°1632`03]
@@ -90,7 +95,7 @@
       var t3 = new Terminal('terminal_3');
       t3.setHeight("180px");
       t3.setWidth('550px');
-      t3.setBackgroundColor('green');
+      t3.setBackgroundColor('Green');
       ////document.body.appendChild(t3.html);                          // Original line
       eTerms.appendChild(t3.html);                                     // Position randomly [line 20210506°1632`04]
       t3.password('Enter password:', function (password) {
@@ -109,7 +114,7 @@
       var t4 = new Terminal('terminal_3');
       t4.setHeight("180px");
       t4.setWidth('550px');
-      t4.setBackgroundColor('green');
+      t4.setBackgroundColor('Teal');
       document.body.appendChild(t4.html);
       ////document.body.appendChild(t4.html);                          // Original line
       eTerms.appendChild(t4.html);                                     // Position randomly [line 20210506°1632`05]

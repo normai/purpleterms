@@ -2,12 +2,17 @@ Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API Doc](./apidoc.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
+ • [Todos](./todos.md) &nbsp;
  • ChangeLog &nbsp;
  • [License](./license.md)
 
 # Changelog
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
+
+##### log
+- Add demo pages
+- ..
 
 ##### log 20210508°1234 — v0.2.9.8
 - Debug borders proof-of-concept
