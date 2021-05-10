@@ -31,7 +31,7 @@ For the full text see file [`license.txt`](./../license.txt) please.
 <a name="credits"></a>
 # Credits
 
-The following authors contributed to Terminal.js :
+The following authors contributed to Termjnal, or Terminal.js respectively :
 
 - [Dingcheng Yue](https://github.com/DarwinSenior)
 
@@ -64,9 +64,9 @@ Why have I added my name in the **copyright** lines?
 This fork is no more a contribution, but a total rewrite, including
 significant extensions.
 
-About the '`and contributors`' phrase you find an instructive thread on
+About the '`and contributors`' ingredient exists an instructive thread on
 [StackExchange](https://opensource.stackexchange.com/questions/5508/what-does-and-contributors-in-the-copyright-byline-imply).
-In the GitHub Terms you also find a paragraph about
+Also the GitHub Terms contain a paragraph about
 [contributions](https://docs.github.com/en/github/site-policy/github-terms-of-service#6-contributions-under-repository-license).
 
 

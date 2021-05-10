@@ -88,18 +88,18 @@ Note. The PR silently carried two more features, the dollar prompt, which
  and the utilization of the Backspace key.
 
 Actually, such XHR feature is the reason why I got my hands dirty
-with Terminal.js in the first place. I have written a backend caller for myself,
-which is different in such a way, that it leaves `terminal.js` untouched.
-Instead, it consists of a custom JS file, not located here, but there. The file is
-[`daftari/jsi/dafterm.js`](https://downtown.trilo.de/svn/daftaridev/trunk/daftari/jsi/dafterm.js),
-it works only for localhost, not online so far.
+ with `terminal.js` in the first place. I have written a backend caller for
+ myself, which is different in such a way, that it leaves `terminal.js` untouched.
+ Instead, it consists of a custom JS file, not located here, but there. The file is
+ [`daftari/jsi/dafterm.js`](https://downtown.trilo.de/svn/daftaridev/trunk/daftari/jsi/dafterm.js),
+ it works only for localhost, not online so far.
 
 The XHR feature brings me to questions.
 XHR makes no sense on it`s own right, only together with a backend.
-Terminal.js is a library, not an application. Thus it must not know,
+Termjnal is a library, not an application. Thus it must not know,
 who will use it in which way. The questions are:
 Where exactly shall the line be drawn between library and user code?
-Is it already clear, what exactly Terminal.js should do, and what not?
+Is it already clear, what exactly Termjnal should do, and what not?
 
 I will learn more about this questions, when attempting to switch my own
 use case from the custom module to Yevgen's interface function.
@@ -215,7 +215,7 @@ Further reference(s) :
 
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
-Here is a little experiment with GitHub Markdown, entirely unrelated to Terminal.js.
+Here is a little experiment with GitHub Markdown, entirely unrelated to Termjnal.
 Can an image be right aligned? Findings: Not with `style="float:right;"`,
 but with the legacy `align="right"`.
 <sup><sub><sup>*Paragraph 20210506°0931*</sup></sub></sup>
@@ -251,7 +251,7 @@ issue 20210502°1121 'Input prepended by dollar'
       right off, since in I will like to flag output symmetrically to input.
  - Note : While investigating the other forks, I noticed the prompt being a
       recurring theme. About 5 forks have written prompts, including myself.
- - Note : I remember my own solution not touching Terminal.js, but operating
+ - Note : I remember my own solution not touching Termjnal, but operating
       purely on user code side. I should review (haven't done yet).
  - Resume : The solution with function 20210504°1011 setInputPrompt was quickly
       done without really analysing the complexity of the involved sequences.

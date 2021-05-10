@@ -8,13 +8,13 @@ Pages : &nbsp;
 
 # Changelog
 
-History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
+History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
-##### log
+##### log 20210509°1111 — v0.2.9.9
 - Implement Simple Demo
 - Integrate Custom Demo
-- PHP detector for custom.html [Feature 20210509°1011]
-- ..
+- Implement PHP detector [Feature 20210509°1011]
+- Project name change experiment
 
 ##### log 20210508°1234 — v0.2.9.8
 - Debug borders proof-of-concept

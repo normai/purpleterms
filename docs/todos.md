@@ -12,8 +12,8 @@ Pages : &nbsp;
 
 ##### Todo _20210509°0921_ 'Possibly use MIDI for the beep'
 
-Using MIDI for the beep would dramatically reduce file size. Only I'm
- afraid this is at the expense of compatibility. Find inspiration in project
+Using MIDI for the beep would dramatically reduce file size. Only I'm afraid
+ it will be at the expense of browser compatibility. Find inspiration in project
  [MidiProbe](https://www.trekta.biz/svn/midiprobedev/trunk/midiprobe/index.html).
 
 ---

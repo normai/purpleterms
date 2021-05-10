@@ -6,16 +6,17 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.8~ &nbsp; <sup><sup>20210508°1234~</sup></sup></sub></sup>
+# Termjnal &nbsp; <sup><sub>v0.2.9.9 &nbsp; <sup><sup>20210509°1111</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
+ • [Vision](#vision)
  • [Usage](#usage)
 
 <a name="synopsis"></a>
 ## Synopsis
 
-Slogan : Terminal.js is a JavaScript library to provide a terminal in the browser.
+Slogan : A JavaScript single-file to provide a terminal in the browser.
 
 License : BSD 3-Clause License
 
@@ -52,6 +53,24 @@ I have stirred the code violently but kept it **backward-compatible**.
 The project got a bit inflated with files. Don't let this distract you.
  All that matters and all you need, is one single file: `terminal.js`.
 
+<a name="vision"></a>
+## Vision
+
+A terminal seems a nice toy today. But still you see e.g. in Windows many
+ system tasks not being available from Explorer, only from console. Why?
+ Because computers do communicate in terms of commands. Even quantum computers. 
+
+The word **console** I find an even more concise designation for a terminal,
+ because the word carries the term 'solid' in it. A console represents the
+ system. A console must be reliable under all circumstances. If it wobbles,
+ the system breaks.
+
+Of course, from such solid state, Termjnal is far away.
+But this is the direction to look.
+
+Last not least, imagine speach recognition applied, and suddenly further
+ interesting aspects appear.
+
 <a name="usage"></a>
 ## Usage
 
@@ -71,7 +90,7 @@ As a developer, you prefer the source version :
       <script src="terminaljs/terminal.js"></script>
 ```
 
-Now Terminal.js is ready to operate, and you can call it in the page's body.
+Now Termjnal is ready to operate, and you can call it in the page's body.
 
 <a name="usage_simple"></a>
 ##### Simple Use Case

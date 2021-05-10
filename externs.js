@@ -7,7 +7,7 @@
  */
 
 /**
- *  @fileoverview Public API of terminal.js
+ *  @fileoverview Public API of Termjnal
  *  @externs
  */
 
