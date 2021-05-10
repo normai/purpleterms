@@ -140,6 +140,17 @@ Terminal.print();
  */
 Terminal.setBackgroundColor();
 
+
+// GoCloCom warning "Property setDebugBorders never defined on global this" [quest 20210508°0951]
+/**
+ *  Set debug borders flag
+ *
+ * @id 20210508°0911`02
+ * @param {boolean} bStatus —
+ * @return {undefined} —
+ */
+//this.setDebugBorders();
+
 /**
  * ..
  *

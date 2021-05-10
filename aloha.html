@@ -6,7 +6,7 @@
    <script src="./terminal.js"></script>
    <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./docs/styles.css">
-   <style>
+   <!-- style>
       /**
        * ruleset 20190312°0451
        * See terminal.js seq 20190312°0441
@@ -14,7 +14,7 @@
        */
       /* span.TerminalInput { } */
       /* span.TerminalInput:before { content:'\003e\00a0'; } */ /* "> " — \003e = '>', \00a0 = NO-BREAK SPACE */
-   </style>
+   </style -->
 </head>
 
 <body class="BodyFace12Normal">
@@ -74,12 +74,12 @@
 
       // Reaction [func 20210503°1531]
       function holla(sWhat) {
-         if (sWhat.toLowerCase() == 'p' ) {
+         if (sWhat.toLowerCase() === 'p' ) {
             t1.input ( 'Take a breath. Continue with any input.', function (sInpuz) {
                keepgoing();
             });
          }
-         else if (sWhat.toLowerCase() == 'q' ) {
+         else if (sWhat.toLowerCase() === 'q' ) {
             t1.print('Finished. You need to refresh your page to start again.');
          }
          else {
@@ -98,7 +98,27 @@
          });
       }
 
+      // Process checkbox [func 20210508°0941]
+      function setDebugBorders() {
+         var el = document.querySelector('#debug_borders');
+         var b = el.checked;
+         // alert("Holla " + b);
+         t1.setDebugBorders(b);
+      }
+
    </script>
+
+   <div style="margin-top:1.1em; padding-left:9.1em; text-indent:-9.1em; line-height:1.1em;">
+      <input type="checkbox" id="debug_borders" name="debug_borders"
+               onclick="setDebugBorders();">
+      <label for="scales">
+         Show debug borders.
+         <span class="FontSmall">
+            Borders around specific elements, e.g.
+            orange = input prompt, red = input span.
+         </span>
+      </label>
+   </div>
 
   <p>
                What are features missing most? • Functional backspace.

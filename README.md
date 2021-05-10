@@ -5,7 +5,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Terminal.js &nbsp; <sup><sub>v0.2.9.7 &nbsp; <sup><sup>20210507°1733</sup></sup></sub></sup>
+# Terminal.js &nbsp; <sup><sub>v0.2.9.7~ &nbsp; <sup><sup>20210507°1733~</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -42,12 +42,12 @@ This are the **changes** compared to the
 
 - Input prompt (by dynamically created CSS rules)
 
-I have stirred the code violently but kept it fully **backward-compatible**.
+I have stirred the code violently but kept it **backward-compatible**.
  Just replace your old by the new [`terminal.js`](./terminal.js)
  or by [`terminal.min.js`](./terminal.min.js) — Bingo (hopefully).
 
-The project got a bit inflated with files for infrastructure. Don't let this
- distract you. All that matters and all you need, is one single file: **`terminal.js`**!
+The project got a bit inflated with files. Don't let this distract you.
+ All that matters and all you need, is one single file: `terminal.js`.
 
 <a name="usage"></a>
 ## Usage

@@ -9,6 +9,8 @@ Pages : &nbsp;
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
+##### commit
+- Implement debug borders proof-of-concept
 
 ##### commit 20210507°1733 — v0.2.9.7
 - Replace excessive forks pages by paragraph in notes.md

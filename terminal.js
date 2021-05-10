@@ -2,7 +2,7 @@
  * terminal.js v2.0 | (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs
  *
  * Modified : 2019 - 2021 by Norbert C. Maier https://github.com/normai/terminaljs/
- * Version : 0.2.9.7
+ * Version : 0.2.9.7~
  * License : MIT License
  */
 
@@ -56,6 +56,15 @@ Terminal = ( function () {
    var bTrue = true;
 
    /**
+    *  This flag tells, whether debug borders are shown or not. Default = false
+    *
+    * @todo : This were rather not an object property but a page global setting [todo 20210508°0931]
+    * @id 20210508°0913
+    * @type {boolean} —
+    */
+   var _debugBorders = false;
+
+   /**
     * ..
     *
     * @id 20170501°0241
@@ -70,22 +79,46 @@ Terminal = ( function () {
     * @id  20210507°1641
     * @todo Either this must be called from a place where it is called only once
     *        or it must shield itself from multiple execution. [todo 20210507°1711]
-    * @todo Breaks full-backward-compatibility, because prompt is unconditionally
-    *        served. Prompt must be choosen via the setter. [todo 20210507°1721]
+    * @todo Disturbs backward-compatibility by unconditionally serving the
+    *        prompt. Choose prompt via the setter. [todo 20210507°1721]
     * @return {undefined}
     */
    var _mountCssRules = function () {
 
+      // Delete if exists [seq 20210508°0923]
+      var el = document.getElementById('y14r7bq3');
+      if (el) {
+         el.remove();
+      }
+
+      // Create style element
       var eStyle = document.createElement('style');
       eStyle.type = 'text/css';
 
-      // Provide input prompt rule [ruleset 20190312°0451]
+      // Provide ID [seq 20210508°0921]
+      var at = document.createAttribute('id');
+      at.value = 'y14r7bq3';
+      eStyle.setAttributeNode(at);
+
+      // Assemble debug frame(s) rule [ruleset 20190312°0451]
       // Build "> " from  '\003e' = '>' and '\00a0' = NO-BREAK-SPACE
       // But what in CSS must read "{ content:'\003e\00a0'; }", will print
       //  garbage here, so I found "{ content:'>" + "\\00a0" + "'; }" work.
-      eStyle.innerHTML = "span.TerminalInput { }" + ' '
-                        + "span.TerminalInput:before { content:'>" + "\\00a0" + "'; }"
-                         ;
+      var sRul = "span.TerminalInput { }"
+                + ' ' + "span.TerminalInput:before { content:'>" + "\\00a0" + "'; }"
+                 ;
+      if ( _debugBorders ) {
+         sRul  = "span.TerminalInput {"
+                 + ' ' + 'border:1px solid Red; border-radius:0.3em; padding:0.2em;'
+                  + ' ' + "}"
+                  + ' ' + "span.TerminalInput:before"
+                  + ' ' + "{"
+                  + ' ' + "border:1px solid Orange; border-radius:0.2em;"
+                   + ' ' + "padding:0.1em; content:'>" + "\\00a0"
+                    + "'; }"
+                     ;
+      }
+      eStyle.innerHTML = sRul;
 
       document.getElementsByTagName('head')[0].appendChild(eStyle);
    };
@@ -138,7 +171,6 @@ Terminal = ( function () {
 
       ////oTerm._inputLine.textContent = '';                           // Original line
       oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr] See issue 20210502°1121 'Input prepended by dollar'
-      ////oTerm._inputLine.textContent = '';                               // Restored original line [fix 20210504°1031]
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
       oTerm._input.style.display = 'block';
@@ -554,6 +586,18 @@ Terminal = ( function () {
        */
       this.setBackgroundColor = function (col) {
          this.html.style.background = col;
+      };
+
+      /**
+       *  Set debug borders flag
+       *
+       * @id 20210508°0911
+       * @param {boolean} bStatus —
+       * @return {undefined} —
+       */
+      this.setDebugBorders = function (bStatus) {
+         _debugBorders = bStatus;
+         _mountCssRules();
       };
 
       /**

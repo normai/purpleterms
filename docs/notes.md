@@ -47,7 +47,7 @@ Here is a list of active forks (as of May 2021). The list helps to find
    , not merged but partially integrated here. Features: • History • Pylon • Formatted output.
    *Worked off.*
 
- - [wblommaert](https://github.com/wblommaert/terminaljs"), forked from MarkIvanowich —
+ - [wblommaert](https://github.com/wblommaert/terminaljs") —
    Features: • History • Pylon • Formatted output.
    *Worked off.*
 
@@ -66,7 +66,7 @@ Here is a list of active forks (as of May 2021). The list helps to find
  - [Samyoul](https://github.com/Samyoul/terminaljs) —
    Features: • Resizable box • Animated demo GIF • v3.0
 
- - [gogoprog](https://github.com/gogoprog/terminaljs), forked from Samyoul —
+ - [gogoprog](https://github.com/gogoprog/terminaljs) —
    Features: • Project rewrite in [Haxe](https://haxe.org/)
 
  - [ugurkodak](https://github.com/ugurkodak/terminaljs) —

@@ -73,6 +73,11 @@ Waits for the number of milliseconds given, then executes the callback.
 
 Accepts CSS-compliant color value
 
+    .setDebugBorders(boolean)
+
+If this is set, specific elements (input prompt) will be shown with colored
+borders to better see the behaviour of the text components. Default = false.
+
     .setHeight()
 
 Accepts CSS-compliant dimension value
