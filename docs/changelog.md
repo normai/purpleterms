@@ -11,7 +11,7 @@ Pages : &nbsp;
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Terminal.js.
 
 ##### log
-- Add demo pages
+- Implement Simple Demo
 - ..
 
 ##### log 20210508°1234 — v0.2.9.8

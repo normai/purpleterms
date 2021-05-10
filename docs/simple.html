@@ -31,22 +31,78 @@
 
  <div class="ChapterFace14Normal">
 
-  <h1>
+   <h1>
                Simple Demo
-  </h1>
+   </h1>
 
-  <p style="margin-top:3.1em;">
-               This page shall demonstrate the most simple Terminal.js use case,
-               using the terminal only for output ...
-  </p>
+   <p style="padding-right:3.1em;">
+               This page shall demonstrate the most simple Terminal.js use case
+               — Using the terminal for <b>output only</b>.
+   </p>
 
-  <p style="color:LightSlateGray; margin:4.1em 0 7.1em 0;">
-               ... Todo: Fill page ...
-  </p>
+   <div style="font-size:1.3em;" id="Put_Terminal_Here">
+   </div>
 
-  <p class="Good12Bye" style="display:none;">
+   <script>
+
+      // (1) Get a Termial object
+      var t1 = new Terminal();
+
+      // (2) Apply some properties
+      t1.setHeight("400px");
+
+      // (3) Find the place to insert the terminal box
+      var elTarget = document.getElementById('Put_Terminal_Here');
+      elTarget.appendChild(t1.html);
+
+      // (4) Start using the box — Just outputting some messages is the easiest
+      t1.print('Welcome to the Terminal.js Simple Demo!');
+
+      // (5) Do it again and again
+      t1.print('This is printing messages.');
+      t1.print('Here is already the third message.');
+      t1.print('All lines appear in one single swoop — How boring!');
+
+      // (6) Get a bit sophisticated
+      // See here asynchronous calls. You will need such later.
+      setTimeout(function () {
+         t1.print('Ha! This line come late.');
+      }, 2000);
+      setTimeout(function () {
+         t1.print('This one even later.');
+      }, 4000);
+      setTimeout(function () {
+         t1.print('And this — Will it be the last?');
+      }, 6000);
+
+      // (7) Get even more sophisticated
+      // Why does '7777' fire already after 1.7 seconds instead of 7.7?
+      // Because time is running from the very top of the program!
+      // Until here, all calls are executed in one single swoop.
+      endless(Math.round(7777));
+
+      // (8) Never end outpudding
+      // For novices, a funny medidation on recursive asynchronous programming
+      function endless(nMs) {
+         setTimeout(function () {
+            t1.print('Here is a line after ' + nMs + ' milliseconds');
+            nMs = Math.random() * 11111;
+            nMs = Math.round(nMs);
+            endless(nMs);
+         }, nMs);
+      }
+
+   </script>
+
+   <p>
+               Sorrily, this demo also demonstrates one currently haunting issue,
+               that is to say, if the output goes below the box bottom,
+               the box misses to scroll automatically.
+   </p>
+
+   <p class="Good12Bye">
                Bye.
-  </p>
+   </p>
 
  </div>
 
