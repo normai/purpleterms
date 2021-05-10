@@ -3,7 +3,6 @@
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
    <title>Custom Demo</title>
-   <!-- ?php if (file_exists("./../../daftari/php/Go.php")) { include("./../../daftari/php/Go.php"); } ? -->
    <?php if (file_exists("./custom.Go.php")) { include("./custom.Go.php"); } ?>
    <script src="./custom.trektautils.js"></script>
    <script src="./../terminal.js"></script>
@@ -50,7 +49,8 @@
 
   <p id="i20160622o0422" style="margin:0px;">
                The <code>beep</code> command should always work.
-               The <code>spin</code> command works <b>only with PHP available</b>,
+               The <code>spin</code> command works <b>only with PHP available</b>.
+               PHP must be set to recognize PHP code inside HTML,
                e.g. in your local development environment.
                The spinner has no <code>stop</code> command, it will stop after
                erroneous input or page refresh.
@@ -67,6 +67,20 @@
                This page is taken from
                <a href="https://downtown.trilo.de/svn/daftaridev/trunk/daftari/panels/tools.html">downtown.trilo.de/&#8203;svn/&#8203;daftaridev/&#8203;trunk/&#8203;daftari/&#8203;panels/&#8203;tools.html</a>,
                then stripped down and adjusted to the present environment.
+  </p>
+
+  <p style="display:table-cell; min-width:7.1em;" id="Is_PHP_Available">
+      &nbsp;
+      <?php
+         // Canary element [line 20210509°1021]
+         // See custom.dafterm.js seq 20210509°1041 'Determine PHP availability'
+         // ASCII : 0x3c = '<', 0x3e = '>', 0x48 = 'H', 0x50 = 'P'
+         echo ( chr(0x3c) . 'span' . chr(0x3e)
+               . chr(0x50) . chr(0x48) . chr(0x50) . ' is available'
+                . chr(0x3c) . '/span' . chr(0x3e)
+                 );
+      ?>
+      &nbsp;
   </p>
 
   <p class="Good12Bye" style="display:none;">

@@ -27,11 +27,15 @@ h1 { text-align:center; color:Green; } /* clear:both; */ /* rule 20210503°1311 
 p.Good12Bye      { font-family: ComicJensWeb, "Comic Sans MS", "Comic Sans", sans-serif; margin-top:2.1em; font-size:small; clear:both; color:ForestGreen; } /* rule 20080710°2314 */
 p.Footer13Referer    { font-size:small; border-top:1px solid; color:#808080; margin:1.7em 1.1em 1.6em 0; text-align:right; } /* rule 20080710°2312 */
 span.Footer13Copy    { margin-left:0.6em; white-space:nowrap; } /* rule 20141116°0512 */
-span.Footer13Url    { margin-left:0.6em; font-family: 'Arial Narrow', Arial, sans-serif; } /* rule 20200318°0613 */
-span.Footer13Url    { margin-top:-1.6em; margin-left:0.6em; white-space:nowrap; } /* rule 20150211°0513 */
+span.Footer13License span:nth-child(3) { margin:0 0.4em 0 0.4em; white-space:nowrap; } /* rule 20200318°0615 */
+span.Footer13License a { color:#505050; }
+span.Footer13License:before { content:''; }
+span.Footer13License:after { content:''; }
 span.Footer13PageId { margin:0 0 0 0.4em; font-size:x-small; font-style:italic; font-family: 'ComicJensWeb', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', sans-serif; white-space:nowrap; } /* 20210503°1321 */
 span.Footer13PageId:before { content:'page\00A0'; }
 span.Footer13PageId:after { content:''; }
+span.Footer13Url    { margin-left:0.6em; font-family: 'Arial Narrow', Arial, sans-serif; } /* rule 20200318°0613 */
+span.Footer13Url    { margin-top:-1.6em; margin-left:0.6em; white-space:nowrap; } /* rule 20150211°0513 */
 
 code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
 .FontAttention { font-family: Monospace, Monospace; font-size:1.04em; color:Crimson; font-size:1.3em; } /* [rule 20100826°210102] */
