@@ -40,18 +40,19 @@
 
   <p style="margin-top:3.1em;">
                This page is an example of integrating Termjnal into
-               a <b>custom environment</b>. And it demonstrates <b>submitting
-               AJAX</b> requests, or XHR respectively, to a backend PHP module.
-               The AJAX/XHR feature here does not (yet) utilize the Termjnal
-               built-in <code>connect()</code> function, but a custom module
-               <a href="./custom.dafterm.js">custom.dafterm.js</a>.
+               a <b>custom environment</b>. And it demonstrates <b>AJAX</b>
+               communicaton, or XHR respectively, with a PHP backend module.
+               The present AJAX/XHR feature does not (yet) utilize the Termjnal
+               built-in <code>connect()</code> function, but instead an external
+               custom module <a href="./custom.dafterm.js">custom.dafterm.js</a>.
   </p>
 
   <p id="i20160622o0422" style="margin:0px;">
-               The <code>beep</code> command should always work.
-               The <code>spin</code> command works <b>only with PHP available</b>.
+               The box knows two commands.
+               <code>beep</code> should always work.
+               <code>spin</code> works only with <b>PHP</b> available.
                PHP must be set to recognize PHP code inside HTML,
-               e.g. in your local development environment.
+               e.g. like in your local development environment.
                The spinner has no <code>stop</code> command, it will stop after
                erroneous input or page refresh.
   </p>

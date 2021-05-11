@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.2.9.9 — Provides a terminal in the browser
+ * Termjnal v0.2.9.9~ — Provides a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/

@@ -1,5 +1,5 @@
 ﻿/*!
- * This module operates the terminal
+ * This module operates Termjnal
  *
  * file : 20190205°0111 daftari/jsi/dafterm.js
  * license : BSD 3-Clause License //// (formerly GNU AGPL v3)
@@ -142,7 +142,7 @@ Daf.Term.execute = function()
       el.style.backgroundColor = 'Tomato';
    }
 
-   // Create terminal [seq 20190205°0133] after terminaljs/test.html
+   // Create a terminal [seq 20190205°0133] after terminaljs/test.html
    Daf.Term.t21 = new Terminal();
    Daf.Term.t21.setHeight("320px");                                    //// 250px
    Daf.Term.t21.setWidth('650px');
@@ -152,7 +152,7 @@ Daf.Term.execute = function()
    eDiv.appendChild(Daf.Term.t21.html);
 
    // Launch [seq 20190205°0135]
-   Daf.Term.t21.print('Welcome to the terminal.');
+   Daf.Term.t21.print('Welcome on Termjnal.');
    Daf.Term.t21.print('Available commands: beep, spin');
    Daf.Term.t21.input('', Daf.Term.inputz);
 };
