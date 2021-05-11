@@ -11,7 +11,9 @@ Pages : &nbsp;
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
 ##### log
--
+- Complete debug borders
+- Fix input prompt
+- ..
 
 ##### log 20210509°1111 — v0.2.9.9
 - Implement Simple Demo

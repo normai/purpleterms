@@ -46,9 +46,12 @@ Here are the **changes** since forking from
 
 - Supplement **input prompt** by dynamic CSS rules
 
-I have stirred the code violently but kept it **backward-compatible**.
+I have stirred the code violently but maintained **backward-compatible**.
  Just replace your old by the new [`terminal.js`](./terminal.js)
  or by [`terminal.min.js`](./terminal.min.js) — And bingo (hopefully).
+
+Incompatibility : The prompt setters are not yet implemented, you are forced
+ to live with the default prompts. This should not affect functionality.
 
 The project got a bit inflated with files. Don't let this distract you.
  All that matters and all you need, is one single file: `terminal.js`.
@@ -60,17 +63,17 @@ A terminal seems a toy today. But still e.g. in Windows many system
  tasks are not available from Explorer, only from console. Why?
  Because computers natively do communicate in terms of commands.
 
-The word **console** I find an even more concise designation than 'terminal',
- because it carries the term 'solid' in it. A console represents the
- system, it must be reliable under all circumstances. If it wobbles,
- the system breaks.
+The word **console** I find an even more concise designation for such
+ box, than terminal, because it carries the term 'solid' in it. A console
+ represents the system, it must be reliable under all circumstances. If it
+ wobbles, the system is unlashed.
 
 Of course, Termjnal may never reach such solid state. Nevertheless shall
  this be the direction to look. And as for guideline keywords, the top one
  shall stay '*dead simple*' from Terminal.js original slogan.
 
-Last not least, imagine speach recognition applied, and suddenly further
- interesting aspects show up.
+Last not least, imagine speach recognition applied, and out of nothing
+ further interesting aspects show up.
 
 <a name="usage"></a>
 ## Usage

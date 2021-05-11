@@ -19,7 +19,11 @@ Below : &nbsp;
 <a name="api_initialization"></a>
 ## Initialization
 
-    var myTerminal = new Terminal(id)
+If the constructor can be called without or with an ID. If you calle it without,
+ then an automatic ID is generated, otherwise yours is taken.
+ generated. If you provide one, that is taken
+- var myTerminal = new Terminal()
+- var myTerminal = new Terminal(id)
 
 <a name="api_methods"></a>
 ## Methods

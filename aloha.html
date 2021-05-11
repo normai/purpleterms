@@ -51,7 +51,8 @@
   <script>
 
       // Prologue [seq 20210503°1511]
-      var t1 = new Terminal();
+      ////var t1 = new Terminal();
+      var t1 = new Terminal('123'); //// Test optional ID
       t1.setHeight("500px");
       t1.setBackgroundColor("Blue");
       var elTarget = document.getElementById('Put_Terminal_Here');     //// Position randomly [seq 20210506°1632`01]
@@ -75,8 +76,8 @@
             t1.print('Finished. You need to refresh your page to start again.');
          }
          else {
-            t1.print('Thank you for' + " '" + sWhat + "'!");
-            t1.input ( "Please more input .. (p = pause, q = quit)", function (sInpuz) {
+            t1.print('Thank you for' + " '" + sWhat + "'.");
+            t1.input ( "Please input more .. (p = pause, q = quit)", function (sInpuz) {
                holla(sInpuz);
             });
          }
@@ -94,30 +95,39 @@
       function setDebugBorders() {
          var el = document.querySelector('#debug_borders');
          var b = el.checked;
-         // alert("Holla " + b);
          t1.setDebugBorders(b);
+         var elKeys = document.getElementById('ColorKeyList');
+         elKeys.style.display = el.checked ? 'inline' : 'none';
       }
 
    </script>
 
-   <div style="margin-top:1.1em; padding-left:9.1em; text-indent:-9.1em; line-height:1.1em;">
+   <div style="margin-top:1.1em; padding-left:11.1em; text-indent:-11.1em; line-height:1.1em;">
       <input type="checkbox" id="debug_borders" name="debug_borders"
-               onclick="setDebugBorders();">
-      <label for="scales">
+               onclick="setDebugBorders()"
+      >
+      <label for="debug_borders">
          Show debug borders.
-         <span class="FontSmall">
-            Borders around specific elements, e.g.
-            orange = input prompt, red = input span.
+         <span class="FontSmall" style="display:none;" id="ColorKeyList">
+            • Input prompt = Yellow
+            • Input line = Red
+            • Output/output prompt = Orange
+            • Output/output line = GreenYellow
+            • Output/input prompt = HotPink
+            • Output/input line = Magenta
+            • Output box = Gold
+            • Content = Magenta
          </span>
       </label>
    </div>
 
   <p>
-               What are features missing most? • Functional backspace.
-               • Functional scrolling. If you come below the bottom edge,
+               What are features missing most? • Functional <b>backspace</b>.
+               • Functional <b>scrolling</b>. If you come below the bottom edge,
                the last line should automatically stay inside the visible area,
                not be brought in by your manual scrolling.
-               • The input prompt should not go away, after the input is entered.
+               • The input <b>prompt</b> should not go away, after the input is entered.
+               Curiously, this seems not the case in the Custom Demo.
   </p>
 
   <p class="Good12Bye">

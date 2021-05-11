@@ -17,6 +17,14 @@
  */
 Terminal = ( function () {
 
+
+   // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1535]
+   var _inputPromptGlobal = ">\\00a0";
+
+   // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1537]
+   var _outputPromptGlobal = "<\\00a0";
+
+
    /**
     * Prompt mode 'Confirmation'
     *
@@ -52,8 +60,15 @@ Terminal = ( function () {
     * @type {boolean} —
     * @constant —
     */
-   var bTrue = true;
+   var b_Choose_Div_Not_Pre = true;
 
+   /**
+    *  This array holds the IDs of the instances on the page
+    *
+    * @id 20210509°1611
+    * @type {Array}
+    */
+   var _aIds = [];
    /**
     *  This flag tells, whether debug borders are shown or not. Default = false
     *
@@ -80,47 +95,104 @@ Terminal = ( function () {
     *        or it must shield itself from multiple execution. [todo 20210507°1711]
     * @todo Disturbs backward-compatibility by unconditionally serving the
     *        prompt. Choose prompt via the setter. [todo 20210507°1721]
+    * @see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
+
     * @return {undefined}
     */
    var _mountCssRules = function () {
 
-      // Delete if exists [seq 20210508°0923]
-      var el = document.getElementById('y14r7bq3');
+      // Recognize the presently assembled style element
+      var sStyleElementId = 'Kog2frh5cbfn47pm';
+
+      // Define colors [seq 20210509°1441]
+      var sColorCompleteBox = 'Magenta';
+      var sColorOutputBox = 'Gold';
+      var sColorOutputLine = 'GreenYellow';
+      var sColorOutputPrompt = 'Orange';
+      var sColorOutLineInput = 'Magenta';                              // Output line which was input line
+      var sColorOutLineInPrompt = 'HotPink';                           // Output line which was input line
+      var sColorInputLine = 'Red';
+      var sColorInputPrompt = 'Yellow';
+
+      // Create style element, it must be one only [seq 20210508°0923]
+      var el = document.getElementById(sStyleElementId);
       if (el) {
          el.remove();
       }
-
-      // Create style element
       var eStyle = document.createElement('style');
       eStyle.type = 'text/css';
 
       // Provide ID [seq 20210508°0921]
       var at = document.createAttribute('id');
-      at.value = 'y14r7bq3';
+      at.value = sStyleElementId;
       eStyle.setAttributeNode(at);
 
-      // Assemble debug frame(s) rule [ruleset 20190312°0451]
-      // This rule is used in seq 20190312°0441
-      // See todo 20190312°0445 'Do style definitions not in HTML page but inside terminal.js'
-      // Build "> " from  '\003e' = '>' and '\00a0' = NO-BREAK-SPACE
-      // But what in CSS must read "{ content:'\003e\00a0'; }", will print
-      //  garbage here, so I found "{ content:'>" + "\\00a0" + "'; }" work.
-      var sRul = "span.Terminal_Input { }"
-                + ' ' + "span.Terminal_Input:before { content:'>" + "\\00a0" + "'; }"
-                 ;
-      if ( _debugBorders ) {
-         sRul  = "span.Terminal_Input {"
-                 + ' ' + 'border:1px solid Red; border-radius:0.3em; padding:0.2em;'
-                  + ' ' + "}"
-                  + ' ' + "span.Terminal_Input:before"
-                  + ' ' + "{"
-                  + ' ' + "border:1px solid Orange; border-radius:0.2em;"
-                   + ' ' + "padding:0.1em; content:'>" + "\\00a0"
-                    + "'; }"
-                     ;
-      }
-      eStyle.innerHTML = sRul;
+      // Ruleset for complete terminal box [seq 20210509°1415]
+      var sRu1CompleteBox = _debugBorders
+                  ? "\n" + 'div.Terminal_Complete {' + ' '
+                   + 'border:1px solid ' + sColorCompleteBox + '; border-radius:0.3em; padding:0.2em;' + ' '
+                    + "}"
+                  : "\n" + 'div.Terminal_Complete { }'
+                   ;
 
+      // Ruleset for output box [seq 20210509°1411] 
+      var sRu2OutputBox = _debugBorders
+                  ? "\n" + 'p.Terminal_Output {' + ' '
+                   + 'border:1px solid ' + sColorOutputBox + '; border-radius:0.3em; padding:0.2em;' + ' '
+                    + "}"
+                  : "\n" + 'p.Terminal_Output { }'
+                   ;
+
+      // Ruleset for one line in the output box [seq 20210509°1413]
+      // For [feature 20210509°1431 'Output prompt']
+      var sRu3OutputLine = _debugBorders
+                 ? "\n" + "div.Output_One_Line { "
+                  + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
+                   + ' }'
+                   + "\n" + "div.Output_One_Line:before {"
+                   + ' ' + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;"
+                    + ' ' + "padding:0.1em; content:'" + _outputPromptGlobal
+                     + "'; }"
+                : "\n" + "div.Output_One_Line { }"
+                 + "\n" + "div.Output_One_Line:before { content:'" + _outputPromptGlobal + "'; }"
+                  ;
+
+      // Output line dedicated [seq 20210509°1417]
+      var sRu7OutLineDedi = _debugBorders
+                 ? "\n" + "div.Terminal_OutputLine_FormerInput { "
+                  + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
+                   + ' }'
+                   + "\n" + "div.Terminal_OutputLine_FormerInput:before {"
+                   + ' ' + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;"
+                    + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
+                     + "'; }"
+                : "\n" + "div.Terminal_OutputLine_FormerInput { }"
+                 + "\n" + "div.Terminal_OutputLine_FormerInput:before { content:'" + _inputPromptGlobal +"'; }"
+                  ;
+
+      // Rule set for input span [seq 20190312°0451]
+      var sRu4InputLine = '';
+      if ( _debugBorders ) {
+         sRu4InputLine  = "\n" + "span.Terminal_Input {"
+                  + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
+                   + ' ' + "}"
+                   + "\n" + "span.Terminal_Input:before"
+                   + ' ' + "{"
+                   + ' ' + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;"
+                    + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
+                     + "'; }"
+                      ;
+      }
+      else {
+         sRu4InputLine = "\n" + "span.Terminal_Input { }"
+                  + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }"
+                   ;
+      }
+
+      // Apply
+      eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
+                        + sRu7OutLineDedi + sRu4InputLine
+                         ;
       document.getElementsByTagName('head')[0].appendChild(eStyle);
    };
 
@@ -167,14 +239,13 @@ Terminal = ( function () {
       inputField.style.fontSize = '0.2em';
 
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-      // This prop appears 4 times below, twice in inputField.onkeydown, twice in inputField.onkeyup
-      ////oTerm._inputLine.textPrefix = '$ ';                              // New var introduced [chg 20210502°1111`11 xhr]
-
+      // This prop appears 4 times below -- Check -- Can it be disposed again?!
       ////oTerm._inputLine.textContent = '';                           // Original line
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr] See issue 20210502°1121 'Input prepended by dollar'
+      ////oTerm._inputLine.textPrefix = '$ ';                          // New var introduced [chg 20210502°1111`11 xhr]
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12 xhr] See issue 20210502°1121 'Input prepended by dollar'
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-      oTerm._input.style.display = 'block';
+      oTerm._inputElement.style.display = 'block';
       oTerm.html.appendChild(inputField);
       fireCursorInterval(inputField, oTerm);
 
@@ -252,6 +323,7 @@ Terminal = ( function () {
 
       /**
        * ..
+       *
        * @id 20170501°0331
        * @param {Event} e —
        * @return {boolean|undefined} —
@@ -262,11 +334,12 @@ Terminal = ( function () {
              || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 key code]
               ) {
 
-            oTerm._input.style.display = 'none';
+            oTerm._inputElement.style.display = 'none';
             var inputValue = inputField.value;
 
             // [seq 20210502°1221] [chg 20210502°1111`13 xhr]
-            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {
+            // Check — What is this? Does not look like an XHR feature, rather a clear command [note 20210509°1523]
+            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {  //// textPrefix undefined
                oTerm.clear();
                oTerm.input('', false);
                return true;
@@ -274,12 +347,12 @@ Terminal = ( function () {
 
             if ( bShouldDisplayInput ) {
 
-               // History [seq 20210503°0911 Inserted after Mark
-/*
-               oTerm._history.push(inputValue);
-               oTerm.lasthistory = oTerm._history.length;
-*/
-               oTerm.print(inputValue);
+               // History [seq 20210503°0911 Inserted after Mark — temporarily inactive
+               // // oTerm._history.push(inputValue);
+               // // oTerm.lasthistory = oTerm._history.length;
+
+               // Added optional second parameter forinput prompt feature [note 20210509°1521]
+               oTerm.print(inputValue, 'Terminal_OutputLine_FormerInput');
             }
             oTerm.html.removeChild(inputField);
 
@@ -343,6 +416,7 @@ Terminal = ( function () {
 
    /**
     * ..
+    *
     * @id 20170501°0351
     * @type {Element|null} —
     */
@@ -350,11 +424,21 @@ Terminal = ( function () {
 
    /**
     * This function provides the div with the terminal functionalities
-    * id : ..
+    *
+    * id : 20170501°0851
     * @param {number} id —
     * @constructor —
     */
    var TerminalConstructor = function (id) {
+
+      // Process ID [seq 20210509°1621]
+      if (! id) {
+         
+      }
+
+
+
+
 
       // Create audio element [seq 20170501°0841]
       if (! terminalBeep) {
@@ -379,7 +463,7 @@ Terminal = ( function () {
       
       
       /**
-       * ..
+       * Public field, represents the complete terminal
        *
        * @id 20170501°0411
        * @type {Element} —
@@ -391,7 +475,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       * Private field ..
        *
        * @id 20170501°0421
        * @type {Element} —
@@ -426,10 +510,11 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._innerWindow = null;                                        // allow the type annotation
-      if (! bTrue) {
+      if ( b_Choose_Div_Not_Pre) {
          this._innerWindow = document.createElement('div');
       }
       else {
+         // A pre also works, but after HTML rules, it shall not contain paragraphs
          this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 xhr] div to pre
       }
 
@@ -439,7 +524,7 @@ Terminal = ( function () {
        * @id 20170501°0441
        * @type {Element} —
        */
-      this._input = document.createElement('p');
+      this._inputElement = document.createElement('p');
 
       /**
        * The input span element gets ruleset 20190312°0451 applied, which
@@ -452,6 +537,14 @@ Terminal = ( function () {
       this._inputLine.className = 'Terminal_Input';
 
       /**
+       *  Private field, tells the input prompt
+       *
+       * @id 20210509°1531
+       * @type {string} —
+       */
+      this._inputPrompt = ">\\00a0";
+
+      /**
        * ..
        *
        * @id 20170501°0511
@@ -459,6 +552,14 @@ Terminal = ( function () {
        */
       this._output = document.createElement('p');
       this._output.className = 'Terminal_Output';
+
+      /**
+       *  Private field, tells the output prompt.
+       *
+       * @id 20210509°1533
+       * @type {string} —
+       */
+      this._outputPrompt = "<\\00a0";
 
       /**
        * Cosmetics for the input prompt
@@ -565,16 +666,26 @@ Terminal = ( function () {
       };
 
       /**
-       * Output a line
+       * Output one line. Creates the div which will stay permanently in the output box.
        *
        * @id 20170501°0631
        * @param {string} message —
+       * @param {string} sOptionalRule — Optional CSS class for this ouput line
        * @return {undefined} —
        */
-      this.print = function (message) {
-         var newLine = document.createElement('div');
-         newLine.textContent = message;
-         this._output.appendChild(newLine);
+      this.print = function (message, sOptionalRule)
+      {
+         // Process optional parameter [seq 20210509°1443]
+         // Do not (yet) use default parameter in function definition, it is not known by IE.
+         var sRule = 'Output_One_Line';
+         if (sOptionalRule) {
+            sRule = sOptionalRule;
+         }
+
+         var eNewLine = document.createElement('div');
+         eNewLine.textContent = message;
+         eNewLine.className = sRule;
+         this._output.appendChild(eNewLine);
       };
 
       /**
@@ -612,28 +723,28 @@ Terminal = ( function () {
       };
 
       /**
-       *  This lets the user set an input prompt, e.g. '$ '.
+       *  Let the user set the input prompt, e.g. '$ '.
        *
        * @id 20210504°1011
-       * @param {string} sInPrompt —
+       * @param {string} sParam —
        * @return {undefined} —
        */
-      this.setInputPrompt = function (sInPrompt) {
-         this._inputLine.textPrefix = sInPrompt;
+      this.setInputPrompt = function (sParam) {
+         //this._inputLine.textPrefix = sParam; //// Check -- What is this good for? Comes from the XHR feature
+         this._inputPrompt = sParam;
+         _inputPromptGlobal = sParam;                                  // Provisory
       };
 
       /**
-       *  This lets the user set an output prompt.
-       *
-       *  While introducing func 20210504°1011 setInputPrompt(), I right off
-       *  provide the facility for a symmetric output prompt.
+       *  Let the user set the output prompt
        *
        * @id 20210504°1021
-       * @param {string} sOutPrompt —
+       * @param {string} sParam —
        * @return {undefined} —
        */
-      this.setOutputPrompt = function (sOutPrompt) {
-         //
+      this.setOutputPrompt = function (sParam) {
+         this._outputPrompt = sParam;
+         _outputPromptGlobal = sParam;                                 // Provisory
       };
 
       /**
@@ -657,7 +768,7 @@ Terminal = ( function () {
        */
       this.setTextSize = function (size) {
          this._output.style.fontSize = size;
-         this._input.style.fontSize = size;
+         this._inputElement.style.fontSize = size;
       };
 
       /**
@@ -684,10 +795,12 @@ Terminal = ( function () {
       };
 
       // ~~ Assemble the terminal div element
-      this._input.appendChild(this._inputLine);
-      this._input.appendChild(this._cursor);
-      this._innerWindow.appendChild(this._output);
-      this._innerWindow.appendChild(this._input);
+      this._inputElement.appendChild(this._inputLine);
+      this._inputElement.appendChild(this._cursor);
+      this._innerWindow.appendChild(this._output);                     // Here this._output is empty
+      this._innerWindow.appendChild(this._inputElement);
+      this._innerWindow.style.padding = '10px';
+      this._innerWindow.className = 'Terminal_Complete';
       this.html.appendChild(this._innerWindow);
 
       // ~~ Style the terminal
@@ -698,12 +811,15 @@ Terminal = ( function () {
       this.setWidth('100%');
 
       // ~~
-      this._innerWindow.style.padding = '10px';
-      this._input.style.display = 'none';
-      this._input.style.margin = '0';
+      this._inputElement.style.display = 'none';
+      this._inputElement.style.margin = '0';
+
+      // Dummy for blinking cursor
+      // If this gets wider, e.g. 'Crsr', the blinking cursor will get wider
+      this._cursor.innerHTML = 'X';                                    // Originally 'C'
       this._cursor.style.background = 'white';
-      this._cursor.innerHTML = 'C';                                    // Put something in the cursor ..
       this._cursor.style.display = 'none';                             // Then hide it
+
       this._output.style.margin = '0';
 
       // ~~
