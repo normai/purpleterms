@@ -27,7 +27,7 @@ _This file is for miscellanesous notes and considerations._
 
 ---
 
-## The Prompts <a name="notes_prompts"></a> &nbsp; _<sup><sub><sup><sup>Feature 20210509°1451</sup></sup></sub></sup>_
+## The Prompts <a name="notes_prompts"></a> &nbsp; _<sup><sub><sup><sup>Feature 20210509°1511</sup></sup></sub></sup>_
 
 **Preliminary note**. For prompt generation, I can imagine three techniques :
 
@@ -63,8 +63,7 @@ Here the pseudo-element technique is applied :
  With the help of this parameter, when the former input line is printed in the
  history, the different prompt can be preserved.
 
-**Debug Borders**. As preparation for the prompt implementation, the debug
-borders were invented.
+**Debug Borders**. They are implemented as a preparation for the prompt implementation.
 
 ---
 
@@ -133,9 +132,7 @@ is about to communicate with a PHP or any other backend.
 
 Status : **Implemented**.
 
-Note. The PR silently carried two more features, the dollar prompt, which
- lead to *[issue 20210502°1121](#id20210502o1121)* 'Input prepended by dollar',
- and the utilization of the Backspace key.
+Note. The PR carried two more features, a dollar prompt and utilization of the Backspace key.
 
 Actually, such XHR feature is the reason why I got my hands dirty
  with `terminal.js` in the first place. I have written a backend caller for

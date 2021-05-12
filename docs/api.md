@@ -91,16 +91,25 @@ borders to better see the behaviour of the text components. Default = false.
 
 Accepts CSS-compliant dimension value
 
-#### setInputPrompt()
+#### setInputPrompt(string)
 
-Lets you set an input prompt. This setter was a quick fix for
- *[issue 20210502°1121](./docs/notes.md#id20210502o1121)* 'Input prepended by dollar'.
- The prompt feature is not consolidated nor tested.
- If you use this, your input values will be prepended with the prompt value.
+Lets you set the input prompt.
+
+Note, that instead a blank, you may want pass CSS entity '\00a0' non-breaking-space.
+
+_No validation may be implemented yet, so be careful what you pass._
 
 #### setHeight()
 
 Lets you set an output prompt. Feature is not yet implemented.
+
+#### setOutputPrompt(string)
+
+Lets you set the output prompt.
+
+Note, that instead a blank, you may want pass CSS entity '\00a0' non-breaking-space.
+
+_No validation may be implemented yet, so be careful what you pass._
 
 #### setTextColor()
 

@@ -4,12 +4,12 @@
  *  Now it is stripped down and adjusted to serve in a Termjnal demo
  *
  * file      : 20210506°1111 (after 20120906°1241)
- * license   : BSD-3-Clause //// (formerly GNU AGPL v3)
+ * license   : BSD-3-Clause // // (formerly GNU AGPL v3)
  * copyright : © 2012 - 2021 Norbert C. Maier
  * authors   : ncm
  * status    : Applicable
  * encoding  : UTF-8-without-BOM
- * callers   : The Termjnal Aloha Demo page //// All HTML pages headers
+ * callers   : The Termjnal Aloha Demo page // // All HTML pages headers
  */
 
 /**

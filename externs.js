@@ -172,11 +172,6 @@ Terminal.setHeight();
 /**
  *  Lets the user set an input prompt, e.g. '$ '.
  *
- *  This setter is introduced with fix 20210504°1031 to clear issue
- *  20210502°1121 'Input prepended by dollar' after chg 20210502°1111  'xhr'.
- *  We start off without any prompt prefix, and allows a user who demands
- *  it, to set wanted appearance. (Not sure this is the final solution.)
- *
  * @id 20210504°1011`12
  * @param {string} — The wanted input prompt
  * @type {Function} —

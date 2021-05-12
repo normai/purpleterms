@@ -10,6 +10,9 @@ Pages : &nbsp;
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
+##### log
+- ..
+
 ##### version 20210509°1811 — v0.3.0 Prompts proof-of-concept
 - Complete debug borders
 - Fix input prompt

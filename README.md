@@ -6,7 +6,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Termjnal &nbsp; <sup><sub>v0.3.0 &nbsp; <sup><sup>20210509°1811</sup></sup></sub></sup>
+# Termjnal &nbsp; <sup><sub>v0.3.0.1 &nbsp; <sup><sup>20230510°1441</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -59,21 +59,21 @@ The project got a bit inflated with files. Don't let this distract you.
 <a name="vision"></a>
 ## Vision
 
-A terminal seems a toy today. But still e.g. in Windows many system
+Today a terminal seems a toy. But still e.g. in Windows many system
  tasks are not available from Explorer, only from console. Why?
  Because computers natively do communicate in terms of commands.
 
-The word **console** I find an even more concise designation for such
- box, than terminal, because it carries the term 'solid' in it. A console
- represents the system, it must be reliable under all circumstances. If it
- wobbles, the system is unlashed.
+The word console I find an even more concise designation for such box,
+ than terminal, because it carries the term 'solid' in it. A console represents
+ the system and must be extra reliable. If it wobbles, the system wobbles.
 
-Of course, Termjnal may never reach such solid state. Nevertheless shall
- this be the direction to look. And as for guideline keywords, the top one
- shall stay '*dead simple*' from Terminal.js original slogan.
+Termjnal may never reach such solid state, but this is the direction to look.
+ And as for guideline keywords, the top one is '*dead simple*'
+ from Terminal.js' original slogan. Dead simple for the user, not necessarily
+ for the programmer.
 
-Last not least, imagine speach recognition applied, and out of nothing
- further interesting aspects show up.
+Last not least, imagine speach recognition applied to the box, and out of
+ nothing further interesting aspects show up.
 
 <a name="usage"></a>
 ## Usage

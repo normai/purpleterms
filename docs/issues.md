@@ -29,6 +29,16 @@ Demonstrate complete feature list, notably `confirm`.
 
 ---
 
+##### issue 20210509°1555 'Validate user prompt'
+
+In `setInputPrompt()` and `setInputPrompt()`, the user-given parameter
+ should be validated somehow, so it cannot disturb the system.
+ E.g. • Size must be 0 to 8, • chars below ASCII 32 are not allowed.
+ For implementation compare seq 20210509°1644 ' Validate characters'. Possibly
+ outsource that sequence to create one dedicated function for the two purposes.
+
+---
+
 #### Todo 'Compact Custom Demo' _<sup><sub><sup><sub>20210509°1341</sub></sup></sub></sup>_
 
 Merge the two JS files, remove unrelated code.
@@ -71,44 +81,24 @@ An MP3 file around 20 KB should be feasible, perhaps even 10 KB or less.
 ---
 
 <a name="id20210504o1041"></a>
-issue //20210504°1041 '**Simplify input prompt handling**'
- - Matter : This is a follow up on finished *[issue 20210502°1121](#id20210502o1121)*
-   'Input prepended by dollar'. Though the bug there is fixed, the topic lingers.
-   I noticed complexities with the prompt handling, which possibly can be reduced.
-   I consider the prompt feature as a very basic one. As long as this is
-   not solved cleanly, it makes no sense to put further features on top.
- - Type : Refactoring.
- - Status : Open.
+issue 20210504°1041 '**Simplify input prompt handling**'
+ - Matter : I noticed complexities with the prompt handling, which possibly can
+   be reduced. I consider the prompt feature as a very basic one. As long as this
+   is not solved cleanly, it makes no sense to put further features on top.
+ - Note. This was a follow up on deleted issue 20210502°1121 'Input prepended by dollar'.
+ - Status : Closed with introduction of feature _20210509°1xxx_ 'Prompt setting'.
    ܀
 
----
+Temporary internal notes for the cleanup-session. There are three features the involved :
 
-<a name="id20210502o1121"></a>
-issue 20210502°1121 'Input prepended by dollar'
- - Symptom : Each input is automatically prepended by dollar sign.
- - Finding : After change 20210502°1111 'XHR', each input line is prefixed
-   '$ ' in order to simulate a prompt. This infiltrates the original workflows.
- - Solution : I removed that dollar sign prefix again. Instead, quick'n'dirty,
-      provided a setter setInputPrompt(string), where the user who needs it,
-      can individually prepend the input with some string [fix 20210504°1031].
- - Note : The additional setter(s) blow up the setter bunch. What about some
-      single JSON options object? Anyway — This would not save lines on user
-      side, nor in the documentation.
- - Note : While I am writing setInputPrompt(), I write a setOutputPrompt().
-      right off, since in I will like to flag output symmetrically to input.
- - Note : While investigating the other forks, I noticed the prompt being a
-      recurring theme. About 5 forks have written prompts, including myself.
- - Note : I remember my own solution not touching Termjnal, but operating
-      purely on user code side. I should review (haven't done yet).
- - Resume : The solution with function 20210504°1011 setInputPrompt was quickly
-      done without really analysing the complexity of the involved sequences.
-      I suspect, there is room for simplification. Calculating  string width of
-      the input to determinate the prompt seems no clear solution. It mixes two
-      concerns. The prompt and the input value should be two clearly distinct
-      entities, without the need for string length calculations. See
-      *[issue 20210504°1041](#id20210504o1041)* 'Simplify input prompt handling'.)
- - Status : Closed with fix 20210504°1031 'introduce setInputPrompt()'.
-   ܀
+ - Feature 20210509°1401 'Debug Borders'. To get better grip on the matter.
+
+ - Feature 20210509°1511 'Prompt Setting'. The actual feature. Provisory a
+    global prompt, not yet per-instance.
+    See Notes paragraph [Note Prompts](./notes.md#notes_prompts).
+
+ - Feature 20210509°1651 'Instance-ID Setting'. Prerequisite to make the prompt
+    work per-instance, not globally.
 
 ---
 

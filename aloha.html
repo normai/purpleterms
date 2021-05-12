@@ -51,13 +51,17 @@
   <script>
 
       // Prologue [seq 20210503°1511]
-      var t1 = new Terminal(); // 'X'
+      var t1 = new Terminal();                                         // 'X'
       t1.setHeight("500px");
       t1.setBackgroundColor("Blue");
-      var elTarget = document.getElementById('Put_Terminal_Here');     //// Position randomly [seq 20210506°1632`01]
+      var elTarget = document.getElementById('Put_Terminal_Here');     // Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
       t1.print("Welcome to the Aloha Demo terminal ID = '" + t1.getId() + "'.");
       var sInput = '';
+
+      // // [test 20210509°1551]
+      // t1.setInputPrompt('X ');
+      // t1.setOutputPrompt('Y ');
 
       // Action [seq 20210503°1513]
       t1.input ( "Please enter me some input (p = pause, q = quit)", function (sInpuz) {
@@ -66,6 +70,11 @@
 
       // Reaction [func 20210503°1531]
       function holla(sWhat) {
+
+         // [test 20210509°1553]
+         t1.setInputPrompt('→ ');
+         t1.setOutputPrompt('← ');
+
          if (sWhat.toLowerCase() === 'p' ) {
             t1.input ( 'Take a breath. Continue with any input.', function (sInpuz) {
                keepgoing();

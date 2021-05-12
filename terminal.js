@@ -1,17 +1,17 @@
 /*!
- * Termjnal v0.3.0 — Provides a terminal in the browser
+ * Termjnal v0.3.0~~ — Provides a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
  */
 
 /**
- * file : 20190208°1921 terminaljs/terminal.js
- * encoding : UTF-8-without-BOM
+ *  file : 20190208°1921 terminaljs/terminal.js
+ *  encoding : UTF-8-without-BOM
  */
 
 /**
- * This class provides a div with the terminal functionalities
+ *  This class provides a div with the terminal functionalities
  *
  * @id 20190208°1923
  */
@@ -26,7 +26,7 @@ Terminal = ( function () {
 
 
    /**
-    * Prompt mode 'Confirmation'
+    *  Prompt mode 'Confirmation'
     *
     * @id 20170501°0211
     * @type {number} —
@@ -35,7 +35,7 @@ Terminal = ( function () {
    var PROMPT_CONFIRM = 3;
 
    /**
-    * Prompt mode 'Input'
+    *  Prompt mode 'Input'
     *
     * @id 20170501°0221
     * @type {number} —
@@ -44,7 +44,7 @@ Terminal = ( function () {
    var PROMPT_INPUT = 1;
 
    /**
-    * Prompt mode 'Password'
+    *  Prompt mode 'Password'
     *
     * @id 20170501°0231
     * @type {number} —
@@ -53,14 +53,14 @@ Terminal = ( function () {
    var PROMPT_PASSWORD = 2;
 
    /**
-    * Ugly helper var to avoid validation warnings 'unreachable code'.
+    *  Ugly helper var to avoid validation warnings 'unreachable code'.
     *  Sometimes I like to keep dead code as for possible later reviving.
     *
     * @id 20210502°1711
     * @type {boolean} —
     * @constant —
     */
-   var b_Choose_Div_Not_Pre = true;
+   var b_Choose_Div_Not_Pre = true; // No more used for the Div/Pre decision, but left here anyway for any next use case
 
    /**
     *  This array holds the IDs of the instances on the page
@@ -69,17 +69,18 @@ Terminal = ( function () {
     * @type {Array}
     */
    var _aIds = [];
+
    /**
     *  This flag tells, whether debug borders are shown or not. Default = false
     *
     * @id 20210508°0913
-    * @todo : This were rather not an object property but a page global setting [todo 20210508°0931]
+    * @todo : This were rather not a page global setting but an object property. Adjust this! [todo 20210508°0931]
     * @type {boolean} —
     */
    var _debugBorders = false;
 
    /**
-    * ..
+    *  ..
     *
     * @id 20170501°0241
     * @type {boolean} —
@@ -97,9 +98,10 @@ Terminal = ( function () {
 
       var sIdRet = '';
 
-      // Process ID [seq 20210509°1621]
+      // () ID Validation [seq 20210509°1621]
+      // (.1) Given or not?
       if (! idGiven) {
-         // No ID given, so create one
+         // (.1.1) No ID given, so create one [seq 20210509°1642]
          var iCount = 0;
          while (true) {
             iCount++;
@@ -111,15 +113,15 @@ Terminal = ( function () {
          sIdRet = iCount.toString();
       }
       else {
-         // It is a given ID, so test it for being allowed
+         // (.1.2) It is a given ID, so test it for being allowed
          var bAllowed = true;
          
-         // Validate length
+         // (.1.2.1) Validate length [seq 20210509°1643]
          if (idGiven.length < 1 || idGiven.length > 32) {
             bAllowed = false;
          }
 
-         // Validate characters
+         // (.1.2.2) Validate characters [seq 20210509°1644]
          if (bAllowed) {
             for (var i = 0; i < idGiven.length; i++) {
                var c = idGiven.charAt(i);
@@ -130,15 +132,15 @@ Terminal = ( function () {
             }
          }
 
-         // Validate being free?
+         // (.1.2.3) Validate it being free [seq 20210509°1645]
          if (_aIds.indexOf(idGiven) >= 0) {
             bAllowed = false;
          }
 
-         // Process invalid given ID [seq 20210509°1641]
+         // (.1.2.4) Judgement [seq 20210509°1641]
+         // If given ID is invalid, then generate an automatic one
+         // Remember issue 20210509°1731 'First fully initialize object, then return'
          if (! bAllowed) {
-            // If given ID is invalid, then generate an automatic one
-            // Remember issue 20210509°1731 'First fully initialize object, then return'
             sIdRet = _generateId(null);
          }
          else {
@@ -150,14 +152,12 @@ Terminal = ( function () {
    };
 
    /**
-    * This function dynamically provides CSS rules
+    *  This function dynamically provides CSS rules
     *
     * @id  20210507°1641
     * @todo Either this must be called from a place where it is called only once
     *        or it must shield itself from multiple execution. [todo 20210507°1711]
-    * @todo Disturbs backward-compatibility by unconditionally serving the
-    *        prompt. Choose prompt via the setter. [todo 20210507°1721]
-    * @see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
+    * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
 
     * @return {undefined}
     */
@@ -171,12 +171,12 @@ Terminal = ( function () {
       var sColorOutputBox = 'Gold';
       var sColorOutputLine = 'GreenYellow';
       var sColorOutputPrompt = 'Orange';
-      var sColorOutLineInput = 'Magenta';                              // Output line which was input line
-      var sColorOutLineInPrompt = 'HotPink';                           // Output line which was input line
+      var sColorOutLineInput = 'Magenta';                              // Output line which formerly was input line
+      var sColorOutLineInPrompt = 'HotPink';                           // Output line which formerly was input line
       var sColorInputLine = 'Red';
       var sColorInputPrompt = 'Yellow';
 
-      // Create style element, it must be one only [seq 20210508°0923]
+      // Create style element, beforehand delete any existing [seq 20210508°0923]
       var el = document.getElementById(sStyleElementId);
       if (el) {
          el.remove();
@@ -206,7 +206,6 @@ Terminal = ( function () {
                    ;
 
       // Ruleset for one line in the output box [seq 20210509°1413]
-      // For [feature 20210509°1431 'Output prompt']
       var sRu3OutputLine = _debugBorders
                  ? "\n" + "div.Output_One_Line { "
                   + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
@@ -251,7 +250,7 @@ Terminal = ( function () {
                    ;
       }
 
-      // Apply
+      // Merge th fragments and apply to style element
       eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
                         + sRu4OutFormerInput + sRu5InputLine
                          ;
@@ -259,7 +258,7 @@ Terminal = ( function () {
    };
 
    /**
-    * ..
+    *  ..
     *
     * @id 20170501°0251
     * @param {Element} inputField —
@@ -279,7 +278,7 @@ Terminal = ( function () {
    };
 
    /**
-    * ..
+    *  ..
     *
     * @id 20170501°0311
     * @param {Object} oTerm —
@@ -304,7 +303,7 @@ Terminal = ( function () {
       // This prop appears 4 times below -- Check -- Can it be disposed again?!
       ////oTerm._inputLine.textContent = '';                           // Original line
       ////oTerm._inputLine.textPrefix = '$ ';                          // New var introduced [chg 20210502°1111`11 xhr]
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12 xhr] See issue 20210502°1121 'Input prepended by dollar'
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12 xhr]
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
       oTerm._inputElement.style.display = 'block';
@@ -317,7 +316,7 @@ Terminal = ( function () {
       }
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0811
        * @return {undefined} —
@@ -327,7 +326,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0821
        * @return {undefined} —
@@ -338,7 +337,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0831
        * @return {undefined} —
@@ -348,14 +347,14 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0321
        * @param {Event} e —
        * @return {undefined} —
        */
       inputField.onkeydown = function (e) {
-         // Newly introduced with [seq 20210502°12xx] [chg 20210502°1111`xx xhr]
+         // Listen to backspace [condition 20210502°1131] Condition newly introduced with [chg 20210502°1111`21 xhr]
          // [] Check — Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
          if ( ( ( e.code === 'Backspace' || e.which === 8)
                   && inputField.value.length === inputField.value.length
@@ -384,7 +383,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0331
        * @param {Event} e —
@@ -401,7 +400,7 @@ Terminal = ( function () {
 
             // [seq 20210502°1221] [chg 20210502°1111`13 xhr]
             // Check — What is this? Does not look like an XHR feature, rather a clear command [note 20210509°1523]
-            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {  //// textPrefix undefined
+            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {  // textPrefix is undefined here [issue 20210502°1135 'textPrefix undefined']
                oTerm.clear();
                oTerm.input('', false);
                return true;
@@ -444,7 +443,7 @@ Terminal = ( function () {
             }
 
             /*
-            // History [seq 20210503°0912 after Mark]
+            // History [seq 20210503°0912 after Mark] Not yet activated, probably needs debugging
             if ( PROMPT_TYPE === PROMPT_INPUT ) {
                if ( e.which === 38 && oTerm._historyLast !== - 1) {
                   inputField.value = oTerm._history[(oTerm._historyLast -= 1) > 0
@@ -477,7 +476,7 @@ Terminal = ( function () {
    };
 
    /**
-    * ..
+    *  ..
     *
     * @id 20170501°0351
     * @type {Element|null} —
@@ -485,7 +484,7 @@ Terminal = ( function () {
    var terminalBeep = null;
 
    /**
-    * This function provides the div with the terminal functionalities
+    *  This function provides the div with the terminal functionalities
     *
     * id : 20170501°0851
     * @param {number|string} idParam —
@@ -503,7 +502,7 @@ Terminal = ( function () {
       
 
       /**
-       * Public field, represents the complete terminal
+       *  Public field, represents the complete terminal
        *
        * @id 20170501°0411
        * @note Shifted this here from below to have it available with ID failure [chg 20210509°1623]
@@ -512,7 +511,7 @@ Terminal = ( function () {
       this.html = document.createElement('div');
       this.html.className = 'Terminal';
 
-      // Now that we have ID validation and gernation, this must come after validation [issue 20210509°16xx]
+      // Now that we have ID validation and generation, this sequence must come after the validation [issue 20210509°1625]
       if (typeof(idParam) === 'string') {
          this.html.id = idParam;
       };
@@ -521,6 +520,7 @@ Terminal = ( function () {
       /*
        * ===============================================
        * Define functions
+       *  See issue 20210509°1731 'First fully initialize object, then return'
        * ===============================================
        */
 
@@ -530,12 +530,13 @@ Terminal = ( function () {
       /*
        * ===============================================
        * Start working
+       *  See issue 20210509°1731 'First fully initialize object, then return'
        * ===============================================
        */
 
 
-      // Process ID [seq 20210509°16xx]
-      var s = _generateId(idParam); // sObjId
+      // Process ID [seq 20210509°1627]
+      var s = _generateId(idParam);
       _aIds.push(s);
       this._objId = s;
 
@@ -561,21 +562,8 @@ Terminal = ( function () {
       //    option is, tht the function shields itsels from double mounting.
       _mountCssRules();
 
-
-      //// /**
-      ////  * Public field, represents the complete terminal
-      ////  *
-      ////  * @id 20170501°0411
-      ////  * @type {Element} —
-      ////  */
-      //// this.html = document.createElement('div');
-      //// this.html.className = 'Terminal';
-      //// if (typeof(id) === 'string') {
-      ////    this.html.id = id;
-      //// };
-
       /**
-       * Private field ..
+       *  Private field ..
        *
        * @id 20170501°0421
        * @type {Element} —
@@ -583,7 +571,7 @@ Terminal = ( function () {
       this._cursor = document.createElement('span');
 
       /**
-       * Storage for the history feature after Mark
+       *  Storage for the history feature after Mark
        *
        * @id 20210503°0921
        * @type {Array} —
@@ -591,15 +579,23 @@ Terminal = ( function () {
       this._history = [];
 
       /**
-       * Storage for the ID of the instance
+       *  Storage for the ID of the instance
+       *
+       *   This 'declaration' is actually superfluous, it only servers
+       *   to have one point-of-delaration at all. But if so, that point
+       *   has to be high above, before first use.
+       *
+       *   Also see issue 20210502°1341 'Learn about GoCloCom parameter types'
        *
        * @id 20210509°1633
        * @type {string|null} —
        */
-      this._objId = this._objId || null; // Hm .. value is already set above
+      /*
+       this._objId = this._objId || null; // Hm .. value is already set above
+       */
 
       /**
-       * Counter into the history array (History feature after Mark)
+       *  Counter into the history array (History feature after Mark)
        *  (-1 by default, 0 is a valuable number)
        *
        * @id line 20210503°0923
@@ -608,26 +604,16 @@ Terminal = ( function () {
       this._historyLast = -1;
 
       /**
-       * ..
+       *  ..
        *
-       * @note Is a Pre necessary? Is it a good idea? E.g. Divs and Spans,
-       *       which follow later, may be no valid HTML5 inside the Pre.
-       *       As a quick foothold, I prepare a possible flag to select the
-       *       one or the other. [issue 20210502°1331 'Div or Pre?']
        * @id 20170501°0431
        * @type {Element} —
        */
       this._innerWindow = null;                                        // allow the type annotation
-      if ( b_Choose_Div_Not_Pre) {
-         this._innerWindow = document.createElement('div');
-      }
-      else {
-         // A pre also works, but after HTML rules, it shall not contain paragraphs
-         this._innerWindow = document.createElement('pre');            // [chg 20210502°1111`15 xhr] div to pre
-      }
+      this._innerWindow = document.createElement('div');
 
       /**
-       * The full element administering the user input, including cursor
+       *  The full element administering the user input, including cursor
        *
        * @id 20170501°0441
        * @type {Element} —
@@ -635,7 +621,7 @@ Terminal = ( function () {
       this._inputElement = document.createElement('p');
 
       /**
-       * The input span element gets ruleset 20190312°0451 applied, which
+       *  The input span element gets ruleset 20190312°0451 applied, which
        *  is differrent according to the debug borders flag (var 20210508°0913)
        *
        * @id 20190312°0441
@@ -653,7 +639,7 @@ Terminal = ( function () {
       this._inputPrompt = ">\\00a0";
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0511
        * @type {Element} —
@@ -670,7 +656,7 @@ Terminal = ( function () {
       this._outputPrompt = "<\\00a0";
 
       /**
-       * Cosmetics for the input prompt
+       *  Cosmetics for the input prompt
        *
        * @id 20190312°0443
        * @type {boolean} —
@@ -679,7 +665,7 @@ Terminal = ( function () {
 
 
       /**
-       * Plays a retro digital tone
+       *  Plays a retro digital tone
        *
        * @id 20170501°0521
        * @return {undefined} —
@@ -690,10 +676,10 @@ Terminal = ( function () {
       };
 
       /**
-       * Switch cursor blinking on/off
+       *  Switch cursor blinking on/off
        *
        * @id 20170501°0531
-       * @note Comment 20210503°0925 by Mark: 'Why convert to string? Why?'
+       * @note Remember comment 20210503°0925 by Mark: 'Why convert to string?'
        *     github.com/MarkIvanowich/terminaljs/blob/master/terminal.js#L194-L197
        * @param {string} sBool —
        * @return {undefined} —
@@ -704,7 +690,7 @@ Terminal = ( function () {
       };
 
       /**
-       * Empty the terminal lines
+       *  Empty the terminal lines
        *
        * @id 20170501°0541
        * @return {undefined} —
@@ -714,7 +700,7 @@ Terminal = ( function () {
       };
 
       /**
-       * Clears the history
+       *  Clears the history
        *
        * @note History feature after Mark
        * @id 20210503°0931
@@ -726,7 +712,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0551
        * @param {string} message —
@@ -737,8 +723,16 @@ Terminal = ( function () {
          promptInput(this, message, PROMPT_CONFIRM, callback);
       };
 
+      /*
+       issue 20210502°1341 'Learn about GoCloCom parameter types'
+       matter : The GoCloCom error messages are sometimes hard to understand.
+          E.g. in func 20210502°1211 connect(), func 20210509°1631 getId(),
+          and var 20210509°1633,  GoCloCom complains about parameter types.
+       todo : Learn how to handle types not experimentally but knowingly.
+       */
+
       /**
-       * Switch on XHR mode and provide backend address
+       *  Switch on XHR mode and provide backend address
        *
        * @id 20210502°1211
        * @param {string} url —
@@ -746,22 +740,22 @@ Terminal = ( function () {
        */
       this.connect = function (url) {                                  // [chg 20210502°1111`16 xhr]
          this._backend = url;
-         promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
+         promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? See issue 20210502°1341 'Learn about GoCloCom parameter types'
       };
 
       /**
-       * Returns the ID of this instance
+       *  Returns the ID of this instance
        *
        * @id 20210509°1631
        * @return {string} —
        */
       this.getId = function () {
-         ////return this._objId;        //// GoCloCom complains 'JSC_TYPE_MISMATCH found: (null|string), required: string'
-         return this._objId.toString(); //// GoCloCom is satisfied — But better were to make _objId natively a string-only [issue 20210509°1741]
+         // //return this._objId;                                      // GoCloCom complains 'JSC_TYPE_MISMATCH found: (null|string), required: string'
+         return this._objId.toString();                                // GoCloCom is satisfied — But better were to make _objId natively a string-only. See issue 20210502°1341 'Learn about GoCloCom parameter types'
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0611
        * @param {string} message —
@@ -773,7 +767,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0621
        * @param {string} message —
@@ -785,7 +779,7 @@ Terminal = ( function () {
       };
 
       /**
-       * Output one line. Creates the div which will stay permanently in the output box.
+       *  Output one line. Creates the div which will stay permanently in the output box.
        *
        * @id 20170501°0631
        * @param {string} message —
@@ -808,7 +802,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0641
        * @param {string} col —
@@ -831,7 +825,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0651
        * @param {string} height —
@@ -845,29 +839,33 @@ Terminal = ( function () {
        *  Let the user set the input prompt, e.g. '$ '.
        *
        * @id 20210504°1011
+       * @todo Remember issue 20210509°1555 'Validate user prompt'
        * @param {string} sParam —
        * @return {undefined} —
        */
       this.setInputPrompt = function (sParam) {
-         //this._inputLine.textPrefix = sParam; //// Check -- What is this good for? Comes from the XHR feature
+         //this._inputLine.textPrefix = sParam;                        // Check — What exactly is this good for? See the XHR feature.
          this._inputPrompt = sParam;
          _inputPromptGlobal = sParam;                                  // Provisory
+         _mountCssRules();
       };
 
       /**
        *  Let the user set the output prompt
        *
        * @id 20210504°1021
+       * @todo Remember issue 20210509°1555 'Validate user prompt'
        * @param {string} sParam —
        * @return {undefined} —
        */
       this.setOutputPrompt = function (sParam) {
          this._outputPrompt = sParam;
          _outputPromptGlobal = sParam;                                 // Provisory
+         _mountCssRules();
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0711
        * @param {string} col —
@@ -879,7 +877,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0721
        * @param {string} size —
@@ -891,7 +889,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0731
        * @param {string} width —
@@ -902,7 +900,7 @@ Terminal = ( function () {
       };
 
       /**
-       * ..
+       *  ..
        *
        * @id 20170501°0741
        * @param {number} milliseconds —
@@ -920,7 +918,7 @@ Terminal = ( function () {
       // ~~ Assemble the terminal div element
       this._inputElement.appendChild(this._inputLine);
       this._inputElement.appendChild(this._cursor);
-      this._innerWindow.appendChild(this._output);                     // Here this._output is empty
+      this._innerWindow.appendChild(this._output);
       this._innerWindow.appendChild(this._inputElement);
       this._innerWindow.style.padding = '10px';
       this._innerWindow.className = 'Terminal_Complete';
@@ -938,20 +936,31 @@ Terminal = ( function () {
       this._inputElement.style.margin = '0';
 
       // Dummy for blinking cursor
-      // If this gets wider, e.g. 'Crsr', the blinking cursor will get wider
       this._cursor.innerHTML = 'X';                                    // Originally 'C'
       this._cursor.style.background = 'white';
       this._cursor.style.display = 'none';                             // Then hide it
 
       this._output.style.margin = '0';
 
+
+      /*
+      issue 20210502°1351 'What does the Overflow'?
+      matter : In the ~original styling, this.html.style.overflow = 'auto' is used.
+      do : Clear, what exactly overflow effects, and whether it may be sensible
+         at other places as well. E.g. with the planned automatic linebreak
+         for too long lines.
+      location : 
+      status : Open
+       */
+
       // ~~
+      // [seq ]
       this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17 xhr]
       this.html.style.margin = '0';
-      this.html.style.overflow = 'auto';                               // [chg 20210502°1111`18 xhr] Which exact impact will overflow have?  [issue 20210502°1351 Overflow]
+      this.html.style.overflow = 'auto'; // [line 20210502°1133]       // [chg 20210502°1111`18 xhr] See issue 20210502°1351 'What does the Overflow'?
 
       /**
-       *
+       *  ..
        */
       this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
@@ -959,12 +968,12 @@ Terminal = ( function () {
    };
 
    /**
-    * This const holds beep.mp3 in its base64-encoded version (58 512 bytes)
+    *  This const holds beep.mp3 in its base64-encoded version (58 512 bytes)
     *  (formerly http:/ /www.erikosterberg.com/terminaljs/beep.mp3)
     *
     * Browser compatibility (with audio as base64 embedded)
     *  • OGG : Chrome64 yes, Edge42 no, FF66 yes, IE9 no, IE10 no, Opera58 yes
-    *  • MP3 :  Chrome64 yes, Edge42 yes, FF66 yes, *IE9 no*, IE10 yes, Opera58 yes
+    *  • MP3 : Chrome64 yes, Edge42 yes, FF66 yes, *IE9 no*, IE10 yes, Opera58 yes
     *
     * @id 20190325°0751
     * @credit The encoding was done on https://www.base64encode.org/

@@ -2,7 +2,7 @@
  * This module operates Termjnal
  *
  * file : 20190205°0111 daftari/jsi/dafterm.js
- * license : BSD 3-Clause License //// (formerly GNU AGPL v3)
+ * license : BSD 3-Clause License // // (formerly GNU AGPL v3)
  * copyright : © 2019 - 2021 Norbert C. Maier
  * authors : ncm
  * status : Under construction
@@ -70,11 +70,6 @@ Daf.Term.ajaxRequest = function()
    'use strict';
 
    // () Assemble shipment ingredients [seq 20190209°0322]
-   //// var sTargetUrl = Trekta.Utils.s_DaftariBaseFolderRel
-   ////                 + '/' + Daf.Const.s_DAFTARI_OFFSET_PHP_SCRIPTS
-   ////                  + '/' + 'Go.php'
-   ////                   + '?cmd=' + 'spin'
-   ////                    ;
    var sTargetUrl = './custom.Go.php' + '?cmd=' + 'spin';
    var sMsgToSend = 'Hello spin ..';
 
