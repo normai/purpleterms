@@ -71,16 +71,18 @@
       // Reaction [func 20210503°1531]
       function holla(sWhat) {
 
-         // [test 20210509°1553]
-         t1.setInputPrompt('→ ');
-         t1.setOutputPrompt('← ');
-
          if (sWhat.toLowerCase() === 'p' ) {
             t1.input ( 'Take a breath. Continue with any input.', function (sInpuz) {
                keepgoing();
             });
          }
          else if (sWhat.toLowerCase() === 'q' ) {
+
+            // [test 20210509°1553]
+            // Todo: Shift this to a dedicated place, here it comes as a surprise.
+            t1.setInputPrompt('→ ');
+            t1.setOutputPrompt('← ');
+
             t1.print('Finished. You need to refresh your page to start again.');
          }
          else {

@@ -13,6 +13,10 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or 
 ##### log
 - ..
 
+##### log 20210509°1812 — v0.3.0.2 Cleanup timestamps
+- Cleanup timestamps
+- Little edits
+
 ##### version 20210509°1811 — v0.3.0 Prompts proof-of-concept
 - Complete debug borders
 - Fix input prompt
