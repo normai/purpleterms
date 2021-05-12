@@ -6,7 +6,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Termjnal &nbsp; <sup><sub>v0.3.0.2 &nbsp; <sup><sup>20230510°1443</sup></sup></sub></sup>
+# Termjnal &nbsp; <sup><sub>v0.3.0.3 &nbsp; <sup><sup>20230510°1445</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)
@@ -46,7 +46,7 @@ Here are the **changes** since forking from
 
 - Supplement **input prompt** by dynamic CSS rules
 
-I have stirred the code violently but maintained **backward-compatible**.
+I have stirred the code violently but maintained **backward-compatibility**.
  Just replace your old by the new [`terminal.js`](./terminal.js)
  or by [`terminal.min.js`](./terminal.min.js) — And bingo (hopefully).
 
@@ -63,7 +63,7 @@ Today a terminal seems a toy. But still e.g. in Windows many system
  tasks are not available from Explorer, only from console. Why?
  Because computers natively do communicate in terms of commands.
 
-The word console I find an even more concise designation for such box,
+The word 'console' I find an even more concise designation for such box,
  than terminal, because it carries the term 'solid' in it. A console represents
  the system and must be extra reliable. If it wobbles, the system wobbles.
 

@@ -10,10 +10,8 @@ Pages : &nbsp;
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
-##### log
-- ..
 
-##### log 20210509°1812 — v0.3.0.2 Cleanup timestamps
+##### log 20230510°1445 — v0.3.0.3 Cleanup timestamps
 - Cleanup timestamps
 - Little edits
 
