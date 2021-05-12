@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.3.0.3 — Provides a terminal in the browser
+ * Termjnal v0.3.0.3~~ — Provides a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -80,13 +80,12 @@ Terminal = ( function () {
    var _debugBorders = false;
 
    /**
-    *  ..
+    *  Helper flag to fire 'inputField.focus()' after initialization
     *
     * @id 20170501°0241
     * @type {boolean} —
     */
    var firstPrompt = true;
-
 
    /**
     *  This global function generates an ID
@@ -289,6 +288,8 @@ Terminal = ( function () {
     */
    var promptInput = function (oTerm, message, PROMPT_TYPE, callback) {
 
+      'use strict';                                                    // Newly introduced, worked out of the box [line 20230510°1531]
+
       var bShouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
       var inputField = document.createElement('input');
 
@@ -311,7 +312,9 @@ Terminal = ( function () {
       fireCursorInterval(inputField, oTerm);
 
       // [condition 20170501°0751]
-      if (message.length) {
+      // What exactly means 'message.length'? With message null it throws error! Condition seems wrong. [quest 20230510°1521]
+      ////if ( message.length ) {
+      if ( message !== null ) {                                        // first try
          oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
 
@@ -467,10 +470,12 @@ Terminal = ( function () {
          }
       };
 
+      // Helper function to save the user a click (???) [seq 20170501°0911]
       if (firstPrompt) {
          firstPrompt = false;
-         setTimeout(function () { inputField.focus();   }, 50);
-      } else {
+         setTimeout(function () { inputField.focus(); }, 50);
+      }
+      else {
          inputField.focus();
       }
    };
@@ -707,8 +712,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.clearHistory = function () {
-         this.history = [];                           // Should be marked as private with underscore? [note 20210503°1521]
-         this.lasthistory = -1;                       // Should be marked as private with underscore? [note 20210503°1521`02]
+         this.history = [];                           // Should be marked as private with underscore? [note 20210503°1447]
+         this.lasthistory = -1;                       // Should be marked as private with underscore? [note 20210503°1447`02]
       };
 
       /**

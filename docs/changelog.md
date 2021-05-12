@@ -10,6 +10,10 @@ Pages : &nbsp;
 
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
+##### log
+- Implement plain prompt in aloha.html dispatcher loop
+- Put more boxes on aloha.html
+- ..
 
 ##### log 20230510°1445 — v0.3.0.3 Cleanup timestamps
 - Cleanup timestamps
