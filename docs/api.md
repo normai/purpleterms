@@ -25,6 +25,10 @@ If the constructor can be called without or with an ID. If you calle it without,
 - var myTerminal = new Terminal()
 - var myTerminal = new Terminal(id)
 
+A given ID must be of maximum lenght 32, must consist only of letters, digits
+ and underlines. An empty string is treated like no parameter. If you pass
+ an invalid ID, one is automatically generated, as if you have given nothing.
+
 <a name="api_methods"></a>
 ## Methods
 

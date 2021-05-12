@@ -6,7 +6,7 @@
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
-# Termjnal &nbsp; <sup><sub>v0.2.9.9~ &nbsp; <sup><sup>20210509°1111~</sup></sup></sub></sup>
+# Termjnal &nbsp; <sup><sub>v0.3.0 &nbsp; <sup><sup>20210509°1811</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)

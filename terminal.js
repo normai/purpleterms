@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.2.9.9~ — Provides a terminal in the browser
+ * Termjnal v0.3.0 — Provides a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -86,6 +86,69 @@ Terminal = ( function () {
     */
    var firstPrompt = true;
 
+
+   /**
+    *  This global function generates an ID
+    * 
+    * @param {string|number|null} idGiven —
+    * @return {string} —
+    */
+   var _generateId = function(idGiven) {
+
+      var sIdRet = '';
+
+      // Process ID [seq 20210509°1621]
+      if (! idGiven) {
+         // No ID given, so create one
+         var iCount = 0;
+         while (true) {
+            iCount++;
+            if ( _aIds.indexOf(iCount.toString()) >= 0 ) {
+               continue;
+            }
+            break;
+         }
+         sIdRet = iCount.toString();
+      }
+      else {
+         // It is a given ID, so test it for being allowed
+         var bAllowed = true;
+         
+         // Validate length
+         if (idGiven.length < 1 || idGiven.length > 32) {
+            bAllowed = false;
+         }
+
+         // Validate characters
+         if (bAllowed) {
+            for (var i = 0; i < idGiven.length; i++) {
+               var c = idGiven.charAt(i);
+               if (! c.match(/[a-zA-Z0-9_]/i) ) {
+                  bAllowed = false;
+                  break;
+               }
+            }
+         }
+
+         // Validate being free?
+         if (_aIds.indexOf(idGiven) >= 0) {
+            bAllowed = false;
+         }
+
+         // Process invalid given ID [seq 20210509°1641]
+         if (! bAllowed) {
+            // If given ID is invalid, then generate an automatic one
+            // Remember issue 20210509°1731 'First fully initialize object, then return'
+            sIdRet = _generateId(null);
+         }
+         else {
+            sIdRet = idGiven.toString();
+         }
+      }
+
+      return sIdRet;
+   };
+
    /**
     * This function dynamically provides CSS rules
     *  Provisory implementation, see todos.
@@ -158,7 +221,7 @@ Terminal = ( function () {
                   ;
 
       // Output line dedicated [seq 20210509°1417]
-      var sRu7OutLineDedi = _debugBorders
+      var sRu4OutFormerInput = _debugBorders
                  ? "\n" + "div.Terminal_OutputLine_FormerInput { "
                   + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
                    + ' }'
@@ -171,9 +234,9 @@ Terminal = ( function () {
                   ;
 
       // Rule set for input span [seq 20190312°0451]
-      var sRu4InputLine = '';
+      var sRu5InputLine = '';
       if ( _debugBorders ) {
-         sRu4InputLine  = "\n" + "span.Terminal_Input {"
+         sRu5InputLine  = "\n" + "span.Terminal_Input {"
                   + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
                    + ' ' + "}"
                    + "\n" + "span.Terminal_Input:before"
@@ -184,14 +247,14 @@ Terminal = ( function () {
                       ;
       }
       else {
-         sRu4InputLine = "\n" + "span.Terminal_Input { }"
+         sRu5InputLine = "\n" + "span.Terminal_Input { }"
                   + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }"
                    ;
       }
 
       // Apply
       eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
-                        + sRu7OutLineDedi + sRu4InputLine
+                        + sRu4OutFormerInput + sRu5InputLine
                          ;
       document.getElementsByTagName('head')[0].appendChild(eStyle);
    };
@@ -426,18 +489,56 @@ Terminal = ( function () {
     * This function provides the div with the terminal functionalities
     *
     * id : 20170501°0851
-    * @param {number} id —
+    * @param {number|string} idParam —
     * @constructor —
     */
-   var TerminalConstructor = function (id) {
-
-      // Process ID [seq 20210509°1621]
-      if (! id) {
-         
-      }
+   var TerminalConstructor = function (idParam) {
 
 
+      /*
+       * ===============================================
+       * Define fields
+       *  See issue 20210509°1731 'First fully initialize object, then return'
+       * ===============================================
+       */
+      
 
+      /**
+       * Public field, represents the complete terminal
+       *
+       * @id 20170501°0411
+       * @note Shifted this here from below to have it available with ID failure [chg 20210509°1623]
+       * @type {Element} —
+       */
+      this.html = document.createElement('div');
+      this.html.className = 'Terminal';
+
+      // Now that we have ID validation and gernation, this must come after validation [issue 20210509°16xx]
+      if (typeof(idParam) === 'string') {
+         this.html.id = idParam;
+      };
+
+
+      /*
+       * ===============================================
+       * Define functions
+       * ===============================================
+       */
+
+
+
+
+      /*
+       * ===============================================
+       * Start working
+       * ===============================================
+       */
+
+
+      // Process ID [seq 20210509°16xx]
+      var s = _generateId(idParam); // sObjId
+      _aIds.push(s);
+      this._objId = s;
 
 
       // Create audio element [seq 20170501°0841]
@@ -460,19 +561,19 @@ Terminal = ( function () {
       //    to put it somewhere, where it is called only once. The second best
       //    option is, tht the function shields itsels from double mounting.
       _mountCssRules();
-      
-      
-      /**
-       * Public field, represents the complete terminal
-       *
-       * @id 20170501°0411
-       * @type {Element} —
-       */
-      this.html = document.createElement('div');
-      this.html.className = 'Terminal';
-      if (typeof(id) === 'string') {
-         this.html.id = id;
-      };
+
+
+      //// /**
+      ////  * Public field, represents the complete terminal
+      ////  *
+      ////  * @id 20170501°0411
+      ////  * @type {Element} —
+      ////  */
+      //// this.html = document.createElement('div');
+      //// this.html.className = 'Terminal';
+      //// if (typeof(id) === 'string') {
+      ////    this.html.id = id;
+      //// };
 
       /**
        * Private field ..
@@ -489,6 +590,14 @@ Terminal = ( function () {
        * @type {Array} —
        */
       this._history = [];
+
+      /**
+       * Storage for the ID of the instance
+       *
+       * @id 20210509°1633
+       * @type {string|null} —
+       */
+      this._objId = this._objId || null; // Hm .. value is already set above
 
       /**
        * Counter into the history array (History feature after Mark)
@@ -639,6 +748,17 @@ Terminal = ( function () {
       this.connect = function (url) {                                  // [chg 20210502°1111`16 xhr]
          this._backend = url;
          promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? [issue 20210502°1341 Parameter type]
+      };
+
+      /**
+       * Returns the ID of this instance
+       *
+       * @id 20210509°1631
+       * @return {string} —
+       */
+      this.getId = function () {
+         ////return this._objId;        //// GoCloCom complains 'JSC_TYPE_MISMATCH found: (null|string), required: string'
+         return this._objId.toString(); //// GoCloCom is satisfied — But better were to make _objId natively a string-only [issue 20210509°1741]
       };
 
       /**
@@ -794,6 +914,10 @@ Terminal = ( function () {
          setTimeout(callback, milliseconds);
       };
 
+      // ======================================================
+      // The work continues ..
+      // ======================================================
+
       // ~~ Assemble the terminal div element
       this._inputElement.appendChild(this._inputLine);
       this._inputElement.appendChild(this._cursor);
@@ -832,6 +956,7 @@ Terminal = ( function () {
        */
       this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
+      return;
    };
 
    /**

@@ -93,6 +93,15 @@ Terminal.confirm();
 Terminal.connect();
 
 /**
+ * Get ID of instance
+ *
+ * @id 20210509°1631`12
+ * @_t_y_p_e {Function} —
+ * @return {string} —
+ */
+Terminal.getId();
+
+/**
  * ..
  *
  * @id 20170501°0411`12

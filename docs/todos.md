@@ -10,6 +10,18 @@ Pages : &nbsp;
 
 ---
 
+##### issue 20210509°1731 'Fully initialize object, only then return'
+
+Matter : It is no good idea, to return from seq 20210509°1641 without the
+ this.html having initialized. Properties like setHeight() should
+ function for the user. This were possible by rearrange the code,
+ so e.g.  definitions like getHeight() get located before this return.
+ The user may use them after she got the object. Only if we keep the
+ object functional, we should give it to the user. Sorrily I have no
+ quick solution for such procedure.
+ Workaround : In case of illegal ID parameter, dispose that and
+ use a generated ID.
+ status : Open
 
 #### Todo 'Complete Aloha Demo' _<sup><sub><sup><sub>20210509°1351</sub></sup></sub></sup>_
 

@@ -51,17 +51,16 @@
   <script>
 
       // Prologue [seq 20210503°1511]
-      ////var t1 = new Terminal();
-      var t1 = new Terminal('123'); //// Test optional ID
+      var t1 = new Terminal(); // 'X'
       t1.setHeight("500px");
       t1.setBackgroundColor("Blue");
       var elTarget = document.getElementById('Put_Terminal_Here');     //// Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
-      t1.print('Welcome to the Termjnal Aloha Demo!');
+      t1.print("Welcome to the Aloha Demo terminal ID = '" + t1.getId() + "'.");
       var sInput = '';
 
       // Action [seq 20210503°1513]
-      t1.input ( "Please enter me any input? (p = pause, q = quit)", function (sInpuz) {
+      t1.input ( "Please enter me some input (p = pause, q = quit)", function (sInpuz) {
          holla(sInpuz);
       });
 
