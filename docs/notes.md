@@ -2,7 +2,7 @@ Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • Notes &nbsp;
- • [Todos](./todos.md) &nbsp;
+ • [Issues](./issues.md) &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
  • [License](./license.md)
 
@@ -15,22 +15,9 @@ Below : &nbsp;
 • [PR 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
 • [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
+• *([GFM](#github_flavored_markdown))*
 
 _This file is for miscellanesous notes and considerations._
-
- Some 'Prepared Food (Meals) Emoji' :
-  Bacon            🥓 |
-  Baguette Bread   🥖 |
-  Bowl With Spoon  🥣 |
-  Cheese Wedge     🧀 |
-  Croissant        🥐 |
-  Green Salad      🥗 |
-  Hamburger        🍔 |
-  Hot Dog          🌭 |
-  Pizza            🍕 |
-  Poultry Leg      🍗 |
-  Pretzel          🥨 |
-  Waffle           🧇 |
 
 ---
 
@@ -280,55 +267,42 @@ Further reference(s) :
 
 ---
 
+## GFM — GitHub Flavoured Markdown <a name="github_flavored_markdown"></a> &nbsp; _<sup><sub><sup><sup>Section&nbsp;20210506°0931</sup></sup></sub></sup>_
+
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
-Here is a little experiment with GitHub Markdown, entirely unrelated to Termjnal.
-Can an image be right aligned? Findings: Not with `style="float:right;"`,
-but with the legacy `align="right"`.
-<sup><sub><sup>*Paragraph 20210506°0931*</sup></sub></sup>
+This paragraph is **unrelated** to Termjnal. This are little experiments
+ serving me to understand the differences between
+ [GFM](https://github.github.com/gfm/) and my local Markdown renderer
+ [Showdown](https://github.com/showdownjs/showdown).
+ _On the next best occasion, I will throw this paragraph out of the project._
+
+> His line is written with a `>` prepended.
+ Findings: GitHub does mark the line as citation, Showdown does indent it but not otherwise mark.
+
+               .Holla — This line starts on column 16 with a dot.
+Findings (on the dot line above): GitHub and Showdown the both print this line
+formatted as code, indented as given, and not whitespace-broken if too long.
+
+Can an image be right aligned? I am trying `style="float:right;"` and `align="right"`.
+Findings: GiHub does not work with `style="float:right;"`, but with the legacy `align="right"`.
+Showdown works with the both.
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="clear:both" align="right" width="64" height="64" alt="Grainy Dummy 2">
 
----
-
-<a name="id20210504o1041"></a>
-issue //20210504°1041 '**Simplify input prompt handling**'
- - Matter : This is a follow up on finished *[issue 20210502°1121](#id20210502o1121)*
-   'Input prepended by dollar'. Though the bug there is fixed, the topic lingers.
-   I noticed complexities with the prompt handling, which possibly can be reduced.
-   I consider the prompt feature as a very basic one. As long as this is
-   not solved cleanly, it makes no sense to put further features on top.
- - Type : Refactoring.
- - Status : Open.
-   ܀
-
----
-
-<a name="id20210502o1121"></a>
-issue 20210502°1121 'Input prepended by dollar'
- - Symptom : Each input is automatically prepended by dollar sign.
- - Finding : After change 20210502°1111 'XHR', each input line is prefixed
-   '$ ' in order to simulate a prompt. This infiltrates the original workflows.
- - Solution : I removed that dollar sign prefix again. Instead, quick'n'dirty,
-      provided a setter setInputPrompt(string), where the user who needs it,
-      can individually prepend the input with some string [fix 20210504°1031].
- - Note : The additional setter(s) blow up the setter bunch. What about some
-      single JSON options object? Anyway — This would not save lines on user
-      side, nor in the documentation.
- - Note : While I am writing setInputPrompt(), I write a setOutputPrompt().
-      right off, since in I will like to flag output symmetrically to input.
- - Note : While investigating the other forks, I noticed the prompt being a
-      recurring theme. About 5 forks have written prompts, including myself.
- - Note : I remember my own solution not touching Termjnal, but operating
-      purely on user code side. I should review (haven't done yet).
- - Resume : The solution with function 20210504°1011 setInputPrompt was quickly
-      done without really analysing the complexity of the involved sequences.
-      I suspect, there is room for simplification. Calculating  string width of
-      the input to determinate the prompt seems no clear solution. It mixes two
-      concerns. The prompt and the input value should be two clearly distinct
-      entities, without the need for string length calculations. See
-      *[issue 20210504°1041](#id20210504o1041)* 'Simplify input prompt handling'.)
- - Status : Closed with fix 20210504°1031 'introduce setInputPrompt()'.
-   ܀
+ This are some '`Prepared Food (Meals) Emoji`' :
+  Bacon            🥓 |
+  Baguette Bread   🥖 |
+  Bowl With Spoon  🥣 |
+  Cheese Wedge     🧀 |
+  Croissant        🥐 |
+  Green Salad      🥗 |
+  Hamburger        🍔 |
+  Hot Dog          🌭 |
+  Pizza            🍕 |
+  Poultry Leg      🍗 |
+  Pretzel          🥨 |
+  Waffle           🧇 |
+BTW. Practical emoji overviews provides e.g. [Emojigraph](https://emojigraph.org/).
 
 ---
 

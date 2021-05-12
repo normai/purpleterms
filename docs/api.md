@@ -2,7 +2,7 @@ Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • API &nbsp;
  • [Notes](./notes.md) &nbsp;
- • [Todos](./todos.md) &nbsp;
+ • [Issues](./issues.md) &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
  • [License](./license.md)
 

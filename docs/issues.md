@@ -2,7 +2,7 @@ Pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
- • Todos &nbsp;
+ • Issues &nbsp;
  • [ChangeLog](./changelog.md) &nbsp;
  • [License](./../license.md)
 
@@ -67,6 +67,48 @@ Using MIDI for the beep would dramatically reduce file size. Only I'm afraid
 
 58.5 KB for one beep is too much. See variable `sBase64_Beep_Mp3` _<sup><sub><sup>20190325°0751_</sup></sub></sup>.
 An MP3 file around 20 KB should be feasible, perhaps even 10 KB or less.
+
+---
+
+<a name="id20210504o1041"></a>
+issue //20210504°1041 '**Simplify input prompt handling**'
+ - Matter : This is a follow up on finished *[issue 20210502°1121](#id20210502o1121)*
+   'Input prepended by dollar'. Though the bug there is fixed, the topic lingers.
+   I noticed complexities with the prompt handling, which possibly can be reduced.
+   I consider the prompt feature as a very basic one. As long as this is
+   not solved cleanly, it makes no sense to put further features on top.
+ - Type : Refactoring.
+ - Status : Open.
+   ܀
+
+---
+
+<a name="id20210502o1121"></a>
+issue 20210502°1121 'Input prepended by dollar'
+ - Symptom : Each input is automatically prepended by dollar sign.
+ - Finding : After change 20210502°1111 'XHR', each input line is prefixed
+   '$ ' in order to simulate a prompt. This infiltrates the original workflows.
+ - Solution : I removed that dollar sign prefix again. Instead, quick'n'dirty,
+      provided a setter setInputPrompt(string), where the user who needs it,
+      can individually prepend the input with some string [fix 20210504°1031].
+ - Note : The additional setter(s) blow up the setter bunch. What about some
+      single JSON options object? Anyway — This would not save lines on user
+      side, nor in the documentation.
+ - Note : While I am writing setInputPrompt(), I write a setOutputPrompt().
+      right off, since in I will like to flag output symmetrically to input.
+ - Note : While investigating the other forks, I noticed the prompt being a
+      recurring theme. About 5 forks have written prompts, including myself.
+ - Note : I remember my own solution not touching Termjnal, but operating
+      purely on user code side. I should review (haven't done yet).
+ - Resume : The solution with function 20210504°1011 setInputPrompt was quickly
+      done without really analysing the complexity of the involved sequences.
+      I suspect, there is room for simplification. Calculating  string width of
+      the input to determinate the prompt seems no clear solution. It mixes two
+      concerns. The prompt and the input value should be two clearly distinct
+      entities, without the need for string length calculations. See
+      *[issue 20210504°1041](#id20210504o1041)* 'Simplify input prompt handling'.)
+ - Status : Closed with fix 20210504°1031 'introduce setInputPrompt()'.
+   ܀
 
 ---
 

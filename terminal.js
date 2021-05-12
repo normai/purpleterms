@@ -151,7 +151,6 @@ Terminal = ( function () {
 
    /**
     * This function dynamically provides CSS rules
-    *  Provisory implementation, see todos.
     *
     * @id  20210507°1641
     * @todo Either this must be called from a place where it is called only once

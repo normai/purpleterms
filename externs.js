@@ -1,7 +1,7 @@
 /*!
  *  file : 20210429°1531
  *  version : Initial
- *  status : First attempt, much room for fine tuning
+ *  status : First attempt. To be cleaned up and given wise, not wild, entries.
  *  see : The comment tags are described on [ref 20210416°1641]
  *      https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler
  */

@@ -2,7 +2,7 @@
  • ReadMe &nbsp;
  • [API](./docs/api.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
- • [Todos](./docs/todos.md) &nbsp;
+ • [Issues](./docs/issues.md) &nbsp;
  • [ChangeLog](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
