@@ -78,18 +78,16 @@
   </p>
 
   <!-- **************************************************** -->
-  <!-- Style here seems overwritten by programmatic style -->
+  <!--
+     Style here seems overwritten by programmatic style.
+     Debugger tells, this terminal ends up in Div 2 together with Box Two.
+  -->
   <div style="font-size:1.3em; width:666px;" id="Div_For_Terminal_One">
   </div>
   <!-- **************************************************** -->
 
   <p style="clear:both; line-height:1.2em;">
-              And more boxes :
-              <span class="FontTodo">Todo: • This line should be located between the two boxes.
-              • The styling of the boxes shall not be the same, but different.
-              • Styling of box two affects box one, but not box three. Possibly
-              styling from the page and that from the script do unluckily interfere.
-              </span>
+              Another box :
   </p>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -99,6 +97,9 @@
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <div style="font-size:0.7em; line-height:0.9em; float:right;" id="Div_For_Terminal_Three">
+  <p>
+              And yet one more box :
+  </p>
   </div>
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -112,7 +113,7 @@
       var t1 = new Terminal();                                         // 'X'
       t1.setHeight("400px");
       t1.setBackgroundColor("Blue");
-      var elTarget = document.getElementById('Div_For_Terminal_Two');  // Position randomly [seq 20210506°1632`01]
+      var elTarget = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
       t1.print("Welcome to the Aloha Demo terminal ID = '" + t1.getId() + "'.");
       var sInput = '';
@@ -198,6 +199,9 @@
       // ******************************************************
       // Terminal Three [box 20230510°1711]
       // ******************************************************
+      // Reference: The dice roll algorithm comes from
+      //  Romain Guillemot on 2019-Jul-30 on [ref 20230510°1751]
+      //  medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1
 
       // Prologue [seq 20230510°1671]
       var t3 = new Terminal("Potato");
@@ -245,9 +249,12 @@
   <p>
                What's missing? • Functional <b>backspace</b>.
                • Functional <b>scrolling</b>. If you come below the bottom edge,
-               the last line should automatically stay inside the visible area,
-               not be brought in by your manual scrolling.
-               • The confirm function should have an input prompt, not an output prompt.
+                 the last line should automatically stay inside the visible area,
+                 not be brought in by your manual scrolling.
+               • The <code>confirm</code> function should have an input prompt,
+                 no output prompt.
+               • The boxes should leave the focus with <b>Tab</b>, and go to the
+                 next control, obeying to the general key mapping.
   </p>
 
   <p class="Good12Bye">
