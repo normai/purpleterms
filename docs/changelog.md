@@ -13,6 +13,9 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or 
 ##### log
 - Implement plain prompt in aloha.html dispatcher loop
 - Put more boxes on aloha.html
+- Replace beep, big and loud vs. small and soft [chg 20210511°1311]
+        (Numbers: mp3 file 58.5 bytes vs. 10.2 bytes; terminal.js
+         104.8 KB vs 50.7 KB; terminal.min.js 63. KB vs. 20.6 KB)
 - ..
 
 ##### log 20230510°1445 — v0.3.0.3 Cleanup timestamps
