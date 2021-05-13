@@ -3,7 +3,7 @@ Pages : &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [ChangeLog](./changelog.md) &nbsp;
+ • [Changes](./changelog.md) &nbsp;
  • License
 
 Below : &nbsp;

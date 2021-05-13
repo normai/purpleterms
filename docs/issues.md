@@ -3,14 +3,15 @@ Pages : &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • Issues &nbsp;
- • [ChangeLog](./changelog.md) &nbsp;
+ • [Changes](./changelog.md) &nbsp;
  • [License](./../license.md)
 
 ## Issues and Todos
 
 ---
 
-##### issue 20210509°1731 'Fully initialize object, only then return'
+
+##### Issue 'Fully initialize object, only then return it' _<sup><sub><sup><sub>20210509°1731</sub></sup></sub></sup>_
 
 Matter : It is no good idea, to return from seq 20210509°1641 without the
  this.html having initialized. Properties like setHeight() should
@@ -23,13 +24,15 @@ Matter : It is no good idea, to return from seq 20210509°1641 without the
  use a generated ID.
  status : Open
 
-#### Todo 'Complete Aloha Demo' _<sup><sub><sup><sub>20210509°1351</sub></sup></sub></sup>_
+---
 
-Demonstrate complete feature list, notably `confirm`.
+##### Todo 'Complete Aloha Demo' _<sup><sub><sup><sub>20210509°1351</sub></sup></sub></sup>_
+
+Demonstrate complete feature list <del>notably `confirm`<del>.
 
 ---
 
-##### issue 20210509°1555 'Validate user prompt'
+##### Issue 'Validate user prompt' _<sup><sub><sup><sub>20210509°1555</sub></sup></sub></sup>_
 
 In `setInputPrompt()` and `setInputPrompt()`, the user-given parameter
  should be validated somehow, so it cannot disturb the system.

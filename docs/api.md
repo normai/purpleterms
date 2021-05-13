@@ -3,7 +3,7 @@ Pages : &nbsp;
  • API &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [ChangeLog](./changelog.md) &nbsp;
+ • [Changes](./changelog.md) &nbsp;
  • [License](./license.md)
 
 Below : &nbsp;
@@ -19,11 +19,11 @@ Below : &nbsp;
 <a name="api_initialization"></a>
 ## Initialization
 
-If the constructor can be called without or with an ID. If you calle it without,
- then an automatic ID is generated, otherwise yours is taken.
- generated. If you provide one, that is taken
-- var myTerminal = new Terminal()
-- var myTerminal = new Terminal(id)
+The constructor can be called without or with an ID. If you call it without,
+ then an automatic ID is generated. If you provide an ID, that one is used.
+
+- `var myTerminal = new Terminal()             // without ID parameter `
+- `var myTerminal = new Terminal(id)           // with ID parameter`
 
 A given ID must be of maximum lenght 32, must consist only of letters, digits
  and underlines. An empty string is treated like no parameter. If you pass

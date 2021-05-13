@@ -3,12 +3,13 @@ Pages : &nbsp;
  • [API](./api.md) &nbsp;
  • Notes &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [ChangeLog](./changelog.md) &nbsp;
+ • [Changes](./changelog.md) &nbsp;
  • [License](./license.md)
 
 # Notes
 
 Below : &nbsp;
+• [Base64](#notes_base64) &nbsp;
 • [Prompts](#notes_prompts) &nbsp;
 • [Fork list](#fork_list) &nbsp;
 • [PR 'XHR'](#pull_request_backend_via_xhr) &nbsp;
@@ -21,9 +22,67 @@ _This file is for miscellanesous notes and considerations._
 
 ---
 
+## Base64 Encoding <a name="notes_base64"></a> &nbsp; _<sup><sub><sup><sup>Article 20210511°1213</sup></sup></sub></sup>_
+
+The provided **beep** comes not as a sound file, but as a variable with the
+ **base64** encoding of the sound file. I was brought to my attention, that
+ other developers might consider the use of base64 technique as a **security**
+ concern.
+
+The news I found in a hurry, told me, that some PHP base64 encoding/decoding
+ functions had issues.
+
+For the present JavaScript scenario, I cannot imagine any realistic issue. 
+ Nevertheless I want compile a list of what comes to my mind, that could
+ theoretically be wrong with the base64 sound data.
+
+- First option. The **original** sound file has malicious bytes in it. It
+ has nothing to do with base64 encoding. The attack vector is a player with
+ a vulnerability such that by crafted bytes it can be tricked into doing
+ something unwanted. The affair has two parties: The source of the sound file
+ and the audio player.
+
+- Next option. The original sound file is good, but during the download, a
+ **man-in-the-middle**, sits in the line, who manipulates the byte stream to
+ introduce her crafted bytes.
+
+- The medicine against above two cases, is to cross-check the acquired file.
+ This is hopefully done automatically in a first step, by the malware **scanner**
+ of the machine to where the file is downloaded. In case of doubt, an online
+ scanner can be seeked additionally.
+
+- The next option is the base64 **encoder**. This is either an online service
+ or a locally installed tool. If this service or tool is vicious, it returns
+ a string, not after the plain base64 algorithm, but manipulated purposeful.
+
+- The medicine against this is more expensive, since the mandatory malware
+ scanner might not notice this (or do they?). The file or string has to be
+ **decoded** again — in fact by a different service or tool, than the encoding
+ one, with might not reveal it's own intrigues. Then the scanner can smell
+ the rat. The question upfront is: 'Do I trust the encoding service or tool?'
+
+- If finally the base64 string is proofed clean, and is put as a variable into
+ the JavaScript file, the danger seems over. Manipulations of the **JavaScript
+ file** with the embedded base64 data should be noticed by the version control
+ software. Also to some degree, GitHub may provide us the service to look for
+ malicious bytes (it's their reptuation as well, after all).
+
+- From this point on, it is the responsibility of the **JavaScript engine**
+ in the user's browser, to do no harm. If the user's browser is evil, the user
+ will have bigger problems than a bad sound anyway, she will be lost all along.
+
+This were first quick associations, not yet settled, definitely to be refined.
+
+I am very interested to learn, what I have overlooked in the process.
+
+---
+
 ## The Instance ID <a name="notes_instanceid"></a> &nbsp; _<sup><sub><sup><sup>Feature 20210509°1651</sup></sup></sub></sup>_
 
-..
+Each terminal instance the user creates with `new Terminal()` gets an instance
+ID, which can be asked for with `getId()`.
+
+... see API Documentation ...
 
 ---
 

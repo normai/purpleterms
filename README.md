@@ -3,7 +3,7 @@
  • [API](./docs/api.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [Issues](./docs/issues.md) &nbsp;
- • [ChangeLog](./docs/changelog.md) &nbsp;
+ • [Changes](./docs/changelog.md) &nbsp;
  • [License](./docs/license.md)
 
 # Termjnal &nbsp; <sup><sub>v0.3.0.3~~ &nbsp; <sup><sup>20230510°1445~~</sup></sup></sub></sup>
@@ -32,7 +32,7 @@ Here are the **changes** since forking from
 
 - Build it with [Closure Compiler](https://developers.google.com/closure/compiler/) in **advanced mode**
 
-- Adjust **style** to my personal taste
+- Adjust code and documentation **style** to my needs
 
 - Refactor **key codes** inspired by pull request [#12](https://github.com/eosterberg/terminaljs/pull/12)
 
@@ -67,10 +67,9 @@ The word 'console' I find an even more concise designation for such box,
  than terminal, because it carries the term 'solid' in it. A console represents
  the system and must be extra reliable. If it wobbles, the system wobbles.
 
-Termjnal may never reach such solid state, but this is the direction to look.
- And as for guideline keywords, the top one is '*dead simple*'
- from Terminal.js' original slogan. Dead simple for the user, not necessarily
- for the programmer.
+'Solid' shall be the top guideline keyword for Termjnal development. And the
+ next important keyword is '*dead simple*', from Terminal.js' original slogan.
+ Dead simple for the library users, not necessarily for the library developers.
 
 Last not least, imagine speach recognition applied to the box, and out of
  nothing further interesting aspects show up.
