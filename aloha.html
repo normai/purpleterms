@@ -83,7 +83,7 @@
 
   <!-- **************************************************** -->
   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <div style="font-size:1.3em; width:666px;" id="Div_For_Terminal_One">
+      <div style="font-size:1.3em; width:666px; /* overscroll-behavior: contain; */" id="Div_For_Terminal_One">
       </div>
       Show debug borders.
       <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
@@ -93,8 +93,7 @@
   <!-- **************************************************** -->
 
 
-
-  <pre style="line-height:1.0em;">
+  <pre style="line-height:1.0em; display:none;">
                this._output.scrollHeight      = <span id="outputScrollHeight"></span>
                this._output.scrollTop         = <span id="outputScrollTop"></span>
                this._output.offsetTop         = <span id="outputOffsetTop"></span>
@@ -111,7 +110,6 @@
                document.body.scrollTop        = <span id="documentBodyScrollTop"></span>
                document.body.offsetTop        = <span id="documentBodyOffsetTop"></span>
   </pre>
-
 
 
   <p style="clear:both; line-height:1.2em;">
@@ -139,7 +137,7 @@
 
       // Prologue [seq 20210503°1521]
       var t1 = new Terminal();                                         // 'X'
-      t1.setHeight("400px");
+      t1.setHeight("400px");                                           // 400px normal, others for debugging
       t1.setBackgroundColor("Blue");
       var elTarget = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
@@ -156,27 +154,28 @@
       function takeInput(sWritten) {
 
 
+ //document.getElementById('eNewLineScrollHeight').innerHTML   = t1.eNewLine.scrollHeight;
+ //document.getElementById('eNewLineScrollTop').innerHTML      = t1.eNewLine.scrollTop;
+ //document.getElementById('eNewLineOffsetTop').innerHTML      = t1.eNewLine.offsetTop;
 
- //document.getElementById('eNewLineScrollHeight').innerHTML   = t1.eNewLine.scrollHeight
- //document.getElementById('eNewLineScrollTop').innerHTML      = t1.eNewLine.scrollTop
- //document.getElementById('eNewLineOffsetTop').innerHTML      = t1.eNewLine.offsetTop
+ document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight;
+ document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop;
+ document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop;
 
- document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight
- document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop
- document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop
+ document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
+ document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
+ document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
 
- document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight
- document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop
- document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop
+ document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight;
+ document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop;
+ document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop;
 
- document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight
- document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop
- document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop
+ document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight;
+ document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop;
+ document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop;
 
- document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight
- document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop
- document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop
 
+////window.scrollTo(0, 0); //// Experiment
 
          if (sWritten.toLowerCase() === 'c' ) {
             t1.clear();
@@ -232,12 +231,17 @@
       // Terminal Two [box 20230510°1611]
       // ******************************************************
 
+
       // Prologue [seq 20230510°1621]
       var t2 = new Terminal();
       t2.setHeight("180px");
       t2.setWidth("360px");
       t2.setBackgroundColor("DarkCyan");
       var elTarget = document.getElementById('Div_For_Terminal_Two');
+
+      // Here the page will jump [seq 20210511°1541] -- Temporarily shutdown
+      // See issue 20210511°1611 'Bottom terminals shall keep feet still'
+      /* */
       elTarget.appendChild(t2.html);
       t2.print("Next box on the same page, ID = '" + t2.getId() + "'.");
       t2.confirm('Are you blonde?', function(b) {
@@ -246,6 +250,7 @@
          t2.print("This box will only be active again after page refresh.");
          t2.print("Bye.");
       } );
+      /* */
 
       // ******************************************************
       // Terminal Three [box 20230510°1711]
@@ -260,6 +265,10 @@
       t3.setWidth("360px");
       t3.setBackgroundColor("DarkSlateBlue");
       var elTarget = document.getElementById('Div_For_Terminal_Three');
+
+      // And here it jumps again [seq 20210511°1543] -- Temporarily shutdown
+      // See issue 20210511°1611 'Bottom terminals shall keep feet still'
+      /* */
       elTarget.appendChild(t3.html);
       t3.print("Third box on page, ID = '" + t3.getId() + "'.");
       t3.confirm('Would you like to roll dice?', function(b1) {
@@ -267,6 +276,7 @@
          if (b1) { roll(); }
          else { t3.print("Bye."); }
       } );
+      /* */
 
       function roll() {
          var i = 1 + Math.floor(Math.random() * 6);

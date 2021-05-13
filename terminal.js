@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.3.0.3~~ — Provides a terminal in the browser
+ * Termjnal v0.3.0.4 — Provide a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -357,6 +357,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       inputField.onkeydown = function (e) {
+
          // Listen to backspace [condition 20210502°1131] Condition newly introduced with [chg 20210502°1111`21 xhr]
          // [] Check — Is 'Backspace' really correct? Provide documentation or test function. [issue 20210502°1301 proof key code constant]
          if ( ( ( e.code === 'Backspace' || e.which === 8)
@@ -378,7 +379,7 @@ Terminal = ( function () {
          }
          else if ( bShouldDisplayInput && ( ! ( e.code === 'Enter' || e.which === 13 ))) // [chg 20210430°1551`02 key code]
          {
-            // Echo after 1 millisecond
+            // Echo after 1 millisecond [seq 20170501°0941]
             setTimeout(function () {
                oTerm._inputLine.textContent = inputField.value;
             }, 1);
@@ -476,7 +477,24 @@ Terminal = ( function () {
          setTimeout(function () { inputField.focus(); }, 50);
       }
       else {
-         inputField.focus();
+
+         // Helper variable for brute force scroll-prevention
+         // Nice : Permanently show the scroll value(s) in a control [ref 20210511°1432]
+         //     https://www.codespeedy.com/get-the-scroll-position-of-a-web-page-in-javascript/
+         var iY = window.scrollY;                                      // [line 20210511°1548]
+         // Works perfectly in the beginning, but from the point where formerly the
+         // jump happened, there is with each input a little shift in direction to top.
+         //
+         // That little jump does not happen here, but if some input key is pressed,
+         // not the Enter key. More precisely. It happens when a key is pressed for
+         // the first letter is pressed. Any subsequent input does no more jump.
+
+         inputField.focus();                                           // [line 20170501°0931]
+
+         // Here happens the page jump [line 20210511°1545]
+         // See issue 20210511°1525 'Page jump' -- If cursor (invisibly) reaches page bottom
+         // Crude attempt -- Heureka! This works even without any annoying flicker.
+         window.scrollTo(0, iY);
       }
    };
 
@@ -780,17 +798,18 @@ Terminal = ( function () {
        *
        * @id 20170501°0631
        * @param {string} message —
-       * @param {string} sOptionalRule — Optional CSS class for this ouput line
+       * @param {string|undefined} sOptionalRule — Optional CSS class for this ouput line
        * @return {undefined} —
        */
       this.print = function (message, sOptionalRule)
       {
          // Process optional parameter [seq 20210509°1443]
          // Do not (yet) use default parameter in function definition, it is not known by IE.
-         var sRule = 'Output_One_Line';
-         if (sOptionalRule) {
-            sRule = sOptionalRule;
-         }
+         ////var sRule = 'Output_One_Line';
+         ////if (sOptionalRule) {
+         ////   sRule = sOptionalRule;
+         ////}
+         var sRule = sOptionalRule || 'Output_One_Line';
 
          var eNewLine = document.createElement('div');
          eNewLine.textContent = message;
@@ -799,23 +818,82 @@ Terminal = ( function () {
 
 
          // Maintain scrolling [seq 20210511°1521] [feature 20210511°1511 'Scroll service']
+
+         //// Try sending CTRL-End [ref 20210511°1418] -- Nope, makes no sense
+         // https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
+
+         // Article bunch -- So far without solution
          // See https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page [ref 20210511°1412]
          // No-solution -- See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414]
          // See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
-
-         // Try sending CTRL-End [ref 20210511°1418]
-         // https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
-         ////element.dispatchEvent(new KeyboardEvent('keydown',{'key':'a'}));
-         ////this._output.dispatchEvent(new KeyboardEvent('keydown', { 'key' : 'End', ctrlKey : true }));
-
          // https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
          // https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
-         //this.html.scrollTo(0, this._innerWindow.scrollHeight); //
-         
+
+
+         // // () This shall solve the cursor-must-stay-visible task, but not the jump
+         // // A line like this works, but also the complete page jumps at some point,
+         // //  e.g. when the cursor in the box (invisibly) reaches the bottom of the page.
+         // //  • This effect hits, whether the programmatic scrolling is applied or not
+         // //  • Thus it seems sensible to first fight this jump, then continiue with
+         // //     the programmatic scrolling or the overscroll-behaviour, resp.
+         //this.html.scrollTo(0, this._innerWindow.scrollHeight);      // Works
+         //this.html.scrollTo(0, this._output.scrollHeight);           // Works
+         //this._innerWindow.scrollTo(0, this._output.scrollHeight);   // Fails
+
+         // Article -- Seems cool CSS. But first we must get rid of the jump before applying this?
+         // https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
+         // https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
          // See line line 20210511°1531 CSS overscroll-behaviour
 
 
+         // issue 20210511°1525 'Get rid of page jumps'
+         // Matter : If cursor (invisibly) reaches page bottom, the page jumps up.
+         // (1) Solve the basic jump.
+         // (1.1) Where happen the jump? In line 20170501°0931 "inputField.focus();"
+         // (1.2) What can be done against? Line 20210511°1545 "window.scrollTo(0,0);"
+         // (2) Unfortunately, from some later point on, a second jump appears,
+         //      in fact not with the Enter key, but with normal input.
+         // (2.1) Since this appears only later, I will postpone the debuggin.
+         // (3) Actually, the solution so far may be not satisfactory at all, because
+         //      it forces the user to stay on page top. This is not acceptable.
+         // (4) Fight the stay-on-top by taking the current scroll-positon into account.
+         // (4.1) This is done with helper variable 20210511°1548
+         // (4.2) It works perfectly in the beginning, but from the point, where
+         //        formerly the jump happened, there is with each input a little
+         //        shift in direction to top.
+         // (4.3) That little jump does not happen there, but if some input key
+         //       is pressed. Not the Enter key but the first input character
+         //       keydown. Any subsequent input do no more jump.
+         // (5) Where happens the little jump?
+         // (5.1) This is hard to debug, due to the event driven nature of
+         //        the program. The debugger runs into an endless timer loop
+         //        with setTimeout() in seq 20170501°0941. It looks as if the
+         //        behaviour in the debugger is different from that without.
+         // (6) I give up for today. The demo seems to work passable with the
+         //     first 20 or more input lines, only then behaviour gets crazy.
+         //     The issue may be alleviated, if I introduce line-buffer size.
 
+
+         // Now it makes sense to apply the in-box-scrolling
+         // Note. CSS property 'overscroll-behavior:contain' were much more elegant, but just did not work
+         //this.html.scrollTo(0, this._output.scrollHeight);           // [line 20210511°1546] Alternative
+         this.html.scrollTo(0, this._innerWindow.scrollHeight);        // [line 20210511°1547]
+
+
+         // issue 20210511°1611 'Bottom terminals shall keep feet still'
+         // Make additonal terminals on page bottom, not cause jumps on page open.
+         // (1) I re-open sequences 20210511°1541 and 20210511°1543.
+         // (2) Hm. The do not anymore show the page-jump behaviour like at the
+         //     beginning of this session, when I have them shutdown to get better
+         //     situation for debugging the other issues. It looks like their
+         //     jumping has been solved by the way. All the better.
+
+
+         // issue 20210511°1621 'Cursor and scroll behaviour in general'
+         // matter : The solution style I followed today is not sustainable.
+         //    It yielded insights into the program structure, but was provisory
+         //    anyway. For a sustainable solution, things must get simplified.
+         //    
 
 
       };
@@ -968,7 +1046,7 @@ Terminal = ( function () {
       this.html.style.overflow = 'auto';                               // [line 20210502°1133] See issue 20210502°1351 'What exactly does style.overflow'? // [chg 20210502°1111`18 xhr]
 
 
-      ///this.html.style.overscrollBehavior = 'contain';               // Experiment [line 20210511°1531] After ref 20210511°1424
+      //this.html.style.overscrollBehavior = 'contain';               // Experiment [line 20210511°1531] After ref 20210511°1424
 //    this.html.style.overscrollBehavior = 'contain';                  // Experiment [line 20210511°1531] After ref 20210511°1424
 //    this._innerWindow.style.overscrollBehavior = 'contain';          // Experiment [line 20210511°1531] After ref 20210511°1424
 

@@ -108,12 +108,17 @@ Temporary internal notes for the cleanup-session. There are three features the i
 ```
    issue 20210502°1351 'What exactly does style.overflow'?
    matter : In the ~original styling, this.html.style.overflow = 'auto' is used.
-   do : Clear, what exactly overflow effects, and whether it may be sensible
-      at other places as well. E.g. with the planned automatic linebreak
-      for too long lines.
+   do : Clear, what exactly overflow effects, and whether it may be sensible at other
+      places as well. E.g. with the planned automatic linebreak for too long lines.
    location : line 20210502°1133 this.html.style.overflow = 'auto';
-   status : Open
+   status : ..
 ```
+
+See Article
+'[Using CSS Overscroll-Behavior To Prevent Scrolling Of Parent Containers From Within Overflow Containers](https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm)'
+ _<sup><sub><sup>ref 20210511°1426<sup><sub><sup>_ :
+ *The panel becomes **scrollable** due to content overflow*.
+
 
 ---
 
