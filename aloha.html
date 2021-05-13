@@ -89,9 +89,30 @@
       <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
                onclick="t1.beep()"
       >
-
   </div>
   <!-- **************************************************** -->
+
+
+
+  <pre style="line-height:1.0em;">
+               this._output.scrollHeight      = <span id="outputScrollHeight"></span>
+               this._output.scrollTop         = <span id="outputScrollTop"></span>
+               this._output.offsetTop         = <span id="outputOffsetTop"></span>
+
+               this._innerWindow.scrollHeight = <span id="innerWindowScrollHeight"></span>
+               this._innerWindow.scrollTop    = <span id="innerWindowScrollTop"></span>
+               this._innerWindow.offsetTop    = <span id="innerWindowOffsetTop"></span>
+
+               html.scrollHeight              = <span id="htmlScrollHeight"></span>
+               html.scrollTop                 = <span id="htmlScrollTop"></span>
+               html.offsetTop                 = <span id="htmlOffsetTop"></span>
+
+               document.body.scrollHeight     = <span id="documentBodyScrollHeight"></span>
+               document.body.scrollTop        = <span id="documentBodyScrollTop"></span>
+               document.body.offsetTop        = <span id="documentBodyOffsetTop"></span>
+  </pre>
+
+
 
   <p style="clear:both; line-height:1.2em;">
               Another box :
@@ -133,6 +154,29 @@
 
       // Reaction [func 20210503°1531]
       function takeInput(sWritten) {
+
+
+
+ //document.getElementById('eNewLineScrollHeight').innerHTML   = t1.eNewLine.scrollHeight
+ //document.getElementById('eNewLineScrollTop').innerHTML      = t1.eNewLine.scrollTop
+ //document.getElementById('eNewLineOffsetTop').innerHTML      = t1.eNewLine.offsetTop
+
+ document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight
+ document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop
+ document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop
+
+ document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight
+ document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop
+ document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop
+
+ document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight
+ document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop
+ document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop
+
+ document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight
+ document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop
+ document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop
+
 
          if (sWritten.toLowerCase() === 'c' ) {
             t1.clear();

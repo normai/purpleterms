@@ -84,12 +84,12 @@ An MP3 file around 20 KB should be feasible, perhaps even 10 KB or less.
 ---
 
 <a name="id20210504o1041"></a>
-issue 20210504°1041 '**Simplify input prompt handling**'
- - Matter : I noticed complexities with the prompt handling, which possibly can
+<del>issue 20210504°1041 '**Simplify input prompt handling**'</del>
+ - <del>Matter : I noticed complexities with the prompt handling, which possibly can
    be reduced. I consider the prompt feature as a very basic one. As long as this
-   is not solved cleanly, it makes no sense to put further features on top.
- - Note. This was a follow up on deleted issue 20210502°1121 'Input prepended by dollar'.
- - Status : Closed with introduction of feature _20210509°1xxx_ 'Prompt setting'.
+   is not solved cleanly, it makes no sense to put further features on top.</del>
+ - <del>Note. This was a follow up on deleted issue 20210502°1121 'Input prepended by dollar'.</del>
+ - <del>Status : Closed with introduction of feature _20210509°1511_ 'Prompt setting'.</del>
    ܀
 
 Temporary internal notes for the cleanup-session. There are three features the involved :
@@ -102,6 +102,29 @@ Temporary internal notes for the cleanup-session. There are three features the i
 
  - Feature 20210509°1651 'Instance-ID Setting'. Prerequisite to make the prompt
     work per-instance, not globally.
+
+---
+
+```
+   issue 20210502°1351 'What exactly does style.overflow'?
+   matter : In the ~original styling, this.html.style.overflow = 'auto' is used.
+   do : Clear, what exactly overflow effects, and whether it may be sensible
+      at other places as well. E.g. with the planned automatic linebreak
+      for too long lines.
+   location : line 20210502°1133 this.html.style.overflow = 'auto';
+   status : Open
+```
+
+---
+
+```
+   issue 20210502°1341 'Learn GoCloCom parameter types'
+   matter : The GoCloCom error messages are sometimes puzzling.
+      E.g. in func 20210502°1211 connect(), func 20210509°1631 getId(),
+      and var 20210509°1633,  GoCloCom complains about parameter types.
+   todo : Learn how to handle types not experimentally but knowingly.
+   locations : Multiple
+```
 
 ---
 

@@ -590,7 +590,7 @@ Terminal = ( function () {
        *   to have one point-of-delaration at all. But if so, that point
        *   has to be high above, before first use.
        *
-       *   Also see issue 20210502°1341 'Learn about GoCloCom parameter types'
+       *   Remember issue 20210502°1341 'Learn GoCloCom parameter types'
        *
        * @id 20210509°1633
        * @type {string|null} —
@@ -728,14 +728,6 @@ Terminal = ( function () {
          promptInput(this, message, PROMPT_CONFIRM, callback);
       };
 
-      /*
-       issue 20210502°1341 'Learn about GoCloCom parameter types'
-       matter : The GoCloCom error messages are sometimes hard to understand.
-          E.g. in func 20210502°1211 connect(), func 20210509°1631 getId(),
-          and var 20210509°1633,  GoCloCom complains about parameter types.
-       todo : Learn how to handle types not experimentally but knowingly.
-       */
-
       /**
        *  Switch on XHR mode and provide backend address
        *
@@ -745,7 +737,7 @@ Terminal = ( function () {
        */
       this.connect = function (url) {                                  // [chg 20210502°1111`16 xhr]
          this._backend = url;
-         promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? See issue 20210502°1341 'Learn about GoCloCom parameter types'
+         promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? See issue 20210502°1341 'Learn GoCloCom parameter types'
       };
 
       /**
@@ -756,7 +748,7 @@ Terminal = ( function () {
        */
       this.getId = function () {
          // //return this._objId;                                      // GoCloCom complains 'JSC_TYPE_MISMATCH found: (null|string), required: string'
-         return this._objId.toString();                                // GoCloCom is satisfied — But better were to make _objId natively a string-only. See issue 20210502°1341 'Learn about GoCloCom parameter types'
+         return this._objId.toString();                                // GoCloCom is satisfied — But better were to make _objId natively a string-only. See issue 20210502°1341 'Learn GoCloCom parameter types'
       };
 
       /**
@@ -804,6 +796,28 @@ Terminal = ( function () {
          eNewLine.textContent = message;
          eNewLine.className = sRule;
          this._output.appendChild(eNewLine);
+
+
+         // Maintain scrolling [seq 20210511°1521] [feature 20210511°1511 'Scroll service']
+         // See https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page [ref 20210511°1412]
+         // No-solution -- See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414]
+         // See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
+
+         // Try sending CTRL-End [ref 20210511°1418]
+         // https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
+         ////element.dispatchEvent(new KeyboardEvent('keydown',{'key':'a'}));
+         ////this._output.dispatchEvent(new KeyboardEvent('keydown', { 'key' : 'End', ctrlKey : true }));
+
+         // https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
+         // https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
+         //this.html.scrollTo(0, this._innerWindow.scrollHeight); //
+         
+         // See line line 20210511°1531 CSS overscroll-behaviour
+
+
+
+
+
       };
 
       /**
@@ -917,10 +931,10 @@ Terminal = ( function () {
       };
 
       // ======================================================
-      // The work continues ..
+      // Execution continues ..
       // ======================================================
 
-      // ~~ Assemble the terminal div element
+      // ~~ Assemble the terminal div element [seq 20170501°0921]
       this._inputElement.appendChild(this._inputLine);
       this._inputElement.appendChild(this._cursor);
       this._innerWindow.appendChild(this._output);
@@ -929,43 +943,39 @@ Terminal = ( function () {
       this._innerWindow.className = 'Terminal_Complete';
       this.html.appendChild(this._innerWindow);
 
-      // ~~ Style the terminal
+      // ~~ Style the terminal [seq 20170501°0922]
       this.setBackgroundColor('black');
       this.setHeight('100%');
       this.setTextColor('white');
       this.setTextSize('1em');
       this.setWidth('100%');
 
-      // ~~
+      // ~~ [seq 20170501°0923]
       this._inputElement.style.display = 'none';
       this._inputElement.style.margin = '0';
 
-      // Dummy for blinking cursor
+      // Dummy for blinking cursor [seq 20170501°0924]
       this._cursor.innerHTML = 'X';                                    // Originally 'C'
       this._cursor.style.background = 'white';
       this._cursor.style.display = 'none';                             // Then hide it
-
       this._output.style.margin = '0';
 
 
-      /*
-      issue 20210502°1351 'What does the Overflow'?
-      matter : In the ~original styling, this.html.style.overflow = 'auto' is used.
-      do : Clear, what exactly overflow effects, and whether it may be sensible
-         at other places as well. E.g. with the planned automatic linebreak
-         for too long lines.
-      location : 
-      status : Open
-       */
-
       // ~~
-      // [seq ]
+      // [seq 20170501°0925]
       this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17 xhr]
       this.html.style.margin = '0';
-      this.html.style.overflow = 'auto'; // [line 20210502°1133]       // [chg 20210502°1111`18 xhr] See issue 20210502°1351 'What does the Overflow'?
+      this.html.style.overflow = 'auto';                               // [line 20210502°1133] See issue 20210502°1351 'What exactly does style.overflow'? // [chg 20210502°1111`18 xhr]
+
+
+      ///this.html.style.overscrollBehavior = 'contain';               // Experiment [line 20210511°1531] After ref 20210511°1424
+//    this.html.style.overscrollBehavior = 'contain';                  // Experiment [line 20210511°1531] After ref 20210511°1424
+//    this._innerWindow.style.overscrollBehavior = 'contain';          // Experiment [line 20210511°1531] After ref 20210511°1424
+
+
 
       /**
-       *  ..
+       *  [seq 20210502°1123]
        */
       this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
@@ -987,7 +997,7 @@ Terminal = ( function () {
     *  • MP3 : Chrome64 yes, Edge42 yes, FF66 yes, *IE9 no*, IE10 yes, Opera58 yes
     *
     * @id 20190325°0751
-    * @note Big and loud replaced by small and soft in chg 20210511°1311
+    * @note Big and loud replaced by small and soft (in chg 20210511°1311)
     * @type {string} —
     */
    var sBase64_Beep_Mp3

@@ -193,11 +193,14 @@ Daf.Term.interpret = function(sCmd)
    var sRet = '';
    switch (sCmd)
    {
-      case 'beep' : Daf.Term.t21.beep(); sRet = "It shall be beeping .."; break;
+      case 'beep' :
+         Daf.Term.t21.beep();
+         sRet = "Can you hear me beeping?";
+         break;
       case 'spin' :
          Daf.Term.bSpinAutoRun = true;
 
-         // [ condition 20210509°1051]
+         // [condition 20210509°1051]
          if ( Daf.Term.isPhpAvailable ) {
             Daf.Term.runSpin();
             sRet = "Spinning ..";                                      // "Scanning ..";
