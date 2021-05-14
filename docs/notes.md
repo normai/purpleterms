@@ -25,7 +25,7 @@ This page stores developer notes, partially too detailled, not interesting for l
 
 ## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; _<sup><sub><sup><sup>Subject 20210512°1311</sup></sup></sub></sup>_
 
-Termjnal shall support **IE11**. Here are some points :
+Termjnal supports **IE=>9**. Here are some points :
 
 - Function `scrollTo()` is skipped for IE by feature detection. Thus IE may show rough movements.
 
@@ -38,6 +38,8 @@ This was fixed by using the [element-remove](https://github.com/chenzhenxi/eleme
    with broken version `oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;`,
    then fixed `oTerm._inputLine.textContent = oTerm._inputLine.textPrefix ? oTerm._inputLine.textPrefix : '';`
 
+- On multi-instance pages with IE, the cursors are sometimes blinking in all
+ boxes, which can make it puzzling to see, which of them is the responsive one.
 
 Search for `20210512°1317` to get a list of the involved locations.
 
@@ -53,7 +55,7 @@ The provided **beep** comes not as a sound file, but as a variable with the
 The news I found in a hurry, told me, that some PHP base64 encoding/decoding
  functions had issues.
 
-For the present JavaScript scenario, I cannot imagine any realistic issue. 
+For the present JavaScript scenario, I cannot imagine any realistic issue.
  Nevertheless I want compile a list of what comes to my mind, that could
  theoretically be wrong with the base64 sound data.
 
@@ -118,7 +120,7 @@ ID, which can be asked for with `getId()`.
 - Use CSS **pseudo-element** `before`. This technique is used here. Pro: Clean separation
  between prompt and value, no need to discern them, since they never touch. Con:
  The prompts are not part of a selection for the clipboard and are just missing there.
- 
+
 - Use **separate variables** for prompt and for values, connect them only on
  the screen, not in the program. I have never seen this solution implemented.
  So the following judgement is a wild guess. Con: If you take the content

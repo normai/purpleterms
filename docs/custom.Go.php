@@ -168,7 +168,7 @@ class Go
    private static function readCommand()
    {
       $sReturn = '';
-      
+
       // Extract commandline from Superglobal [seq 20190205°0543]
       // note : Process issue 20190205°0617 'get key list from $_GET unoffendingly'
       $sQuery = \filter_input(INPUT_SERVER, 'QUERY_STRING');           // e.g.  "XDEBUG_SESSION_START=netbeans-xdebug"
