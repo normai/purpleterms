@@ -11,17 +11,22 @@ Pages : &nbsp;
 History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
 
 
-##### log 20210511°1711 — v0.3.0.4 Work on scrolling
+##### log 20210512°1411 — v0.3.0.5 Cleanup
+
+
+##### log 20210511°1711 — v0.3.0.4 Work on scrolling (Zappelphilipp)
 - Implement plain prompt in aloha.html dispatcher loop
-- Put more boxes on aloha.html
+- Put more boxes on aloha.html (to test instance behaviour)
 - Replace beep, big and loud vs. small and soft [chg 20210511°1311]
         (Numbers: mp3 file 58.5 bytes vs. 10.2 bytes; terminal.js
          104.8 KB vs 50.7 KB; terminal.min.js 63. KB vs. 20.6 KB)
 - Work on scrolling (issue 20210511°1525 'Get rid of page jumps',
 
+
 ##### log 20230510°1445 — v0.3.0.3 Cleanup timestamps
 - Cleanup timestamps
 - Little edits
+
 
 ##### version 20210509°1811 — v0.3.0 Prompts proof-of-concept
 - Complete debug borders
