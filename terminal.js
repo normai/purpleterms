@@ -17,13 +17,11 @@
  */
 Terminal = ( function () {
 
-
    // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1535]
    var _inputPromptGlobal = ">\\00a0";
 
    // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1537]
    var _outputPromptGlobal = "<\\00a0";
-
 
    /**
     *  Prompt mode 'Confirmation'
@@ -178,7 +176,7 @@ Terminal = ( function () {
       // Create style element, beforehand delete any existing [seq 20210508°0923]
       var el = document.getElementById(sStyleElementId);
       if (el) {
-         el.remove();
+         el.remove();                                                  // [mark 20210512°1317`11 Compatibility]
       }
       var eStyle = document.createElement('style');
       eStyle.type = 'text/css';
@@ -301,10 +299,12 @@ Terminal = ( function () {
       inputField.style.fontSize = '0.2em';
 
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+      // [line 20170501°0941]
       // This prop appears 4 times below -- Check -- Can it be disposed again?!
       ////oTerm._inputLine.textContent = '';                           // Original line
       ////oTerm._inputLine.textPrefix = '$ ';                          // New var introduced [chg 20210502°1111`11 xhr]
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;      // [chg 20210502°1111`12 xhr]
+      ////oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr]
+      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix ? oTerm._inputLine.textPrefix : '';  // [mark 20210512°1317`12 Compatibility] If textPrefix is undefined, IE will print 'undefined', the others do not print // [chg 20210502°1111`12 xhr]
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
       oTerm._inputElement.style.display = 'block';
@@ -518,7 +518,7 @@ Terminal = ( function () {
 
       /*
        * ===============================================
-       * Define fields
+       * Define fields (dummy caption to indicate planned members shifting)
        *  See issue 20210509°1731 'First fully initialize object, then return'
        * ===============================================
        */
@@ -542,17 +542,15 @@ Terminal = ( function () {
 
       /*
        * ===============================================
-       * Define functions
+       * Define functions (dummy caption to indicate planned members shifting)
        *  See issue 20210509°1731 'First fully initialize object, then return'
        * ===============================================
        */
 
 
-
-
       /*
        * ===============================================
-       * Start working
+       * Start working (dummy caption to indicate planned members shifting)
        *  See issue 20210509°1731 'First fully initialize object, then return'
        * ===============================================
        */
@@ -801,14 +799,10 @@ Terminal = ( function () {
        * @param {string|undefined} sOptionalRule — Optional CSS class for this ouput line
        * @return {undefined} —
        */
-      this.print = function (message, sOptionalRule)
+      this.print = function (message, sOptionalRule)                   // Put here optional parameter syntax if IE is dropped
       {
          // Process optional parameter [seq 20210509°1443]
-         // Do not (yet) use default parameter in function definition, it is not known by IE.
-         ////var sRule = 'Output_One_Line';
-         ////if (sOptionalRule) {
-         ////   sRule = sOptionalRule;
-         ////}
+         // Note. For IE compatibility use traditional optional parameter
          var sRule = sOptionalRule || 'Output_One_Line';
 
          var eNewLine = document.createElement('div');
@@ -877,7 +871,9 @@ Terminal = ( function () {
          // Now it makes sense to apply the in-box-scrolling
          // Note. CSS property 'overscroll-behavior:contain' were much more elegant, but just did not work
          //this.html.scrollTo(0, this._output.scrollHeight);           // [line 20210511°1546] Alternative
-         this.html.scrollTo(0, this._innerWindow.scrollHeight);        // [line 20210511°1547]
+         if (this.html.scrollTo) {                                     // IE does not know 'scrollTo' [compat 20210512°1317`13]
+             this.html.scrollTo(0, this._innerWindow.scrollHeight);    // [line 20210511°1547]
+         }
 
 
          // issue 20210511°1611 'Bottom terminals shall keep feet still'
@@ -1264,5 +1260,32 @@ Terminal = ( function () {
 
    return TerminalConstructor;
 }());
+
+/**
+ * Poyfill to provide ID a ChildNode.remove() method
+ *
+ * Author : Zhenxi (Eric) Che and contributors
+ * License : MIT License
+ * Source : https://github.com/chenzhenxi/element-remove [ref 20210512°1334]
+ *
+ * @id 20210512°1337
+ * @param {Array} arr
+ * @return {undefined}
+ */
+(function (arr) {                                                      // [compat 20210512°1317`14]
+   arr.forEach(function (item) {
+      if (item.hasOwnProperty('remove')) {
+         return;
+      }
+      Object.defineProperty(item, 'remove', {
+         configurable: true,
+         enumerable: true,
+         writable: true,
+         value: function remove() {
+            this.parentNode && this.parentNode.removeChild(this);
+         }
+      });
+   });
+})([Element.prototype, CharacterData.prototype, DocumentType.prototype].filter(Boolean));
 
 /* eof */

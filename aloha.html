@@ -83,7 +83,8 @@
 
   <!-- **************************************************** -->
   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <div style="font-size:1.3em; width:666px; /* overscroll-behavior: contain; */" id="Div_For_Terminal_One">
+      <!-- Note. "overscroll-behavior: contain;" does not work here (see issue ) -->
+      <div style="font-size:1.3em; width:666px;" id="Div_For_Terminal_One">
       </div>
       Show debug borders.
       <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
@@ -309,10 +310,8 @@
 
   <p>
                What's missing? • Functional <b>backspace</b>.
-               • Functional <b>scrolling</b>. If you come below the bottom edge,
-                 the last line should automatically stay inside the visible area,
-                 not be brought in by your manual scrolling.
-               • The <code>confirm</code> function should have an input prompt,
+               • Functional <b>scrolling</b> with no page jumps.
+               • The <code>confirm</code> function should have dedicated prompt,
                  no output prompt.
                • The boxes should leave the focus with <b>Tab</b>, and go to the
                  next control, obeying to the general key mapping.

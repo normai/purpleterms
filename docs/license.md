@@ -8,7 +8,8 @@ Pages : &nbsp;
 
 Below : &nbsp;
  • [License](#license) &nbsp;
- • [Credits](#credits) &nbsp;
+ • [Contributors](#contributors) &nbsp;
+ • [Third Party Components](#thirdparty) &nbsp;
  • [Remarks](#remarks) &nbsp;
 
 <a name="license"></a>
@@ -28,29 +29,43 @@ For the full text see file [`license.txt`](./../license.txt) please.
  will recognize the license automatically, not from one with additional text, like here. See
  '[Detecting a license](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository#detecting-a-license)'._
 
+<a name="contributors"></a>
 <a name="credits"></a>
-# Credits
+# Contributors
 
 The following authors contributed to Termjnal, or Terminal.js respectively :
 
-- [Dingcheng Yue](https://github.com/DarwinSenior)
+- **[Dingcheng Yue](https://github.com/DarwinSenior)**
 
-- [Gustavo Mauricio de Barros](https://github.com/gumbarros)
+- **[Gustavo Mauricio de Barros](https://github.com/gumbarros)**
 
-- [Mark Ivanowich](https://github.com/MarkIvanowich) &nbsp; _[mark.ivanowich.dev](https://mark.ivanowich.dev/)_
+- **[Mark Ivanowich](https://github.com/MarkIvanowich)** &nbsp; _[mark.ivanowich.dev](https://mark.ivanowich.dev/)_
 
-- [Santiago Castro](https://github.com/bryant1410) &nbsp; _[santi.uy](https://santi.uy/)_
+- **[Santiago Castro](https://github.com/bryant1410)** &nbsp; _[santi.uy](https://santi.uy/)_
 
-- [theLMGN](https://github.com/theLMGN) &nbsp; _[thelmgn.com](http://thelmgn.com/)_
+- **[theLMGN](https://github.com/theLMGN)** &nbsp; _[thelmgn.com](http://thelmgn.com/)_
 
-- [Yevgen Shevchenko](https://github.com/commanddotcom) &nbsp; _[www.workshop200.com](http://www.workshop200.com/)_
+- **[Yevgen Shevchenko](https://github.com/commanddotcom)** &nbsp; _[www.workshop200.com](http://www.workshop200.com/)_
 
-- *<span style="color:LightGray;">.. Todo: Complete list. ..</span>*
+- *<span style="color:LightGray;">.. Todo: Possibly complete list. ..</span>*
+
+<a name="thirdparty"></a>
+# Third Party Components
+
+Many thanks goes to people or organizations for supplementing components :
+
+- **Mike Koenig** for providing the [Beep file](https://soundbible.com/1252-Bleep.html)
+ under the CC BY 3.0 License
+
+- **Zhenxi (Eric) Chen** for providing the
+ [element-remove](https://github.com/chenzhenxi/element-remove/blob/master/index.js)
+ polyfill under the MIT License
+
 
 <a name="remarks"></a>
 # Remarks
 
-Why have I changed the **license** from 'MIT License' to 'BSD 3-Clause License'?
+Why have I **changed** the license from MIT License to BSD 3-Clause License?
 The BSD 3-Clause License is very similar to the MIT License,
  but it states three common sense cases explicitly.
 
@@ -64,7 +79,7 @@ Why have I added my name in the **copyright** lines?
 This fork is no more a contribution, but a total rewrite, including
 significant extensions.
 
-About the '`and contributors`' ingredient exists an instructive thread on
+About the '_and contributors_' ingredient exists an instructive thread on
 [StackExchange](https://opensource.stackexchange.com/questions/5508/what-does-and-contributors-in-the-copyright-byline-imply).
 Also the GitHub Terms contain a paragraph about
 [contributions](https://docs.github.com/en/github/site-policy/github-terms-of-service#6-contributions-under-repository-license).

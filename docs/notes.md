@@ -9,6 +9,7 @@ Pages : &nbsp;
 # Notes
 
 Below : &nbsp;
+• [Compatibility](#notes_browser_compatibility) &nbsp;
 • [Base64](#notes_base64) &nbsp;
 • [Prompts](#notes_prompts) &nbsp;
 • [Fork list](#fork_list) &nbsp;
@@ -18,7 +19,27 @@ Below : &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
 • *([GFM](#github_flavored_markdown))*
 
-_This file is for miscellanesous notes and considerations._
+This page stores developer notes, partially too detailled, not interesting for library users.
+
+---
+
+## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; _<sup><sub><sup><sup>Subject 20210512°1311</sup></sup></sub></sup>_
+
+Termjnal shall support **IE11**. Here are some points :
+
+- Function `scrollTo()` is skipped for IE by feature detection. Thus IE may show rough movements.
+
+- `ChildNode.remove()` is unknown to IE.
+See MDN [ChildNode.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove).
+This was fixed by using the [element-remove](https://github.com/chenzhenxi/element-remove) Polyfill.
+
+- Assignment of undefined. IE will assign the string 'undefined' to a string, if the
+   sorce string is undefined, the others will assign ''. This happened in line 20170501°0941
+   with broken version `oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;`,
+   then fixed `oTerm._inputLine.textContent = oTerm._inputLine.textPrefix ? oTerm._inputLine.textPrefix : '';`
+
+
+Search for `20210512°1317` to get a list of the involved locations.
 
 ---
 
