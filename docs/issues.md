@@ -4,7 +4,7 @@ Pages : &nbsp;
  • [Notes](./notes.md) &nbsp;
  • Issues &nbsp;
  • [Changes](./changelog.md) &nbsp;
- • [License](./../license.md)
+ • [Credits](./../credits.md)
 
 ## Issues and Todos
 

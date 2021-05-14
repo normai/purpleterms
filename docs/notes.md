@@ -1,25 +1,38 @@
-Pages : &nbsp;
+Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • Notes &nbsp;
  • [Issues](./issues.md) &nbsp;
  • [Changes](./changelog.md) &nbsp;
- • [License](./license.md)
+ • [Credits](./credits.md)
 
 # Notes
 
-Below : &nbsp;
+_This page is for boring casual developer notes, **totally uninteresting** for library users._
+
+Subsections : &nbsp;
+• [Cursor blink?](#id20210512o1521) &nbsp;
 • [Compatibility](#notes_browser_compatibility) &nbsp;
 • [Base64](#notes_base64) &nbsp;
 • [Prompts](#notes_prompts) &nbsp;
 • [Fork list](#fork_list) &nbsp;
 • [PR 'XHR'](#pull_request_backend_via_xhr) &nbsp;
-• [PR 'Add printHTML'](#pull_request_add_printhtml) &nbsp;
 • [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
 • *([GFM](#github_flavored_markdown))*
 
-This page stores developer notes, partially too detailled, not interesting for library users.
+---
+
+## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; _<sup><sub><sup><sup>Idea 20210512°1521</sup></sup></sub></sup>_
+
+Replace the cursor made blinking with `timeout()`
+by one made blinking with CSS `animation`.
+
+References e.g.:
+ • [MDN page 'CSS → animation'](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
+  <sup><sub><sup>20210512°1513</sup></sub></sup>,
+ • CodeBoxx article [How To Create Blinking Text & Background Animation In Pure CSS](https://code-boxx.com/css-blinking-animation/)
+  <sup><sub><sup>20210512°1512</sup></sub></sup>
 
 ---
 
@@ -232,17 +245,6 @@ Is it already clear, what exactly Termjnal should do, and what not?
 
 I will learn more about this questions, when attempting to switch my own
 use case from the custom module to Yevgen's interface function.
-
----
-
-## PR 2017-Dec-22 'Add printHTML' <a name="pull_request_add_printhtml"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1811</sup></sup></sub></sup>_
-
-Pull request
-[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6)
-by [theLMGN](https://github.com/theLMGN) on 2017-Dec-22 consists of one commit
-[Add printHTML](https://github.com/eosterberg/terminaljs/pull/6/commits/af16ce1c913afdea95c551ae81b2f23827c0c0db)
-. It is a naming proposal to call Mark's function `this.printraw()`
-better suiting `this.printHTML()`.
 
 ---
 

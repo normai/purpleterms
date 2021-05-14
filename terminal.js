@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.3.0.5 — Provide a terminal in the browser
+ * Termjnal v0.3.0.5~~ — Provide a terminal in the browser
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -149,112 +149,6 @@ Terminal = ( function () {
    };
 
    /**
-    *  This function dynamically provides CSS rules
-    *
-    * @id  20210507°1641
-    * @todo Either this must be called from a place where it is called only once
-    *        or it must shield itself from multiple execution. [todo 20210507°1711]
-    * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
-
-    * @return {undefined}
-    */
-   var _mountCssRules = function () {
-
-      // Recognize the presently assembled style element
-      var sStyleElementId = 'Kog2frh5cbfn47pm';
-
-      // Define colors [seq 20210509°1441]
-      var sColorCompleteBox = 'Magenta';
-      var sColorOutputBox = 'Gold';
-      var sColorOutputLine = 'GreenYellow';
-      var sColorOutputPrompt = 'Orange';
-      var sColorOutLineInput = 'Magenta';                              // Output line which formerly was input line
-      var sColorOutLineInPrompt = 'HotPink';                           // Output line which formerly was input line
-      var sColorInputLine = 'Red';
-      var sColorInputPrompt = 'Yellow';
-
-      // Create style element, beforehand delete any existing [seq 20210508°0923]
-      var el = document.getElementById(sStyleElementId);
-      if (el) {
-         el.remove();                                                  // [mark 20210512°1317`11 Compatibility]
-      }
-      var eStyle = document.createElement('style');
-      eStyle.type = 'text/css';
-
-      // Provide ID [seq 20210508°0921]
-      var at = document.createAttribute('id');
-      at.value = sStyleElementId;
-      eStyle.setAttributeNode(at);
-
-      // Ruleset for complete terminal box [seq 20210509°1415]
-      var sRu1CompleteBox = _debugBorders
-                  ? "\n" + 'div.Terminal_Complete {' + ' '
-                   + 'border:1px solid ' + sColorCompleteBox + '; border-radius:0.3em; padding:0.2em;' + ' '
-                    + "}"
-                  : "\n" + 'div.Terminal_Complete { }'
-                   ;
-
-      // Ruleset for output box [seq 20210509°1411]
-      var sRu2OutputBox = _debugBorders
-                  ? "\n" + 'p.Terminal_Output {' + ' '
-                   + 'border:1px solid ' + sColorOutputBox + '; border-radius:0.3em; padding:0.2em;' + ' '
-                    + "}"
-                  : "\n" + 'p.Terminal_Output { }'
-                   ;
-
-      // Ruleset for one line in the output box [seq 20210509°1413]
-      var sRu3OutputLine = _debugBorders
-                 ? "\n" + "div.Output_One_Line { "
-                  + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
-                   + ' }'
-                   + "\n" + "div.Output_One_Line:before {"
-                   + ' ' + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;"
-                    + ' ' + "padding:0.1em; content:'" + _outputPromptGlobal
-                     + "'; }"
-                : "\n" + "div.Output_One_Line { }"
-                 + "\n" + "div.Output_One_Line:before { content:'" + _outputPromptGlobal + "'; }"
-                  ;
-
-      // Output line dedicated [seq 20210509°1417]
-      var sRu4OutFormerInput = _debugBorders
-                 ? "\n" + "div.Terminal_OutputLine_FormerInput { "
-                  + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
-                   + ' }'
-                   + "\n" + "div.Terminal_OutputLine_FormerInput:before {"
-                   + ' ' + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;"
-                    + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
-                     + "'; }"
-                : "\n" + "div.Terminal_OutputLine_FormerInput { }"
-                 + "\n" + "div.Terminal_OutputLine_FormerInput:before { content:'" + _inputPromptGlobal +"'; }"
-                  ;
-
-      // Rule set for input span [seq 20190312°0451]
-      var sRu5InputLine = '';
-      if ( _debugBorders ) {
-         sRu5InputLine  = "\n" + "span.Terminal_Input {"
-                  + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
-                   + ' ' + "}"
-                   + "\n" + "span.Terminal_Input:before"
-                   + ' ' + "{"
-                   + ' ' + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;"
-                    + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
-                     + "'; }"
-                      ;
-      }
-      else {
-         sRu5InputLine = "\n" + "span.Terminal_Input { }"
-                  + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }"
-                   ;
-      }
-
-      // Merge th fragments and apply to style element
-      eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
-                        + sRu4OutFormerInput + sRu5InputLine
-                         ;
-      document.getElementsByTagName('head')[0].appendChild(eStyle);
-   };
-
-   /**
     *  ..
     *
     * @id 20170501°0251
@@ -317,6 +211,11 @@ Terminal = ( function () {
       if ( message !== null ) {                                        // Formerly "if (message.length)"
          oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
+
+      // ======================================================
+      // Execution continues faar below ..
+      // ======================================================
+
 
       /**
        *  ..
@@ -497,7 +396,7 @@ Terminal = ( function () {
          // Crude attempt -- Heureka! This works even without any annoying flicker.
          window.scrollTo(0, iY);
       }
-   };
+   }; // End of function promptInput()
 
    /**
     *  ..
@@ -515,6 +414,120 @@ Terminal = ( function () {
     * @constructor —
     */
    var TerminalConstructor = function (idParam) {
+
+      // Not sure whether as first in constructor is the best location.
+      //  I just locate it after the order from the NetBeans Navigator.
+      /**
+       *  This function dynamically provides CSS rules
+       *
+       * @id  20210507°1641
+       * @todo Either this must be called from a place where it is called only once
+       *        or it must shield itself from multiple execution. [todo 20210507°1711]
+       * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
+       * @param {Object} tis — Workaround. What is state-of-the-art solution?
+       * @return {undefined}
+       */
+      ////var _mountCssRules = function () {
+      var _mountCssRules = function (tis) {
+
+         ////var sIdent = this.getId();
+         var sIdent = tis.getId();
+         ///var sIdent = '';
+
+         // Recognize the presently assembled style element
+         var sStyleElementId = 'Kog2frh5cbfn47pm' + sIdent;
+
+         // Define colors [seq 20210509°1441]
+         var sColorCompleteBox = 'Magenta';
+         var sColorOutputBox = 'Gold';
+         var sColorOutputLine = 'GreenYellow';
+         var sColorOutputPrompt = 'Orange';
+         var sColorOutLineInput = 'Magenta';                           // Output line which formerly was input line
+         var sColorOutLineInPrompt = 'HotPink';                        // Output line which formerly was input line
+         var sColorInputLine = 'Red';
+         var sColorInputPrompt = 'Yellow';
+
+         // Create style element, beforehand delete any existing [seq 20210508°0923]
+         var el = document.getElementById(sStyleElementId);
+         if (el) {
+            el.remove();                                               // [mark 20210512°1317`11 Compatibility]
+         }
+         var eStyle = document.createElement('style');
+         eStyle.type = 'text/css';
+
+         // Provide ID [seq 20210508°0921]
+         var at = document.createAttribute('id');
+         at.value = sStyleElementId;
+         eStyle.setAttributeNode(at);
+
+         // Ruleset for complete terminal box [seq 20210509°1415]
+         var sRu1CompleteBox = _debugBorders
+                     ? "\n" + 'div.Terminal_Complete {' + ' '
+                      + 'border:1px solid ' + sColorCompleteBox + '; border-radius:0.3em; padding:0.2em;' + ' '
+                       + "}"
+                     : "\n" + 'div.Terminal_Complete { }'
+                      ;
+
+         // Ruleset for output box [seq 20210509°1411]
+         var sRu2OutputBox = _debugBorders
+                     ? "\n" + 'p.Terminal_Output {' + ' '
+                      + 'border:1px solid ' + sColorOutputBox + '; border-radius:0.3em; padding:0.2em;' + ' '
+                       + "}"
+                     : "\n" + 'p.Terminal_Output { }'
+                      ;
+
+         // Ruleset for one line in the output box [seq 20210509°1413]
+         var sRu3OutputLine = _debugBorders
+                    ? "\n" + "div.Output_One_Line { "
+                     + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
+                      + ' }'
+                      + "\n" + "div.Output_One_Line:before {"
+                      + ' ' + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;"
+                       + ' ' + "padding:0.1em; content:'" + _outputPromptGlobal
+                        + "'; }"
+                   : "\n" + "div.Output_One_Line { }"
+                    + "\n" + "div.Output_One_Line:before { content:'" + _outputPromptGlobal + "'; }"
+                     ;
+
+         // Output line dedicated [seq 20210509°1417]
+         var sRu4OutFormerInput = _debugBorders
+                    ? "\n" + "div.Terminal_OutputLine_FormerInput { "
+                     + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
+                      + ' }'
+                      + "\n" + "div.Terminal_OutputLine_FormerInput:before {"
+                      + ' ' + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;"
+                       + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
+                        + "'; }"
+                   : "\n" + "div.Terminal_OutputLine_FormerInput { }"
+                    + "\n" + "div.Terminal_OutputLine_FormerInput:before { content:'" + _inputPromptGlobal +"'; }"
+                     ;
+
+         // Rule set for input span [seq 20190312°0451]
+         var sRu5InputLine = '';
+         if ( _debugBorders ) {
+            sRu5InputLine  = "\n" + "span.Terminal_Input {"
+                     + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
+                      + ' ' + "}"
+                      + "\n" + "span.Terminal_Input:before"
+                      + ' ' + "{"
+                      + ' ' + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;"
+                       + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
+                        + "'; }"
+                         ;
+         }
+         else {
+            sRu5InputLine = "\n" + "span.Terminal_Input { }"
+                     + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }"
+                      ;
+         }
+
+         // Merge th fragments and apply to style element
+         eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
+                           + sRu4OutFormerInput + sRu5InputLine
+                            ;
+         document.getElementsByTagName('head')[0].appendChild(eStyle);
+      };
+
 
       /*
        * ===============================================
@@ -576,8 +589,10 @@ Terminal = ( function () {
       //    page, which is not good. It shall be called exactly once per page
       //    load. But first I want get it work at all. Then, be best option is
       //    to put it somewhere, where it is called only once. The second best
-      //    option is, tht the function shields itsels from double mounting.
-      _mountCssRules();
+      //    option is, that the function shields itsels from double mounting.
+      ////this._mountCssRules();
+      ////_mountCssRules();
+//      _mountCssRules(this);
 
       /**
        *  Private field ..
@@ -803,6 +818,7 @@ Terminal = ( function () {
 
          var eNewLine = document.createElement('div');
          eNewLine.textContent = message;
+         eNewLine.style.fontFamily = 'inherit';                        // E.g. prevents defaulting to Arial [feature 20210512°1533] Is this sensible?
          eNewLine.className = sRule;
          this._output.appendChild(eNewLine);
 
@@ -820,7 +836,6 @@ Terminal = ( function () {
          See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414] Yield no solution
          See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
          See https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
-         See https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
 
          (3) Solve the cursor-must-stay-visible task, but not yet the jump
          A line like this works, but also the complete page jumps at some point,
@@ -834,13 +849,22 @@ Terminal = ( function () {
           • this._innerWindow.scrollTo(0, this._output.scrollHeight);  // Fails
 
          (4) The pure CSS overscroll-behaviour technique
-         The article Ben Nadel describes overscroll-behaviour with a very good
-          demo. There is cool CSS in general in the demo, not to mention overscroll.
-         See https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
-         See https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
-         See line line 20210511°1531 CSS overscroll-behaviour
+         See issue 20210511°1427 'Make overscroll-behaviour work'.
          Would the overscroll CSS incidentially solve the page jump issue?
-         I cannot know, sinc I just could overscroll not make work.
+         I cannot know, since I just could overscroll not make work.
+         */
+
+         /*
+         issue 20210511°1427 'Make overscroll-behaviour work'
+         Matter : Style overscroll-behaviour just does not work as expected.
+         Do : Make it working
+         See : https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
+                The Ben Nadel's article describes overscroll-behaviour with a nice
+                demo. Cool CSS in general in the demo, not to mention overscroll.
+         See : https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
+         See : https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
+         See line line 20210511°1531 CSS overscroll-behaviour
+         Status : Open
          */
 
          /*
@@ -922,7 +946,7 @@ Terminal = ( function () {
        */
       this.setDebugBorders = function (bStatus) {
          _debugBorders = bStatus;
-         _mountCssRules();
+         _mountCssRules(this);
       };
 
       /**
@@ -948,7 +972,7 @@ Terminal = ( function () {
          //this._inputLine.textPrefix = sParam;                        // Check — What exactly is this good for? See the XHR feature.
          this._inputPrompt = sParam;
          _inputPromptGlobal = sParam;                                  // Provisory
-         _mountCssRules();
+         this._mountCssRules(this);
       };
 
       /**
@@ -962,7 +986,7 @@ Terminal = ( function () {
       this.setOutputPrompt = function (sParam) {
          this._outputPrompt = sParam;
          _outputPromptGlobal = sParam;                                 // Provisory
-         _mountCssRules();
+         this._mountCssRules(this);
       };
 
       /**
@@ -1013,7 +1037,7 @@ Terminal = ( function () {
       };
 
       // ======================================================
-      // Execution continues ..
+      // Execution from high above continues .. (?)
       // ======================================================
 
       // ~~ Assemble the terminal div element [seq 20170501°0921]
@@ -1042,19 +1066,17 @@ Terminal = ( function () {
       this._cursor.style.display = 'none';                             // Then hide it
       this._output.style.margin = '0';
 
-
       // ~~
       // [seq 20170501°0925]
       this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17 xhr]
       this.html.style.margin = '0';
       this.html.style.overflow = 'auto';                               // [line 20210502°1133] See issue 20210502°1351 'What exactly does style.overflow'? // [chg 20210502°1111`18 xhr]
+      this.html.style.resize = 'auto';                                 // Make resizable [feature 20210512°1535]
 
-
-      //this.html.style.overscrollBehavior = 'contain';               // Experiment [line 20210511°1531] After ref 20210511°1424
-//    this.html.style.overscrollBehavior = 'contain';                  // Experiment [line 20210511°1531] After ref 20210511°1424
-//    this._innerWindow.style.overscrollBehavior = 'contain';          // Experiment [line 20210511°1531] After ref 20210511°1424
-
-
+      // Experiment — Just does not work [line 20210511°1531]
+      // See issue 20210511°1427 'Make overscroll-behaviour work'
+      //this.html.style.overscrollBehavior = 'contain';
+      //this._innerWindow.style.overscrollBehavior = 'contain';
 
       /**
        *  [seq 20210502°1123]
@@ -1062,7 +1084,8 @@ Terminal = ( function () {
       this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
       return;
-   };
+
+   }; // End function TerminalConstructor()
 
    /**
     *  This const holds a beep in its base64 incarnation

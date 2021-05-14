@@ -4,9 +4,9 @@
  • [Notes](./docs/notes.md) &nbsp;
  • [Issues](./docs/issues.md) &nbsp;
  • [Changes](./docs/changelog.md) &nbsp;
- • [License](./docs/license.md)
+ • [Credits](./docs/credits.md)
 
-# Termjnal &nbsp; <sup><sub>v0.3.0.5 &nbsp; <sup><sup>20210512°1411°1711</sup></sup></sub></sup>
+# Termjnal &nbsp; <sup><sub>v0.3.0.5~~ &nbsp; <sup><sup>20210512°1411~~</sup></sup></sub></sup>
 
 Below :
  • [Synopsis](#synopsis)

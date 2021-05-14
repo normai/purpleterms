@@ -4,7 +4,7 @@ Pages : &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
  • [Changes](./changelog.md) &nbsp;
- • License
+ • Credits
 
 Below : &nbsp;
  • [License](#license) &nbsp;
@@ -13,7 +13,11 @@ Below : &nbsp;
  • [Remarks](#remarks) &nbsp;
 
 <a name="license"></a>
-# License
+# Credits
+
+Firstly, many thanks go to Erik and Yevgen for providing the very cool
+ [Terminal.js](https://github.com/eosterberg/terminaljs)
+ I could fork from.
 
 <pre style="border:1px solid LightSlateGrey; border-radius:0.7em;">
 BSD 3-Clause License

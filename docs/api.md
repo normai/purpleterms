@@ -4,7 +4,7 @@ Pages : &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
  • [Changes](./changelog.md) &nbsp;
- • [License](./license.md)
+ • [Credits](./credits.md)
 
 Below : &nbsp;
  • [API](#api_doc) &nbsp;
