@@ -1,19 +1,21 @@
-Pages : &nbsp;
+Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [Changes](./changelog.md) &nbsp;
+ • [Changes](./changes.md) &nbsp;
  • Credits
 
-Below : &nbsp;
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="192" height="192" alt="Purple Bellied Lory">
+
+<a name="license"></a>
+# Credits
+
+Subsections : &nbsp;
  • [License](#license) &nbsp;
  • [Contributors](#contributors) &nbsp;
  • [Third Party Components](#thirdparty) &nbsp;
  • [Remarks](#remarks) &nbsp;
-
-<a name="license"></a>
-# Credits
 
 Firstly, many thanks go to Erik and Yevgen for providing the very cool
  [Terminal.js](https://github.com/eosterberg/terminaljs)
@@ -35,9 +37,9 @@ For the full text see file [`license.txt`](./../license.txt) please.
 
 <a name="contributors"></a>
 <a name="credits"></a>
-# Contributors
+## Contributors
 
-The following authors contributed to Termjnal, or Terminal.js respectively :
+The following authors contributed to Terminals, or Terminal.js respectively :
 
 - **[Dingcheng Yue](https://github.com/DarwinSenior)**
 
@@ -54,20 +56,25 @@ The following authors contributed to Termjnal, or Terminal.js respectively :
 - *<span style="color:LightGray;">.. Todo: Possibly complete list. ..</span>*
 
 <a name="thirdparty"></a>
-# Third Party Components
+## Third Party Components
 
 Many thanks goes to people or organizations for supplementing components :
 
 - **Mike Koenig** for providing the [Beep file](https://soundbible.com/1252-Bleep.html)
- under the CC BY 3.0 License
+ under the [CC BY 3.0 License](https://creativecommons.org/licenses/by/3.0/)
 
 - **Zhenxi (Eric) Chen** for providing the
  [element-remove](https://github.com/chenzhenxi/element-remove/blob/master/index.js)
- polyfill under the MIT License
+ polyfill under the [MIT License](https://choosealicense.com/licenses/mit/)
 
+- **[Kevin David Pointon](https://openclipart.org/artist/Firkin)** for providing the
+ [Purple Bellied Lory](https://openclipart.org/detail/241426/purplebellied-lory)
+ and the
+ [Waving Astronaut](https://openclipart.org/detail/304180/waving-astronaut)
+ under the [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0)
 
 <a name="remarks"></a>
-# Remarks
+## Remarks
 
 Why have I **changed** the license from MIT License to BSD 3-Clause License?
 The BSD 3-Clause License is very similar to the MIT License,
@@ -82,6 +89,8 @@ or [Highlight.js](https://github.com/highlightjs/highlight.js).
 Why have I added my name in the **copyright** lines?
 This fork is no more a contribution, but a total rewrite, including
 significant extensions.
+
+<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 About the '_and contributors_' ingredient exists an instructive thread on
 [StackExchange](https://opensource.stackexchange.com/questions/5508/what-does-and-contributors-in-the-copyright-byline-imply).

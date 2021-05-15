@@ -7,7 +7,7 @@
 # usage        : Write your Closure-Compiler path on a line in
 
 """
-   This minifies TerminalJs
+   This minifies Terminals
 """
 
 # In this file register your Closure Compiler binary path
@@ -17,7 +17,7 @@ import os, sys
 
 os.chdir(os.path.dirname(__file__))
 
-print('* TerminalJs build *')
+print('* Terminals build *')
 
 # (.) Get bin path
 # (.1) Read lines                                                      # [seq 20210429°1511]
@@ -36,7 +36,7 @@ if sBinGoCloCom == '' :
 
 # Build yes or no?
 bBuild = False
-for file in ['./terminal.min.js', './terminal.min.js.map'] :
+for file in ['./terminal.min.js', './terminal.min.js.map', './terminal.pretty.js'] :
    if not os.path.isfile(file) :
       bBuild = True
    else :
@@ -49,26 +49,34 @@ for file in ['./terminal.min.js', './terminal.min.js.map'] :
 ## bBuild = True
 
 # Assemble commandline
-sCmd = 'java.exe -jar' + ' ' + sBinGoCloCom                            \
-      + ' ' + './externs.js'                                           \
-      + ' ' + './terminal.js'                                          \
-      + ' ' + '--js_output_file' + ' ' + './terminal.min.js'           \
-      + ' ' + '--create_source_map' + ' ' + './terminal.min.js.map'    \
-      + ' ' + '--formatting' + ' ' + 'PRETTY_PRINT'                    \
-      + ' ' + '--compilation_level' + ' ' + 'ADVANCED_OPTIMIZATIONS'   \
-      + ' ' + '--charset UTF-8'
+sCmd1 = 'java.exe -jar' + ' ' + sBinGoCloCom                           \
+       + ' ' + './externs.js'                                          \
+       + ' ' + './terminal.js'                                         \
+       + ' ' + '--js_output_file' + ' ' + './terminal.min.js'          \
+       + ' ' + '--create_source_map' + ' ' + './terminal.min.js.map'   \
+       + ' ' + '--formatting' + ' ' + 'PRETTY_PRINT'                   \
+       + ' ' + '--compilation_level' + ' ' + 'ADVANCED_OPTIMIZATIONS'  \
+       + ' ' + '--charset UTF-8'
+     # + ' ' + '--isolation_mode' + ' ' + 'IIFE'
+     # + ' ' + '--compilation_level' + ' ' + 'ADVANCED'                # Alternative for ADVANCED_OPTIMIZATIONS
 
-    # + ' ' + '--compilation_level' + ' ' + 'ADVANCED'
-    # + ' ' + '--isolation_mode' + ' ' + 'IIFE'                        \
+sCmd2 = 'java.exe -jar' + ' ' + sBinGoCloCom                           \
+       + ' ' + './externs.js'                                          \
+       + ' ' + './terminal.js'                                         \
+       + ' ' + '--js_output_file' + ' ' + './terminal.pretty.js'       \
+       + ' ' + '--formatting' + ' ' + 'PRETTY_PRINT'                   \
+       + ' ' + '--compilation_level' + ' ' + 'WHITESPACE_ONLY'         \
+       + ' ' + '--charset UTF-8'
 
 # Execute command
 if bBuild == True :
    print(' — building ...')
-   os.system(sCmd)
+   os.system(sCmd1)
+   os.system(sCmd2)
 else :
    print(' — is up-to-date')
 
-print(' * TerminalJs building done.')
+print(' * Terminals building done.')
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Links used while make it work with Closure-Compiler in advanced mode :

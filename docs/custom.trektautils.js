@@ -3,7 +3,7 @@
  * This area Trekta.Utils holds low level functions to be pasted into standalone scripts
  *
  * file : 20190105°1717 daftari/jsi/trektautils.js
- * version : Special edition for Termjnal //// v0.2.5 (20210428°1031)
+ * version : Special edition for Terminals //// v0.2.5 (20210428°1031)
  * copyright : © 2019 - 2021 Norbert C. Maier
  * license : BSD 3-Clause License //// (formerly GNU AGPL v3)
  */

@@ -1,5 +1,5 @@
 /*!
- * Termjnal v0.3.0.5~~ — Provide a terminal in the browser
+ * Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on your pages
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -180,7 +180,7 @@ Terminal = ( function () {
     */
    var promptInput = function (oTerm, message, PROMPT_TYPE, callback) {
 
-      'use strict';                                                    // Newly introduced, worked out of the box [line 20230510°1531]
+      'use strict';                                                    // Newly introduced, worked out of the box [line 20210510°1531]
 
       var bShouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
       var inputField = document.createElement('input');
@@ -207,7 +207,7 @@ Terminal = ( function () {
 
       // [condition 20170501°0751]
       // What exactly means 'message.length'? Throws error if message is null.
-      //  Condition "if (message.length)" seems wrong. [quest 20230510°1521]
+      //  Condition "if (message.length)" seems wrong. [quest 20210510°1521]
       if ( message !== null ) {                                        // Formerly "if (message.length)"
          oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
@@ -424,15 +424,14 @@ Terminal = ( function () {
        * @todo Either this must be called from a place where it is called only once
        *        or it must shield itself from multiple execution. [todo 20210507°1711]
        * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
-       * @param {Object} tis — Workaround. What is state-of-the-art solution?
+       * @param {Object} tihs — Workaround. What is state-of-the-art solution?
        * @return {undefined}
        */
       ////var _mountCssRules = function () {
-      var _mountCssRules = function (tis) {
+      var _mountCssRules = function (tihs) {
 
          ////var sIdent = this.getId();
-         var sIdent = tis.getId();
-         ///var sIdent = '';
+         var sIdent = tihs.getId();
 
          // Recognize the presently assembled style element
          var sStyleElementId = 'Kog2frh5cbfn47pm' + sIdent;
@@ -972,7 +971,8 @@ Terminal = ( function () {
          //this._inputLine.textPrefix = sParam;                        // Check — What exactly is this good for? See the XHR feature.
          this._inputPrompt = sParam;
          _inputPromptGlobal = sParam;                                  // Provisory
-         this._mountCssRules(this);
+         ////this._mountCssRules(this);
+         _mountCssRules(this);
       };
 
       /**
@@ -986,7 +986,8 @@ Terminal = ( function () {
       this.setOutputPrompt = function (sParam) {
          this._outputPrompt = sParam;
          _outputPromptGlobal = sParam;                                 // Provisory
-         this._mountCssRules(this);
+         ////this._mountCssRules(this);
+         _mountCssRules(this);
       };
 
       /**
@@ -1350,5 +1351,4 @@ Terminal = ( function () {
       });
    });
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype].filter(Boolean));
-
 /* eof */

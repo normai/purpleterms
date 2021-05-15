@@ -1,15 +1,16 @@
-Pages : &nbsp;
+Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • Issues &nbsp;
- • [Changes](./changelog.md) &nbsp;
+ • [Changes](./changes.md) &nbsp;
  • [Credits](./../credits.md)
 
-## Issues and Todos
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple Bellied Lory">
+
+# Issues and Todos
 
 ---
-
 
 ##### Issue 'Fully initialize object, only then return it' _<sup><sub><sup><sub>20210509°1731</sub></sup></sub></sup>_
 
@@ -121,6 +122,8 @@ See Article
 
 
 ---
+
+<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 ```
    issue 20210502°1341 'Learn GoCloCom parameter types'

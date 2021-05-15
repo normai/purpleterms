@@ -3,12 +3,12 @@ Other pages : &nbsp;
  • [API](./api.md) &nbsp;
  • Notes &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [Changes](./changelog.md) &nbsp;
+ • [Changes](./changes.md) &nbsp;
  • [Credits](./credits.md)
 
-# Notes
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple Bellied Lory">
 
-_This page is for boring casual developer notes, **totally uninteresting** for library users._
+# Notes
 
 Subsections : &nbsp;
 • [Cursor blink?](#id20210512o1521) &nbsp;
@@ -20,6 +20,9 @@ Subsections : &nbsp;
 • [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
 • *([GFM](#github_flavored_markdown))*
+• [References](#id20210512o1611)
+
+_This page contains boring casual developer notes, **totally uninteresting** for library users._
 
 ---
 
@@ -38,7 +41,7 @@ References e.g.:
 
 ## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; _<sup><sub><sup><sup>Subject 20210512°1311</sup></sup></sub></sup>_
 
-Termjnal supports **IE=>9**. Here are some points :
+Terminals supports **IE=>9**. Here are some points :
 
 - Function `scrollTo()` is skipped for IE by feature detection. Thus IE may show rough movements.
 
@@ -237,14 +240,14 @@ Actually, such XHR feature is the reason why I got my hands dirty
  it works only for localhost, not online so far.
 
 The XHR feature brings me to questions.
-XHR makes no sense on it`s own right, only together with a backend.
-Termjnal is a library, not an application. Thus it must not know,
-who will use it in which way. The questions are:
-Where exactly shall the line be drawn between library and user code?
-Is it already clear, what exactly Termjnal should do, and what not?
+ XHR makes no sense on it`s own right, only together with a backend.
+ Terminals is a library, not an application. Thus it shall not know,
+ who will use it in which way. The questions are:
+ Where exactly shall the line be drawn between library and user code?
+ Is it already clear, what exactly Terminals should do, and what not?
 
 I will learn more about this questions, when attempting to switch my own
-use case from the custom module to Yevgen's interface function.
+ use case from the custom module to Yevgen's interface function.
 
 ---
 
@@ -352,7 +355,7 @@ Further reference(s) :
 
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
-This paragraph is **unrelated** to Termjnal. This are little experiments
+This paragraph is **unrelated** to Terminals. This are little experiments
  serving me to understand the differences between
  [GFM](https://github.github.com/gfm/) and my local Markdown renderer
  [Showdown](https://github.com/showdownjs/showdown).
@@ -384,6 +387,20 @@ Showdown works with the both.
   Pretzel          🥨 |
   Waffle           🧇 |
 BTW. Practical emoji overviews provides e.g. [Emojigraph](https://emojigraph.org/).
+
+---
+
+<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="192" height="192" alt="Waving Astronaut">
+
+## References <a name="id20210512o1611"></a> &nbsp; _<sup><sub><sup><sup>Subsection&nbsp;20210512°1611</sup></sup></sub></sup>_
+
+ • Article
+ • [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
+ • by Romain Guillemot
+ • on 2019-Jul-30
+ • <sup><sub>in https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1</sub></sup>
+ • <sup><sub>used in _func 20210510°1751_ `rollDice()`</sub></sup>
+ • <sup><sub>_[ref 20210510°1755 'Dice roll']_</sub></sup>
 
 ---
 

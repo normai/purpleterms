@@ -1,4 +1,4 @@
-Pages : &nbsp;
+Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • [API](./api.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
@@ -6,13 +6,20 @@ Pages : &nbsp;
  • Changes &nbsp;
  • [Credits](./credits.md)
 
-# Changelog
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple Bellied Lory">
 
-History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or Terminal.js, respectively
+# Changes
 
+The history of project Terminals
+
+##### log
+- Add Waving Astronaut
+
+##### log 20210512°1811 — v0.3.0.6 Lory
+- Add Purple Bellied Lory
+- Try name 'Terminals'
 
 ##### log 20210512°1411 — v0.3.0.5 Cleanup
-
 
 ##### log 20210511°1711 — v0.3.0.4 Work on scrolling (Zappelphilipp)
 - Implement plain prompt in aloha.html dispatcher loop
@@ -23,7 +30,7 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or 
 - Work on scrolling (issue 20210511°1525 'Get rid of page jumps',
 
 
-##### log 20230510°1445 — v0.3.0.3 Cleanup timestamps
+##### log 20210510°1445 — v0.3.0.3 Cleanup timestamps
 - Cleanup timestamps
 - Little edits
 
@@ -166,6 +173,8 @@ History of [NorMai's fork](https://github.com/normai/terminaljs) of Termjnal or 
 
 #### log 2014-11-12'04:36.GMT+1
 - DarwinSenior — Added and documented password feature
+
+<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 #### log 2013-04-05'10:06.GMT+2
 - Eric Österberg — First commit to

@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
-   <title>Termjnal Aloha</title>
+   <title>Terminals Aloha</title>
    <script src="./terminal.js"></script>
    <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./docs/styles.css">
 
    <style>
       /**
-       * rule 20230510°1512 Ribbon after https://codepo8.github.io/css-fork-on-github-ribbon/ [ref 20230510°1512]
+       * rule 20210510°1515 Ribbon after https://codepo8.github.io/css-fork-on-github-ribbon/ [ref 20210510°1512]
        */
       #fork_on_github a { background:Tomato; color:White; text-decoration:none;
                           font-family:arial,sans-serif; text-align:center; font-weight:bold;
@@ -68,11 +68,11 @@
  <div class="ChapterFace14Normal" style="z-index:2;">
 
   <h1>
-               Termjnal Aloha
+               Terminals Aloha
   </h1>
 
   <p style="z-index:2;">
-               This is the <a href="https://github.com/normai/terminaljs/">Termjnal</a>
+               This is the <a href="https://github.com/normai/terminaljs/">Terminals</a>
                introductory use case. This is not a simple use case, rather a comprehensive one.
                An easier case you will find on the next page.
   </p>
@@ -81,16 +81,17 @@
                Under development — Turbulences be expected.
   </p>
 
-  <!-- **************************************************** -->
-  <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <!-- Note. "overscroll-behavior: contain;" does not work here (see issue ) -->
-      <div style="font-size:1.3em; width:666px;" id="Div_For_Terminal_One">
+   <!-- **************************************************** -->
+   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
+      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
+                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One"
+                    >
       </div>
       Show debug borders.
       <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
-               onclick="t1.beep(); setDebugBorders(t1);"
-      >
-  </div>
+              onclick="t1.beep(); setDebugBorders(t1);"
+               >
+   </div>
   <!-- **************************************************** -->
 
   <pre style="line-height:1.0em; display:none;">
@@ -116,18 +117,35 @@
               A second box :
   </p>
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <div style="font-size:0.9em; line-height:1.1em; float:left;" id="Div_For_Terminal_Two">
-  </div>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
+      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
+                  border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Two"
+                   >
+      </div>
+      Debug borders.
+      <input type="checkbox" id="Debug_Borders_Box_Two" name="Debug_Borders_Box_Two"
+              onclick="t1.beep(); setDebugBorders(t2);"
+               >
+   </div>
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  <div style="font-size:0.7em; line-height:0.9em; float:right;" id="Div_For_Terminal_Three">
-  <p>
+   <p>
               Yet a third box :
-  </p>
-  </div>
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+   </p>
+
+   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
+      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
+                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Three"
+                    >
+      </div>
+      Debug borders.
+      <input type="checkbox" id="Debug_Borders_Box_Three" name="Debug_Borders_Box_Three"
+                    onclick="t1.beep(); setDebugBorders(t3);"
+                     >
+   </div>
+   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
   <script>
 
@@ -227,13 +245,11 @@
          elKeys.style.display = el.checked ? 'inline' : 'none';
       }
 
-
       // ******************************************************
-      // Terminal Two [box 20230510°1611]
+      // Terminal Two [box 20210510°1611]
       // ******************************************************
 
-
-      // Prologue [seq 20230510°1621]
+      // Prologue [seq 20210510°1621]
       var t2 = new Terminal();
       t2.setHeight("180px");
       t2.setWidth("360px");
@@ -254,35 +270,35 @@
       /* */
 
       // ******************************************************
-      // Terminal Three [box 20230510°1711]
+      // Terminal Three [box 20210510°1711]
       // ******************************************************
-      // Reference: The dice roll algorithm comes from
-      //  Romain Guillemot on 2019-Jul-30 on [ref 20230510°1751]
-      //  medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1
 
-      // Prologue [seq 20230510°1671]
+      // Prologue [seq 20210510°1713]
       var t3 = new Terminal("Potato");
       t3.setHeight("180px");
       t3.setWidth("360px");
       t3.setBackgroundColor("DarkSlateBlue");
       var elTarget = document.getElementById('Div_For_Terminal_Three');
 
-      // And here it jumps again [seq 20210511°1543] -- Temporarily shutdown
+      // Here it jumps again [seq 20210511°1543] -- Shutdown on demand
       // See issue 20210511°1611 'Lower terminals shall keep feet still'
       /* */
       elTarget.appendChild(t3.html);
       t3.print("Third box on page, ID = '" + t3.getId() + "'.");
       t3.confirm('Would you like to roll dice?', function(b1) {
          t3.print(b1 ? "Fine .." : "Well, no dice.");
-         if (b1) { roll(); }
+         if (b1) { rollDice(); }
          else { t3.print("Bye."); }
       } );
       /* */
 
-      function roll() {
+      // Dice roll algorithm [func 20210510°1751]
+      // After Romain Guillemot on 2019-Jul-30 on [ref 20210510°1755]
+      //  medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1
+      function rollDice() {
          var i = 1 + Math.floor(Math.random() * 6);
          t3.confirm('You rolled ' + i + ' — More?', function(b2) {
-            if (b2) { roll(); }
+            if (b2) { rollDice(); }
             else { t3.print("Bye."); }
          });
       }

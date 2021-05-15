@@ -1,20 +1,21 @@
-Pages : &nbsp;
+Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
  • API &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
- • [Changes](./changelog.md) &nbsp;
+ • [Changes](./changes.md) &nbsp;
  • [Credits](./credits.md)
 
-Below : &nbsp;
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple Bellied Lory">
+
+# API Docmentation
+
+Subsections : &nbsp;
  • [API](#api_doc) &nbsp;
  ◦ [Initialization](#api_initialization) &nbsp;
  ◦ [Methods](#api_methods) &nbsp;
  ◦ [Accessors](#api_accessors) &nbsp;
  ◦ [Properties](#api_properties)
-
-<a name="api_doc"></a>
-# API Docmentation
 
 <a name="api_initialization"></a>
 ## Initialization
@@ -125,6 +126,8 @@ Accepts CSS-compliant dimension value
 
 <a name="api_properties"></a>
 ## Properties
+
+<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 #### html
 
