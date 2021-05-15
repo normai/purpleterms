@@ -6,7 +6,7 @@
  • [Changes](./docs/changes.md) &nbsp;
  • [Credits](./docs/credits.md)
 
-<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple Bellied Lory">
+<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
 # Terminals &nbsp; <sup><sub><sup>v0.3.0.6~~</sup></sub></sup>
 

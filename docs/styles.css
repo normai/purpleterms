@@ -7,18 +7,19 @@
 body { /* text-align:center; */ font-family: Verdana, Geneva,sans-serif; line-height:1.59em; } /* rule 20080710°2311 applying workaround 20100822°1323 */
 body.BodyFace12Normal { font-family: Verdana, sans-serif; background-color:Aquamarine; } /* #d0ff50 */ /* rule 20170925°0321 */
 
-table.TopNavi14Box  { margin:auto; max-width:790px; width:100%; border:2px solid Transparent; } /* rule 20210418°1422 */
-td.TopNavi14Line   { font-size:large; border:2px solid transparent; } /* rule 20141117°0511 (from ruleset 20080711°0531) */
+table.TopNavi14Box  { position:relative; z-index:9301; margin:auto; max-width:790px; width:98%; border:2px solid Transparent; } /* rule 20210418°1422 */
+td.TopNavi14Line   { font-size:large; border:2px solid Transparent; padding-right:4.2em; } /* rule 20141117°0511 (from ruleset 20080711°0531) */
 a.TopNavi14None { color:Gray; padding:0 0.1em 0 0.1em; font-weight:normal; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20210503°1323 */
 a.TopNavi14Normal { color:Green; padding:0 0.1em 0 0.1em; font-weight:bold; } /* [rule 20210418°1423] */
 a.TopNavi14Parent { color:RoyalBlue; padding:0 0.1em 0 0.1em; font-weight:bold; font-size:1.1em; } /* rule 20210503°1323 */
 a.TopNavi14Self { color:Red; padding:0 0.1em 0 0.1em; font-weight:bold; font-style:italic; font-size:1.1em; pointer-events:none; cursor:default; text-decoration:none; } /* rule 20150302°1534 */
-
-td.TopNavi14Arrows { border:2px solid transparent; font-size:1.6em; transform:scale(2.1, 1); padding:0 1.9em 0 1.1em; font-weight:bold; white-space:nowrap; vertical-align:top; text-align:right; } /* rule 20210503°1321 */
+td.TopNavi14Arrows { text-align:right; border:2px solid Transparent; font-size:1.6em;
+                     transform:scale(2.4, 1); padding:0 2.4em 0 0.1em; font-weight:bold;
+                     white-space:nowrap; vertical-align:top; } /* rule 20210503°1321 */
 a.TopNavi14ArrowGray { color:LightGray; text-decoration:none; pointer-events:none; cursor:default; } /* rule 20210503°1324 */
 a.TopNavi14ArrowNormal { color:Green; text-decoration:none; border:2px solid transparent; margin:0 -0.2em 0 -0.2em; } /* rule 20210503°1322 */
 
-div.TopNavi14Logo { float:right; top:2.1em; right:1.1em; border:2px solid transparent; position:absolute; top:3.7em; } /* transparent */ /* rule 20200314°0413 */
+div.TopNavi14Logo { z-index:9101; float:right; top:2.1em; right:1.1em; border:2px solid transparent; position:absolute; top:3.7em; } /* transparent */ /* rule 20200314°0413 */
 
 div.ChapterFace14Normal { margin:0 auto; max-width:790px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 
@@ -48,5 +49,33 @@ code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
 .FontTodo { color:Red; font-size:0.85em; } /* 0.77em */ /* [rule 20110924°1321] */
 .FontTimestamp { color:RoyalBlue; font-size:small; font-family: Georgia, serif; font-style:italic; position:relative; bottom:0.3em; } /* [rule 20100826°2121] */
 
+/**
+ * rule 20210510°1515 Ribbon after https://codepo8.github.io/css-fork-on-github-ribbon/ [ref 20210510°1512]
+ */
+#Fork_Me_On_GitHub a { background:Tomato; color:White; text-decoration:none;
+                       font-family:arial,sans-serif; text-align:center; font-weight:bold;
+                    /* padding:5px 40px; font-size:1rem; line-height:2rem; */
+                       padding:6px 35px 6px 15px; font-size:1.0rem; line-height:1.6rem;
+                       position:relative; transition:0.5s;
+                      }
+#Fork_Me_On_GitHub a:hover { background:Orange; color:SeaGreen; }
+#Fork_Me_On_GitHub a::before,
+#Fork_Me_On_GitHub a::after { content:""; width:100%; display:block; position:absolute;
+                               top:1px; left:0; height:1px; background:Lime;
+                             }
+#Fork_Me_On_GitHub a::after { bottom:1px; top:auto; }
+@media screen and (min-width:800px)
+   { #Fork_Me_On_GitHub { position:fixed; display:block; top:0; right:0;
+                        /* width:200px; height:200px; overflow:hidden; z-index:9999; */
+                           width:200px; height:200px; overflow:hidden;
+                           position:absolute; z-index:9201;
+                        }
+     #Fork_Me_On_GitHub a { /* width:200px; position:absolute; top:60px; right:-60px; */
+                            width:200px; position:absolute; right:-65px; top:55px;
+                            transform:rotate(45deg); -webkit-transform:rotate(45deg);
+                            -ms-transform:rotate(45deg); -moz-transform:rotate(45deg);
+                            -o-transform:rotate(45deg); box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+                           }
+   }
 
 /* eof */

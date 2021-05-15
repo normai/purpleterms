@@ -6,42 +6,11 @@
    <script src="./terminal.js"></script>
    <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
    <link rel="stylesheet" href="./docs/styles.css">
-
-   <style>
-      /**
-       * rule 20210510°1515 Ribbon after https://codepo8.github.io/css-fork-on-github-ribbon/ [ref 20210510°1512]
-       */
-      #fork_on_github a { background:Tomato; color:White; text-decoration:none;
-                          font-family:arial,sans-serif; text-align:center; font-weight:bold;
-                       /* padding:5px 40px; font-size:1rem; line-height:2rem; */
-                          padding:6px 35px 6px 15px; font-size:1.0rem; line-height:1.6rem;
-                          position:relative; transition:0.5s;
-                         }
-      #fork_on_github a:hover { background:Orange; color:SeaGreen; }
-      #fork_on_github a::before,
-      #fork_on_github a::after { content:""; width:100%; display:block; position:absolute;
-                                 top:1px; left:0; height:1px; background:Lime;
-                                }
-      #fork_on_github a::after { bottom:1px; top:auto; }
-      @media screen and (min-width:800px)
-         { #fork_on_github { position:fixed; display:block; top:0; right:0;
-                             /* width:200px; height:200px; overflow:hidden; z-index:9999; */
-                             width:200px; height:200px; overflow:hidden; z-index:9999;
-                            }
-           #fork_on_github a { /* width:200px; position:absolute; top:60px; right:-60px; */
-                                  width:200px; position:absolute; right:-65px; top:55px;
-                               transform:rotate(45deg); -webkit-transform:rotate(45deg);
-                               -ms-transform:rotate(45deg); -moz-transform:rotate(45deg);
-                               -o-transform:rotate(45deg); box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
-                              }
-         }
-   </style>
-
 </head>
 
 <body class="BodyFace12Normal">
 
- <span id="fork_on_github">
+ <span id="Fork_Me_On_GitHub">
                <a href="https://github.com/normai/terminaljs">Fork me on GitHub</a>
  </span>
 
@@ -71,7 +40,7 @@
                Terminals Aloha
   </h1>
 
-  <p style="z-index:2;">
+  <p style="position:relative; z-index:9900;">
                This is the <a href="https://github.com/normai/terminaljs/">Terminals</a>
                introductory use case. This is not a simple use case, rather a comprehensive one.
                An easier case you will find on the next page.
