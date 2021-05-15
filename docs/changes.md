@@ -175,7 +175,7 @@ The history of project Terminals
 #### log 2014-11-12'04:36.GMT+1
 - DarwinSenior — Added and documented password feature
 
-<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
+<img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 #### log 2013-04-05'10:06.GMT+2
 - Eric Österberg — First commit to

@@ -110,7 +110,7 @@ Until content here arrives, please inspect file
 <a name="usage_advanced"></a>
 ##### Advanced Use Case
 
-<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
+<img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 Until content here arrives, please inspect file
 [`aloha.html`](./aloha.html)

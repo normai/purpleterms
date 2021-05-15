@@ -505,7 +505,7 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 ---
 
-<img src="./terminaljs/docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="192" height="192" alt="Waving Astronaut">
+<img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="192" height="192" alt="Waving Astronaut">
 
 ## References <a name="id20210512o1611"></a> &nbsp; _<sup><sub><sup><sup>Subsection&nbsp;20210512°1611</sup></sup></sub></sup>_
 
