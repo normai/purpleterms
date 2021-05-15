@@ -1,6 +1,6 @@
 Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
- • API &nbsp;
+ • API Doc &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
  • [Changes](./changes.md) &nbsp;
@@ -11,11 +11,10 @@ Other pages : &nbsp;
 # API Docmentation
 
 Subsections : &nbsp;
- • [API](#api_doc) &nbsp;
- ◦ [Initialization](#api_initialization) &nbsp;
- ◦ [Methods](#api_methods) &nbsp;
- ◦ [Accessors](#api_accessors) &nbsp;
- ◦ [Properties](#api_properties)
+ • [Initialization](#api_initialization) &nbsp;
+ • [Methods](#api_methods) &nbsp;
+ • [Accessors](#api_accessors) &nbsp;
+ • [Properties](#api_properties)
 
 <a name="api_initialization"></a>
 ## Initialization
@@ -56,8 +55,10 @@ Displays a confirm message, with a " (y/n)" automatically appended at the end. T
 #### connect(url)
 
 You can set an URL address to get all responses with the XHR.
-When you are running the terminal with connect(), things become real
-— It means that now your backend is in charge of the terminal output.
+ When you are running the terminal with connect(), things become real
+ — It means that now your backend is in charge of the terminal output.
+
+_Not tested. May not work as expected._
 
 #### input(message, callback)
 
@@ -78,6 +79,16 @@ Waits for the number of milliseconds given, then executes the callback.
 
 <a name="api_accessors"></a>
 ## Accessors
+
+#### t.getId()
+
+Returns the terminal's ID string.
+
+See subchapter [Initialization](#api_initialization) to learn more about the box ID.
+
+#### t.getVersion()
+
+Returns the JavaScript file's version string
 
 #### setBackgroundColor()
 

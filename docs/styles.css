@@ -19,7 +19,9 @@ td.TopNavi14Arrows { text-align:right; border:2px solid Transparent; font-size:1
 a.TopNavi14ArrowGray { color:LightGray; text-decoration:none; pointer-events:none; cursor:default; } /* rule 20210503°1324 */
 a.TopNavi14ArrowNormal { color:Green; text-decoration:none; border:2px solid transparent; margin:0 -0.2em 0 -0.2em; } /* rule 20210503°1322 */
 
-div.TopNavi14Logo { z-index:9101; float:right; top:2.1em; right:1.1em; border:2px solid transparent; position:absolute; top:3.7em; } /* transparent */ /* rule 20200314°0413 */
+div.TopNavi14Logo { z-index:9101; float:right; top:6.1em; right:-0.4em;
+                     border:2px solid transparent; position:absolute;
+                   } /* transparent */ /* rule 20200314°0413 */
 
 div.ChapterFace14Normal { margin:0 auto; max-width:790px; width:84%; background-color:#fcfcfc; padding:0.3em 0.9em 0.3em 0.9em; margin-top:0.9em; margin-bottom:1.1em; } /* rule 20160617°0212 */
 

@@ -4,7 +4,7 @@
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
    <title>Terminals Aloha</title>
    <script src="./terminal.js"></script>
-   <link rel="shortcut icon" href="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
+   <link rel="shortcut icon" href="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png">
    <link rel="stylesheet" href="./docs/styles.css">
 </head>
 
@@ -30,7 +30,7 @@
   </tr>
  </table>
  <div class="TopNavi14Logo" style="z-index:0;">
-               <img src="./docs/20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" width="92" height="92" alt="Grainy Dummy Logo">
+               <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" width="192" height="192" alt="Purple-Bellied Lory">
  </div>
 
 
@@ -50,7 +50,7 @@
                Under development — Turbulences be expected.
   </p>
 
-   <!-- **************************************************** -->
+   <!-- ******************* Box One HTML ******************* -->
    <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
       <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
                    border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One"
@@ -63,7 +63,7 @@
    </div>
   <!-- **************************************************** -->
 
-  <pre style="line-height:1.0em;" data-id="20210511°1631"><!-- display:none;" -->
+  <pre style="line-height:1.0em; display:none;" data-id="20210511°1631"><!-- display:none;" -->
                this._output.scrollHeight      = <span id="outputScrollHeight"></span>
                this._output.scrollTop         = <span id="outputScrollTop"></span>
                this._output.offsetTop         = <span id="outputOffsetTop"></span>
@@ -86,7 +86,7 @@
               A second box :
   </p>
 
-   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <!-- ~~~~~~~~~~~~~~~~~~~ Box Two HTML ~~~~~~~~~~~~~~~~~~~ -->
    <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
       <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Two"
@@ -103,7 +103,7 @@
               Yet a third box :
    </p>
 
-   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+   <!-- ++++++++++++++++++ Box Three HTML ++++++++++++++++++ -->
    <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
       <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
                    border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Three"
@@ -119,7 +119,7 @@
   <script>
 
       // ******************************************************
-      // Terminal One [box 20210503°1511]
+      // Box One JavaScript [box 20210503°1511]
       // ******************************************************
 
       // Prologue [seq 20210503°1521]
@@ -138,7 +138,7 @@
          takeInput(x11);
       });
 
-      // Reaction [func 20210503°1531]
+      // Dispatcher loop [func 20210503°1531]
       function takeInput(sWritten) {
 
          printOffsets();
@@ -162,13 +162,21 @@
             });
          }
          else if (sWritten.toLowerCase() === 'q' ) {
-            t1.print('Finished. You need page refresh to start this box again.');
+            t1.print('Finished. Refresch page to start this box again.');
          }
          else {
             t1.input ( "Thanks for \"" + sWritten + "\", please input more ..", function (x31) {
                takeInput(x31);
             });
          }
+      }
+
+      // Continue after break [func 20210506°0911]
+      function keepgoing() {
+         t1.print('Have you had a good rest?');
+         t1.input ( "Ahem, more input please ..", function (x51) {
+            takeInput(x51);
+         });
       }
 
       // // [test 20210509°1551]
@@ -179,45 +187,8 @@
       // t1.setInputPrompt('→ ');
       // t1.setOutputPrompt('← ');
 
-      // Continue after break [func 20210506°0911]
-      function keepgoing() {
-         t1.print('Have you had a good rest?');
-         t1.input ( "Ahem, more input please ..", function (x51) {
-            takeInput(x51);
-         });
-      }
-
-      // Process checkbox [func 20210508°0941]
-      function setDebugBorders(t) {
-         var el = document.querySelector('#Debug_Borders_Box_All');
-         var b = el.checked;
-         ////t1.setDebugBorders(b);
-         t.setDebugBorders(b);
-         var elKeys = document.getElementById('ColorKeyList');
-         elKeys.style.display = el.checked ? 'inline' : 'none';
-      }
-
-       // Fill prepared debug spans [func 20210511°1633]
-       function printOffsets() {
-          document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight;
-          document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop;
-          document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop;
-
-          document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
-          document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
-          document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
-
-          document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight;
-          document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop;
-          document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop;
-
-          document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight;
-          document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop;
-          document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop;
-      }
-
       // ******************************************************
-      // Terminal Two [box 20210510°1611]
+      // Box Two JavaScript [box 20210510°1611]
       // ******************************************************
 
       // Prologue [seq 20210510°1621]
@@ -241,7 +212,7 @@
       /* */
 
       // ******************************************************
-      // Terminal Three [box 20210510°1711]
+      // Box Three JavaScript [box 20210510°1711]
       // ******************************************************
 
       // Prologue [seq 20210510°1713]
@@ -272,6 +243,39 @@
             if (b2) { rollDice(); }
             else { t3.print("Bye."); }
          });
+      }
+
+      // ******************************************************
+      // JavaScript for all three boxes
+      // ******************************************************
+
+      // Process a checkbox [func 20210508°0941]
+      function setDebugBorders(t) {
+         var el = document.querySelector('#Debug_Borders_Box_All');
+         var b = el.checked;
+         t.setDebugBorders(b);
+         var elKeys = document.getElementById('ColorKeyList');
+         elKeys.style.display = el.checked ? 'inline' : 'none';
+      }
+
+       // Fill prepared debug spans [func 20210511°1633]
+       // Not yet for all three boxes, only for Box One, provisory
+       function printOffsets() {
+          document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight;
+          document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop;
+          document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop;
+
+          document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
+          document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
+          document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
+
+          document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight;
+          document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop;
+          document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop;
+
+          document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight;
+          document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop;
+          document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop;
       }
 
    </script>
@@ -305,6 +309,7 @@
   </p>
 
   <p class="Good12Bye">
+               <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" width="96" height="96" alt="Waiving Kosmonaut">
                Have fun.
   </p>
 
