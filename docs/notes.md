@@ -19,7 +19,8 @@ Subsections : &nbsp;
 • [PR 'XHR'](#pull_request_backend_via_xhr) &nbsp;
 • [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
 • [Retrieving Keystrokes](#retrieving_keystrokes)
-• *([GFM](#github_flavored_markdown))*
+• _[GFM](#github_flavored_markdown)_
+• [Sessions](#id20210512o1911)
 • [References](#id20210512o1611)
 
 _This page contains boring casual developer notes, **totally uninteresting** for library users._
@@ -387,6 +388,120 @@ Showdown works with the both.
   Pretzel          🥨 |
   Waffle           🧇 |
 BTW. Practical emoji overviews provides e.g. [Emojigraph](https://emojigraph.org/).
+
+---
+
+---
+
+## Sessions <a name="id20210512o1911"></a>
+
+This are session logs, the most boring section of all documentation.
+
+---
+
+### Scroll and jump <a name=""></a> &nbsp; _<sup><sub><sup><sup>Session&nbsp;20210511°1521</sup></sup></sub></sup>_
+
+About feature 'Auto scrolling service' _<sup><sub><sup><sup>Feature 20210511°1511</sup></sup></sub></sup>_
+
+This session shall make automatic scrolling in the box functional.
+ So far, the session succeeded only half-way.
+
+(1) First idea, but which makes no sense : Send a CTRL-End to the box.
+ To facilitate this, first the box had to listen to this key, what it
+ does not (yet).
+ <br> • See e.g. https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
+ ܀
+
+(2) Then comes a bunch of articles on how to scroll from JavaScript.
+ Here the articles bunch, so far without solution :
+ <br> • https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page [ref 20210511°1412]
+ <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414] Yield no solution
+ <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
+ <br> • https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
+ ܀
+
+(3) Solve the cursor-must-stay-visible task, but not yet the jump. A line like
+ below works, but there is a remaining issue, as the complete page jumps at some
+ point, e.g. when the cursor in the box invisibly reaches the bottom of the page.
+ <br> • This effect fires, whether the programmatic scrolling is applied or not
+ <br> • Thus it seems sensible to first fight this jump, then continiue with the
+        programmatic scrolling or the overscroll-behaviour, resp. Here the lines:
+ <br> • `this.html.scrollTo(0, this._innerWindow.scrollHeight);`     // Works
+ <br> • `this.html.scrollTo(0, this._output.scrollHeight);`          // Works
+ <br> • `this._innerWindow.scrollTo(0, this._output.scrollHeight);`  // Fails
+ ܀
+
+(4) The pure CSS **overscroll-behaviour** technique.
+ See issue 20210511°1427 'Make overscroll-behaviour work'.
+ Would the overscroll CSS incidentially solve the page jump issue?
+ I cannot know, since I just could overscroll not make work.
+ CSS overscroll were much more elegant, just did not work.
+ ܀
+
+issue 20210511°1427 'Make overscroll-behaviour work'
+ <br> • Matter : Style overscroll-behaviour just does not work as expected.
+ <br> • Do : Make it working
+ <br> • Ben Nadel's article describes overscroll-behaviour with a nice demo.
+      Cool CSS in general in the demo, not to mention overscroll.
+      Url : https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
+ <br> • See : https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
+ <br> • See : https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
+ <br> • See line line 20210511°1531 CSS overscroll-behaviour
+ <br> • Status : Open
+ ܀
+
+issue 20210511°1525 'Get rid of page jumps'
+ <br> Matter : If cursor (invisibly) reaches page bottom, the page jumps up.
+ <br> (1) Solve the basic jump.
+ <br> (1.1) Where happen the jump? In line 20170501°0931 "inputField.focus();"
+ <br> (1.2) What can be done against? Line 20210511°1545 "window.scrollTo(0,0);"
+ <br> (2) Unfortunately, from some later point on, a second jump appears,
+      in fact not with the Enter key, but with normal input.
+ <br> (2.1) Since this appears only later, I will postpone the debuggin.
+ <br> (3) Actually, the solution so far may be not satisfactory at all, because
+      it forces the user to stay on page top. This is not acceptable.
+ <br> (4) Fight the stay-on-top by taking the current scroll-positon into account.
+ <br> (4.1) This is done with helper variable 20210511°1548
+ <br> (4.2) It works perfectly in the beginning, but from the point, where
+        formerly the jump happened, there is with each input a little
+        shift in direction to top.
+ <br> (4.3) That little jump does not happen there, but if some input key
+       is pressed. Not the Enter key but the first input character
+       keydown. Any subsequent input do no more jump.
+ <br> (5) Where happens the little jump?
+ <br> (5.1) This is hard to debug, due to the event driven nature of
+        the program. The debugger runs into an endless timer loop
+        with setTimeout() in seq 20170501°0941. It looks as if the
+        behaviour in the debugger is different from that without.
+ <br> (6) I give up for today. The demo seems to work passable with the first
+         20 or more input lines, only then behaviour gets crazy. The issue
+         may be alleviated anyway, if planned **line-buffer size** is
+         implemented.
+ ܀
+
+issue 20210511°1811 'Line buffer size'
+ <br> • Planned : Feature 'Line buffer size'. Has default value of e.g. 500,
+        can be set other size. If number of lines in the output div reach
+        that size, the top lines are deleted.
+ <br> • Status : Open
+ ܀
+
+issue 20210511°1611 'Lower boxes shall keep feet still'
+ <br> • Do : Make additonal boxes on page bottom not cause jumps on page open.
+ <br> • Findings : (1) I re-open sequences 20210511°1541 and 20210511°1543.
+    (2) They now do no more show the page-jump behaviour like at the
+    beginning of this session, when I have them shutdown to get a better
+    starting point for debugging the other issues. It looks like their
+    jumping has been solved by the way. All the better.
+ <br> • Status : Solved by brute-force in-box scrolling e.g line 20210511°1545
+ ܀
+
+issue 20210511°1621 'Cursor and scroll behaviour in general'
+ <br> • Matter : The solution style I followed today is not sustainable.
+    It yielded insights into the program structure, but was provisory
+    anyway. For a sustainable solution, things must get simplified.
+ <br> • Status : Long-running
+ ܀
 
 ---
 

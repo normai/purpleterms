@@ -1,18 +1,21 @@
 /*
- Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on your pages
+ Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on pages
  BSD 3-Clause License
  (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
 */
 Terminal = function() {
+  var sVersionString = "v0.3.0.6~";
+  var _PROMPT_CONFIRM = 3;
+  var _PROMPT_INPUT = 1;
+  var _PROMPT_PASSWORD = 2;
+  var _aIds = [];
+  var _b_Choose_Div_Not_Pre_FREE_FOR_RECYCLING = true;
+  var _b_Line_Style_FontFamily_Inherit;
+  var _b_Use_ScrollTo_With_InnerWindow;
+  var _debugBorders = false;
   var _inputPromptGlobal = ">\\00a0";
   var _outputPromptGlobal = "<\\00a0";
-  var PROMPT_CONFIRM = 3;
-  var PROMPT_INPUT = 1;
-  var PROMPT_PASSWORD = 2;
-  var b_Choose_Div_Not_Pre = true;
-  var _aIds = [];
-  var _debugBorders = false;
   var firstPrompt = true;
   var _generateId = function(idGiven) {
     var sIdRet = "";
@@ -62,8 +65,8 @@ Terminal = function() {
       }
     }, 500);
   };
-  var promptInput = function(oTerm, message, PROMPT_TYPE, callback) {
-    var bShouldDisplayInput = PROMPT_TYPE === PROMPT_INPUT;
+  var promptInput = function(oTerm, message, iPROMPT_TYPE, callback) {
+    var bShouldDisplayInput = iPROMPT_TYPE === _PROMPT_INPUT;
     var inputField = document.createElement("input");
     inputField.style.position = "absolute";
     inputField.style.zIndex = "-100";
@@ -76,7 +79,7 @@ Terminal = function() {
     oTerm.html.appendChild(inputField);
     fireCursorInterval(inputField, oTerm);
     if (message !== null) {
-      oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + " (y/n)" : message);
+      oTerm.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + " (y/n)" : message);
     }
     inputField.onblur = function() {
       oTerm._cursor.style.display = "none";
@@ -105,7 +108,7 @@ Terminal = function() {
       }
     };
     inputField.onkeyup = function(e) {
-      if (PROMPT_TYPE === PROMPT_CONFIRM || (e.code === "Enter" || e.which === 13)) {
+      if (iPROMPT_TYPE === _PROMPT_CONFIRM || (e.code === "Enter" || e.which === 13)) {
         oTerm._inputElement.style.display = "none";
         var inputValue = inputField.value;
         if (inputValue === oTerm._inputLine.textPrefix + "clear") {
@@ -130,7 +133,7 @@ Terminal = function() {
           xhr.send("prefix=" + oTerm._inputLine.textPrefix + "&ssh=" + inputValue);
         } else {
           if (typeof callback === "function") {
-            if (PROMPT_TYPE === PROMPT_CONFIRM) {
+            if (iPROMPT_TYPE === _PROMPT_CONFIRM) {
               callback(inputValue.toUpperCase()[0] === "Y" ? true : false);
             } else {
               callback(inputValue);
@@ -229,7 +232,7 @@ Terminal = function() {
       this.lasthistory = -1;
     };
     this.confirm = function(message, callback) {
-      promptInput(this, message, PROMPT_CONFIRM, callback);
+      promptInput(this, message, _PROMPT_CONFIRM, callback);
     };
     this.connect = function(url) {
       this._backend = url;
@@ -238,21 +241,30 @@ Terminal = function() {
     this.getId = function() {
       return this._objId.toString();
     };
+    this.getVersion = function() {
+      return sVersionString;
+    };
     this.input = function(message, callback) {
-      promptInput(this, message, PROMPT_INPUT, callback);
+      promptInput(this, message, _PROMPT_INPUT, callback);
     };
     this.password = function(message, callback) {
-      promptInput(this, message, PROMPT_PASSWORD, callback);
+      promptInput(this, message, _PROMPT_PASSWORD, callback);
     };
     this.print = function(message, sOptionalRule) {
       var sRule = sOptionalRule || "Output_One_Line";
       var eNewLine = document.createElement("div");
       eNewLine.textContent = message;
-      eNewLine.style.fontFamily = "inherit";
+      if (_b_Line_Style_FontFamily_Inherit) {
+        eNewLine.style.fontFamily = "inherit";
+      }
       eNewLine.className = sRule;
       this._output.appendChild(eNewLine);
       if (this.html.scrollTo) {
-        this.html.scrollTo(0, this._innerWindow.scrollHeight);
+        if (_b_Use_ScrollTo_With_InnerWindow) {
+          this.html.scrollTo(0, this._innerWindow.scrollHeight);
+        } else {
+          this.html.scrollTo(0, this._output.scrollHeight);
+        }
       }
     };
     this.setBackgroundColor = function(col) {

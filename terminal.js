@@ -1,5 +1,5 @@
 /*!
- * Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on your pages
+ * Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on pages
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -17,11 +17,14 @@
  */
 Terminal = ( function () {
 
-   // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1535]
-   var _inputPromptGlobal = ">\\00a0";
-
-   // Provisory global variable until the dynamic CSS works on a per-instance [var 20210509°1537]
-   var _outputPromptGlobal = "<\\00a0";
+   /**
+    *  Version string
+    *
+    * @id 20210513°0911
+    * @type {string} —
+    * @constant —
+    */
+   var sVersionString = 'v0.3.0.6~';
 
    /**
     *  Prompt mode 'Confirmation'
@@ -30,7 +33,7 @@ Terminal = ( function () {
     * @type {number} —
     * @constant —
     */
-   var PROMPT_CONFIRM = 3;
+   var _PROMPT_CONFIRM = 3;
 
    /**
     *  Prompt mode 'Input'
@@ -39,7 +42,7 @@ Terminal = ( function () {
     * @type {number} —
     * @constant —
     */
-   var PROMPT_INPUT = 1;
+   var _PROMPT_INPUT = 1;
 
    /**
     *  Prompt mode 'Password'
@@ -48,17 +51,7 @@ Terminal = ( function () {
     * @type {number} —
     * @constant —
     */
-   var PROMPT_PASSWORD = 2;
-
-   /**
-    *  Ugly helper var to avoid validation warnings 'unreachable code'.
-    *  Sometimes I like to keep dead code as for possible later reviving.
-    *
-    * @id 20210502°1711
-    * @type {boolean} —
-    * @constant —
-    */
-   var b_Choose_Div_Not_Pre = true; // No more used for the Div/Pre decision, but left here anyway for any next use case
+   var _PROMPT_PASSWORD = 2;
 
    /**
     *  This array holds the IDs of the instances on the page
@@ -69,6 +62,37 @@ Terminal = ( function () {
    var _aIds = [];
 
    /**
+    *  Ugly helper var to avoid validation warnings 'unreachable code'.
+    *  Sometimes I like to keep dead code for possible later reviving.
+    *
+    * No more used, but left here anyway for any next use case
+    *
+    * @id 20210502°1711
+    * @type {boolean} —
+    * @constant —
+    */
+   var _b_Choose_Div_Not_Pre_FREE_FOR_RECYCLING = true;
+
+
+   /**
+    *  Flag for finetuning CSS rules. Toggle for experimenting
+    *
+    * @id 20210512°1534
+    * @type {boolean} —
+    * @constant —
+    */
+   var _b_Line_Style_FontFamily_Inherit;
+
+   /**
+    *  Flag for finetuning auto scroll calculations. Toggle for experimenting
+    *
+    * @id 20210511°1547
+    * @type {boolean} —
+    * @constant —
+    */
+   var _b_Use_ScrollTo_With_InnerWindow;
+
+   /**
     *  This flag tells, whether debug borders are shown or not. Default = false
     *
     * @id 20210508°0913
@@ -76,6 +100,12 @@ Terminal = ( function () {
     * @type {boolean} —
     */
    var _debugBorders = false;
+
+   // Provisory global variable until dynamic CSS works on a per-instance [var 20210509°1535]
+   var _inputPromptGlobal = ">\\00a0";
+
+   // Provisory global variable until dynamic CSS works on a per-instance [var 20210509°1537]
+   var _outputPromptGlobal = "<\\00a0";
 
    /**
     *  Helper flag to fire 'inputField.focus()' after initialization
@@ -174,15 +204,15 @@ Terminal = ( function () {
     * @id 20170501°0311
     * @param {Object} oTerm —
     * @param {string} message —
-    * @param {number} PROMPT_TYPE —
+    * @param {number} iPROMPT_TYPE —
     * @param {Function} callback —
     * @return {undefined} —
     */
-   var promptInput = function (oTerm, message, PROMPT_TYPE, callback) {
+   var promptInput = function (oTerm, message, iPROMPT_TYPE, callback) {
 
       'use strict';                                                    // Newly introduced, worked out of the box [line 20210510°1531]
 
-      var bShouldDisplayInput = (PROMPT_TYPE === PROMPT_INPUT);
+      var bShouldDisplayInput = (iPROMPT_TYPE === _PROMPT_INPUT);
       var inputField = document.createElement('input');
 
       inputField.style.position = 'absolute';
@@ -209,7 +239,7 @@ Terminal = ( function () {
       // What exactly means 'message.length'? Throws error if message is null.
       //  Condition "if (message.length)" seems wrong. [quest 20210510°1521]
       if ( message !== null ) {                                        // Formerly "if (message.length)"
-         oTerm.print(PROMPT_TYPE === PROMPT_CONFIRM ? message + ' (y/n)' : message);
+         oTerm.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
 
       // ======================================================
@@ -294,7 +324,7 @@ Terminal = ( function () {
        */
       inputField.onkeyup = function (e) {
 
-         if ( PROMPT_TYPE === PROMPT_CONFIRM
+         if ( iPROMPT_TYPE === _PROMPT_CONFIRM
              || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 key code]
               ) {
 
@@ -337,7 +367,7 @@ Terminal = ( function () {
             }
             else if (typeof(callback) === 'function') {
                // Traditional processing [seq 20170501°0341]
-               if (PROMPT_TYPE === PROMPT_CONFIRM) {
+               if (iPROMPT_TYPE === _PROMPT_CONFIRM) {
                   callback(inputValue.toUpperCase()[0] === 'Y' ? true : false);
                }
                else {
@@ -347,7 +377,7 @@ Terminal = ( function () {
 
             /*
             // History [seq 20210503°0912 after Mark] Not yet activated, probably needs debugging
-            if ( PROMPT_TYPE === PROMPT_INPUT ) {
+            if ( iPROMPT_TYPE === _PROMPT_INPUT ) {
                if ( e.which === 38 && oTerm._historyLast !== - 1) {
                   inputField.value = oTerm._history[(oTerm._historyLast -= 1) > 0
                                     ? oTerm._historyLast
@@ -392,8 +422,8 @@ Terminal = ( function () {
          inputField.focus();                                           // [line 20170501°0931]
 
          // Here happens a page jump [line 20210511°1545]
-         // See issue 20210511°1525 'Page jump' -- If cursor (invisibly) reaches page bottom
-         // Crude attempt -- Heureka! This works even without any annoying flicker.
+         // Crude attempt — Heureka! It works even without any annoying flicker.
+         // See issue 20210511°1525 'Page jump' — If cursor (invisibly) reaches page bottom
          window.scrollTo(0, iY);
       }
    }; // End of function promptInput()
@@ -738,8 +768,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.clearHistory = function () {
-         this.history = [];                           // Should be marked as private with underscore? [note 20210503°1447]
-         this.lasthistory = -1;                       // Should be marked as private with underscore? [note 20210503°1447`02]
+         this.history = [];                                            // Should be marked as private with underscore? [note 20210503°1447]
+         this.lasthistory = -1;                                        // Should be marked as private with underscore? [note 20210503°1447`02]
       };
 
       /**
@@ -751,7 +781,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.confirm = function (message, callback) {
-         promptInput(this, message, PROMPT_CONFIRM, callback);
+         promptInput(this, message, _PROMPT_CONFIRM, callback);
       };
 
       /**
@@ -778,6 +808,16 @@ Terminal = ( function () {
       };
 
       /**
+       *  Returns the version string of the program
+       *
+       * @id 20210513°0913
+       * @return {string} —
+       */
+      this.getVersion = function () {
+         return sVersionString;
+      };
+
+      /**
        *  ..
        *
        * @id 20170501°0611
@@ -786,7 +826,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.input = function (message, callback) {
-         promptInput(this, message, PROMPT_INPUT, callback);
+         promptInput(this, message, _PROMPT_INPUT, callback);
       };
 
       /**
@@ -798,7 +838,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.password = function (message, callback) {
-         promptInput(this, message, PROMPT_PASSWORD, callback);
+         promptInput(this, message, _PROMPT_PASSWORD, callback);
       };
 
       /**
@@ -812,116 +852,29 @@ Terminal = ( function () {
       this.print = function (message, sOptionalRule)                   // Put here optional parameter syntax if IE is dropped
       {
          // Process optional parameter [seq 20210509°1443]
-         // Note. For IE compatibility use traditional optional parameter
+         // Note. Use traditional parameter processing techique instead
+         //  modern optional parameter syntax for purpose of IE compatibility
          var sRule = sOptionalRule || 'Output_One_Line';
 
          var eNewLine = document.createElement('div');
          eNewLine.textContent = message;
-         eNewLine.style.fontFamily = 'inherit';                        // E.g. prevents defaulting to Arial [feature 20210512°1533] Is this sensible?
+         if (_b_Line_Style_FontFamily_Inherit) {
+            eNewLine.style.fontFamily = 'inherit';                     // E.g. prevents defaulting to Arial [feature 20210512°1533] Is this sensible?
+         }
          eNewLine.className = sRule;
          this._output.appendChild(eNewLine);
 
-
-         /*
-         Maintain scrolling [session 20210511°1521] [feature 20210511°1511 'Scroll service']
-
-         (1) First the idea which makes no sense
-         Send a CTRL-End to the box. To facilitate this, the box first had to listen to this key
-         ref : https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
-
-         (2) Then a buchh of articles around how to scroll from JavaScript
-         Article bunch -- So far without solution
-         See https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page [ref 20210511°1412]
-         See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414] Yield no solution
-         See https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
-         See https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
-
-         (3) Solve the cursor-must-stay-visible task, but not yet the jump
-         A line like this works, but also the complete page jumps at some point,
-          e.g. when the cursor in the box (invisibly) reaches the bottom of the page.
-          • This effect hits, whether the programmatic scrolling is applied or not
-          • Thus it seems sensible to first fight this jump, then continiue with
-             the programmatic scrolling or the overscroll-behaviour, resp.
-         Here the lines:
-          • this.html.scrollTo(0, this._innerWindow.scrollHeight);     // Works
-          • this.html.scrollTo(0, this._output.scrollHeight);          // Works
-          • this._innerWindow.scrollTo(0, this._output.scrollHeight);  // Fails
-
-         (4) The pure CSS overscroll-behaviour technique
-         See issue 20210511°1427 'Make overscroll-behaviour work'.
-         Would the overscroll CSS incidentially solve the page jump issue?
-         I cannot know, since I just could overscroll not make work.
-         */
-
-         /*
-         issue 20210511°1427 'Make overscroll-behaviour work'
-         Matter : Style overscroll-behaviour just does not work as expected.
-         Do : Make it working
-         See : https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
-                The Ben Nadel's article describes overscroll-behaviour with a nice
-                demo. Cool CSS in general in the demo, not to mention overscroll.
-         See : https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
-         See : https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
-         See line line 20210511°1531 CSS overscroll-behaviour
-         Status : Open
-         */
-
-         /*
-         issue 20210511°1525 'Get rid of page jumps'
-         Matter : If cursor (invisibly) reaches page bottom, the page jumps up.
-         (1) Solve the basic jump.
-         (1.1) Where happen the jump? In line 20170501°0931 "inputField.focus();"
-         (1.2) What can be done against? Line 20210511°1545 "window.scrollTo(0,0);"
-         (2) Unfortunately, from some later point on, a second jump appears,
-              in fact not with the Enter key, but with normal input.
-         (2.1) Since this appears only later, I will postpone the debuggin.
-         (3) Actually, the solution so far may be not satisfactory at all, because
-              it forces the user to stay on page top. This is not acceptable.
-         (4) Fight the stay-on-top by taking the current scroll-positon into account.
-         (4.1) This is done with helper variable 20210511°1548
-         (4.2) It works perfectly in the beginning, but from the point, where
-                formerly the jump happened, there is with each input a little
-                shift in direction to top.
-         (4.3) That little jump does not happen there, but if some input key
-               is pressed. Not the Enter key but the first input character
-               keydown. Any subsequent input do no more jump.
-         (5) Where happens the little jump?
-         (5.1) This is hard to debug, due to the event driven nature of
-                the program. The debugger runs into an endless timer loop
-                with setTimeout() in seq 20170501°0941. It looks as if the
-                behaviour in the debugger is different from that without.
-         (6) I give up for today. The demo seems to work passable with the
-             first 20 or more input lines, only then behaviour gets crazy.
-             The issue may be alleviated, if I introduce line-buffer size.
-         */
-
-         /*
-         issue 20210511°1611 'Lower terminals shall keep feet still'
-         do : Make additonal terminals on page bottom, not cause jumps on page open.
-         findings : (1) I re-open sequences 20210511°1541 and 20210511°1543.
-            (2) The do not anymore show the page-jump behaviour like at the
-            beginning of this session, when I have them shutdown to get better
-            situation for debugging the other issues. It looks like their
-            jumping has been solved by the way. All the better.
-         status : Solved by brute-force in-box scrolling e.g line 20210511°1545
-         */
-
-         /*
-         issue 20210511°1621 'Cursor and scroll behaviour in general'
-         matter : The solution style I followed today is not sustainable.
-            It yielded insights into the program structure, but was provisory
-            anyway. For a sustainable solution, things must get simplified.
-         */
-
          // Brute-force in-box scrolling [seq 20210511°1546]
-         // Note. CSS overscroll style were much more elegant, just did not work.
-         // Note. The following lines work pretty similar:
-         //  • this.html.scrollTo(0, this._output.scrollHeight);
-         //  • this.html.scrollTo(0, this._innerWindow.scrollHeight);
-         // Perhaps they make the little difference responsible for
-         //  the litte jumps, which are left when typing far below.
-         if (this.html.scrollTo) {                                     // [IE compatibility 20210512°1317`13]
-             this.html.scrollTo(0, this._innerWindow.scrollHeight);
+         // Remember session 20210511°1521 'Scroll and jump'
+         // Perhaps the differrence between using _innerWindow or _output
+         //  is responsible for the remaining jumps, when typing later far below.
+         if (this.html.scrollTo) {                                     // [IE compatibility 20210512°1317`13] Use old scrollTo() instead new scrollIntoView()
+            if (_b_Use_ScrollTo_With_InnerWindow) {
+               this.html.scrollTo(0, this._innerWindow.scrollHeight);
+            } else
+            {
+               this.html.scrollTo(0, this._output.scrollHeight);
+            }
          }
       };
 
@@ -1072,7 +1025,7 @@ Terminal = ( function () {
       this.html.style.fontFamily = 'Courier, Monaco, Ubuntu Mono, monospace'; // [chg 20210502°1111`17 xhr]
       this.html.style.margin = '0';
       this.html.style.overflow = 'auto';                               // [line 20210502°1133] See issue 20210502°1351 'What exactly does style.overflow'? // [chg 20210502°1111`18 xhr]
-      this.html.style.resize = 'auto';                                 // Make resizable [feature 20210512°1535]
+      this.html.style.resize = 'auto';                                 // Make resizable [feature 20210512°1541]
 
       // Experiment — Just does not work [line 20210511°1531]
       // See issue 20210511°1427 'Make overscroll-behaviour work'

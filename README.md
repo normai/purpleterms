@@ -18,7 +18,7 @@ Subsections :
 <a name="synopsis"></a>
 ## Synopsis
 
-Slogan : Single-file JavaScript for staging terminals on your pages
+Slogan : Single-file JavaScript for staging terminals on pages
 
 License : BSD 3-Clause License
 

@@ -87,14 +87,14 @@
                    border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One"
                     >
       </div>
-      Show debug borders.
+      Debug borders.
       <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
               onclick="t1.beep(); setDebugBorders(t1);"
                >
    </div>
   <!-- **************************************************** -->
 
-  <pre style="line-height:1.0em; display:none;">
+  <pre style="line-height:1.0em;" data-id="20210511°1631"><!-- display:none;" -->
                this._output.scrollHeight      = <span id="outputScrollHeight"></span>
                this._output.scrollTop         = <span id="outputScrollTop"></span>
                this._output.offsetTop         = <span id="outputOffsetTop"></span>
@@ -159,11 +159,12 @@
       t1.setBackgroundColor("Blue");
       var elTarget = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
       elTarget.appendChild(t1.html);
-      t1.print("Welcome to the Aloha Demo terminal ID = '" + t1.getId() + "'.");
+      t1.print("This is Terminals " + t1.getVersion() + " Aloha Demo (ID = '" + t1.getId() + "')");
       var sInput = '';
+      var sHelpLine = "Commands: b = beep, c = clear, h = help, p = pause, q = quit";
 
       // Action [seq 20210503°1523]
-      t1.print ( "Commands: c = clear, h = help, p = pause, q = quit");
+      t1.print (sHelpLine);
       t1.input ( "Please enter me some input ..", function (x11) {
          takeInput(x11);
       });
@@ -171,36 +172,18 @@
       // Reaction [func 20210503°1531]
       function takeInput(sWritten) {
 
+         printOffsets();
 
- //document.getElementById('eNewLineScrollHeight').innerHTML   = t1.eNewLine.scrollHeight;
- //document.getElementById('eNewLineScrollTop').innerHTML      = t1.eNewLine.scrollTop;
- //document.getElementById('eNewLineOffsetTop').innerHTML      = t1.eNewLine.offsetTop;
-
- document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight;
- document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop;
- document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop;
-
- document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
- document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
- document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
-
- document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight;
- document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop;
- document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop;
-
- document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight;
- document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop;
- document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop;
-
-
-////window.scrollTo(0, 0); //// Experiment
-
-         if (sWritten.toLowerCase() === 'c' ) {
+         if (sWritten.toLowerCase() === 'b' ) {
+            t1.beep();
+            t1.input ( null, function (x21) { takeInput(x21); });
+         }
+         else if (sWritten.toLowerCase() === 'c' ) {
             t1.clear();
             t1.input ( null, function (x21) { takeInput(x21); });
          }
          else if (sWritten.toLowerCase() === 'h' ) {
-            t1.input ( 'Commands: c = clear, h = help, p = pause, q = quit.', function (x21) {
+            t1.input (sHelpLine, function (x21) {
                takeInput(x21);
             });
          }
@@ -210,7 +193,7 @@
             });
          }
          else if (sWritten.toLowerCase() === 'q' ) {
-            t1.print('Finished. You need to refresh your page to start again.');
+            t1.print('Finished. You need page refresh to start this box again.');
          }
          else {
             t1.input ( "Thanks for \"" + sWritten + "\", please input more ..", function (x31) {
@@ -243,6 +226,25 @@
          t.setDebugBorders(b);
          var elKeys = document.getElementById('ColorKeyList');
          elKeys.style.display = el.checked ? 'inline' : 'none';
+      }
+
+       // Fill prepared debug spans [func 20210511°1633]
+       function printOffsets() {
+          document.getElementById('outputScrollHeight').innerHTML       = t1._output.scrollHeight;
+          document.getElementById('outputScrollTop').innerHTML          = t1._output.scrollTop;
+          document.getElementById('outputOffsetTop').innerHTML          = t1._output.offsetTop;
+
+          document.getElementById('innerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
+          document.getElementById('innerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
+          document.getElementById('innerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
+
+          document.getElementById('htmlScrollHeight').innerHTML         = t1.html.scrollHeight;
+          document.getElementById('htmlScrollTop').innerHTML            = t1.html.scrollTop;
+          document.getElementById('htmlOffsetTop').innerHTML            = t1.html.offsetTop;
+
+          document.getElementById('documentBodyScrollHeight').innerHTML = document.body.scrollHeight;
+          document.getElementById('documentBodyScrollTop').innerHTML    = document.body.scrollTop;
+          document.getElementById('documentBodyOffsetTop').innerHTML    = document.body.offsetTop;
       }
 
       // ******************************************************

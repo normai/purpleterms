@@ -14,6 +14,7 @@ The history of project Terminals
 
 ##### log
 - Add Waving Astronaut
+- Shift code around
 
 ##### log 20210512°1811 — v0.3.0.6 Lory
 - Add Purple Bellied Lory
