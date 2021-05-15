@@ -1,6 +1,7 @@
 ﻿Pages : &nbsp;
  • ReadMe &nbsp;
- • [API Doc](./docs/api.md) &nbsp;
+ • [API Doc](./docs/api-doc.md) &nbsp;
+ • [Dev Doc](./docs/dev-doc.md) &nbsp;
  • [Notes](./docs/notes.md) &nbsp;
  • [Issues](./docs/issues.md) &nbsp;
  • [Changes](./docs/changes.md) &nbsp;
@@ -18,7 +19,7 @@ Subsections :
 <a name="synopsis"></a>
 ## Synopsis
 
-Slogan : Single-file JavaScript for staging terminals on pages
+Slogan : Single-file JavaScript to put up terminals on a web page
 
 License : BSD 3-Clause License
 

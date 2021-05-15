@@ -1,6 +1,7 @@
 Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api.md) &nbsp;
+ • [API Doc](./api-doc.md) &nbsp;
+ • [Dev Doc](./dev-doc.md) &nbsp;
  • [Notes](./notes.md) &nbsp;
  • [Issues](./issues.md) &nbsp;
  • Changes &nbsp;
@@ -15,6 +16,7 @@ The history of project Terminals
 ##### log
 - Add Waving Astronaut
 - Shift code around
+- Add page 'Developer Documentation'
 
 ##### log 20210512°1811 — v0.3.0.6 Lory
 - Add Purple Bellied Lory

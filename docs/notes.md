@@ -1,6 +1,7 @@
 Other pages : &nbsp;
  • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api.md) &nbsp;
+ • [API Doc](./api-doc.md) &nbsp;
+ • [Dev Doc](./dev-doc.md) &nbsp;
  • Notes &nbsp;
  • [Issues](./issues.md) &nbsp;
  • [Changes](./changes.md) &nbsp;
@@ -27,7 +28,7 @@ _This page contains boring casual developer notes, **totally uninteresting** for
 
 ---
 
-## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; _<sup><sub><sup><sup>Idea 20210512°1521</sup></sup></sub></sup>_
+## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; _<sup><sub><sup><sup>Todo 20210512°1521</sup></sup></sub></sup>_
 
 Replace the cursor made blinking with `timeout()`
 by one made blinking with CSS `animation`.
@@ -37,6 +38,8 @@ References e.g.:
   <sup><sub><sup>20210512°1513</sup></sub></sup>,
  • CodeBoxx article [How To Create Blinking Text & Background Animation In Pure CSS](https://code-boxx.com/css-blinking-animation/)
   <sup><sub><sup>20210512°1512</sup></sub></sup>
+
+Priority: Low. Would fit the general direction to reduce code wherever possible.
 
 ---
 

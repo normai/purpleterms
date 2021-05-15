@@ -53,13 +53,11 @@
    <!-- ******************* Box One HTML ******************* -->
    <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
       <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
-                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One"
-                    >
+                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One">
       </div>
-      Debug borders.
-      <input type="checkbox" id="Debug_Borders_Box_One" name="Debug_Borders_Box_One"
-              onclick="t1.beep(); setDebugBorders(t1);"
-               >
+      <input type="checkbox" id="Debug_Borders_Box_One" name="Anita"
+              onclick="setDebugBorders(event, t1);">
+      <label for="Debug_Borders_Box_One">Debug borders</label>
    </div>
   <!-- **************************************************** -->
 
@@ -89,13 +87,11 @@
    <!-- ~~~~~~~~~~~~~~~~~~~ Box Two HTML ~~~~~~~~~~~~~~~~~~~ -->
    <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
       <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
-                  border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Two"
-                   >
+                  border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Two">
       </div>
-      Debug borders.
-      <input type="checkbox" id="Debug_Borders_Box_Two" name="Debug_Borders_Box_Two"
-              onclick="t1.beep(); setDebugBorders(t2);"
-               >
+      <input type="checkbox" id="Debug_Borders_Box_Two" name="Bianca"
+              onclick="setDebugBorders(event, t2);">
+      <label for="Debug_Borders_Box_Two">Debug borders</label>
    </div>
    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -109,10 +105,9 @@
                    border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Three"
                     >
       </div>
-      Debug borders.
-      <input type="checkbox" id="Debug_Borders_Box_Three" name="Debug_Borders_Box_Three"
-                    onclick="t1.beep(); setDebugBorders(t3);"
-                     >
+      <input type="checkbox" id="Debug_Borders_Box_Three" name="Cleopatra"
+                    onclick="setDebugBorders(event, t3);">
+      <label for="Debug_Borders_Box_Three">Debug borders</label>
    </div>
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -126,8 +121,8 @@
       var t1 = new Terminal();                                         // 'X'
       t1.setHeight("400px");                                           // 400px normal, others for debugging
       t1.setBackgroundColor("Blue");
-      var elTarget = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
-      elTarget.appendChild(t1.html);
+      var eDiv1 = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
+      eDiv1.appendChild(t1.html);
       t1.print("This is Terminals " + t1.getVersion() + " Aloha Demo (ID = '" + t1.getId() + "')");
       var sInput = '';
       var sHelpLine = "Commands: b = beep, c = clear, h = help, p = pause, q = quit";
@@ -196,12 +191,12 @@
       t2.setHeight("180px");
       t2.setWidth("360px");
       t2.setBackgroundColor("DarkCyan");
-      var elTarget = document.getElementById('Div_For_Terminal_Two');
+      var eDiv2 = document.querySelector('#Div_For_Terminal_Two');  // A little variety opposite getElementById()
 
-      // Here the page will jump [seq 20210511°1541] -- Temporarily shutdown
+      // Put box on page [seq 20210511°1541] Here the page did jump
       // See issue 20210511°1611 'Lower terminals shall keep feet still'
       /* */
-      elTarget.appendChild(t2.html);
+      eDiv2.appendChild(t2.html);
       t2.print("Next box on the same page, ID = '" + t2.getId() + "'.");
       t2.confirm('Are you blonde?', function(b) {
          t2.print(b ? "Hello Blondie!" : "Hello Brownie or other type!");
@@ -220,12 +215,12 @@
       t3.setHeight("180px");
       t3.setWidth("360px");
       t3.setBackgroundColor("DarkSlateBlue");
-      var elTarget = document.getElementById('Div_For_Terminal_Three');
+      var eDiv3 = document.getElementById('Div_For_Terminal_Three');
 
       // Here it jumps again [seq 20210511°1543] -- Shutdown on demand
       // See issue 20210511°1611 'Lower terminals shall keep feet still'
       /* */
-      elTarget.appendChild(t3.html);
+      eDiv3.appendChild(t3.html);
       t3.print("Third box on page, ID = '" + t3.getId() + "'.");
       t3.confirm('Would you like to roll dice?', function(b1) {
          t3.print(b1 ? "Fine .." : "Well, no dice.");
@@ -246,16 +241,21 @@
       }
 
       // ******************************************************
-      // JavaScript for all three boxes
+      // JavaScript for all three terminal boxes
       // ******************************************************
 
-      // Process a checkbox [func 20210508°0941]
-      function setDebugBorders(t) {
-         var el = document.querySelector('#Debug_Borders_Box_All');
+      // Process a Debug Borders checkbox [func 20210508°0941]
+      function setDebugBorders(e, t) {
+
+         t.beep();
+         var el = e.target || e.srcElement;                            // Some cross browser work
          var b = el.checked;
          t.setDebugBorders(b);
-         var elKeys = document.getElementById('ColorKeyList');
-         elKeys.style.display = el.checked ? 'inline' : 'none';
+
+         // Make key list visible
+         var elKeys = document.getElementById('Color_Key_List');
+         ////elKeys.style.display = el.checked ? 'inline' : 'none';
+         elKeys.style.display = 'inline';                              // Provisory no more switched off
       }
 
        // Fill prepared debug spans [func 20210511°1633]
@@ -280,23 +280,18 @@
 
    </script>
 
-   <div style="clear:both; margin-top:1.1em; padding-left:11.1em; text-indent:-11.1em; line-height:1.1em;">
-      <input type="checkbox" id="Debug_Borders_Box_All" name="Debug_Borders_Box_All"
-               onclick="setDebugBorders(t2)"
-      >
-      <label for="Debug_Borders_Box_All">
-         Show debug borders.
-         <span class="FontSmall" style="display:none;" id="ColorKeyList">
-            • Input prompt = Yellow
-            • Input line = Red
-            • Output/output prompt = Orange
-            • Output/output line = GreenYellow
-            • Output/input prompt = HotPink
-            • Output/input line = Magenta
-            • Output box = Gold
-            • Content = Magenta
+   <div style="clear:both; margin-top:1.1em; padding-left:5.1em; text-indent:-5.1em; line-height:1.4em;">
+         <span style="display:none;" id="Color_Key_List">
+               Debug borders key list :
+               • Input prompt = Yellow
+               • Input line = Red
+               • Output/output prompt = Orange
+               • Output/output line = GreenYellow
+               • Output/input prompt = HotPink
+               • Output/input line = Magenta
+               • Output box = Gold
+               • Content = Magenta
          </span>
-      </label>
    </div>
 
   <p>
@@ -310,7 +305,7 @@
 
   <p class="Good12Bye">
                <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" width="96" height="96" alt="Waiving Kosmonaut">
-               Have fun.
+               Hav' fun.
   </p>
 
  </div>

@@ -1,5 +1,5 @@
 /*!
- * Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on pages
+ * Terminals v0.3.0.6~~ — Single-file JavaScript to put up terminals on a web page
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -443,7 +443,8 @@ Terminal = ( function () {
     * @param {number|string} idParam —
     * @constructor —
     */
-   var TerminalConstructor = function (idParam) {
+   ////var TerminalConstructor = function (idParam) {
+   var TerminalCtor = function (idParam) {
 
       // Not sure whether as first in constructor is the best location.
       //  I just locate it after the order from the NetBeans Navigator.
@@ -460,7 +461,6 @@ Terminal = ( function () {
       ////var _mountCssRules = function () {
       var _mountCssRules = function (tihs) {
 
-         ////var sIdent = this.getId();
          var sIdent = tihs.getId();
 
          // Recognize the presently assembled style element
@@ -613,6 +613,7 @@ Terminal = ( function () {
          terminalBeep.volume = 0.05;
       }
 
+/*
       // Provide style(s) [line 20210507°1631]
       // note : Here the function is called with each terminal created on the
       //    page, which is not good. It shall be called exactly once per page
@@ -621,8 +622,8 @@ Terminal = ( function () {
       //    option is, that the function shields itsels from double mounting.
       ////this._mountCssRules();
       ////_mountCssRules();
-//      _mountCssRules(this);
-
+      _mountCssRules(this); // Perhaps too earyl?! The other elements are created only below!
+*/
       /**
        *  Private field ..
        *
@@ -1037,9 +1038,13 @@ Terminal = ( function () {
        */
       this._backend = false;                                           // [chg 20210502°1111`19 xhr]
 
+      // Initialize styles [line 20210507°1631]
+      // This must be done only after all the elements are ready
+      _mountCssRules(this);
+   
       return;
 
-   }; // End function TerminalConstructor()
+   }; // End function TerminalCtor()
 
    /**
     *  This const holds a beep in its base64 incarnation
@@ -1243,7 +1248,7 @@ Terminal = ( function () {
          + 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8='
           ;
 
-   return TerminalConstructor;
+   return TerminalCtor;
 }());
 
 
