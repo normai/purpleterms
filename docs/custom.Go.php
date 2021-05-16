@@ -34,7 +34,6 @@ Go::enter();
  */
 class Go
 {
-
    /**
     * Dispatch command
     *
@@ -51,27 +50,6 @@ class Go
       $sCmd = $aQuery['cmd'];
       switch ($sCmd)
       {
-         //// // [seq 20190205°0548]
-         //// case 'cakecrumbsbag' :
-         ////    include(__DIR__ . '/core/JsiCrumbs.php');
-         ////    JsiCrumbs::crmbsExecute($aQuery);
-         ////    break;
-
-         //// case 'edit' :
-         ////    include(__DIR__ . '/core/JsiEdit.php');
-         ////    JsiEdit::execute();
-         ////    break;
-
-         //// // Get physical page file path [case 20190417°0141]
-         //// // note : Workaround for not yet succeeded feature 20180512°0721 'open page in local text editor'
-         //// // For opening an editor, see issue 20180512°0751 'php exec/system/passthru fails'
-         //// case 'get-physical' :
-         ////    include_once(__DIR__ . '/core/JsiPhysical.php');
-         ////    $sSuperGetFile = $_GET[Glb::GET_KEY_AJX_file];        // Compare var 20170903°0311
-         ////    $sPagePhysical = JsiPhysical::getPagePhysical($sSuperGetFile);
-         ////    $sReturn = $sPagePhysical;
-         ////    break;
-
          case 'spin' :
             ////include_once(__DIR__ . '/galari/Spider.php');
             include_once(__DIR__ . '/custom.Spider.php');
@@ -79,18 +57,6 @@ class Go
             // Execute command, then pipeline response to centralized echo on line 20190312°0513
             $sReturn = TD\Spider::spin('');
             break;
-
-         //// case 'simple-html-dom-demo' :
-         ////    include(__DIR__ . '/utils/jsi-demo-pshdp.php');
-         ////    break;
-
-         //// case 'jsi-demo-dom-doc' :
-         ////    include(__DIR__ . '/utils/jsi-demo-dom-doc.php');
-         ////    break;
-
-         //// case 'jsi-demo-dom-gen' :
-         ////    include(__DIR__ . '/utils/jsi-demo-dom-gen.php');
-         ////    break;
 
          default :
       }
@@ -107,44 +73,8 @@ class Go
     */
    public static function enter()
    {
-// Shutdown [chg 20210506°1311]
-/*
-      // Must be first line of code [line 20121028°181111]
-      include_once(__DIR__ . '/core/Session.php');
-*/
       // [var 20190312°0511]
       $sReturn = '';
-
-// Shutdown [chg 20210506°1312]
-/*
-      // So far allow edit only on localhost [seq 20120814°1414]
-      // todo : If here is the eye of the needls, eliminate all other occurrences of this seqence
-      if (Glb::$Lgn_bHostIsLocalhost !== TRUE)
-      {
-         echo 'Edit is not possible.';
-         return;
-      }
-*/
-
-      //// // Experiment [seq 20120925°1121]
-      //// include_once(__DIR__ . '/core/Configo.php');
-      //// $cfg = TD\Configo::getInstance();                           // [issue 20190312°0631 'something is wrong, or is is fine?']
-      //// $canary = $cfg->cfg_canary_variable;
-      //// //echo('<p>debug cfg_canary_variable = "' . $canary . '"</p>');
-
-// Provisory shutdown [chg 20210506°1313]
-/*
-      // Determine this page's filename [seq 20120814°1403]
-      $sScriptfile = $_SERVER[Glb::SVR_KEY_SCRIPT_FILENAME];
-      // e.g. 'X:/workspaces/daftaridev/trunk/daftari/docs/blogs.html'
-
-      // Paranoia — How can this happen? [seq 20120814°1405]
-      if (! is_file($sScriptfile))
-      {
-         print('<p>[Error 20120814°1405] Program flow error with ' . $sScriptfile . '</p>');
-         return;
-      }
-*/
 
       // Perform the wanted job [line 20190205°0551]
       $sReturn = self::readCommand();

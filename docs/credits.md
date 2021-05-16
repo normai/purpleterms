@@ -73,7 +73,7 @@ Many thanks goes to people or organizations for supplementing components :
  and the
  [Waving Astronaut](https://openclipart.org/detail/304180/waving-astronaut),
  sometimes also referred as the Waving Kosmonaut,
- the both under the [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0)
+ the both under the [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0).
 
 <a name="remarks"></a>
 ## Remarks

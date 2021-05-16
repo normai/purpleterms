@@ -40,14 +40,14 @@ Daf = window.Daf || {};
  */
 Daf.Term = Daf.Term || {};
 
-/**
- *  This property tells the input prompt to show
- *
- * @id 20210506°1231
- * @callers
- * @const {string} —
- */
-Daf.Term.inputPrompt = '> ';
+/////**
+//// *  This property tells the input prompt to show
+//// *
+//// * @id 20210506°1231
+//// * @callers
+//// * @const {string} —
+//// */
+////Daf.Term.inputPrompt = '> ';
 
 /**
  *  This flag is self-explanatory
@@ -166,8 +166,8 @@ Daf.Term.inputz = function(sCmd)
 
    // Process current input
    Daf.Term.t21.clear();
-   ////Daf.Term.t21.print('> ' + sCmd);
-   Daf.Term.t21.print(Daf.Term.inputPrompt + sCmd);                    // '> '
+   ////Daf.Term.t21.print(Daf.Term.inputPrompt + sCmd);                // '> '
+   Daf.Term.t21.print(sCmd);
 
    // Do job
    var sRet = Daf.Term.interpret(sCmd);
@@ -195,7 +195,7 @@ Daf.Term.interpret = function(sCmd)
    {
       case 'beep' :
          Daf.Term.t21.beep();
-         sRet = "Can you hear me beeping?";
+         sRet = "Could you hear me beeping?";
          break;
       case 'spin' :
          Daf.Term.bSpinAutoRun = true;

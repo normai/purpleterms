@@ -80,20 +80,20 @@
    </div>
 
    <pre style="line-height:1.0em; display:none;" id="Panel_Scroll_Debug_One" data-id="20210511°1631">
-               this._output.scrollHeight      = <span id="DbgScr_OutputScrollHeight"></span>
-               this._output.scrollTop         = <span id="DbgScr_OutputScrollTop"></span>
-               this._output.offsetTop         = <span id="DbgScr_OutputOffsetTop"></span>
-
-               this._innerWindow.scrollHeight = <span id="DbgScr_InnerWindowScrollHeight"></span>
-               this._innerWindow.scrollTop    = <span id="DbgScr_InnerWindowScrollTop"></span>
-               this._innerWindow.offsetTop    = <span id="DbgScr_InnerWindowOffsetTop"></span>
+               document.body.scrollHeight     = <span id="DbgScr_DocBodyScrollHeight"></span>
+               window.scrollY                 = <span id="DbgScr_WindowSrollY"></span>
 
                html.scrollHeight              = <span id="DbgScr_HtmlScrollHeight"></span>
                html.scrollTop                 = <span id="DbgScr_HtmlScrollTop"></span>
                html.offsetTop                 = <span id="DbgScr_HtmlOffsetTop"></span>
 
-               document.body.scrollHeight     = <span id="DbgScr_DocBodyScrollHeight"></span>
-               window.scrollY                 = <span id="DbgScr_WindowSrollY"></span>
+               this._innerWindow.scrollHeight = <span id="DbgScr_InnerWindowScrollHeight"></span>
+               this._innerWindow.scrollTop    = <span id="DbgScr_InnerWindowScrollTop"></span>
+               this._innerWindow.offsetTop    = <span id="DbgScr_InnerWindowOffsetTop"></span>
+
+               this._output.scrollHeight      = <span id="DbgScr_OutputScrollHeight"></span>
+               this._output.scrollTop         = <span id="DbgScr_OutputScrollTop"></span>
+               this._output.offsetTop         = <span id="DbgScr_OutputOffsetTop"></span>
   </pre>
           <!-- document.body.scrollTop        = <span id="DbgScr_DocBodyScrollTop"></span> --><!-- Seems to stay always 0 -->
           <!-- document.body.offsetTop        = <span id="DbgScr_DocBodyOffsetTop"></span> --><!-- Seems to stay always 0 -->
@@ -304,22 +304,23 @@
        // Fill prepared debug spans [func 20210511°1633]
        // Not yet for all three boxes, only for Box One, provisory
        function printOffsets() {
-          document.getElementById('DbgScr_OutputScrollHeight').innerHTML       = t1._output.scrollHeight;
-          document.getElementById('DbgScr_OutputScrollTop').innerHTML          = t1._output.scrollTop;
-          document.getElementById('DbgScr_OutputOffsetTop').innerHTML          = t1._output.offsetTop;
-
-          document.getElementById('DbgScr_InnerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
-          document.getElementById('DbgScr_InnerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
-          document.getElementById('DbgScr_InnerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
-
-          document.getElementById('DbgScr_HtmlScrollHeight').innerHTML         = t1.html.scrollHeight;
-          document.getElementById('DbgScr_HtmlScrollTop').innerHTML            = t1.html.scrollTop;
-          document.getElementById('DbgScr_HtmlOffsetTop').innerHTML            = t1.html.offsetTop;
 
           document.getElementById('DbgScr_DocBodyScrollHeight').innerHTML      = document.body.scrollHeight;
           document.getElementById('DbgScr_WindowSrollY').innerHTML             = window.scrollY;
           //document.getElementById('DbgScr_DocBodyScrollTop').innerHTML       = document.body.scrollTop;
           //document.getElementById('DbgScr_DocBodyOffsetTop').innerHTML       = document.body.offsetTop;
+
+          document.getElementById('DbgScr_HtmlScrollHeight').innerHTML         = t1.html.scrollHeight;
+          document.getElementById('DbgScr_HtmlScrollTop').innerHTML            = t1.html.scrollTop;
+          document.getElementById('DbgScr_HtmlOffsetTop').innerHTML            = t1.html.offsetTop;
+
+          document.getElementById('DbgScr_InnerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
+          document.getElementById('DbgScr_InnerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
+          document.getElementById('DbgScr_InnerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
+
+          document.getElementById('DbgScr_OutputScrollHeight').innerHTML       = t1._output.scrollHeight;
+          document.getElementById('DbgScr_OutputScrollTop').innerHTML          = t1._output.scrollTop;
+          document.getElementById('DbgScr_OutputOffsetTop').innerHTML          = t1._output.offsetTop;
       }
 
    </script>
@@ -335,7 +336,7 @@
 
   <p class="Good12Bye">
                <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" width="96" height="96" alt="Waiving Kosmonaut">
-               Hav' fun.
+               <!-- Hav' fun. -->
   </p>
 
  </div>
