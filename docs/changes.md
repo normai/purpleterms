@@ -12,7 +12,7 @@ Other pages : &nbsp;
 # Changes
 
 
-##### version 20210513°1515 — v0.3.1 Dynamic styles per instance
+##### version 20210513°1517 — v0.3.1 Dynamic styles per instance
  - Add Waving Astronaut
  - Shift code around
  - Add page 'Developer Documentation'

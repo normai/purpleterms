@@ -27,22 +27,22 @@ This are just NetBeans Navigator screenshots, to provide an overview,
 
 ### Complete program collapsed <a name="id20210513o1125"></a>
 
-<img src="./terminaljs/docs/20210513o0922.nb-navigator-collapsed.png" align="center" width="454" height="440" alt="Complete program collapsed">
+<img src="./20210513o0922.nb-navigator-collapsed.png" align="center" width="454" height="440" alt="Complete program collapsed">
 
 ### Function `TerminalCtor` expanded <a name="id20210513o1131"></a>
 
-<img src="./terminaljs/docs/20210513o0923.nb-navigator-terminalctor.png" align="center" width="421" height="777" alt="Function terminalCtor expanded">
+<img src="./20210513o0923.nb-navigator-terminalctor.png" align="center" width="421" height="777" alt="Function terminalCtor expanded">
 
 ### Function `promptInput` expanded <a name="id20210513o1135"></a>
 
-<img src="./terminaljs/docs/20210513o0924.nb-navigator-promptinput.png" align="center" width="792" height="636" alt="Function promptInput expanded">
+<img src="./20210513o0924.nb-navigator-promptinput.png" align="center" width="792" height="636" alt="Function promptInput expanded">
 
 Note the funny types of the `inputValue` and `textContent` variables. Have they
  really to be so complex? Can this perhaps be simplified?
 
 ### Variable `terminalBeep` expanded <a name="id20210513o1141"></a>
 
-<img src="./terminaljs/docs/20210513o0925.nb-navigator-terminalbeep.png" align="center" width="417" height="128" alt="Variable terminalBeep expanded">
+<img src="./20210513o0925.nb-navigator-terminalbeep.png" align="center" width="417" height="128" alt="Variable terminalBeep expanded">
 
 This little panel can help to comprehend, how the NetBeans Navigator works,
  because it is so small, and one can easily trace in the code, what's there.
