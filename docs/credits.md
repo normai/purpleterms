@@ -71,8 +71,9 @@ Many thanks goes to people or organizations for supplementing components :
 - **[Kevin David Pointon](https://openclipart.org/artist/Firkin)** for providing the
  [Purple Bellied Lory](https://openclipart.org/detail/241426/purplebellied-lory)
  and the
- [Waving Astronaut](https://openclipart.org/detail/304180/waving-astronaut)
- under the [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0)
+ [Waving Astronaut](https://openclipart.org/detail/304180/waving-astronaut),
+ sometimes also referred as the Waving Kosmonaut,
+ the both under the [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0)
 
 <a name="remarks"></a>
 ## Remarks

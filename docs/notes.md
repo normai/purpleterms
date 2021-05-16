@@ -12,23 +12,30 @@ Other pages : &nbsp;
 # Notes
 
 Subsections : &nbsp;
-• [Cursor blink?](#id20210512o1521) &nbsp;
-• [Compatibility](#notes_browser_compatibility) &nbsp;
-• [Base64](#notes_base64) &nbsp;
-• [Prompts](#notes_prompts) &nbsp;
-• [Fork list](#fork_list) &nbsp;
-• [PR 'XHR'](#pull_request_backend_via_xhr) &nbsp;
-• [PR 'Additional functions'](#pull_request_additional_functions) &nbsp;
-• [Retrieving Keystrokes](#retrieving_keystrokes)
-• _[GFM](#github_flavored_markdown)_
-• [Sessions](#id20210512o1911)
-• [References](#id20210512o1611)
+•&nbsp;[Naming](#id20210513o1311) &nbsp;
+•&nbsp;[Cursor blink?](#id20210512o1521) &nbsp;
+•&nbsp;[Browser&nbsp;Compatibility](#notes_browser_compatibility) &nbsp;
+•&nbsp;[Base64](#notes_base64) &nbsp;
+•&nbsp;[Prompt&nbsp;Feature](#id20210509o1511) &nbsp;
+•&nbsp;[Forks&nbsp;List](#fork_list) &nbsp;
+•&nbsp;[AJAX/XHR](#id20210430o1711) &nbsp;
+•&nbsp;[PR&nbsp;'Additional&nbsp;functions'](#id20210430o1821) &nbsp;
+•&nbsp;[Retrieving&nbsp;Keystrokes](#retrieving_keystrokes) &nbsp;
+•&nbsp;_[GFM](#github_flavored_markdown)_ &nbsp;
+•&nbsp;[Session&nbsp;Logs](#id20210512o1911) &nbsp;
+•&nbsp;[References](#id20210512o1611)
 
 _This page contains boring casual developer notes, **totally uninteresting** for library users._
 
 ---
 
-## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; _<sup><sub><sup><sup>Todo 20210512°1521</sup></sup></sub></sup>_
+## Naming <a name="id20210513o1311"></a> &nbsp; <sup><sub><sup><sup>_Note&nbsp;20210513°1311_</sup></sup></sub></sup>
+
+Project name. At some point in development, for easier referencing, this fork
+ should rather have a different name than the original project. The first
+ try was 'Termjnal', then 'Terminals', than 'PurpleTerms'.
+
+## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; <sup><sub><sup><sup>_Todo 20210512°1521_</sup></sup></sub></sup>
 
 Replace the cursor made blinking with `timeout()`
 by one made blinking with CSS `animation`.
@@ -43,7 +50,7 @@ Priority: Low. Would fit the general direction to reduce code wherever possible.
 
 ---
 
-## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; _<sup><sub><sup><sup>Subject 20210512°1311</sup></sup></sub></sup>_
+## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; <sup><sub><sup><sup>_Subject&nbsp;20210512°1311_</sup></sup></sub></sup>
 
 Terminals supports **IE=>9**. Here are some points :
 
@@ -65,7 +72,7 @@ Search for `20210512°1317` to get a list of the involved locations.
 
 ---
 
-## Base64 Encoding <a name="notes_base64"></a> &nbsp; _<sup><sub><sup><sup>Article 20210511°1213</sup></sup></sub></sup>_
+## Base64 Encoding <a name="notes_base64"></a> &nbsp; <sup><sub><sup><sup>_Article&nbsp;20210511°1213_</sup></sup></sub></sup>
 
 The provided **beep** comes not as a sound file, but as a variable with the
  **base64** encoding of the sound file. I was brought to my attention, that
@@ -120,7 +127,7 @@ I am very interested to learn, what I have overlooked in the process.
 
 ---
 
-## The Instance ID <a name="notes_instanceid"></a> &nbsp; _<sup><sub><sup><sup>Feature 20210509°1651</sup></sup></sub></sup>_
+## The Instance ID <a name="notes_instanceid"></a> &nbsp; <sup><sub><sup><sup>_Feature&nbsp;20210509°1651_</sup></sup></sub></sup>
 
 Each terminal instance the user creates with `new Terminal()` gets an instance
 ID, which can be asked for with `getId()`.
@@ -129,7 +136,7 @@ ID, which can be asked for with `getId()`.
 
 ---
 
-## The Prompts <a name="notes_prompts"></a> &nbsp; _<sup><sub><sup><sup>Feature 20210509°1511</sup></sup></sub></sup>_
+## Prompt Feature <a name="id20210509o1511"></a> &nbsp; <sup><sub><sup><sup>_Feature&nbsp;20210509°1511_</sup></sup></sub></sup>
 
 **Preliminary note**. For prompt generation, I can imagine three techniques :
 
@@ -167,9 +174,19 @@ Here the pseudo-element technique is applied :
 
 **Debug Borders**. They are implemented as a preparation for the prompt implementation.
 
+Todo <sup><sub><sup>20210509°1541</sup></sub></sup> : Implement **`setConfirmPrompt()`**,
+ e.g. with '?' as default prompt, to mark lines from a `confirm()` call.
+
+Consideration <sup><sub><sup>20210509°1543</sup></sub></sup> : The current
+ prompt implementation in pure CSS has two disadvantages. (1) If you change
+ the prompt at one point in time, it will be changed also for the past lines.
+ (2) The prompts do not make it into the clipboard. The both could be fixed
+ by using the CSS mechanism only for the current line, and if that line goes
+ into history, the CSS prompt will be replaced by a real string prompt.
+
 ---
 
-## Fork List <a name="fork_list"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210507°1611</sup></sup></sub></sup>_
+## Fork List <a name="fork_list"></a> &nbsp; <sup><sub><sup><sup>_Paragraph&nbsp;20210507°1611_</sup></sup></sub></sup>
 
 Here is a list of active forks (as of May 2021). The list helps to find
  out, which solutions the colleagues deviced for the input prompt feature
@@ -225,39 +242,36 @@ Here is a list of active forks (as of May 2021). The list helps to find
 
 ---
 
-## PR 2020-Sep-07 'XHR' <a name="pull_request_backend_via_xhr"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1711</sup></sup></sub></sup>_
+## AJAX/XHR <a name="id20210430o1711"></a> &nbsp; <sup><sub><sup><sup>_Paragraph&nbsp;20210430°1711_</sup></sup></sub></sup>
 
 Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pull/11)
-by [Yevgen Shevchenko](https://github.com/commanddotcom) on 2020-Sep-07
-([fork](https://github.com/commanddotcom/terminaljs))
-is about to communicate with a PHP or any other backend.
+ on 2020-Sep-07 from
+ [commanddotcom/terminaljs](https://github.com/commanddotcom/terminaljs)
+ is about to communicate with a PHP or any other backend. I have implemented
+ this pull request blindly, not yet tested. The PR carried two more features,
+ a dollar prompt and utilization of the backspace key.
 
-Status : **Implemented**.
+An XHR or AJAX feature is in fact the reason why I got my hands dirty with
+ `terminal.js`. I already have written code to utilize AJAX. That code leaves
+ `terminal.js` untouched, instead, a custom JavaScript file in parallel does
+ the work. See the [Custom Demo](./custom.html) with the [`custom.*`](./) files.
+ The feature works only for localhost so far, not online.
 
-Note. The PR carried two more features, a dollar prompt and utilization of the Backspace key.
+Having implemented Yevgen's XHR feature into `terminal.js` brings me to
+ questions. XHR makes no sense on it`s own right, only together with a backend.
+ Since Terminals is a library, not an application, it shall not know, who will
+ use it in which way. So the questions are: (1) Where exactly shall the line
+ be drawn between library and user code? (2) Is it already defined, what
+ exactly Terminals should do, and what not?
 
-Actually, such XHR feature is the reason why I got my hands dirty
- with `terminal.js` in the first place. I have written a backend caller for
- myself, which is different in such a way, that it leaves `terminal.js` untouched.
- Instead, it consists of a custom JS file, not located here, but there. The file is
- [`daftari/jsi/dafterm.js`](https://downtown.trilo.de/svn/daftaridev/trunk/daftari/jsi/dafterm.js),
- it works only for localhost, not online so far.
-
-The XHR feature brings me to questions.
- XHR makes no sense on it`s own right, only together with a backend.
- Terminals is a library, not an application. Thus it shall not know,
- who will use it in which way. The questions are:
- Where exactly shall the line be drawn between library and user code?
- Is it already clear, what exactly Terminals should do, and what not?
-
-I will learn more about this questions, when attempting to switch my own
- use case from the custom module to Yevgen's interface function.
+I will learn more about this questions, when attempting to switch the Custom
+ Demo from the custom module to Yevgen's interface function.
 
 ---
 
-## PR 2015-Feb-25 'Additional functions' <a name="pull_request_additional_functions"></a> &nbsp; _<sup><sub><sup><sup>Paragraph 20210430°1821</sup></sup></sub></sup>_
+## PR 'Additional functions' <a name="id20210430o1821"></a> &nbsp; <sup><sub><sup><sup>_Paragraph&nbsp;20210430°1821_</sup></sup></sub></sup>
 
-About working off pull request
+This are session notes about working off pull request
  '[Added some additional functions](https://github.com/eosterberg/terminaljs/pull/2)'
  from 2015-Feb-25 by [MarkIvanowich](https://github.com/MarkIvanowich).
  The PR contains four features :
@@ -290,14 +304,24 @@ Note on **`this.load()`**, generating a pylon.
  [MarkIvanowich/&#8203;.../&#8203;terminal.js#&#8203;L33-&#8203;L59](https://github.com/MarkIvanowich/terminaljs/blob/master/terminal.js#L33-L59)
  and [.../&#8203;test.html#&#8203;L66-&#8203;L80](https://github.com/MarkIvanowich/terminaljs/blob/master/test.html#L66-L80)).
 
- Oops. The pylon brings me to another suggestion. We have `this.print()`,
- which prints a line. I'd like to add **`this.printChar()`**, which prints one
- character at the end of the current line. This is a common console feature,
- it would allow the user to animate a pylon herself via ordinary API calls.
+Oops. The pylon brings me to another suggestion. It exists API function
+ `this.print()`, which prints a line. What about adding **`printChar()`**,
+ which prints one character at the end of the current line or the last history
+ line? Such behaviour is a common console feature, it would allow the user to
+ animate a pylon herself via ordinary API calls. See _todo 20210430°1831
+ 'Print char'_.
+
+Proposal : Implement `this.printChar()` which prints one character at the end
+ of the current line. This might be not soo trivial, because it will possibly
+ have to operate on a line being already in history, not an ordinary input
+ line. It looks as if such feature had something in common with utilizing
+ the backspace key, but probably it will be two totally different things,
+ since the backspace operates on the input line, not on a history line.
+ <sup><sub><sup>_Todo&nbsp;20210430°1831&nbsp;'Print char'_</sup></sub></sup>
 
 ---
 
-## Retrieving Keystrokes <a name="retrieving_keystrokes"></a> &nbsp; _<sup><sub><sup><sup>Article 20210430°1601</sup></sup></sub></sup>_
+## Retrieving Keystrokes <a name="retrieving_keystrokes"></a> &nbsp; <sup><sub><sup><sup>_Article&nbsp;20210430°1601_</sup></sup></sub></sup>
 
 Gumbarros' pull request
 [Fix to deprecated KeyCodes](https://github.com/eosterberg/terminaljs/pull/12)
@@ -355,7 +379,7 @@ Further reference(s) :
 
 ---
 
-## GFM — GitHub Flavoured Markdown <a name="github_flavored_markdown"></a> &nbsp; _<sup><sub><sup><sup>Section&nbsp;20210506°0931</sup></sup></sub></sup>_
+## GFM — GitHub Flavoured Markdown <a name="github_flavored_markdown"></a> &nbsp; <sup><sub><sup><sup>_Section&nbsp;20210506°0931_</sup></sup></sub></sup>
 
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
@@ -396,15 +420,15 @@ BTW. Practical emoji overviews provides e.g. [Emojigraph](https://emojigraph.org
 
 ---
 
-## Sessions <a name="id20210512o1911"></a>
+## Session Logs <a name="id20210512o1911"></a>
 
 This are session logs, the most boring section of all documentation.
 
 ---
 
-### Scroll and jump <a name=""></a> &nbsp; _<sup><sub><sup><sup>Session&nbsp;20210511°1521</sup></sup></sub></sup>_
+### Scroll and jump <a name=""></a> &nbsp; <sup><sub><sup><sup>_Session&nbsp;20210511°1521_</sup></sup></sub></sup>
 
-About feature 'Auto scrolling service' _<sup><sub><sup><sup>Feature 20210511°1511</sup></sup></sub></sup>_
+About feature 'Auto scrolling service' <sup><sub><sup><sup>_Feature&nbsp;20210511°1511_</sup></sup></sub></sup>
 
 This session shall make automatic scrolling in the box functional.
  So far, the session succeeded only half-way.
@@ -510,7 +534,7 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="192" height="192" alt="Waving Astronaut">
 
-## References <a name="id20210512o1611"></a> &nbsp; _<sup><sub><sup><sup>Subsection&nbsp;20210512°1611</sup></sup></sub></sup>_
+## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><sup><sup>_Subsection&nbsp;20210512°1611_</sup></sup></sub></sup>
 
  • Article
  • [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
