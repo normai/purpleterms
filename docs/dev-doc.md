@@ -29,13 +29,19 @@ This are just NetBeans Navigator screenshots, to provide an overview,
 
 <img src="./20210513o0922.nb-navigator-collapsed.png" align="center" width="454" height="440" alt="Complete program collapsed">
 
+_Some details may have changed since this screenshot was taken._
+
 ### Function `TerminalCtor` expanded <a name="id20210513o1131"></a>
 
 <img src="./20210513o0923.nb-navigator-terminalctor.png" align="center" width="421" height="777" alt="Function terminalCtor expanded">
 
+_Some details may have changed since this screenshot was taken._
+
 ### Function `promptInput` expanded <a name="id20210513o1135"></a>
 
 <img src="./20210513o0924.nb-navigator-promptinput.png" align="center" width="792" height="636" alt="Function promptInput expanded">
+
+_Some details may have changed since this screenshot was taken._
 
 Note the funny types of the `inputValue` and `textContent` variables. Have they
  really to be so complex? Can this perhaps be simplified?
@@ -44,10 +50,13 @@ Note the funny types of the `inputValue` and `textContent` variables. Have they
 
 <img src="./20210513o0925.nb-navigator-terminalbeep.png" align="center" width="417" height="128" alt="Variable terminalBeep expanded">
 
-This little panel can help to comprehend, how the NetBeans Navigator works,
- because it is so small, and one can easily trace in the code, what's there.
- Why does it show `innerHTML`, but not `outerHTML`? It just collects the
- identifiers it can find, and assigns them an icon.
+This little panel is nice
+ because it is so small, that one can completely trace the icon associations
+ to the related lines in code, to see the Navigator working. Why does it show
+ e.g. `innerHTML`, but `outerHTML` not? It just collects the identifiers it
+ can find, and assigns them an icon.
+
+_Some details may have changed since this screenshot was taken._
 
 ### Legend <a name="id20210513o1145"></a>
 
@@ -64,13 +73,13 @@ It is not soo clear, what the icons mean exactly. The legends
  Editor: A Reference Guide', which is about C++ :
  [Appendix A: Icons in the Code Completion Window](https://netbeans.apache.org/kb/docs/java/editor-codereference.html#_appendix_a_icons_in_the_code_completion_window).
 
-This are all not a really pervasive legends.
+This are all not really pervasive legends.
 
 The icons are to be taken with a grain of salt anyway. The icons are made for
- OOP languages. JavaScript is not really object oriented, though this is often
- stated. The OO features are not programmed by means of keywords, instead are
- built at own risk with the help of design patterns. The ES5 `class` keyword
- does not change this situation, it is only syntactic sugar on the surface.
+ OOP languages, and JavaScript is not really object oriented. The OO features
+ are not realized by means of keywords, instead crafted with the help of
+ patterns. The ES5 `class` keyword mitigates the situation with syntactic sugar,
+ it does not change the mechanisms inside, the prototype's behaviour.
 
 Howsoever. Even if the icons are not clear in every detail, graphics
  like above I find a great help to comprehend a program's concept.

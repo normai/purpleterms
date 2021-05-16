@@ -1,5 +1,5 @@
 /*!
- * PurpleTerms v0.3.1 — Single-file JavaScript to put up terminals on a web page
+ * PurpleTerms v0.3.1.1 — Single-file JavaScript to put up terminals on a web page
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -11,7 +11,7 @@
  */
 
 /**
- *  This class provides a div with the terminal functionalities
+ *  This class creates a div with the terminal functionalities
  *
  * @id 20190208°1923
  */
@@ -24,7 +24,7 @@ Terminal = ( function () {
     * @type {string} —
     * @constant —
     */
-   var sVersionString = 'v0.3.1';
+   var _VersionString = 'v0.3.1.1';
 
    /**
     *  Prompt mode 'Confirmation'
@@ -99,16 +99,22 @@ Terminal = ( function () {
     * @todo : This were rather not a page global setting but an object property. Adjust this! [todo 20210508°0931]
     * @type {boolean} —
     */
-   var _debugBorders = false;
+   var _b_DebugBorders = false;
 
-   // Provisory global variable until dynamic CSS works on a per-instance [var 20210509°1535]
+
+   // + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+   // Provisory global until dynamic CSS works per-instance [var 20210509°1535]
    var _inputPromptGlobal = ">\\00a0";
 
-   // Provisory global variable until dynamic CSS works on a per-instance [var 20210509°1537]
+   // Provisory global until dynamic CSS works per-instance [var 20210509°1537]
    var _outputPromptGlobal = "<\\00a0";
+   // + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
 
    /**
     *  Helper flag to fire 'inputField.focus()' after initialization
+    *
+    * Check — Shouldn't this be an instance property?!
     *
     * @id 20170501°0241
     * @type {boolean} —
@@ -183,15 +189,15 @@ Terminal = ( function () {
     *
     * @id 20170501°0251
     * @param {Element} inputField —
-    * @param {Object} terminalObj —
+    * @param {Object} oThis — The current terminal instance
     * @return {undefined} —
     */
-   var fireCursorInterval = function (inputField, terminalObj) {
-      var cursor = terminalObj._cursor;
+   var fireCursorInterval = function (inputField, oThis) {
+      var cursor = oThis._cursor;
       setTimeout(function () {
-         if (inputField.parentElement && terminalObj._shouldBlinkCursor) {
+         if (inputField.parentElement && oThis._shouldBlinkCursor) {
             cursor.style.visibility = cursor.style.visibility === 'visible' ? 'hidden' : 'visible';
-            fireCursorInterval(inputField, terminalObj);
+            fireCursorInterval(inputField, oThis);
          } else {
             cursor.style.visibility = 'visible';
          }
@@ -209,45 +215,64 @@ Terminal = ( function () {
    */
 
    /**
-    * CSS class name for .. (style 1)
+    *  Delimiter between style-tag-name or general-class-name and ID postfix
     *
     * @id 20210513°1421
+    * @type {string} —
+    * @constant —
+    */
+   var s_IdDelim = '_';
+
+   /**
+    *  CSS class name for .. (style x) -- Not yet dynamic?!
+    *
+    * @id 20210513°1422
+    * @type {string} —
+    * @constant —
+    */
+   var sClass_1_Html_Div = 'Terminal';
+
+   /**
+    *  CSS class name for .. (style 1)
+    *
+    * @id 20210513°1423
     * @type {string} —
     * @constant —
     */
    var s_Terminal_Complete = 'Terminal_Complete';
 
    /**
-    * CSS class name for .. (style 2)
+    *  CSS class name for .. (style 2)
     *
-    * @id 20210513°1422
+    * @id 20210513°1424
     * @type {string} —
     * @constant —
     */
    var s_Terminal_Output = 'Terminal_Output';
+   var sStyle_P_OutputBox = 'Terminal_Output';
    
    /**
-    * CSS class name for .. (style 3)
+    *  CSS class name for .. (style 3)
     *
-    * @id 20210513°1423
+    * @id 20210513°1425
     * @type {string} —
     * @constant —
     */
    var s_Output_One_Line = 'Output_One_Line';
    
    /**
-    * CSS class name for .. (style 4)
+    *  CSS class name for .. (style 4)
     *
-    * @id 20210513°1424
+    * @id 20210513°1426
     * @type {string} —
     * @constant —
     */
    var s_Term_OutLine_FormerIn = 'Terminal_OutputLine_FormerInput';
    
    /**
-    * CSS class name for .. (style 5)
+    *  CSS class name for .. (style 5)
     *
-    * @id 20210513°1425
+    * @id 20210513°1426
     * @type {string} —
     * @constant —
     */
@@ -258,13 +283,13 @@ Terminal = ( function () {
     *  ..
     *
     * @id 20170501°0311
-    * @param {Object} oTerm —
+    * @param {Object} oThis — The current terminal instance
     * @param {string} message —
     * @param {number} iPROMPT_TYPE —
     * @param {Function} callback —
     * @return {undefined} —
     */
-   var promptInput = function (oTerm, message, iPROMPT_TYPE, callback) {
+   var promptInput = function (oThis, message, iPROMPT_TYPE, callback) {
 
       'use strict';                                                    // Newly introduced, worked out of the box [line 20210510°1531]
 
@@ -281,21 +306,21 @@ Terminal = ( function () {
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
       // [line 20170501°0941]
       // This prop appears 4 times below -- Check -- Can it be disposed again?!
-      ////oTerm._inputLine.textContent = '';                           // Original line
-      ////oTerm._inputLine.textPrefix = '$ ';                          // New var introduced [chg 20210502°1111`11 xhr]
-      ////oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr]
-      oTerm._inputLine.textContent = oTerm._inputLine.textPrefix ? oTerm._inputLine.textPrefix : '';  // [mark 20210512°1317`12 Compatibility] If textPrefix is undefined, IE will print 'undefined', the others do not print // [chg 20210502°1111`12 xhr]
+      ////oThis._inputLine.textContent = '';                           // Original line
+      ////oThis._inputLine.textPrefix = '$ ';                          // New var introduced [chg 20210502°1111`11 xhr]
+      ////oThis._inputLine.textContent = oThis._inputLine.textPrefix;  // [chg 20210502°1111`12 xhr]
+      oThis._inputLine.textContent = oThis._inputLine.textPrefix ? oThis._inputLine.textPrefix : '';  // [mark 20210512°1317`12 Compatibility] If textPrefix is undefined, IE will print 'undefined', the others do not print // [chg 20210502°1111`12 xhr]
       // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-      oTerm._inputElement.style.display = 'block';
-      oTerm.html.appendChild(inputField);
-      fireCursorInterval(inputField, oTerm);
+      oThis._inputElement.style.display = 'block';
+      oThis.html.appendChild(inputField);
+      fireCursorInterval(inputField, oThis);
 
       // [condition 20170501°0751]
       // What exactly means 'message.length'? Throws error if message is null.
       //  Condition "if (message.length)" seems wrong. [quest 20210510°1521]
       if ( message !== null ) {                                        // Formerly "if (message.length)"
-         oTerm.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + ' (y/n)' : message);
+         oThis.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + ' (y/n)' : message);
       }
 
       // ======================================================
@@ -310,7 +335,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       inputField.onblur = function () {
-         oTerm._cursor.style.display = 'none';
+         oThis._cursor.style.display = 'none';
       };
 
       /**
@@ -320,8 +345,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       inputField.onfocus = function () {
-         inputField.value = oTerm._inputLine.textContent;
-         oTerm._cursor.style.display = 'inline';
+         inputField.value = oThis._inputLine.textContent;
+         oThis._cursor.style.display = 'inline';
       };
 
       /**
@@ -330,7 +355,7 @@ Terminal = ( function () {
        * @id 20170501°0831
        * @return {undefined} —
        */
-      oTerm.html.onclick = function () {
+      oThis.html.onclick = function () {
          inputField.focus();
       };
 
@@ -348,9 +373,9 @@ Terminal = ( function () {
          if ( ( ( e.code === 'Backspace' || e.which === 8)
                   && inputField.value.length === inputField.value.length
               )
-              || inputField.value.length <= oTerm._inputLine.textPrefix
+              || inputField.value.length <= oThis._inputLine.textPrefix
             ) {
-            oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;
+            oThis._inputLine.textContent = oThis._inputLine.textPrefix;
             e.preventDefault();
          }
          // Traditional sequence
@@ -366,7 +391,7 @@ Terminal = ( function () {
          {
             // Echo after 1 millisecond [seq 20170501°0941]
             setTimeout(function () {
-               oTerm._inputLine.textContent = inputField.value;
+               oThis._inputLine.textContent = inputField.value;
             }, 1);
          }
       };
@@ -384,42 +409,42 @@ Terminal = ( function () {
              || ( e.code === 'Enter' || e.which === 13 )               // [chg 20210430°1551`03 key code]
               ) {
 
-            oTerm._inputElement.style.display = 'none';
+            oThis._inputElement.style.display = 'none';
             var inputValue = inputField.value;
 
             // [seq 20210502°1221] [chg 20210502°1111`13 xhr]
             // Check — What is this? Does not look like an XHR feature, rather a clear command [note 20210509°1523]
-            if (inputValue === oTerm._inputLine.textPrefix + 'clear') {  // textPrefix is undefined here [issue 20210502°1135 'textPrefix undefined']
-               oTerm.clear();
-               oTerm.input('', false);
+            if (inputValue === oThis._inputLine.textPrefix + 'clear') {  // textPrefix is undefined here [issue 20210502°1135 'textPrefix undefined']
+               oThis.clear();
+               oThis.input('', false);
                return true;
             }
 
             if ( bShouldDisplayInput ) {
 
                // History [seq 20210503°0911 Inserted after Mark — temporarily inactive
-               // // oTerm._history.push(inputValue);
-               // // oTerm.lasthistory = oTerm._history.length;
+               // // oThis._history.push(inputValue);
+               // // oThis.lasthistory = oThis._history.length;
 
                // Added optional second parameter for pipelining a style name for input prompt feature [note 20210509°1521]
-               oTerm.print(inputValue, s_Term_OutLine_FormerIn + '_' + oTerm.getId()); // Mind the '_' // 'Terminal_OutputLine_FormerInput'
+               oThis.print(inputValue, s_Term_OutLine_FormerIn + s_IdDelim + oThis.getId());
             }
-            oTerm.html.removeChild(inputField);
+            oThis.html.removeChild(inputField);
 
             // Process remote or local?
-            if ( oTerm._backend ) {                                    // [chg 20210502°1111`14 xhr] new flag
+            if ( oThis._backend ) {                                    // [chg 20210502°1111`14 xhr] new flag
 
                // Ship AJAX request [seq 20210502°1231]
                var xhr = new XMLHttpRequest();
-               xhr.open("POST", oTerm._backend, true);
+               xhr.open("POST", oThis._backend, true);
                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // This possibly needs to be variable for general purpose [issue 20210502°1311 AJAX mime type]
                xhr.onreadystatechange = function() {
                   if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Add failure catching [issue 20210502°1321 catch AJAX error]
-                     oTerm.print(xhr.responseText);
-                     oTerm.input('', false);
+                     oThis.print(xhr.responseText);
+                     oThis.input('', false);
                   }
                };
-               xhr.send( "prefix=" + oTerm._inputLine.textPrefix + "&ssh=" + inputValue );
+               xhr.send( "prefix=" + oThis._inputLine.textPrefix + "&ssh=" + inputValue );
             }
             else if (typeof(callback) === 'function') {
                // Traditional processing [seq 20170501°0341]
@@ -434,22 +459,22 @@ Terminal = ( function () {
             /*
             // History [seq 20210503°0912 after Mark] Not yet activated, probably needs debugging
             if ( iPROMPT_TYPE === _PROMPT_INPUT ) {
-               if ( e.which === 38 && oTerm._historyLast !== - 1) {
-                  inputField.value = oTerm._history[(oTerm._historyLast -= 1) > 0
-                                    ? oTerm._historyLast
-                                     : oTerm._historyLast = 0]
+               if ( e.which === 38 && oThis._historyLast !== - 1) {
+                  inputField.value = oThis._history[(oThis._historyLast -= 1) > 0
+                                    ? oThis._historyLast
+                                     : oThis._historyLast = 0]
                                       ;
-                  oTerm._inputLine.textContent = inputField.value;
+                  oThis._inputLine.textContent = inputField.value;
                }
-               else if ( e.which === 40 && oTerm._historyLast !== -1) {
-                  inputField.value = oTerm.history[(oTerm._historyLast += 1) < oTerm.history.length
-                                    ? oTerm._historyLast
-                                     : oTerm._historyLast = oTerm.history.length]
+               else if ( e.which === 40 && oThis._historyLast !== -1) {
+                  inputField.value = oThis.history[(oThis._historyLast += 1) < oThis.history.length
+                                    ? oThis._historyLast
+                                     : oThis._historyLast = oThis.history.length]
                                       ;
-                  if (oTerm._historyLast === oTerm.history.length) {
+                  if (oThis._historyLast === oThis.history.length) {
                      inputField.value = "";
                   }
-                  oTerm._inputLine.textContent = inputField.value;
+                  oThis._inputLine.textContent = inputField.value;
                }
             }
             */
@@ -485,12 +510,12 @@ Terminal = ( function () {
    }; // End of function promptInput()
 
    /**
-    *  ..
+    *  The audio HTML element
     *
     * @id 20170501°0351
     * @type {Element|null} —
     */
-   var terminalBeep = null;
+   var elTerminalBeep = null;
 
    /**
     *  This function provides the div with the terminal functionalities
@@ -499,7 +524,6 @@ Terminal = ( function () {
     * @param {number|string} idParam —
     * @constructor —
     */
-   ////var TerminalConstructor = function (idParam) {
    var TerminalCtor = function (idParam) {
 
       /**
@@ -520,22 +544,22 @@ Terminal = ( function () {
          return this._objId.toString();
       };
 
-      // Not sure whether as first in constructor is the best location.
-      //  I just locate it after the order from the NetBeans Navigator.
       /**
        *  This function dynamically provides CSS rules
        *
        * @id  20210507°1641
+       * @note About location in source code. Not sure whether here is the
+       *     best location as the first in constructor. I just located it after
+       *     the order from the NetBeans Navigator.
        * @todo Either this must be called from a place where it is called only once
-       *        or it must shield itself from multiple execution. [todo 20210507°1711]
+       *     or it must shield itself from multiple execution. [todo 20210507°1711]
        * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
-       * @param {Object} oThis — Workaround. What is state-of-the-art solution?
+       * @param {Object} oThis — The current terminal instance. Is this a workaround? Is there a better solution?
        * @return {undefined}
        */
-      ////var _mountCssRules = function () {
       var _mountCssRules = function (oThis) {
 
-         var sIdent = '_' + oThis.getId();
+         var sIdent = s_IdDelim + oThis.getId();
 
          // () Recognize the presently assembled style element
          var sStyleElementId = 'Kog2frh5cbfn47pm' + sIdent;
@@ -564,7 +588,7 @@ Terminal = ( function () {
          eStyle.setAttributeNode(at);
 
          // () Ruleset for complete terminal box [seq 20210509°1415]
-         var sRu1CompleteBox = _debugBorders
+         var sRu1CompleteBox = _b_DebugBorders
                      ? "\n" + 'div.' + s_Terminal_Complete + sIdent + ' {' + ' '
                       + 'border:1px solid ' + sColorCompleteBox + '; border-radius:0.3em; padding:0.2em;' + ' '
                        + "}"
@@ -572,7 +596,7 @@ Terminal = ( function () {
                       ;
 
          // () Ruleset for output box [seq 20210509°1411]
-         var sRu2OutputBox = _debugBorders
+         var sRu2OutputBox = _b_DebugBorders
                      ? "\n" + 'p.' + s_Terminal_Output + sIdent + ' {' + ' '
                       + 'border:1px solid ' + sColorOutputBox + '; border-radius:0.3em; padding:0.2em;' + ' '
                        + "}"
@@ -580,7 +604,7 @@ Terminal = ( function () {
                       ;
 
          // () Ruleset for one line in the output box [seq 20210509°1413]
-         var sRu3OutputLine = _debugBorders
+         var sRu3OutputLine = _b_DebugBorders
                     ? "\n" + "div." + s_Output_One_Line + sIdent + " { "
                      + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
                       + ' }'
@@ -593,7 +617,7 @@ Terminal = ( function () {
                      ;
 
          // () Output line dedicated [seq 20210509°1417]
-         var sRu4OutFormerInput = _debugBorders
+         var sRu4OutFormerInput = _b_DebugBorders
                     ? "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { "
                      + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
                       + ' }'
@@ -607,7 +631,7 @@ Terminal = ( function () {
 
          // () Rule set for input span [seq 20190312°0451]
          var sRu5InputLine = '';
-         if ( _debugBorders ) {
+         if ( _b_DebugBorders ) {
             sRu5InputLine  = "\n" + "span." + s_Terminal_Input + sIdent + " {"
                      + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
                       + ' ' + "}"
@@ -646,12 +670,15 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this.html = document.createElement('div');
-      this.html.className = 'Terminal';
+      this.html.className = sClass_1_Html_Div;                         //// 'Terminal'
 
-      // Now that we have ID validation and generation, this sequence must come after the validation [issue 20210509°1625]
+/*
+      // Now that we have ID validation and generation, this sequence
+      //  must come after the validation [issue 20210509°1625]
       if (typeof(idParam) === 'string') {
          this.html.id = idParam;
       };
+*/
 
       /*
        * ===============================================
@@ -667,23 +694,51 @@ Terminal = ( function () {
        * ===============================================
        */
 
+      /**
+       *  Storage for the ID of the instance
+       *
+       *  Property 'declarations' are actually superfluous, they only serve
+       *  to have some formal point-of-delaration.
+       *
+       * @id 20210509°1633
+       * @type {string} —
+       */
+      this._objId = '';
+
+      /**
+       *  Instance storage for beep volume
+       *
+       * @id 20210513°1622
+       * @type {number}
+       */
+      ////var _s_Volume = '0.9';
+      var _n_Volume = 0.7;
+
       // Process ID [seq 20210509°1627]
       var s = _generateId(idParam);
+      ////_aIds.push(s);
       _aIds.push(s);
       this._objId = s;
 
+      //// // Now that we have ID validation and generation, this sequence
+      //// //  must come after the validation [issue 20210509°1625]
+      //// if (typeof(idParam) === 'string') {
+      ////    this.html.id = idParam;
+      //// };
+      this.html.id = this._objId;                                      // REDUNDANCY
 
       // Create audio element [seq 20170501°0841]
-      if (! terminalBeep) {
-         terminalBeep = document.createElement('audio');
+      if (! elTerminalBeep) {
+         elTerminalBeep = document.createElement('audio');
 
          // Provide beep file [line 20190325°0753]
          // note : The exact mime-type of an MP3 file is a matter of discussion
          // note : Remember the audio element creation in terminal.js v2.0 with
          //         the interesting mp3/ogg alternative [note 20210507°1621]
          var sData = 'data:audio/mp3;base64,' + sBase64_Beep_Mp3;
-         terminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
-         terminalBeep.volume = 0.05;
+         elTerminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
+         ////elTerminalBeep.volume = 0.9;                              // Value between 0 and 1 // Original 0.05
+         elTerminalBeep.volume = _n_Volume;                            // Value between 0 and 1 // Original 0.05
       }
 
       /**
@@ -701,22 +756,6 @@ Terminal = ( function () {
        * @type {Array} —
        */
       this._history = [];
-
-      /**
-       *  Storage for the ID of the instance
-       *
-       *   This 'declaration' is actually superfluous, it only servers
-       *   to have one point-of-delaration at all. But if so, that point
-       *   has to be high above, before first use.
-       *
-       *   Remember issue 20210502°1341 'Learn GoCloCom parameter types'
-       *
-       * @id 20210509°1633
-       * @type {string|null} —
-       */
-      /*
-       this._objId = this._objId || null; // Hm .. value is already set above
-       */
 
       /**
        *  Counter into the history array (History feature after Mark)
@@ -771,7 +810,7 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._inputLine = document.createElement('span');
-      this._inputLine.className = s_Terminal_Input + '_' + this.getId(); // Mind the '_' // 'Terminal_Input';
+      this._inputLine.className = s_Terminal_Input + s_IdDelim + this.getId();
 
       /**
        *  Private field, tells the input prompt
@@ -788,7 +827,7 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._output = document.createElement('p');
-      this._output.className = s_Terminal_Output + '_' + this.getId(); // Mind the '_' // 'Terminal_Output';
+      this._output.className = s_Terminal_Output + s_IdDelim + this.getId();
 
       /**
        *  Private field, tells the output prompt.
@@ -814,8 +853,8 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.beep = function () {
-         terminalBeep.load();
-         terminalBeep.play();
+         elTerminalBeep.load();
+         elTerminalBeep.play();
       };
 
       /**
@@ -889,7 +928,7 @@ Terminal = ( function () {
        * @return {string} —
        */
       this.getVersion = function () {
-         return sVersionString;
+         return _VersionString;
       };
 
       /**
@@ -929,7 +968,7 @@ Terminal = ( function () {
          // Process optional parameter [seq 20210509°1443]
          // Note. Use traditional parameter processing techique instead
          //  modern optional parameter syntax for purpose of IE compatibility
-         var sRule = sOptionalRule || s_Output_One_Line + '_' + this.getId(); // Mind the '_' // 'Output_One_Line'
+         var sRule = sOptionalRule || s_Output_One_Line + s_IdDelim + this.getId(); // 'Output_One_Line'
 
          var eNewLine = document.createElement('div');
          eNewLine.textContent = message;
@@ -972,7 +1011,7 @@ Terminal = ( function () {
        * @return {undefined} —
        */
       this.setDebugBorders = function (bStatus) {
-         _debugBorders = bStatus;
+         _b_DebugBorders = bStatus;
          _mountCssRules(this);
       };
 
@@ -1043,6 +1082,27 @@ Terminal = ( function () {
       };
 
       /**
+       *  Set beep volume. Takes a value in the range from 0.0 to 1.0
+       *
+       * @id 20210513°1621
+       * @See ref 20210513°1612 'Audio volume attribute'
+       * @param {number} value —
+       * @return {undefined} —
+       */
+      this.setVolume = function (value) {
+         if ( typeof(value) !== 'number' ) {
+            this.print("Error — Volume be number, not '" + value.toString() + "'", undefined);
+            return;
+         }
+         else if ( value < 0 || value > 1) {
+            this.print("Error — Volume be from 0.0 to 1.0, not '" + value.toString() + "'", undefined);
+            return;
+         }
+         _n_Volume = value;
+         elTerminalBeep.volume = _n_Volume;                            // Refresh
+      };
+
+      /**
        *  ..
        *
        * @id 20170501°0731
@@ -1075,7 +1135,7 @@ Terminal = ( function () {
       this._innerWindow.appendChild(this._output);
       this._innerWindow.appendChild(this._inputElement);
       this._innerWindow.style.padding = '10px';
-      this._innerWindow.className = s_Terminal_Complete + '_' + this.getId(); // Mind the '_' // 'Terminal_Complete'
+      this._innerWindow.className = s_Terminal_Complete + s_IdDelim + this.getId();
       this.html.appendChild(this._innerWindow);
 
       // ~~ Style the terminal [seq 20170501°0922]
@@ -1327,7 +1387,7 @@ Terminal = ( function () {
 
 
 /**
- * Get rid of NetBeans warning 'Undefined variable' in Polyfill
+ *  Get rid of NetBeans warning 'Undefined variable' in Polyfill last line
  *
  * This will entail CoCloCom error "ERROR - [JSC_VAR_MULTIPLY_DECLARED_ERROR]
  *  Variable Element declared more than once. First occurrence: externs.zip//w3c_dom1.js".
@@ -1341,7 +1401,7 @@ Terminal = ( function () {
 //var Element;
 
 /**
- * Get rid of NetBeans warning 'Undefined variable' in Polyfill
+ *  Get rid of NetBeans warning 'Undefined variable' in Polyfill last line
  *
  * @id 20210512°1342
  * @_type {}
@@ -1349,7 +1409,7 @@ Terminal = ( function () {
 //var CharacterData;
 
 /**
- * Get rid of NetBeans warning 'Undefined variable' in Polyfill
+ *  Get rid of NetBeans warning 'Undefined variable' in Polyfill last line
  *
  * @id 20210512°1343
  * @_type {}
@@ -1358,7 +1418,7 @@ Terminal = ( function () {
 
 
 /**
- * Poyfill to provide ID a ChildNode.remove() method
+ *  Poyfill to provide ID a ChildNode.remove() method
  *
  * Author : Zhenxi (Eric) Che and contributors
  * License : MIT License

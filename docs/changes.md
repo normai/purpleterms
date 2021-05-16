@@ -11,6 +11,9 @@ Other pages : &nbsp;
 
 # Changes
 
+##### version 20210513°1651 — v0.3.1.1 Volume control
+ - Little fixes
+ - Add API function setVolume() [chg 20210513°1625]
 
 ##### version 20210513°1517 — v0.3.1 Dynamic styles per instance
  - Add Waving Astronaut

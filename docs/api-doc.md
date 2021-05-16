@@ -132,7 +132,11 @@ Accepts CSS-compliant color value
 
 Accepts CSS-compliant dimension value
 
-    .setWidth()
+#### setVolume()
+
+Sets the beep volume. Must be a number or string in the range from 0.0 to 1.0
+
+#### setWidth()
 
 Accepts CSS-compliant dimension value
 

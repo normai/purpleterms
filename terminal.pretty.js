@@ -1,11 +1,11 @@
 /*
- PurpleTerms v0.3.1 — Single-file JavaScript to put up terminals on a web page
+ PurpleTerms v0.3.1.1 — Single-file JavaScript to put up terminals on a web page
  BSD 3-Clause License
  (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
 */
 Terminal = function() {
-  var sVersionString = "v0.3.1";
+  var _VersionString = "v0.3.1.1";
   var _PROMPT_CONFIRM = 3;
   var _PROMPT_INPUT = 1;
   var _PROMPT_PASSWORD = 2;
@@ -13,7 +13,7 @@ Terminal = function() {
   var _b_Choose_Div_Not_Pre_FREE_FOR_RECYCLING = true;
   var _b_Line_Style_FontFamily_Inherit;
   var _b_Use_ScrollTo_With_InnerWindow;
-  var _debugBorders = false;
+  var _b_DebugBorders = false;
   var _inputPromptGlobal = ">\\00a0";
   var _outputPromptGlobal = "<\\00a0";
   var firstPrompt = true;
@@ -54,23 +54,26 @@ Terminal = function() {
     }
     return sIdRet;
   };
-  var fireCursorInterval = function(inputField, terminalObj) {
-    var cursor = terminalObj._cursor;
+  var fireCursorInterval = function(inputField, oThis) {
+    var cursor = oThis._cursor;
     setTimeout(function() {
-      if (inputField.parentElement && terminalObj._shouldBlinkCursor) {
+      if (inputField.parentElement && oThis._shouldBlinkCursor) {
         cursor.style.visibility = cursor.style.visibility === "visible" ? "hidden" : "visible";
-        fireCursorInterval(inputField, terminalObj);
+        fireCursorInterval(inputField, oThis);
       } else {
         cursor.style.visibility = "visible";
       }
     }, 500);
   };
+  var s_IdDelim = "_";
+  var sClass_1_Html_Div = "Terminal";
   var s_Terminal_Complete = "Terminal_Complete";
   var s_Terminal_Output = "Terminal_Output";
+  var sStyle_P_OutputBox = "Terminal_Output";
   var s_Output_One_Line = "Output_One_Line";
   var s_Term_OutLine_FormerIn = "Terminal_OutputLine_FormerInput";
   var s_Terminal_Input = "Terminal_Input";
-  var promptInput = function(oTerm, message, iPROMPT_TYPE, callback) {
+  var promptInput = function(oThis, message, iPROMPT_TYPE, callback) {
     var bShouldDisplayInput = iPROMPT_TYPE === _PROMPT_INPUT;
     var inputField = document.createElement("input");
     inputField.style.position = "absolute";
@@ -79,26 +82,26 @@ Terminal = function() {
     inputField.style.border = "none";
     inputField.style.opacity = "0";
     inputField.style.fontSize = "0.2em";
-    oTerm._inputLine.textContent = oTerm._inputLine.textPrefix ? oTerm._inputLine.textPrefix : "";
-    oTerm._inputElement.style.display = "block";
-    oTerm.html.appendChild(inputField);
-    fireCursorInterval(inputField, oTerm);
+    oThis._inputLine.textContent = oThis._inputLine.textPrefix ? oThis._inputLine.textPrefix : "";
+    oThis._inputElement.style.display = "block";
+    oThis.html.appendChild(inputField);
+    fireCursorInterval(inputField, oThis);
     if (message !== null) {
-      oTerm.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + " (y/n)" : message);
+      oThis.print(iPROMPT_TYPE === _PROMPT_CONFIRM ? message + " (y/n)" : message);
     }
     inputField.onblur = function() {
-      oTerm._cursor.style.display = "none";
+      oThis._cursor.style.display = "none";
     };
     inputField.onfocus = function() {
-      inputField.value = oTerm._inputLine.textContent;
-      oTerm._cursor.style.display = "inline";
+      inputField.value = oThis._inputLine.textContent;
+      oThis._cursor.style.display = "inline";
     };
-    oTerm.html.onclick = function() {
+    oThis.html.onclick = function() {
       inputField.focus();
     };
     inputField.onkeydown = function(e) {
-      if ((e.code === "Backspace" || e.which === 8) && inputField.value.length === inputField.value.length || inputField.value.length <= oTerm._inputLine.textPrefix) {
-        oTerm._inputLine.textContent = oTerm._inputLine.textPrefix;
+      if ((e.code === "Backspace" || e.which === 8) && inputField.value.length === inputField.value.length || inputField.value.length <= oThis._inputLine.textPrefix) {
+        oThis._inputLine.textContent = oThis._inputLine.textPrefix;
         e.preventDefault();
       } else {
         if (e.code === "ArrowLeft" || e.which === 37 || (e.code === "ArrowUp" || e.which === 38) || (e.code === "ArrowRight" || e.which === 39) || (e.code === "ArrowDown" || e.which === 40) || (e.code === "Tab" || e.which === 9)) {
@@ -106,7 +109,7 @@ Terminal = function() {
         } else {
           if (bShouldDisplayInput && !(e.code === "Enter" || e.which === 13)) {
             setTimeout(function() {
-              oTerm._inputLine.textContent = inputField.value;
+              oThis._inputLine.textContent = inputField.value;
             }, 1);
           }
         }
@@ -114,28 +117,28 @@ Terminal = function() {
     };
     inputField.onkeyup = function(e) {
       if (iPROMPT_TYPE === _PROMPT_CONFIRM || (e.code === "Enter" || e.which === 13)) {
-        oTerm._inputElement.style.display = "none";
+        oThis._inputElement.style.display = "none";
         var inputValue = inputField.value;
-        if (inputValue === oTerm._inputLine.textPrefix + "clear") {
-          oTerm.clear();
-          oTerm.input("", false);
+        if (inputValue === oThis._inputLine.textPrefix + "clear") {
+          oThis.clear();
+          oThis.input("", false);
           return true;
         }
         if (bShouldDisplayInput) {
-          oTerm.print(inputValue, s_Term_OutLine_FormerIn + "_" + oTerm.getId());
+          oThis.print(inputValue, s_Term_OutLine_FormerIn + s_IdDelim + oThis.getId());
         }
-        oTerm.html.removeChild(inputField);
-        if (oTerm._backend) {
+        oThis.html.removeChild(inputField);
+        if (oThis._backend) {
           var xhr = new XMLHttpRequest;
-          xhr.open("POST", oTerm._backend, true);
+          xhr.open("POST", oThis._backend, true);
           xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
           xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-              oTerm.print(xhr.responseText);
-              oTerm.input("", false);
+              oThis.print(xhr.responseText);
+              oThis.input("", false);
             }
           };
-          xhr.send("prefix=" + oTerm._inputLine.textPrefix + "&ssh=" + inputValue);
+          xhr.send("prefix=" + oThis._inputLine.textPrefix + "&ssh=" + inputValue);
         } else {
           if (typeof callback === "function") {
             if (iPROMPT_TYPE === _PROMPT_CONFIRM) {
@@ -158,13 +161,13 @@ Terminal = function() {
       window.scrollTo(0, iY);
     }
   };
-  var terminalBeep = null;
+  var elTerminalBeep = null;
   var TerminalCtor = function(idParam) {
     this.getId = function() {
       return this._objId.toString();
     };
     var _mountCssRules = function(oThis) {
-      var sIdent = "_" + oThis.getId();
+      var sIdent = s_IdDelim + oThis.getId();
       var sStyleElementId = "Kog2frh5cbfn47pm" + sIdent;
       var sColorCompleteBox = "Magenta";
       var sColorOutputBox = "Gold";
@@ -183,14 +186,14 @@ Terminal = function() {
       var at = document.createAttribute("id");
       at.value = sStyleElementId;
       eStyle.setAttributeNode(at);
-      var sRu1CompleteBox = _debugBorders ? "\n" + "div." + s_Terminal_Complete + sIdent + " {" + " " + "border:1px solid " + sColorCompleteBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "div." + s_Terminal_Complete + sIdent + " { }";
-      var sRu2OutputBox = _debugBorders ? "\n" + "p." + s_Terminal_Output + sIdent + " {" + " " + "border:1px solid " + sColorOutputBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "p." + s_Terminal_Output + sIdent + " { }";
-      var sRu3OutputLine = _debugBorders ? "\n" + "div." + s_Output_One_Line + sIdent + " { " + "border:1px solid " + sColorOutputLine + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before {" + " " + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _outputPromptGlobal + "'; }" : "\n" + "div." + s_Output_One_Line + sIdent + " { }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before { content:'" + 
+      var sRu1CompleteBox = _b_DebugBorders ? "\n" + "div." + s_Terminal_Complete + sIdent + " {" + " " + "border:1px solid " + sColorCompleteBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "div." + s_Terminal_Complete + sIdent + " { }";
+      var sRu2OutputBox = _b_DebugBorders ? "\n" + "p." + s_Terminal_Output + sIdent + " {" + " " + "border:1px solid " + sColorOutputBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "p." + s_Terminal_Output + sIdent + " { }";
+      var sRu3OutputLine = _b_DebugBorders ? "\n" + "div." + s_Output_One_Line + sIdent + " { " + "border:1px solid " + sColorOutputLine + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before {" + " " + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _outputPromptGlobal + "'; }" : "\n" + "div." + s_Output_One_Line + sIdent + " { }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before { content:'" + 
       _outputPromptGlobal + "'; }";
-      var sRu4OutFormerInput = _debugBorders ? "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { " + "border:1px solid " + sColorOutLineInput + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + ":before {" + " " + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }" : "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { }" + "\n" + "div." + s_Term_OutLine_FormerIn + 
+      var sRu4OutFormerInput = _b_DebugBorders ? "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { " + "border:1px solid " + sColorOutLineInput + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + ":before {" + " " + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }" : "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { }" + "\n" + "div." + s_Term_OutLine_FormerIn + 
       sIdent + ":before { content:'" + _inputPromptGlobal + "'; }";
       var sRu5InputLine = "";
-      if (_debugBorders) {
+      if (_b_DebugBorders) {
         sRu5InputLine = "\n" + "span." + s_Terminal_Input + sIdent + " {" + " " + "border:1px solid " + sColorInputLine + "; border-radius:0.3em; padding:0.2em;" + " " + "}" + "\n" + "span." + s_Terminal_Input + sIdent + ":before" + " " + "{" + " " + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }";
       } else {
         sRu5InputLine = "\n" + "span." + s_Terminal_Input + sIdent + " { }" + "\n" + "span." + s_Terminal_Input + sIdent + ":before { content:'" + _inputPromptGlobal + "'; }";
@@ -199,18 +202,18 @@ Terminal = function() {
       document.getElementsByTagName("head")[0].appendChild(eStyle);
     };
     this.html = document.createElement("div");
-    this.html.className = "Terminal";
-    if (typeof idParam === "string") {
-      this.html.id = idParam;
-    }
+    this.html.className = sClass_1_Html_Div;
+    this._objId = "";
+    var _n_Volume = 0.7;
     var s = _generateId(idParam);
     _aIds.push(s);
     this._objId = s;
-    if (!terminalBeep) {
-      terminalBeep = document.createElement("audio");
+    this.html.id = this._objId;
+    if (!elTerminalBeep) {
+      elTerminalBeep = document.createElement("audio");
       var sData = "data:audio/mp3;base64," + sBase64_Beep_Mp3;
-      terminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
-      terminalBeep.volume = 0.05;
+      elTerminalBeep.innerHTML = '<source type="audio/mp3" src="' + sData + '">';
+      elTerminalBeep.volume = _n_Volume;
     }
     this._cursor = document.createElement("span");
     this._history = [];
@@ -219,15 +222,15 @@ Terminal = function() {
     this._innerWindow = document.createElement("div");
     this._inputElement = document.createElement("p");
     this._inputLine = document.createElement("span");
-    this._inputLine.className = s_Terminal_Input + "_" + this.getId();
+    this._inputLine.className = s_Terminal_Input + s_IdDelim + this.getId();
     this._inputPrompt = ">\\00a0";
     this._output = document.createElement("p");
-    this._output.className = s_Terminal_Output + "_" + this.getId();
+    this._output.className = s_Terminal_Output + s_IdDelim + this.getId();
     this._outputPrompt = "<\\00a0";
     this._shouldBlinkCursor = true;
     this.beep = function() {
-      terminalBeep.load();
-      terminalBeep.play();
+      elTerminalBeep.load();
+      elTerminalBeep.play();
     };
     this.blinkingCursor = function(sBool) {
       sBool = sBool.toString().toUpperCase();
@@ -248,7 +251,7 @@ Terminal = function() {
       promptInput(this, "", 1, null);
     };
     this.getVersion = function() {
-      return sVersionString;
+      return _VersionString;
     };
     this.input = function(message, callback) {
       promptInput(this, message, _PROMPT_INPUT, callback);
@@ -257,7 +260,7 @@ Terminal = function() {
       promptInput(this, message, _PROMPT_PASSWORD, callback);
     };
     this.print = function(message, sOptionalRule) {
-      var sRule = sOptionalRule || s_Output_One_Line + "_" + this.getId();
+      var sRule = sOptionalRule || s_Output_One_Line + s_IdDelim + this.getId();
       var eNewLine = document.createElement("div");
       eNewLine.textContent = message;
       if (_b_Line_Style_FontFamily_Inherit) {
@@ -277,7 +280,7 @@ Terminal = function() {
       this.html.style.background = col;
     };
     this.setDebugBorders = function(bStatus) {
-      _debugBorders = bStatus;
+      _b_DebugBorders = bStatus;
       _mountCssRules(this);
     };
     this.setHeight = function(height) {
@@ -301,6 +304,19 @@ Terminal = function() {
       this._output.style.fontSize = size;
       this._inputElement.style.fontSize = size;
     };
+    this.setVolume = function(value) {
+      if (typeof value !== "number") {
+        this.print("Error — Volume be number, not '" + value.toString() + "'", undefined);
+        return;
+      } else {
+        if (value < 0 || value > 1) {
+          this.print("Error — Volume be from 0.0 to 1.0, not '" + value.toString() + "'", undefined);
+          return;
+        }
+      }
+      _n_Volume = value;
+      elTerminalBeep.volume = _n_Volume;
+    };
     this.setWidth = function(width) {
       this.html.style.width = width;
     };
@@ -312,7 +328,7 @@ Terminal = function() {
     this._innerWindow.appendChild(this._output);
     this._innerWindow.appendChild(this._inputElement);
     this._innerWindow.style.padding = "10px";
-    this._innerWindow.className = s_Terminal_Complete + "_" + this.getId();
+    this._innerWindow.className = s_Terminal_Complete + s_IdDelim + this.getId();
     this.html.appendChild(this._innerWindow);
     this.setBackgroundColor("black");
     this.setHeight("100%");

@@ -540,9 +540,16 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 ---
 
-<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
-
 ## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><sup><sup>_Subsection&nbsp;20210512°1611_</sup></sup></sub></sup>
+
+ • Tutorial
+ • [Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume](https://html.com/attributes/audio-volume/)
+ • by Adam Wood
+ • on n/a
+ • <sup><sub>in https://html.com/attributes/audio-volume/</sub></sup>
+ • <sup><sub>_[ref 20210513°1612 'Audio volume attribute']_</sub></sup>
+
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
 
  • Article
  • [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)

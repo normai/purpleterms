@@ -142,13 +142,13 @@
       t1.setBackgroundColor("Blue");
       var eDiv1 = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
       eDiv1.appendChild(t1.html);
-      t1.print("This is PurpleTerms " + t1.getVersion() + " Aloha Demo (ID = '" + t1.getId() + "')");
+      t1.print("PurpleTerms " + t1.getVersion() + " Aloha Demo, box-id = '" + t1.getId() + "'");
       var sInput = '';
-      var sHelpLine = "Commands: b = beep, c = clear, h = help, p = pause, q = quit";
+      var sHelpLine = "Commands: b = beep, c = clear, h = help, p = pause, q = quit, v = volume test";
 
       // Action [seq 20210503°1523]
-      t1.print (sHelpLine);
-      t1.input ( "Please enter me some input ..", function (x11) {
+      ////t1.print (sHelpLine);
+      t1.input ("Please enter me some input (h = help)", function (x11) {
          takeInput(x11);
       });
 
@@ -176,10 +176,81 @@
             });
          }
          else if (sWritten.toLowerCase() === 'q' ) {
-            t1.print('Finished. Refresch page to start this box again.');
+            t1.print('Finished. Refresh page to start this box again.');
+         }
+         else if (sWritten.toLowerCase() === 'v' ) {
+
+            // () Volume test [seq 20210513°1631]
+            // Todo : Outsource to dedicated function
+
+            // Note. If the requests are too close to one another, in function
+            //  20170501°0521 beep, with the load/play sequence, error will
+            //  occur: ~"Error -- play() was interrupted by load() request".
+            t1.print('Volume test ...');
+            
+            setTimeout(function () { t1.print('v = 0.0');   }, 10);
+            setTimeout(function () { t1.setVolume(0.0);     }, 20);
+            setTimeout(function () { t1.beep();             }, 100);
+
+            setTimeout(function () { t1.print('v = 0.1');   }, 1000);
+            setTimeout(function () { t1.setVolume(0.1);     }, 1100);
+            setTimeout(function () { t1.beep();             }, 1200);
+
+            setTimeout(function () { t1.print('v = 0.2');   }, 2000);
+            setTimeout(function () { t1.setVolume(0.2);     }, 2100);
+            setTimeout(function () { t1.beep();             }, 2200);
+
+            setTimeout(function () { t1.print('v = 0.3');   }, 3000);
+            setTimeout(function () { t1.setVolume(0.3);     }, 3100);
+            setTimeout(function () { t1.beep();             }, 3200);
+
+            setTimeout(function () { t1.print('v = 0.4');   }, 4000);
+            setTimeout(function () { t1.setVolume(0.4);     }, 4100);
+            setTimeout(function () { t1.beep();             }, 4200);
+
+            setTimeout(function () { t1.print('v = 0.5');   }, 5000);
+            setTimeout(function () { t1.setVolume(0.5);     }, 5100);
+            setTimeout(function () { t1.beep();             }, 5200);
+
+            setTimeout(function () { t1.print('v = 0.6');   }, 6000);
+            setTimeout(function () { t1.setVolume(0.6);     }, 6100);
+            setTimeout(function () { t1.beep();             }, 6200);
+
+            setTimeout(function () { t1.print('v = 0.7 *'); }, 7000);
+            setTimeout(function () { t1.setVolume(0.7);     }, 7100);
+            setTimeout(function () { t1.beep();             }, 7200);
+
+            setTimeout(function () { t1.print('v = 0.8');   }, 8000);
+            setTimeout(function () { t1.setVolume(0.8);     }, 8100);
+            setTimeout(function () { t1.beep();             }, 8200);
+
+            setTimeout(function () { t1.print('v = 0.9');   }, 9000);
+            setTimeout(function () { t1.setVolume(0.9);     }, 9100);
+            setTimeout(function () { t1.beep();             }, 9200);
+
+            setTimeout(function () { t1.print('v = 1.0');   }, 10000);
+            setTimeout(function () { t1.setVolume(1.0);     }, 10100);
+            setTimeout(function () { t1.beep();             }, 10200);
+
+            setTimeout(function () { t1.print('v = 0.7 *'); }, 11000);
+            setTimeout(function () { t1.setVolume(0.7);     }, 11100); // Restore default
+            setTimeout(function () { t1.beep();             }, 11200);
+
+            setTimeout(function () { t1.print('v = 1.1');   }, 12000);
+            setTimeout(function () { t1.setVolume(1.1);     }, 12100);
+            setTimeout(function () { t1.beep();             }, 12200);
+
+            setTimeout(function () { t1.print('v = eins');  }, 13000);
+            setTimeout(function () { t1.setVolume('eins');  }, 13100);
+            setTimeout(function () { t1.beep();             }, 13200);
+
+            setTimeout(function () { t1.print('Volume test finished.');}, 14000);
+
+            // The continuation idiom
+            t1.input ( null, function (x21) { takeInput(x21); });
          }
          else {
-            t1.input ( "Thanks for \"" + sWritten + "\", please input more ..", function (x31) {
+            t1.input ( "Thanks for \"" + sWritten + "\", input more (h = help)", function (x31) {
                takeInput(x31);
             });
          }
@@ -187,8 +258,8 @@
 
       // Continue after break [func 20210506°0911]
       function keepgoing() {
-         t1.print('Have you had a good rest?');
-         t1.input ( "Ahem, more input please ..", function (x51) {
+         t1.print('I wish you had a nice beauty sleep.');
+         t1.input ("More input please (h = help)", function (x51) {
             takeInput(x51);
          });
       }
@@ -219,8 +290,7 @@
       t2.print("Next box on the same page, ID = '" + t2.getId() + "'.");
       t2.confirm('Are you blonde?', function(b) {
          t2.print(b ? "Hello Blondie!" : "Hello Brownie or other type!");
-         t2.print("That's it for now.");
-         t2.print("This box will only be active again after page refresh.");
+         t2.print("This box will be active again after page refresh.");
          t2.print("Bye.");
       } );
       /* */
@@ -268,7 +338,7 @@
       // Process a Debug Borders checkbox [func 20210508°0941]
       function setDebugBorders(e, t) {
 
-         t.beep();                                                     // Just for fun
+         ////t.beep();                                                 // Just for fun
 
          // Process call from checkboxes
          var el = e.target || e.srcElement;                            // Some cross browser work
@@ -284,7 +354,7 @@
       // Process a Debug Scrolling checkbox(es) [func 20210511°1635]
       function setDebugScrolling(e, t) {
 
-         t.beep();                                                     // Just for fun
+         ////t.beep();                                                 // Just for fun
 
          // () Process call from checkbox
          var eColorsPanel = e.target || e.srcElement;                  // Some cross browser work
