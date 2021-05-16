@@ -11,18 +11,22 @@ Other pages : &nbsp;
 
 # Changes
 
-The history of project Terminals
 
-##### log
-- Add Waving Astronaut
-- Shift code around
-- Add page 'Developer Documentation'
+##### version 20210513°1511 — v0.3.1 Dynamic styles per instance
+ - Add Waving Astronaut
+ - Shift code around
+ - Add page 'Developer Documentation'
+ - Dynamic styles per instance [chg 20210513°1441]
+ - Try project name 'Purple Terms'
+
 
 ##### log 20210512°1811 — v0.3.0.6 Lory
 - Add Purple Bellied Lory
 - Try name 'Terminals'
 
+
 ##### log 20210512°1411 — v0.3.0.5 Cleanup
+
 
 ##### log 20210511°1711 — v0.3.0.4 Work on scrolling (Zappelphilipp)
 - Implement plain prompt in aloha.html dispatcher loop
@@ -42,6 +46,7 @@ The history of project Terminals
 - Complete debug borders
 - Fix input prompt
 - Activate instance ID
+
 
 ##### log 20210509°1111 — v0.2.9.9
 - Implement Simple Demo

@@ -1,7 +1,7 @@
 <?php
 /**
  * This module originally constitutes the Daftari PHP entry point,.
- *  Now it is stripped down and adjusted to serve in a Terminals demo
+ *  Now it is stripped down and adjusted to serve in a PurpleTerms demo
  *
  * file      : 20210506°1111 (after 20120906°1241)
  * license   : BSD-3-Clause // // (formerly GNU AGPL v3)
@@ -9,7 +9,7 @@
  * authors   : ncm
  * status    : Applicable
  * encoding  : UTF-8-without-BOM
- * callers   : The Terminals Aloha Demo page // // All HTML pages headers
+ * callers   : The PurpleTerms Aloha Demo page // // All HTML pages headers
  */
 
 /**

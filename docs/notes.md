@@ -31,9 +31,17 @@ _This page contains boring casual developer notes, **totally uninteresting** for
 
 ## Naming <a name="id20210513o1311"></a> &nbsp; <sup><sub><sup><sup>_Note&nbsp;20210513°1311_</sup></sup></sub></sup>
 
-Project name. At some point in development, for easier referencing, this fork
+**Project name**. At some point in development, for easier referencing, this fork
  should rather have a different name than the original project. The first
- try was 'Termjnal', then 'Terminals', than 'PurpleTerms'.
+ try was 'Termjnal', then 'Terminals', then 'PurpleTerms'.
+
+**Identifyer names**. Identifyers in the code are largely left as they come
+ from the original `terminal.js`. New ones I have often type-prefixed , e.g.
+ `sOutput` for a string or `iCounter` for number. Type-prefixing is unpopular
+ with many developers. Anyway, as you see, e.g. Google Closure Compiler makes
+ a great fuzz with types. So do I.
+
+---
 
 ## Cursor blink by CSS? <a name="id20210512o1521"></a> &nbsp; <sup><sub><sup><sup>_Todo 20210512°1521_</sup></sup></sub></sup>
 
@@ -52,7 +60,7 @@ Priority: Low. Would fit the general direction to reduce code wherever possible.
 
 ## Browser Compatibility <a name="notes_browser_compatibility"></a> &nbsp; <sup><sub><sup><sup>_Subject&nbsp;20210512°1311_</sup></sup></sub></sup>
 
-Terminals supports **IE=>9**. Here are some points :
+PurpleTerms supports **IE=>9**. Here are some points :
 
 - Function `scrollTo()` is skipped for IE by feature detection. Thus IE may show rough movements.
 
@@ -259,10 +267,10 @@ An XHR or AJAX feature is in fact the reason why I got my hands dirty with
 
 Having implemented Yevgen's XHR feature into `terminal.js` brings me to
  questions. XHR makes no sense on it`s own right, only together with a backend.
- Since Terminals is a library, not an application, it shall not know, who will
+ Since PurpleTerms is a library, not an application, it shall not know, who will
  use it in which way. So the questions are: (1) Where exactly shall the line
  be drawn between library and user code? (2) Is it already defined, what
- exactly Terminals should do, and what not?
+ exactly PurpleTerms should do, and what not?
 
 I will learn more about this questions, when attempting to switch the Custom
  Demo from the custom module to Yevgen's interface function.
@@ -383,7 +391,7 @@ Further reference(s) :
 
 <img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
-This paragraph is **unrelated** to Terminals. This are little experiments
+This paragraph is **unrelated** to PurpleTerms. This are little experiments
  serving me to understand the differences between
  [GFM](https://github.github.com/gfm/) and my local Markdown renderer
  [Showdown](https://github.com/showdownjs/showdown).

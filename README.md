@@ -1,4 +1,4 @@
-﻿Pages : &nbsp;
+Other pages : &nbsp;
  • ReadMe &nbsp;
  • [API Doc](./docs/api-doc.md) &nbsp;
  • [Dev Doc](./docs/dev-doc.md) &nbsp;
@@ -9,7 +9,7 @@
 
 <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
-# Terminals &nbsp; <sup><sub><sup>v0.3.0.6~~</sup></sub></sup>
+# PurpleTerms &nbsp; <sup><sub><sup>v0.3.1</sup></sub></sup>
 
 Subsections :
  • [Synopsis](#synopsis)
@@ -64,9 +64,9 @@ The word 'console' I find an even more concise designation for such box,
  than terminal, because it carries the term 'solid' in it. A console represents
  the system and must be extra reliable. If it wobbles, the system wobbles.
 
-'Solid' shall be the top guideline keyword for Terminals development. And the
- next important keyword is '*dead simple*', from Terminal.js' original slogan.
- Dead simple for the library users, not necessarily for the library developers.
+'Solid' shall be the top keyword for PurpleTerms development. The next important
+ keyword is '*dead simple*', from Terminal.js' original slogan. Dead simple
+ for the library users, not necessarily for the library developers.
 
 Last not least, imagine speach recognition applied to the box, and out of
  nothing further interesting aspects show up.
@@ -90,7 +90,7 @@ As a developer, you will prefer the source version :
       <script src="terminaljs/terminal.js"></script>
 ```
 
-Now Terminals is ready to operate, and you can call it in the page's body.
+Now PurpleTerms is ready to operate, and you can call it in the page's body.
 
 And what was `terminal.pretty.js` good for? It is of no runtime use, though
  of course it runs. It is an intermediary transformation, just as a convenience

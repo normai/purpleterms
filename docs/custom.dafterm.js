@@ -1,5 +1,5 @@
 ﻿/*!
- * This module operates Terminals
+ * This module operates PurpleTerms
  *
  * file : 20190205°0111 daftari/jsi/dafterm.js
  * license : BSD 3-Clause License // // (formerly GNU AGPL v3)
@@ -147,7 +147,7 @@ Daf.Term.execute = function()
    eDiv.appendChild(Daf.Term.t21.html);
 
    // Launch [seq 20190205°0135]
-   Daf.Term.t21.print('Welcome on Terminals.');
+   Daf.Term.t21.print('Welcome at PurpleTerms.');
    Daf.Term.t21.print('Available commands: beep, spin');
    Daf.Term.t21.input('', Daf.Term.inputz);
 };

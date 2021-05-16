@@ -7,7 +7,7 @@
 # usage        : Write your Closure-Compiler path on a line in
 
 """
-   This minifies Terminals
+   This minifies PurpleTerms
 """
 
 # In this file register your Closure Compiler binary path
@@ -17,7 +17,7 @@ import os, sys
 
 os.chdir(os.path.dirname(__file__))
 
-print('* Terminals build *')
+print('* PurpleTerms build *')
 
 # (.) Get bin path
 # (.1) Read lines                                                      # [seq 20210429°1511]
@@ -35,6 +35,7 @@ if sBinGoCloCom == '' :
    quit()
 
 # Build yes or no?
+# Note. This change-detect algorithm is not really water-proof!
 bBuild = False
 for file in ['./terminal.min.js', './terminal.min.js.map', './terminal.pretty.js'] :
    if not os.path.isfile(file) :
@@ -76,7 +77,7 @@ if bBuild == True :
 else :
    print(' — is up-to-date')
 
-print(' * Terminals building done.')
+print(' * PurpleTerms building done.')
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Links used while make it work with Closure-Compiler in advanced mode :

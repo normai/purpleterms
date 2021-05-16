@@ -40,7 +40,7 @@ For the full text see file [`license.txt`](./../license.txt) please.
 <a name="credits"></a>
 ## Contributors
 
-The following authors contributed to Terminals, or Terminal.js respectively :
+The following authors contributed to PurpleTerms, or Terminal.js respectively :
 
 - **[Dingcheng Yue](https://github.com/DarwinSenior)**
 

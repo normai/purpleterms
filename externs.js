@@ -7,7 +7,7 @@
  */
 
 /**
- *  @fileoverview Public API of Terminals
+ *  @fileoverview Public API of PurpleTerms
  *  @externs
  */
 
@@ -100,6 +100,14 @@ Terminal.connect();
  * @return {string} —
  */
 Terminal.getId();
+
+/**
+ *  Returns the version string of the program
+ *
+ * @id 20210513°0913'12
+ * @return {string} —
+ */
+Terminal.getVersion;
 
 /**
  * ..
