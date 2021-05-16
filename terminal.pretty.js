@@ -1,5 +1,5 @@
 /*
- Terminals v0.3.0.6~~ — Single-file JavaScript for staging terminals on pages
+ PurpleTerms v0.3.0.6~~ — Single-file JavaScript to put up terminals on a web page
  BSD 3-Clause License
  (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -65,6 +65,11 @@ Terminal = function() {
       }
     }, 500);
   };
+  var s_Terminal_Complete = "Terminal_Complete";
+  var s_Terminal_Output = "Terminal_Output";
+  var s_Output_One_Line = "Output_One_Line";
+  var s_Term_OutLine_FormerIn = "Terminal_OutputLine_FormerInput";
+  var s_Terminal_Input = "Terminal_Input";
   var promptInput = function(oTerm, message, iPROMPT_TYPE, callback) {
     var bShouldDisplayInput = iPROMPT_TYPE === _PROMPT_INPUT;
     var inputField = document.createElement("input");
@@ -117,7 +122,7 @@ Terminal = function() {
           return true;
         }
         if (bShouldDisplayInput) {
-          oTerm.print(inputValue, "Terminal_OutputLine_FormerInput");
+          oTerm.print(inputValue, s_Term_OutLine_FormerIn + "_" + this.getId());
         }
         oTerm.html.removeChild(inputField);
         if (oTerm._backend) {
@@ -154,9 +159,9 @@ Terminal = function() {
     }
   };
   var terminalBeep = null;
-  var TerminalConstructor = function(idParam) {
-    var _mountCssRules = function(tihs) {
-      var sIdent = tihs.getId();
+  var TerminalCtor = function(idParam) {
+    var _mountCssRules = function(oThis) {
+      var sIdent = "_" + oThis.getId();
       var sStyleElementId = "Kog2frh5cbfn47pm" + sIdent;
       var sColorCompleteBox = "Magenta";
       var sColorOutputBox = "Gold";
@@ -175,16 +180,17 @@ Terminal = function() {
       var at = document.createAttribute("id");
       at.value = sStyleElementId;
       eStyle.setAttributeNode(at);
-      var sRu1CompleteBox = _debugBorders ? "\n" + "div.Terminal_Complete {" + " " + "border:1px solid " + sColorCompleteBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "div.Terminal_Complete { }";
-      var sRu2OutputBox = _debugBorders ? "\n" + "p.Terminal_Output {" + " " + "border:1px solid " + sColorOutputBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "p.Terminal_Output { }";
-      var sRu3OutputLine = _debugBorders ? "\n" + "div.Output_One_Line { " + "border:1px solid " + sColorOutputLine + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div.Output_One_Line:before {" + " " + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _outputPromptGlobal + "'; }" : "\n" + "div.Output_One_Line { }" + "\n" + "div.Output_One_Line:before { content:'" + _outputPromptGlobal + "'; }";
-      var sRu4OutFormerInput = _debugBorders ? "\n" + "div.Terminal_OutputLine_FormerInput { " + "border:1px solid " + sColorOutLineInput + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div.Terminal_OutputLine_FormerInput:before {" + " " + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }" : "\n" + "div.Terminal_OutputLine_FormerInput { }" + "\n" + "div.Terminal_OutputLine_FormerInput:before { content:'" + 
-      _inputPromptGlobal + "'; }";
+      var sRu1CompleteBox = _debugBorders ? "\n" + "div." + s_Terminal_Complete + sIdent + " {" + " " + "border:1px solid " + sColorCompleteBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "div." + s_Terminal_Complete + sIdent + " { }";
+      var sRu2OutputBox = _debugBorders ? "\n" + "p." + s_Terminal_Output + sIdent + " {" + " " + "border:1px solid " + sColorOutputBox + "; border-radius:0.3em; padding:0.2em;" + " " + "}" : "\n" + "p." + s_Terminal_Output + sIdent + " { }";
+      var sRu3OutputLine = _debugBorders ? "\n" + "div." + s_Output_One_Line + sIdent + " { " + "border:1px solid " + sColorOutputLine + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before {" + " " + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _outputPromptGlobal + "'; }" : "\n" + "div." + s_Output_One_Line + sIdent + " { }" + "\n" + "div." + s_Output_One_Line + sIdent + ":before { content:'" + 
+      _outputPromptGlobal + "'; }";
+      var sRu4OutFormerInput = _debugBorders ? "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { " + "border:1px solid " + sColorOutLineInput + "; border-radius:0.3em; padding:0.2em;" + " }" + "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + ":before {" + " " + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }" : "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { }" + "\n" + "div." + s_Term_OutLine_FormerIn + 
+      sIdent + ":before { content:'" + _inputPromptGlobal + "'; }";
       var sRu5InputLine = "";
       if (_debugBorders) {
-        sRu5InputLine = "\n" + "span.Terminal_Input {" + " " + "border:1px solid " + sColorInputLine + "; border-radius:0.3em; padding:0.2em;" + " " + "}" + "\n" + "span.Terminal_Input:before" + " " + "{" + " " + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }";
+        sRu5InputLine = "\n" + "span." + s_Terminal_Input + sIdent + " {" + " " + "border:1px solid " + sColorInputLine + "; border-radius:0.3em; padding:0.2em;" + " " + "}" + "\n" + "span." + s_Terminal_Input + sIdent + ":before" + " " + "{" + " " + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;" + " " + "padding:0.1em; content:'" + _inputPromptGlobal + "'; }";
       } else {
-        sRu5InputLine = "\n" + "span.Terminal_Input { }" + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }";
+        sRu5InputLine = "\n" + "span." + s_Terminal_Input + sIdent + " { }" + "\n" + "span." + s_Terminal_Input + sIdent + ":before { content:'" + _inputPromptGlobal + "'; }";
       }
       eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine + sRu4OutFormerInput + sRu5InputLine;
       document.getElementsByTagName("head")[0].appendChild(eStyle);
@@ -209,11 +215,14 @@ Terminal = function() {
     this._innerWindow = null;
     this._innerWindow = document.createElement("div");
     this._inputElement = document.createElement("p");
+    this.getId = function() {
+      return this._objId.toString();
+    };
     this._inputLine = document.createElement("span");
-    this._inputLine.className = "Terminal_Input";
+    this._inputLine.className = s_Terminal_Input + "_" + this.getId();
     this._inputPrompt = ">\\00a0";
     this._output = document.createElement("p");
-    this._output.className = "Terminal_Output";
+    this._output.className = s_Terminal_Output + "_" + this.getId();
     this._outputPrompt = "<\\00a0";
     this._shouldBlinkCursor = true;
     this.beep = function() {
@@ -238,9 +247,6 @@ Terminal = function() {
       this._backend = url;
       promptInput(this, "", 1, null);
     };
-    this.getId = function() {
-      return this._objId.toString();
-    };
     this.getVersion = function() {
       return sVersionString;
     };
@@ -251,7 +257,7 @@ Terminal = function() {
       promptInput(this, message, _PROMPT_PASSWORD, callback);
     };
     this.print = function(message, sOptionalRule) {
-      var sRule = sOptionalRule || "Output_One_Line";
+      var sRule = sOptionalRule || s_Output_One_Line + "_" + this.getId();
       var eNewLine = document.createElement("div");
       eNewLine.textContent = message;
       if (_b_Line_Style_FontFamily_Inherit) {
@@ -306,7 +312,7 @@ Terminal = function() {
     this._innerWindow.appendChild(this._output);
     this._innerWindow.appendChild(this._inputElement);
     this._innerWindow.style.padding = "10px";
-    this._innerWindow.className = "Terminal_Complete";
+    this._innerWindow.className = s_Terminal_Complete + "_" + this.getId();
     this.html.appendChild(this._innerWindow);
     this.setBackgroundColor("black");
     this.setHeight("100%");
@@ -324,6 +330,7 @@ Terminal = function() {
     this.html.style.overflow = "auto";
     this.html.style.resize = "auto";
     this._backend = false;
+    _mountCssRules(this);
     return;
   };
   var sBase64_Beep_Mp3 = "//uQZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAABPAAAnOQAJDxQZ" + "GR8mKzExODxDRkZJTE5RUVRXWVlcX2JlZWdqbXBwcnV4e3t9gIODhoiLjo6RlJaZmZyfoaSkp6qs" + "rK+ytbi4ur3Aw8PFyMvOztDT1tbZ3N7h4eTn6ezs7/L09/f6/f8AAAA8TEFNRTMuOThyBK8AAAAA" + "AAAAADQgJAi4TQABzAAAJzkKCAoXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + 
@@ -352,7 +359,7 @@ Terminal = function() {
   "AA0gAAABAAABpAAAACAAADSAAAAEqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqTEFN" + "RTMuOTguMqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/+xBk/4/wAABpAAAACAAADSAAAAEAAAGk" + "AAAAIAAANIAAAASqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpMQU1FMy45OC4yqqqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqv/7EGT/j/AAAGkAAAAIAAANIAAAAQAAAaQAAAAgAAA0gAAA" + "BKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + "qqqqqqqqqqqqqqqq//sQZP+P8AAAaQAAAAgAAA0gAAABAAABpAAAACAAADSAAAAEqqqqqqqqqqqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + 
   "qqr/+xBk/4/wAABpAAAACAAADSAAAAEAAAGkAAAAIAAANIAAAASqqqqqqqqqqqqqqqqqqqqqqqqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqv/7EGT/j/AA" + "AGkAAAAIAAANIAAAAQAAAaQAAAAgAAA0gAAABKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//sQZP+P8AAAaQAAAAgAAA0g" + "AAABAAABpAAAACAAADSAAAAEqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/+xBk/4/wAABpAAAACAAADSAAAAEAAAGkAAAA" + "IAAANIAAAASqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + 
   "qqqqqqqqqqqqqqqqqqqqqqqqqv/7EGT/j/AAAGkAAAAIAAANIAAAAQAAAaQAAAAgAAA0gAAABKqq" + "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" + "qqqqqqqqqqqqQVBFVEFHRVjQBwAAVQAAAAIAAAAAAACgAAAAAAAAAAAOAAAAAAAAAEFydGlzdABT" + "b3VuZEJpYmxlLmNvbQoAAAAAAAAAVGl0bGUAQmVlcCBTb3VuZEFQRVRBR0VY0AcAAFUAAAACAAAA" + "AAAAgAAAAAAAAAAAVEFHQmVlcCBTb3VuZAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRCaWJsZS5j" + "b20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8=";
-  return TerminalConstructor;
+  return TerminalCtor;
 }();
 (function(arr) {
   arr.forEach(function(item) {

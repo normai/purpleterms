@@ -1,5 +1,5 @@
 /*!
- * Terminals v0.3.0.6~~ — Single-file JavaScript to put up terminals on a web page
+ * PurpleTerms v0.3.0.6~~ — Single-file JavaScript to put up terminals on a web page
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/
@@ -198,6 +198,62 @@ Terminal = ( function () {
       }, 500);
    };
 
+   // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+   // () CSS class names bunch [seq 20210513°1411]
+
+   /*
+   Todo : Relocate bunch for sensible place in Navigator tree [todo 20210513°1413]
+   Todo : Tweak identifyer names for sensible alphanumeric order according
+           the style meanings, e.g. top-down from outer box to inner detail
+           elements. [todo 20210513°1414]
+   */
+
+   /**
+    * CSS class name for .. (style 1)
+    *
+    * @id 20210513°1421
+    * @type {string} —
+    * @constant —
+    */
+   var s_Terminal_Complete = 'Terminal_Complete';
+
+   /**
+    * CSS class name for .. (style 2)
+    *
+    * @id 20210513°1422
+    * @type {string} —
+    * @constant —
+    */
+   var s_Terminal_Output = 'Terminal_Output';
+   
+   /**
+    * CSS class name for .. (style 3)
+    *
+    * @id 20210513°1423
+    * @type {string} —
+    * @constant —
+    */
+   var s_Output_One_Line = 'Output_One_Line';
+   
+   /**
+    * CSS class name for .. (style 4)
+    *
+    * @id 20210513°1424
+    * @type {string} —
+    * @constant —
+    */
+   var s_Term_OutLine_FormerIn = 'Terminal_OutputLine_FormerInput';
+   
+   /**
+    * CSS class name for .. (style 5)
+    *
+    * @id 20210513°1425
+    * @type {string} —
+    * @constant —
+    */
+   var s_Terminal_Input = 'Terminal_Input';
+   // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
    /**
     *  ..
     *
@@ -345,8 +401,8 @@ Terminal = ( function () {
                // // oTerm._history.push(inputValue);
                // // oTerm.lasthistory = oTerm._history.length;
 
-               // Added optional second parameter forinput prompt feature [note 20210509°1521]
-               oTerm.print(inputValue, 'Terminal_OutputLine_FormerInput');
+               // Added optional second parameter for pipelining a style name for input prompt feature [note 20210509°1521]
+               oTerm.print(inputValue, s_Term_OutLine_FormerIn + '_' + this.getId()); // Mind the '_' // 'Terminal_OutputLine_FormerInput'
             }
             oTerm.html.removeChild(inputField);
 
@@ -455,18 +511,18 @@ Terminal = ( function () {
        * @todo Either this must be called from a place where it is called only once
        *        or it must shield itself from multiple execution. [todo 20210507°1711]
        * @see For CSS entities see https://www.w3schools.com/cssref/css_entities.asp [ref 20210509°1512]
-       * @param {Object} tihs — Workaround. What is state-of-the-art solution?
+       * @param {Object} oThis — Workaround. What is state-of-the-art solution?
        * @return {undefined}
        */
       ////var _mountCssRules = function () {
-      var _mountCssRules = function (tihs) {
+      var _mountCssRules = function (oThis) {
 
-         var sIdent = tihs.getId();
+         var sIdent = '_' + oThis.getId();
 
-         // Recognize the presently assembled style element
+         // () Recognize the presently assembled style element
          var sStyleElementId = 'Kog2frh5cbfn47pm' + sIdent;
 
-         // Define colors [seq 20210509°1441]
+         // () Define colors [seq 20210509°1441]
          var sColorCompleteBox = 'Magenta';
          var sColorOutputBox = 'Gold';
          var sColorOutputLine = 'GreenYellow';
@@ -476,7 +532,7 @@ Terminal = ( function () {
          var sColorInputLine = 'Red';
          var sColorInputPrompt = 'Yellow';
 
-         // Create style element, beforehand delete any existing [seq 20210508°0923]
+         // () Create style element, beforehand delete any existing [seq 20210508°0923]
          var el = document.getElementById(sStyleElementId);
          if (el) {
             el.remove();                                               // [mark 20210512°1317`11 Compatibility]
@@ -484,60 +540,60 @@ Terminal = ( function () {
          var eStyle = document.createElement('style');
          eStyle.type = 'text/css';
 
-         // Provide ID [seq 20210508°0921]
+         // () Provide ID [seq 20210508°0921]
          var at = document.createAttribute('id');
          at.value = sStyleElementId;
          eStyle.setAttributeNode(at);
 
-         // Ruleset for complete terminal box [seq 20210509°1415]
+         // () Ruleset for complete terminal box [seq 20210509°1415]
          var sRu1CompleteBox = _debugBorders
-                     ? "\n" + 'div.Terminal_Complete {' + ' '
+                     ? "\n" + 'div.' + s_Terminal_Complete + sIdent + ' {' + ' '
                       + 'border:1px solid ' + sColorCompleteBox + '; border-radius:0.3em; padding:0.2em;' + ' '
                        + "}"
-                     : "\n" + 'div.Terminal_Complete { }'
+                     : "\n" + 'div.' + s_Terminal_Complete + sIdent + ' { }'
                       ;
 
-         // Ruleset for output box [seq 20210509°1411]
+         // () Ruleset for output box [seq 20210509°1411]
          var sRu2OutputBox = _debugBorders
-                     ? "\n" + 'p.Terminal_Output {' + ' '
+                     ? "\n" + 'p.' + s_Terminal_Output + sIdent + ' {' + ' '
                       + 'border:1px solid ' + sColorOutputBox + '; border-radius:0.3em; padding:0.2em;' + ' '
                        + "}"
-                     : "\n" + 'p.Terminal_Output { }'
+                     : "\n" + 'p.' + s_Terminal_Output + sIdent + ' { }'
                       ;
 
-         // Ruleset for one line in the output box [seq 20210509°1413]
+         // () Ruleset for one line in the output box [seq 20210509°1413]
          var sRu3OutputLine = _debugBorders
-                    ? "\n" + "div.Output_One_Line { "
+                    ? "\n" + "div." + s_Output_One_Line + sIdent + " { "
                      + 'border:1px solid ' + sColorOutputLine + '; border-radius:0.3em; padding:0.2em;'
                       + ' }'
-                      + "\n" + "div.Output_One_Line:before {"
+                      + "\n" + "div." + s_Output_One_Line + sIdent +  ":before {"
                       + ' ' + "border:1px solid " + sColorOutputPrompt + "; border-radius:0.2em;"
                        + ' ' + "padding:0.1em; content:'" + _outputPromptGlobal
                         + "'; }"
-                   : "\n" + "div.Output_One_Line { }"
-                    + "\n" + "div.Output_One_Line:before { content:'" + _outputPromptGlobal + "'; }"
+                   : "\n" + "div." + s_Output_One_Line + sIdent + " { }"
+                    + "\n" + "div." + s_Output_One_Line + sIdent + ":before { content:'" + _outputPromptGlobal + "'; }"
                      ;
 
-         // Output line dedicated [seq 20210509°1417]
+         // () Output line dedicated [seq 20210509°1417]
          var sRu4OutFormerInput = _debugBorders
-                    ? "\n" + "div.Terminal_OutputLine_FormerInput { "
+                    ? "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { "
                      + 'border:1px solid ' + sColorOutLineInput + '; border-radius:0.3em; padding:0.2em;'
                       + ' }'
-                      + "\n" + "div.Terminal_OutputLine_FormerInput:before {"
+                      + "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + ":before {"
                       + ' ' + "border:1px solid " + sColorOutLineInPrompt + "; border-radius:0.2em;"
                        + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
                         + "'; }"
-                   : "\n" + "div.Terminal_OutputLine_FormerInput { }"
-                    + "\n" + "div.Terminal_OutputLine_FormerInput:before { content:'" + _inputPromptGlobal +"'; }"
+                   : "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + " { }"
+                    + "\n" + "div." + s_Term_OutLine_FormerIn + sIdent + ":before { content:'" + _inputPromptGlobal +"'; }"
                      ;
 
-         // Rule set for input span [seq 20190312°0451]
+         // () Rule set for input span [seq 20190312°0451]
          var sRu5InputLine = '';
          if ( _debugBorders ) {
-            sRu5InputLine  = "\n" + "span.Terminal_Input {"
+            sRu5InputLine  = "\n" + "span." + s_Terminal_Input + sIdent + " {"
                      + ' ' + 'border:1px solid ' + sColorInputLine + '; border-radius:0.3em; padding:0.2em;'
                       + ' ' + "}"
-                      + "\n" + "span.Terminal_Input:before"
+                      + "\n" + "span." + s_Terminal_Input + sIdent + ":before"
                       + ' ' + "{"
                       + ' ' + "border:1px solid " + sColorInputPrompt + "; border-radius:0.2em;"
                        + ' ' + "padding:0.1em; content:'" + _inputPromptGlobal
@@ -545,12 +601,12 @@ Terminal = ( function () {
                          ;
          }
          else {
-            sRu5InputLine = "\n" + "span.Terminal_Input { }"
-                     + "\n" + "span.Terminal_Input:before { content:'" + _inputPromptGlobal + "'; }"
+            sRu5InputLine = "\n" + "span." + s_Terminal_Input + sIdent + " { }"
+                     + "\n" + "span." + s_Terminal_Input + sIdent + ":before { content:'" + _inputPromptGlobal + "'; }"
                       ;
          }
 
-         // Merge th fragments and apply to style element
+         // () Merge the fragments and apply to style element
          eStyle.innerHTML = sRu1CompleteBox + sRu2OutputBox + sRu3OutputLine
                            + sRu4OutFormerInput + sRu5InputLine
                             ;
@@ -613,17 +669,6 @@ Terminal = ( function () {
          terminalBeep.volume = 0.05;
       }
 
-/*
-      // Provide style(s) [line 20210507°1631]
-      // note : Here the function is called with each terminal created on the
-      //    page, which is not good. It shall be called exactly once per page
-      //    load. But first I want get it work at all. Then, be best option is
-      //    to put it somewhere, where it is called only once. The second best
-      //    option is, that the function shields itsels from double mounting.
-      ////this._mountCssRules();
-      ////_mountCssRules();
-      _mountCssRules(this); // Perhaps too earyl?! The other elements are created only below!
-*/
       /**
        *  Private field ..
        *
@@ -683,6 +728,24 @@ Terminal = ( function () {
       this._inputElement = document.createElement('p');
 
       /**
+       *  Returns the ID of this instance
+       *
+       * @id 20210509°1631
+       *
+       * @todo The method was empirically shifted here from below, though that
+       *    violates the current alphanumerical member order. Reason: Property
+       *    20190312°0441 _inputLine will need it (see chg 20210513°1441). Find
+       *    a better place, not violating the general order. [todo 20210513°1441]
+       *
+       * @note Use toString() to satiafy GoCloCom — But better were to make _objId
+       *     natively a string-only. See issue 20210502°1341 'GoCloCom parameter types'
+       * @return {string} —
+       */
+      this.getId = function () {
+         return this._objId.toString();
+      };
+
+      /**
        *  The input span element gets ruleset 20190312°0451 applied, which
        *  is differrent according to the debug borders flag (var 20210508°0913)
        *
@@ -690,7 +753,7 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._inputLine = document.createElement('span');
-      this._inputLine.className = 'Terminal_Input';
+      this._inputLine.className = s_Terminal_Input + '_' + this.getId(); // Mind the '_' // 'Terminal_Input';
 
       /**
        *  Private field, tells the input prompt
@@ -707,7 +770,7 @@ Terminal = ( function () {
        * @type {Element} —
        */
       this._output = document.createElement('p');
-      this._output.className = 'Terminal_Output';
+      this._output.className = s_Terminal_Output + '_' + this.getId(); // Mind the '_' // 'Terminal_Output';
 
       /**
        *  Private field, tells the output prompt.
@@ -797,16 +860,9 @@ Terminal = ( function () {
          promptInput(this, '', 1, null);                               // GoCloCom complained about original parameter 4 'false'. Is 'null' correct? See issue 20210502°1341 'Learn GoCloCom parameter types'
       };
 
-      /**
-       *  Returns the ID of this instance
-       *
-       * @id 20210509°1631
-       * @return {string} —
-       */
-      this.getId = function () {
-         // //return this._objId;                                      // GoCloCom complains 'JSC_TYPE_MISMATCH found: (null|string), required: string'
-         return this._objId.toString();                                // GoCloCom is satisfied — But better were to make _objId natively a string-only. See issue 20210502°1341 'Learn GoCloCom parameter types'
-      };
+
+      // Here was function 20210509°1631 this.getId() located, but shifted
+      //  away during the implementation of CSS-per-instance.
 
       /**
        *  Returns the version string of the program
@@ -855,7 +911,7 @@ Terminal = ( function () {
          // Process optional parameter [seq 20210509°1443]
          // Note. Use traditional parameter processing techique instead
          //  modern optional parameter syntax for purpose of IE compatibility
-         var sRule = sOptionalRule || 'Output_One_Line';
+         var sRule = sOptionalRule || s_Output_One_Line + '_' + this.getId(); // Mind the '_' // 'Output_One_Line'
 
          var eNewLine = document.createElement('div');
          eNewLine.textContent = message;
@@ -1001,7 +1057,7 @@ Terminal = ( function () {
       this._innerWindow.appendChild(this._output);
       this._innerWindow.appendChild(this._inputElement);
       this._innerWindow.style.padding = '10px';
-      this._innerWindow.className = 'Terminal_Complete';
+      this._innerWindow.className = s_Terminal_Complete + '_' + this.getId(); // Mind the '_' // 'Terminal_Complete'
       this.html.appendChild(this._innerWindow);
 
       // ~~ Style the terminal [seq 20170501°0922]
