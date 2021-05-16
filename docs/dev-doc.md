@@ -81,8 +81,6 @@ Howsoever. Even if the icons are not clear in every detail, graphics
 
 &nbsp;
 
-&nbsp;
-
 ---
 
 <sup><sub>File 20210513°1111 ܀Ω</sub></sup>

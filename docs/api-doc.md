@@ -7,7 +7,7 @@ Other pages : &nbsp;
  • [Changes](./changes.md) &nbsp;
  • [Credits](./credits.md)
 
-<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
+<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="192" height="192" alt="Purple-Bellied Lory">
 
 # API Documentation
 
@@ -139,7 +139,7 @@ Accepts CSS-compliant dimension value
 <a name="api_properties"></a>
 ## Properties
 
-<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
 
 #### html
 

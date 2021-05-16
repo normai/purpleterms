@@ -7,7 +7,7 @@ Other pages : &nbsp;
  • [Changes](./changes.md) &nbsp;
  • Credits
 
-<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="192" height="192" alt="Purple-Bellied Lory">
+<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 
 <a name="license"></a>
 # Credits

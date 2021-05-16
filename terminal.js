@@ -402,7 +402,7 @@ Terminal = ( function () {
                // // oTerm.lasthistory = oTerm._history.length;
 
                // Added optional second parameter for pipelining a style name for input prompt feature [note 20210509°1521]
-               oTerm.print(inputValue, s_Term_OutLine_FormerIn + '_' + this.getId()); // Mind the '_' // 'Terminal_OutputLine_FormerInput'
+               oTerm.print(inputValue, s_Term_OutLine_FormerIn + '_' + oTerm.getId()); // Mind the '_' // 'Terminal_OutputLine_FormerInput'
             }
             oTerm.html.removeChild(inputField);
 
@@ -501,6 +501,24 @@ Terminal = ( function () {
     */
    ////var TerminalConstructor = function (idParam) {
    var TerminalCtor = function (idParam) {
+
+      /**
+       *  Returns the ID of this instance
+       *
+       * @id 20210509°1631
+       *
+       * @todo The method was empirically shifted here from below, though that
+       *    violates the current alphanumerical member order. Reason: Property
+       *    20190312°0441 _inputLine will need it (see chg 20210513°1441). Find
+       *    a better place, not violating the general order. [todo 20210513°1441]
+       *
+       * @note Use toString() to satiafy GoCloCom — But better were to make _objId
+       *     natively a string-only. See issue 20210502°1341 'GoCloCom parameter types'
+       * @return {string} —
+       */
+      this.getId = function () {
+         return this._objId.toString();
+      };
 
       // Not sure whether as first in constructor is the best location.
       //  I just locate it after the order from the NetBeans Navigator.
@@ -612,7 +630,6 @@ Terminal = ( function () {
                             ;
          document.getElementsByTagName('head')[0].appendChild(eStyle);
       };
-
 
       /*
        * ===============================================
@@ -741,10 +758,11 @@ Terminal = ( function () {
        *     natively a string-only. See issue 20210502°1341 'GoCloCom parameter types'
        * @return {string} —
        */
+/*
       this.getId = function () {
          return this._objId.toString();
       };
-
+*/
       /**
        *  The input span element gets ruleset 20190312°0451 applied, which
        *  is differrent according to the debug borders flag (var 20210508°0913)

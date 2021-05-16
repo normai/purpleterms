@@ -12,7 +12,7 @@ Other pages : &nbsp;
 # Changes
 
 
-##### version 20210513°1513 — v0.3.1 Dynamic styles per instance
+##### version 20210513°1515 — v0.3.1 Dynamic styles per instance
  - Add Waving Astronaut
  - Shift code around
  - Add page 'Developer Documentation'
@@ -182,7 +182,7 @@ Other pages : &nbsp;
 #### log 2014-11-12'04:36.GMT+1
 - DarwinSenior — Added and documented password feature
 
-<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
 
 #### log 2013-04-05'10:06.GMT+2
 - Eric Österberg — First commit to

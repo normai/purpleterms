@@ -122,7 +122,7 @@ Terminal = function() {
           return true;
         }
         if (bShouldDisplayInput) {
-          oTerm.print(inputValue, s_Term_OutLine_FormerIn + "_" + this.getId());
+          oTerm.print(inputValue, s_Term_OutLine_FormerIn + "_" + oTerm.getId());
         }
         oTerm.html.removeChild(inputField);
         if (oTerm._backend) {
@@ -160,6 +160,9 @@ Terminal = function() {
   };
   var terminalBeep = null;
   var TerminalCtor = function(idParam) {
+    this.getId = function() {
+      return this._objId.toString();
+    };
     var _mountCssRules = function(oThis) {
       var sIdent = "_" + oThis.getId();
       var sStyleElementId = "Kog2frh5cbfn47pm" + sIdent;
@@ -215,9 +218,6 @@ Terminal = function() {
     this._innerWindow = null;
     this._innerWindow = document.createElement("div");
     this._inputElement = document.createElement("p");
-    this.getId = function() {
-      return this._objId.toString();
-    };
     this._inputLine = document.createElement("span");
     this._inputLine.className = s_Terminal_Input + "_" + this.getId();
     this._inputPrompt = ">\\00a0";
