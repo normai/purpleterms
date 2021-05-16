@@ -7,7 +7,7 @@ Other pages : &nbsp;
  • [Changes](./changes.md) &nbsp;
  • [Credits](./credits.md)
 
-<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
+<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 
 # Developers Documentation
 
@@ -75,7 +75,7 @@ The icons are to be taken with a grain of salt anyway. The icons are made for
 Howsoever. Even if the icons are not clear in every detail, graphics
  like above I find a great help to comprehend a program's concept.
 
-<img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Kosmonaut">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Kosmonaut">
 
 <sup><sub>Todo: Make a icon legend.</sub></sup> <sup><sub><sup>20210513°1211</sup></sub></sup>
 

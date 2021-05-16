@@ -1,5 +1,5 @@
 /*!
- * PurpleTerms v0.3.0.1 — Single-file JavaScript to put up terminals on a web page
+ * PurpleTerms v0.3.1 — Single-file JavaScript to put up terminals on a web page
  * BSD 3-Clause License
  * (c) 2014 Erik Österberg | https://github.com/eosterberg/terminaljs/
  * (c) 2021 Norbert C. Maier and contributors | https://github.com/normai/terminaljs/

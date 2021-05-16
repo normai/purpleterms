@@ -7,7 +7,7 @@ Other pages : &nbsp;
  • [Changes](./changes.md) &nbsp;
  • Credits
 
-<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="192" height="192" alt="Purple-Bellied Lory">
+<img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="192" height="192" alt="Purple-Bellied Lory">
 
 <a name="license"></a>
 # Credits
@@ -92,7 +92,7 @@ Why have I added my name in the **copyright** lines?
 This fork is no more a contribution, but a total rewrite, including
 significant extensions.
 
-<img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="128" height="128" alt="Waving Astronaut">
 
 About the '_and contributors_' ingredient exists an instructive thread on
 [StackExchange](https://opensource.stackexchange.com/questions/5508/what-does-and-contributors-in-the-copyright-byline-imply).
