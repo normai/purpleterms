@@ -11,6 +11,9 @@ Other pages : &nbsp;
 
 # Changes
 
+##### version 2021xxxx°xxxx — v0.3.x.x
+ - ..
+
 ##### version 20210513°1651 — v0.3.1.1 Volume control
  - Little fixes
  - Add API function setVolume() [chg 20210513°1625]

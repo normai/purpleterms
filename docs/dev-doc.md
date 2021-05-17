@@ -86,7 +86,7 @@ Howsoever. Even if the icons are not clear in every detail, graphics
 
 <img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Kosmonaut">
 
-<sup><sub>Todo: Make a icon legend.</sub></sup> <sup><sub><sup>20210513°1211</sup></sub></sup>
+<sup><sub>Todo: Make an icon legend.</sub></sup> <sup><sub><sup>20210513°1211</sup></sub></sup>
 
 &nbsp;
 

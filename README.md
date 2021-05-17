@@ -9,11 +9,10 @@ Other pages : &nbsp;
 
 <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
-# Purple Terminals &nbsp;<sup><sub><sup>v0.3.1.1~</sup></sub></sup>
+# Purple Terminals &nbsp;<sup><sub><sup>v0.3.1.2~~</sup></sub></sup>
 
 Subsections :
  • [Synopsis](#synopsis)
- • [Vision](#vision)
  • [Usage](#usage)
 
 <a name="synopsis"></a>
@@ -23,7 +22,7 @@ Slogan : Single-file JavaScript to put up terminals on a web page
 
 License : BSD 3-Clause License
 
-Status : Under overhaul.
+Status : Applicable.
 
 Here are the changes since forking from the
  [original project](https://github.com/eosterberg/terminaljs) :
@@ -52,24 +51,6 @@ I have stirred the code violently but maintained **backward-compatibility**.
 
 The project got a bit inflated with files. Don't let this distract you.
  All that matters and all you need, is one single file: `terminal.js`.
-
-<a name="vision"></a>
-## Vision
-
-Today a terminal seems a toy. But still e.g. in Windows many system
- tasks are not available from Explorer, only from console. Why?
- Because computers natively do communicate in terms of commands.
-
-The word 'console' I find an even more concise designation for such box,
- than terminal, because it carries the term 'solid' in it. A console represents
- the system and must be extra reliable. If it wobbles, the system wobbles.
-
-'Solid' shall be the top keyword for PurpleTerms development. The next important
- keyword is '*dead simple*', from Terminal.js' original slogan. Dead simple
- for the library users, not necessarily for the library developers.
-
-Last not least, imagine speach recognition applied to the box, and out of
- nothing further interesting aspects show up.
 
 <a name="usage"></a>
 ## Usage
