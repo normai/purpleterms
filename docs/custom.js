@@ -161,7 +161,7 @@ Daf.Term.execute = function()
    eDiv.appendChild(Daf.Term.t21.html);
 
    // Launch [seq 20190205°0135]
-   Daf.Term.t21.print('Welcome to PurpleTerms ' + Daf.Term.t21.getVersion());
+   Daf.Term.t21.print('Welcome to PurpleTerms ' + Daf.Term.t21.getVersion() + ' Custom Demo.');
    Daf.Term.t21.input(Daf.Term.sHelp, Daf.Term.inputz);
 };
 
