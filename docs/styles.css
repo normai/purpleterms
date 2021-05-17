@@ -80,4 +80,16 @@ code { font-size:1.3em; } /* large */ /* rule 20170901°1141 */
                            }
    }
 
+
+/**
+ * ruleset 20180909°0441 (after 20100315°1943)
+ */
+a.Extern2 {
+   padding:0 0 0 1.1em;
+   background-image:url('data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiA8dGV4dCB4PSIwJSIgeT0iOTAlIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iTWFnZW50YSI+4oaXPC90ZXh0Pjwvc3ZnPg==');
+}
+a.Extern2:hover {
+   background-color:LemonChiffon;                      /* LightGreen */
+}
+
 /* eof */

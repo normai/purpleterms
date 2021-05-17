@@ -56,7 +56,7 @@ Daf.Term.isPhpAvailable = null;
  * @type {string} —
  * @constant —
  */
-Daf.Term.sHelp = "Commands: beep, clear, help, spin (needs PHP)";
+Daf.Term.sHelp = "Commands: beep, clear, help, spin.";
 
 /**
  *  This method performs the AJAX request
@@ -70,8 +70,8 @@ Daf.Term.ajaxRequest = function()
    'use strict';
 
    // () Assemble shipment ingredients [seq 20190209°0322]
-   var sTargetUrl = './custom.Go.php' + '?cmd=' + 'spin';
-   var sMsgToSend = 'Hello spin ..';
+   var sTargetUrl = './custom.php' + '?cmd=' + 'spin';
+   var sMsgToSend = 'Hello backend spinner ..';
 
    // Get Ajax performer object [seq 20190209°0323]
    // See todo 20190209°0836 'XMLHttpRequest availability'
@@ -147,7 +147,7 @@ Daf.Term.execute = function()
    eDiv.appendChild(Daf.Term.t21.html);
 
    // Launch [seq 20190205°0135]
-   Daf.Term.t21.print('Welcome at PurpleTerms ' + Daf.Term.t21.getVersion());
+   Daf.Term.t21.print('Welcome to PurpleTerms ' + Daf.Term.t21.getVersion());
    Daf.Term.t21.input(Daf.Term.sHelp, Daf.Term.inputz);
 };
 
@@ -187,7 +187,7 @@ Daf.Term.interpret = function(sCmd)
    'use strict';
 
    var sRet = '';
-   switch (sCmd)
+   switch (sCmd.toLowerCase())
    {
       case 'beep' :
          Daf.Term.t21.beep();

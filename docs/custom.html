@@ -3,12 +3,12 @@
 <head>
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
    <title>PurpleTerms Custom Demo</title>
-   <?php if (file_exists("./custom.Go.php")) { include("./custom.Go.php"); } ?>
-   <!-- script src="./custom.trektautils.js"></script -->
-   <script src="./../terminal.js"></script>
-   <script src="./custom.dafterm.js" data-note="Remember todo 20210429°0921 'Settle TerminalJs calling'"></script>
+   <link rel="canonical" href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/docs/custom.html">
    <link rel="shortcut icon" href="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png">
    <link rel="stylesheet" href="./styles.css" />
+   <?php if (file_exists("./custom.php")) { include("./custom.php"); } ?>
+   <script src="./custom.js"></script>
+   <script src="./../terminal.js"></script>
 </head>
 
 <body class="BodyFace12Normal">
@@ -43,17 +43,14 @@
   </h1>
 
   <p style="position:relative; z-index:9900;">
-               This pae is called 'Custom Demo', because there are more files
-               involved, than only <code>terminal.js</code>.
-               Those provide you boiler plate code how to
-               integrate PurpleTerms into your system, especially how
-               to communicate via AJAX to a PHP backend.
+               This page is called Custom Demo, because beside <code>terminal.js</code>
+               itself, custom files are involved. This provides you boiler plate code to
+               communicate from PurpleTerms via AJAX with a PHP backend module.
   </p>
 
   <p id="i20160622o0422" style="position:relative; z-index:9900;">
-               The AJAX functionality will only be available, if you
-               run this page with PHP available, e.g. from
-               your localhost development server.
+               This demo will only run fully functional, if is <b>PHP</b> available!
+               E.g. if you run this page on your localhost development server.
   </p>
 
   <div style="border:2px solid SkyBlue; margin-top:1.1em;" id="Furniture_20190205o0211_Terminal">
@@ -63,7 +60,7 @@
       &nbsp;
       <?php
          // Canary element [line 20210509°1021]
-         // See custom.dafterm.js seq 20210509°1041 'Determine PHP availability'
+         // See custom.js seq 20210509°1041 'Determine PHP availability'
          // ASCII : 0x3c = '<', 0x3e = '>', 0x48 = 'H', 0x50 = 'P'
          echo ( chr(0x3c) . 'span' . chr(0x3e)
                . chr(0x50) . chr(0x48) . chr(0x50) . ' is available'
@@ -73,41 +70,31 @@
       &nbsp;
   </p>
 
-  <img src="./20210512o1743.waving-astronaut.v2.p12.png" style="float:left; padding:2.1em 1.1em 0 0;" width="96" height="96" alt="Waiving Kosmonaut">
+  <img src="./20210512o1743.waving-astronaut.v2.p12.png" style="float:left; padding:3.7em 1.1em 0 0;" width="96" height="96" alt="Waiving Kosmonaut">
 
   <div class="FontTodo" style="padding-top:2.7em;" id="id20210514o0921">
                Todo : Above demo is in fact two demos.
-               Beside <b>AJAX</b>, it demonstrates a <b>long-running PHP task</b>,
-               which is a topic on it's own right. Separate the two. In a
-               <b>first</b> demo show the normal single-request AJAX call. In
+               Beside simple <b>AJAX</b>, it demonstrates a <b>long-running PHP task</b>,
+               which is a topic on it's own right. Separate the two subjects. In
+               a <b>first</b> demo show the normal single-request AJAX call. In
                a <b>second</b> demo show the long-running <i>spin</i> task with
                continuous frontend/backend communication.
                <span class="FontTimestamp" style="color:Red;">Todo&nbsp;20210514°0921</span>
   </div>
 
-  <div style="clear:both;"></div>
-
-  <p style="display:none;" id="id20210203o0412">
-               Currently exists no online version of this page with PHP available.
-  </p>
-
-  <p style="display:none;" id="id20210203o0414">
-               This page is taken from
-               <a href="https://downtown.trilo.de/svn/daftaridev/trunk/daftari/panels/tools.html">downtown.trilo.de/&#8203;svn/&#8203;daftaridev/&#8203;trunk/&#8203;daftari/&#8203;panels/&#8203;tools.html</a>,
-               then stripped down and adjusted to the present environment.
-  </p>
+  <div style="clear:both;">
+  </div>
 
   <p class="Good12Bye" style="display:none;">
                Bye.
   </p>
 
-  <div style='clear:both'>
   </div>
 
  <p class="Footer13Referer" style="padding-right:2.1em;">
-    <span class="Footer13Url">www.trekta.biz/.../terminaljs/docs/<a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/docs/custom.html">custom.html</a></span>
+               <span class="Footer13Url">www.trekta.biz/.../terminaljs/docs/<a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/docs/custom.html">custom.html</a></span>
                <span class="Footer13Copy">© 2021 Norbert C. Maier</span>
-               <span class="Footer13License">Page license: <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="extern" data-webshot="20180503°2122" id="i20190124o1513">CC BY-SA 4.0</a></span>
+               <span class="Footer13License">Page license: <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="Extern2" data-webshot="20180503°2122" id="i20190124o1513">CC BY-SA 4.0</a></span>
                <span class="Footer13PageId">20210508°1511</span>
  </p>
 

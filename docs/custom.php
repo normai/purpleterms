@@ -236,14 +236,6 @@ class Spider
    {
       $sRet = "";
 
-      //// // [line 20190312°0731]
-      //// self::$cfg = Configo::getInstance();
-      ////
-      //// // Guarantee valid folder value [seq 20190312°0521]
-      //// $a = self::analyseCurrent($sTarget_);
-      //// $sCurrFolder = $a[0];                                       // Must be an existing folder
-      //// $sCurrFile = $a[1];                                         // Does not need to exist
-
       // [seq 20190312°0531]
       ////$sNext = self::getNextEntry($sCurrFolder, $sCurrFile);
       $sNext = self::getNextEntry();
@@ -287,14 +279,6 @@ class Spider
 
       return $sNext;
    }
-
-   //// /**
-   ////  * @id 20190312°0721
-   ////  * @todo Possibly create and store this in Go.php, since there is the single entry point
-   ////  * @var {Object} Store the Configo instance
-   ////  */
-   //// private static $cfg = NULL;
-
 }
 
 /* eof */
