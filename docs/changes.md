@@ -11,11 +11,10 @@ Other pages : &nbsp;
 
 # Changes
 
-##### version 2021xxxx°xxxx — v0.3.x.x
+##### version 20210515°0911 — v0.3.2 — Module name `purpleterms.js`
  - Merge custom JavaScript and custom PHP files [chg 20210514°0931]
  - Make Custom Demo passable
- - Rename files terminal.* to purpleterms.*
- - ..
+ - Rename files `terminal.*` to `purpleterms.*` [chg 20210515°0911]
 
 ##### version 20210513°1651 — v0.3.1.1 Volume control
  - Little fixes
