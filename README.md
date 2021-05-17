@@ -195,11 +195,15 @@ Sometimes, you need not a string from the user, but one plain keypress
 
 ### Step 6 — Get sophisticated <a name="id20210514o1631"></a>
 
-Please inspect the demo files with their varying degree of sophistication :
+Inspect the demo files with their varying degree of sophistication :
 [`aloha.html`](./aloha.html)
-[`simple.html`](./simple.html)
-[`custom.html`](./custom.html)
-[`develop.html`](./develop.html)
+[`simple.html`](./docs/simple.html)
+[`custom.html`](./docs/custom.html)
+[`develop.html`](./docs/develop.html)
+
+Or try them
+ [<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" width="32" height="32">](https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/aloha.html)
+**[online](https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/aloha.html)**
 
 <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
 
