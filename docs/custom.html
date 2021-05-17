@@ -42,44 +42,22 @@
                PurpleTerms Custom Demo
   </h1>
 
-  <p style="margin-top:3.1em;">
-               This page is an example of integrating PurpleTerms into
-               a <b>custom environment</b>. And it demonstrates <b>AJAX</b>
-               communicaton, or XHR respectively, with a PHP backend module.
-               The present AJAX/XHR feature does not (yet) utilize the PurpleTerms
-               built-in <code>connect()</code> function, but instead an external
-               custom module <a href="./custom.dafterm.js">custom.dafterm.js</a>.
+  <p style="position:relative; z-index:9900;">
+               This pae is called 'Custom Demo', because there are more files
+               involved, than only <code>terminal.js</code>.
+               Those provide you boiler plate code how to
+               integrate PurpleTerms into your system, especially how
+               to communicate via AJAX to a PHP backend.
   </p>
 
-  <p id="i20160622o0422" style="margin:0px;">
-               The box knows two commands.
-               <code>beep</code> should always work.
-               <code>spin</code> works only with <b>PHP</b> available.
-               PHP must be set to recognize PHP code inside HTML,
-               e.g. like in your local development environment.
-               The spinner has no <code>stop</code> command, it will stop after
-               erroneous input or page refresh.
+  <p id="i20160622o0422" style="position:relative; z-index:9900;">
+               The AJAX functionality will only be available, if you
+               run this page with PHP available, e.g. from
+               your localhost development server.
   </p>
 
   <div style="border:2px solid SkyBlue; margin-top:1.1em;" id="Furniture_20190205o0211_Terminal">
   </div>
-
-  <p id="id20210203o0412">
-               Currently exists no online version of this page with PHP available.
-  </p>
-
-  <p class="FontTodo" id="id20210204o0332">
-               Todo : Condense the Custom demo. Throw out unrelated code.
-               Merge the two JS files and merge the two PHP files, so it are
-               then 3 files instead of now 5 files.
-               <span class="FontTimestamp" style="color:Red;">Todo&nbsp;20210513°1321</span>
-  </p>
-
-  <p style="display:none;" id="id20210203o0414">
-               This page is taken from
-               <a href="https://downtown.trilo.de/svn/daftaridev/trunk/daftari/panels/tools.html">downtown.trilo.de/&#8203;svn/&#8203;daftaridev/&#8203;trunk/&#8203;daftari/&#8203;panels/&#8203;tools.html</a>,
-               then stripped down and adjusted to the present environment.
-  </p>
 
   <p style="display:table-cell; min-width:7.1em;" id="Is_PHP_Available">
       &nbsp;
@@ -95,11 +73,48 @@
       &nbsp;
   </p>
 
+  <div class="FontTodo" style="padding-top:2.7em;" id="id20210514o0921">
+               Todo : Above demo is in fact two demos in one.
+               <b>Beside just AJAX</b>, it demonstrates a <b>long-running PHP task</b>,
+               which is a topic on it's own right.
+               Simplify this. In a <b>first</b> demo provide a normal one-time AJAX call,
+               and in a dedicated <b>second</b> demo show the long-running <i>spin</i> task.
+               <span class="FontTimestamp" style="color:Red;">Todo&nbsp;20210514°0921</span>
+  </div>
+
+ <img src="./20210512o1743.waving-astronaut.v2.p12.png" style="float:left; padding:2.1em 1.1em 0 0;" width="96" height="96" alt="Waiving Kosmonaut">
+
+  <div class="FontTodo" style="padding-top:2.7em;" id="id20210204o0332">
+               Todo : Condense the Custom Demo. (1) Throw out unrelated code.
+               (2) Merge the two JavaScript files
+               <a href="./custom.dafterm.js" style="color:Red;"><code>custom.dafterm.js</code></a> and
+               <a href="./custom.trektautils.js" style="color:Red;"><code>custom.trektautils.js</code></a>
+               into <code>custom.js</code>.
+               (3) Merge the two PHP files
+               <a href="./custom.Go.php" style="color:Red;"><code>custom.Go.php</code></a> and
+               <a href="./custom.Spider.php" style="color:Red;"><code>custom.Spider.php</code></a>
+               into <code>custom.php</code>.
+               <span class="FontTimestamp" style="color:Red;">Todo&nbsp;20210513°1321</span>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  <p style="display:none;" id="id20210203o0412">
+               Currently exists no online version of this page with PHP available.
+  </p>
+
+  <p style="display:none;" id="id20210203o0414">
+               This page is taken from
+               <a href="https://downtown.trilo.de/svn/daftaridev/trunk/daftari/panels/tools.html">downtown.trilo.de/&#8203;svn/&#8203;daftaridev/&#8203;trunk/&#8203;daftari/&#8203;panels/&#8203;tools.html</a>,
+               then stripped down and adjusted to the present environment.
+  </p>
+
   <p class="Good12Bye" style="display:none;">
                Bye.
   </p>
 
- </div>
+  <div style='clear:both'>
+  </div>
 
  <p class="Footer13Referer" style="padding-right:2.1em;">
                <span class="Footer13Url">&nbsp;</span>

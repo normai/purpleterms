@@ -40,15 +40,6 @@ Daf = window.Daf || {};
  */
 Daf.Term = Daf.Term || {};
 
-/////**
-//// *  This property tells the input prompt to show
-//// *
-//// * @id 20210506°1231
-//// * @callers
-//// * @const {string} —
-//// */
-////Daf.Term.inputPrompt = '> ';
-
 /**
  *  This flag is self-explanatory
  *
@@ -57,6 +48,15 @@ Daf.Term = Daf.Term || {};
  * @const {boolesn|null} —
  */
 Daf.Term.isPhpAvailable = null;
+
+/**
+ *  Help string
+ *
+ * @id 20210514°0911
+ * @type {string} —
+ * @constant —
+ */
+Daf.Term.sHelp = "Commands: beep, clear, help, spin (needs PHP)";
 
 /**
  *  This method performs the AJAX request
@@ -147,9 +147,8 @@ Daf.Term.execute = function()
    eDiv.appendChild(Daf.Term.t21.html);
 
    // Launch [seq 20190205°0135]
-   Daf.Term.t21.print('Welcome at PurpleTerms.');
-   Daf.Term.t21.print('Available commands: beep, spin');
-   Daf.Term.t21.input('', Daf.Term.inputz);
+   Daf.Term.t21.print('Welcome at PurpleTerms ' + Daf.Term.t21.getVersion());
+   Daf.Term.t21.input(Daf.Term.sHelp, Daf.Term.inputz);
 };
 
 /**
@@ -164,17 +163,14 @@ Daf.Term.inputz = function(sCmd)
 {
    'use strict';
 
-   // Process current input
-   Daf.Term.t21.clear();
-   ////Daf.Term.t21.print(Daf.Term.inputPrompt + sCmd);                // '> '
-   Daf.Term.t21.print(sCmd);
-
    // Do job
    var sRet = Daf.Term.interpret(sCmd);
-   Daf.Term.t21.print(sRet);
+   if (sRet !== '') {
+      Daf.Term.t21.print(sRet);
+   }
 
    // Wait for next input
-   Daf.Term.t21.input('', Daf.Term.inputz);
+   Daf.Term.t21.input(null, Daf.Term.inputz);
 };
 
 /**
@@ -195,23 +191,38 @@ Daf.Term.interpret = function(sCmd)
    {
       case 'beep' :
          Daf.Term.t21.beep();
-         sRet = "Could you hear me beeping?";
+         sRet = "Can you hear me beeping?";
          break;
-      case 'spin' :
-         Daf.Term.bSpinAutoRun = true;
 
-         // [condition 20210509°1051]
+      case 'clear' :
+         Daf.Term.t21.clear();
+         break;
+
+      case 'help' :
+         Daf.Term.t21.print(Daf.Term.sHelp);
+         break;
+
+      case 'spin' :
+
+         // Use AJAX [condition 20210509°1051]
+         Daf.Term.bSpinAutoRun = true;
          if ( Daf.Term.isPhpAvailable ) {
             Daf.Term.runSpin();
-            sRet = "Spinning ..";                                      // "Scanning ..";
+            sRet = "Spinning (Stop with invalid input, may last a second then) .."; // "Scanning ..";
          }
          else {
-            sRet = "Cannot spin. PHP is not available.";
+            sRet = "Cannot spin — PHP is not available.";
          }
          break;
+
       default :
-         Daf.Term.bSpinAutoRun = false;
-         sRet = 'Error: "' + sCmd + '"';
+         if (Daf.Term.bSpinAutoRun) {
+            sRet = 'Stopped spinning with "' + sCmd + '".';
+            Daf.Term.bSpinAutoRun = false;
+         }
+         else {
+            sRet = 'Error: "' + sCmd + '"';
+         }
    }
    return sRet;
 };

@@ -4,7 +4,7 @@
    <meta charset="utf-8" data-encoding="UTF-8-with-BOM">
    <title>PurpleTerms Aloha</title>
    <script src="./terminal.js"></script>
-   <link rel="shortcut icon" href="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg">
+   <link rel="shortcut icon" href="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png">
    <link rel="stylesheet" href="./docs/styles.css" />
 </head>
 
@@ -36,12 +36,12 @@
  <div class="ChapterFace14Normal">
 
   <h1>
-               Purple Terminals Aloha Demo
+               PurpleTerms Aloha Demo
   </h1>
 
   <p style="position:relative; z-index:9900;">
                This is the <a href="https://github.com/normai/terminaljs/">PurpleTerms</a>
-               introductory use case. This is not the simplest use case.
+               introductory use case. It is not the simplest use case.
                For simpler cases, see the next page.
   </p>
 
@@ -49,112 +49,33 @@
                Under development — Turbulences be expected.
   </p>
 
-   <!-- ******************* Box One HTML ******************* -->
-   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
-                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_One">
-      </div>
-      <input type="checkbox" id="Debug_Borders_Box_One" name="Anita"
-              onclick="setDebugBorders(event, t1);">
-      <label for="Debug_Borders_Box_One">Debug borders</label>
-      &nbsp;
-      <input type="checkbox" id="Checkbox_Box_One_Debug_Scrolling" name="Anton"
-              onclick="setDebugScrolling(event, t1);">
-      <label for="Checkbox_Box_One_Debug_Scrolling">Debug scrolling</label>
-   </div>
-   <!-- **************************************************** -->
+   <p><!--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+               Below is Box One, demonstrating an endless dialog.
+   </p><!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-   <div style="clear:both; margin-top:1.1em; padding-left:5.1em; text-indent:-5.1em; line-height:1.4em;">
-         <span style="display:none;" id="Color_Key_List">
-               Debug borders key list :
-               • Input prompt = Yellow
-               • Input line = Red
-               • Output/output prompt = Orange
-               • Output/output line = GreenYellow
-               • Output/input prompt = HotPink
-               • Output/input line = Magenta
-               • Output box = Gold
-               • Content = Magenta
-         </span>
+   <div id="Div_For_Terminal_One">
    </div>
 
-   <pre style="line-height:1.0em; display:none;" id="Panel_Scroll_Debug_One" data-id="20210511°1631">
-               document.body.scrollHeight     = <span id="DbgScr_DocBodyScrollHeight"></span>
-               window.scrollY                 = <span id="DbgScr_WindowSrollY"></span>
+   <script>
 
-               html.scrollHeight              = <span id="DbgScr_HtmlScrollHeight"></span>
-               html.scrollTop                 = <span id="DbgScr_HtmlScrollTop"></span>
-               html.offsetTop                 = <span id="DbgScr_HtmlOffsetTop"></span>
-
-               this._innerWindow.scrollHeight = <span id="DbgScr_InnerWindowScrollHeight"></span>
-               this._innerWindow.scrollTop    = <span id="DbgScr_InnerWindowScrollTop"></span>
-               this._innerWindow.offsetTop    = <span id="DbgScr_InnerWindowOffsetTop"></span>
-
-               this._output.scrollHeight      = <span id="DbgScr_OutputScrollHeight"></span>
-               this._output.scrollTop         = <span id="DbgScr_OutputScrollTop"></span>
-               this._output.offsetTop         = <span id="DbgScr_OutputOffsetTop"></span>
-  </pre>
-          <!-- document.body.scrollTop        = <span id="DbgScr_DocBodyScrollTop"></span> --><!-- Seems to stay always 0 -->
-          <!-- document.body.offsetTop        = <span id="DbgScr_DocBodyOffsetTop"></span> --><!-- Seems to stay always 0 -->
-
-
-  <p style="clear:both; line-height:1.2em;">
-              A second box :
-  </p>
-
-   <!-- ~~~~~~~~~~~~~~~~~~~ Box Two HTML ~~~~~~~~~~~~~~~~~~~ -->
-   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
-                  border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Two">
-      </div>
-      <input type="checkbox" id="Debug_Borders_Box_Two" name="Bianca"
-              onclick="setDebugBorders(event, t2);">
-      <label for="Debug_Borders_Box_Two">Debug borders</label>
-   </div>
-   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-   <p>
-              Yet a third box :
-   </p>
-
-   <!-- ++++++++++++++++++ Box Three HTML ++++++++++++++++++ -->
-   <div style="border:2px solid LightGray; border-radius:0.7em; padding:0.1em;">
-      <div style="font-size:1.3em; width:666px; border:2px dotted LightSlateGray;
-                   border-radius:0.4em; padding:0.4em;" id="Div_For_Terminal_Three"
-                    >
-      </div>
-      <input type="checkbox" id="Debug_Borders_Box_Three" name="Cleopatra"
-                    onclick="setDebugBorders(event, t3);">
-      <label for="Debug_Borders_Box_Three">Debug borders</label>
-   </div>
-   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-  <script>
-
-      // ******************************************************
-      // Box One JavaScript [box 20210503°1511]
-      // ******************************************************
-
-      // Prologue [seq 20210503°1521]
-      var t1 = new Terminal();                                         // 'X'
-      t1.setHeight("400px");                                           // 400px normal, others for debugging
+      // () Prologue [seq 20210503°1521]
+      var t1 = new Terminal();
+      t1.setHeight("360px");
       t1.setBackgroundColor("Blue");
-      var eDiv1 = document.getElementById('Div_For_Terminal_One');  // Position randomly [seq 20210506°1632`01]
+      var eDiv1 = document.getElementById('Div_For_Terminal_One');
       eDiv1.appendChild(t1.html);
+
+      // () Initial output
       t1.print("PurpleTerms " + t1.getVersion() + " Aloha Demo, box-id = '" + t1.getId() + "'");
       var sInput = '';
-      var sHelpLine = "Commands: b = beep, c = clear, h = help, p = pause, q = quit, v = volume test";
 
-      // Action [seq 20210503°1523]
-      ////t1.print (sHelpLine);
+      // () Start action [seq 20210503°1523]
       t1.input ("Please enter me some input (h = help)", function (x11) {
          takeInput(x11);
       });
 
-      // Dispatcher loop [func 20210503°1531]
+      // () Loop until quit [func 20210503°1531]
       function takeInput(sWritten) {
-
-         printOffsets();
 
          if (sWritten.toLowerCase() === 'b' ) {
             t1.beep();
@@ -165,88 +86,18 @@
             t1.input ( null, function (x21) { takeInput(x21); });
          }
          else if (sWritten.toLowerCase() === 'h' ) {
-            t1.input (sHelpLine, function (x21) {
+            var s = "Commands: b = beep, c = clear, h = help, p = pause, q = quit";
+            t1.input (s, function (x21) {
                takeInput(x21);
             });
          }
          else if (sWritten.toLowerCase() === 'p' ) {
-            t1.input ( 'Take a breath. Continue with any input.', function () {
+            t1.input ('Have a nap. Continue with any input.', function () {
                keepgoing();
             });
          }
          else if (sWritten.toLowerCase() === 'q' ) {
-            t1.print('Finished. Refresh page to start this box again.');
-         }
-         else if (sWritten.toLowerCase() === 'v' ) {
-
-            // () Volume test [seq 20210513°1631]
-            // Todo : Outsource to dedicated function
-
-            // Note. If the requests are too close to one another, in function
-            //  20170501°0521 beep, with the load/play sequence, error will
-            //  occur: ~"Error -- play() was interrupted by load() request".
-            t1.print('Volume test ...');
-            
-            setTimeout(function () { t1.print('v = 0.0');   }, 10);
-            setTimeout(function () { t1.setVolume(0.0);     }, 20);
-            setTimeout(function () { t1.beep();             }, 100);
-
-            setTimeout(function () { t1.print('v = 0.1');   }, 1000);
-            setTimeout(function () { t1.setVolume(0.1);     }, 1100);
-            setTimeout(function () { t1.beep();             }, 1200);
-
-            setTimeout(function () { t1.print('v = 0.2');   }, 2000);
-            setTimeout(function () { t1.setVolume(0.2);     }, 2100);
-            setTimeout(function () { t1.beep();             }, 2200);
-
-            setTimeout(function () { t1.print('v = 0.3');   }, 3000);
-            setTimeout(function () { t1.setVolume(0.3);     }, 3100);
-            setTimeout(function () { t1.beep();             }, 3200);
-
-            setTimeout(function () { t1.print('v = 0.4');   }, 4000);
-            setTimeout(function () { t1.setVolume(0.4);     }, 4100);
-            setTimeout(function () { t1.beep();             }, 4200);
-
-            setTimeout(function () { t1.print('v = 0.5');   }, 5000);
-            setTimeout(function () { t1.setVolume(0.5);     }, 5100);
-            setTimeout(function () { t1.beep();             }, 5200);
-
-            setTimeout(function () { t1.print('v = 0.6');   }, 6000);
-            setTimeout(function () { t1.setVolume(0.6);     }, 6100);
-            setTimeout(function () { t1.beep();             }, 6200);
-
-            setTimeout(function () { t1.print('v = 0.7 *'); }, 7000);
-            setTimeout(function () { t1.setVolume(0.7);     }, 7100);
-            setTimeout(function () { t1.beep();             }, 7200);
-
-            setTimeout(function () { t1.print('v = 0.8');   }, 8000);
-            setTimeout(function () { t1.setVolume(0.8);     }, 8100);
-            setTimeout(function () { t1.beep();             }, 8200);
-
-            setTimeout(function () { t1.print('v = 0.9');   }, 9000);
-            setTimeout(function () { t1.setVolume(0.9);     }, 9100);
-            setTimeout(function () { t1.beep();             }, 9200);
-
-            setTimeout(function () { t1.print('v = 1.0');   }, 10000);
-            setTimeout(function () { t1.setVolume(1.0);     }, 10100);
-            setTimeout(function () { t1.beep();             }, 10200);
-
-            setTimeout(function () { t1.print('v = 0.7 *'); }, 11000);
-            setTimeout(function () { t1.setVolume(0.7);     }, 11100); // Restore default
-            setTimeout(function () { t1.beep();             }, 11200);
-
-            setTimeout(function () { t1.print('v = 1.1');   }, 12000);
-            setTimeout(function () { t1.setVolume(1.1);     }, 12100);
-            setTimeout(function () { t1.beep();             }, 12200);
-
-            setTimeout(function () { t1.print('v = eins');  }, 13000);
-            setTimeout(function () { t1.setVolume('eins');  }, 13100);
-            setTimeout(function () { t1.beep();             }, 13200);
-
-            setTimeout(function () { t1.print('Volume test finished.');}, 14000);
-
-            // The continuation idiom
-            t1.input ( null, function (x21) { takeInput(x21); });
+            t1.print('Finished. Refresh page to start again.');
          }
          else {
             t1.input ( "Thanks for \"" + sWritten + "\", input more (h = help)", function (x31) {
@@ -258,68 +109,45 @@
       // Continue after break [func 20210506°0911]
       function keepgoing() {
          t1.print('I wish you had a nice beauty sleep.');
-         t1.input ("More input please (h = help)", function (x51) {
+         t1.input ("Now more input please (h = help)", function (x51) {
             takeInput(x51);
          });
       }
 
-      // // [test 20210509°1551]
-      // t1.setInputPrompt('X ');
-      // t1.setOutputPrompt('Y ');
+   </script>
 
-      // // [test 20210509°1553]
-      // t1.setInputPrompt('→ ');
-      // t1.setOutputPrompt('← ');
+   <p><!--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+               Below is Box Two, demonstrating the <code>confirm</code> function.
+   </p><!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-      // ******************************************************
-      // Box Two JavaScript [box 20210510°1611]
-      // ******************************************************
+   <div id="Div_For_Terminal_Three">
+   </div>
 
-      // Prologue [seq 20210510°1621]
-      var t2 = new Terminal();
-      t2.setHeight("180px");
-      t2.setWidth("360px");
-      t2.setBackgroundColor("DarkCyan");
-      var eDiv2 = document.querySelector('#Div_For_Terminal_Two');  // A little variety opposite getElementById()
+   <script>
 
-      // Put box on page [seq 20210511°1541] Here the page did jump
-      // See issue 20210511°1611 'Lower boxes shall keep feet still'
-      /* */
-      eDiv2.appendChild(t2.html);
-      t2.print("Next box on the same page, ID = '" + t2.getId() + "'.");
-      t2.confirm('Are you blonde?', function(b) {
-         t2.print(b ? "Hello Blondie!" : "Hello Brownie or other type!");
-         t2.print("This box will be active again after page refresh.");
-         t2.print("Bye.");
-      } );
-      /* */
-
-      // ******************************************************
-      // Box Three JavaScript [box 20210510°1711]
-      // ******************************************************
-
-      // Prologue [seq 20210510°1713]
+      // (1) Prologue [seq 20210510°1713]
       var t3 = new Terminal("Potato");
-      t3.setHeight("180px");
-      t3.setWidth("360px");
+      t3.setHeight("240px");
+      t3.setWidth("560px");
       t3.setBackgroundColor("DarkSlateBlue");
+
+      // (2) Place box on page [seq 20210511°1543]
       var eDiv3 = document.getElementById('Div_For_Terminal_Three');
-
-      // Here it jumps again [seq 20210511°1543] -- Shutdown on demand
-      // See issue 20210511°1611 'Lower boxes shall keep feet still'
-      /* */
       eDiv3.appendChild(t3.html);
-      t3.print("Third box on page, ID = '" + t3.getId() + "'.");
-      t3.confirm('Would you like to roll dice?', function(b1) {
-         t3.print(b1 ? "Fine .." : "Well, no dice.");
-         if (b1) { rollDice(); }
-         else { t3.print("Bye."); }
-      } );
-      /* */
 
-      // Dice roll algorithm [func 20210510°1751]
-      // After Romain Guillemot on 2019-Jul-30 on [ref 20210510°1755]
-      //  medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1
+      // (3) Action
+      t3.print("Box two (ID = '" + t3.getId() + "').");
+      t3.confirm('Would you like to roll dice?', function(b1) {
+         t3.print(b1 ? "Fine .." : "O.k. — No dice rolling.");
+         if (b1) {
+            rollDice();
+         }
+         else {
+            t3.print("Bye. Refresh page to restart.");
+         }
+      } );
+
+      // (4) Dice rolling [func 20210510°1751]
       function rollDice() {
          var i = 1 + Math.floor(Math.random() * 6);
          t3.confirm('You rolled ' + i + ' — More?', function(b2) {
@@ -328,83 +156,16 @@
          });
       }
 
-      // ******************************************************
-      // JavaScript for all three terminal boxes
-      // ******************************************************
-
-      var iCallCounter = 0;
-
-      // Process a Debug Borders checkbox [func 20210508°0941]
-      function setDebugBorders(e, t) {
-
-         ////t.beep();                                                 // Just for fun
-
-         // Process call from checkboxes
-         var el = e.target || e.srcElement;                            // Some cross browser work
-         var b = el.checked;
-         t.setDebugBorders(b);
-         iCallCounter = b ? (iCallCounter + 1) : (iCallCounter - 1);
-
-         // Switch legend visibility on/off
-         var elKeys = document.getElementById('Color_Key_List');
-         elKeys.style.display = (iCallCounter > 0) ? 'inline' : 'none';
-      }
-
-      // Process a Debug Scrolling checkbox(es) [func 20210511°1635]
-      function setDebugScrolling(e, t) {
-
-         ////t.beep();                                                 // Just for fun
-
-         // () Process call from checkbox
-         var eColorsPanel = e.target || e.srcElement;                  // Some cross browser work
-         var b = eColorsPanel.checked;
-         var eColorsPanel = document.getElementById('Panel_Scroll_Debug_One');
-         eColorsPanel.style.display = b ? 'block' : 'none';
-         printOffsets();                                               // Initialize
-
-         // () Set permanent gauging
-         // Todo : The event listener should be removed, if no more used
-         // Todo : Check, if the other calls to printOffsets(); are superfuous now
-         document.addEventListener('scroll', function() {
-            printOffsets();
-         });
-      }
-
-       // Fill prepared debug spans [func 20210511°1633]
-       // Not yet for all three boxes, only for Box One, provisory
-       function printOffsets() {
-
-          document.getElementById('DbgScr_DocBodyScrollHeight').innerHTML      = document.body.scrollHeight;
-          document.getElementById('DbgScr_WindowSrollY').innerHTML             = window.scrollY;
-          //document.getElementById('DbgScr_DocBodyScrollTop').innerHTML       = document.body.scrollTop;
-          //document.getElementById('DbgScr_DocBodyOffsetTop').innerHTML       = document.body.offsetTop;
-
-          document.getElementById('DbgScr_HtmlScrollHeight').innerHTML         = t1.html.scrollHeight;
-          document.getElementById('DbgScr_HtmlScrollTop').innerHTML            = t1.html.scrollTop;
-          document.getElementById('DbgScr_HtmlOffsetTop').innerHTML            = t1.html.offsetTop;
-
-          document.getElementById('DbgScr_InnerWindowScrollHeight').innerHTML  = t1._innerWindow.scrollHeight;
-          document.getElementById('DbgScr_InnerWindowScrollTop').innerHTML     = t1._innerWindow.scrollTop;
-          document.getElementById('DbgScr_InnerWindowOffsetTop').innerHTML     = t1._innerWindow.offsetTop;
-
-          document.getElementById('DbgScr_OutputScrollHeight').innerHTML       = t1._output.scrollHeight;
-          document.getElementById('DbgScr_OutputScrollTop').innerHTML          = t1._output.scrollTop;
-          document.getElementById('DbgScr_OutputOffsetTop').innerHTML          = t1._output.offsetTop;
-      }
-
    </script>
 
-  <p class="Good12Bye">
-               <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" style="float:left;" width="96" height="96" alt="Waiving Kosmonaut">
-  </p>
-
-  <p>
-               What's missing? • Functional <b>backspace</b>.
-               • Functional <b>scrolling</b> with no page jumps.
-               • Dedicated prompt for the <code>confirm</code> function, not the output prompt.
-               • The boxes should leave the focus with <b>Tab</b>, and go to the
-                 next control, obeying to the general page key mapping.
-  </p>
+  <div>
+   <p class="Good12Bye" style="float:left;">
+               Bye
+   </p>
+  </div>
+  <div style="margin:1.7em 0 0 3.1em;">
+               <img src="./docs/20210512o1743.waving-astronaut.v2.p12.png" width="96" height="96" alt="Waiving Kosmonaut">
+  </div>
 
  </div>
 
