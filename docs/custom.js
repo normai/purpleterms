@@ -61,7 +61,7 @@ Daf.Term.sHelp = "Commands: beep, bye, clear, help, roll, spin, stop.";
 /**
  *  Exit return string
  *
- * @id 20210514°11xx
+ * @id 20210514°1131
  * @type {string} —
  * @constant —
  */
@@ -76,13 +76,13 @@ Daf.Term.sBye = 'Bye. Restart with page refresh.';
  * @return {undefined} —
  */
 ////Daf.Term.ajaxRequest = function()
-Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 20210514°11xx]
+Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 20210514°1133]
 {
    'use strict';
 
    // () Assemble shipment ingredients [seq 20190209°0322]
    ////var sTargetUrl = './custom.php' + '?cmd=' + 'spin';
-   var sTargetUrl = './custom.php' + '?cmd=' + sCmd;                   // [chg 20210514°11xx]
+   var sTargetUrl = './custom.php' + '?cmd=' + sCmd;                   // [chg 20210514°1135]
    var sMsgToSend = 'Hello backend ..';
 
    // Get Ajax performer object [seq 20190209°0323]
@@ -117,8 +117,8 @@ Daf.Term.ajaxResponse = function(sResponse)
 
    // Show response [line 20190209°0333]
    ////Daf.Term.t21.print('< ' + sResponse);
-   Daf.Term.t21.print('👻️ ' + sResponse);                               //// Ghost [chg 20210514°11xx]
-   ////Daf.Term.t21.print('🌐️ ' + sResponse);                           //// Globe with Meridians [chg 20210514°11xx]
+   ////Daf.Term.t21.print('👻️ ' + sResponse);                           //// Ghost [emoji 20210514°1141]
+   Daf.Term.t21.print('🌐️ ' + sResponse);                               //// Globe with Meridians [emoji 20210514°1143]
 
    // Repeat [line 20190209°0335]
    if (Daf.Term.bSpinAutoRun)
@@ -225,6 +225,7 @@ Daf.Term.interpret = function(sCmd)
          Daf.Term.t21.print(Daf.Term.sHelp);
          break;
 
+      // [seq 20210514°1145]
       case 'roll' :
          if ( Daf.Term.isPhpAvailable ) {
             Daf.Term.ajaxRequest('roll');
@@ -236,7 +237,7 @@ Daf.Term.interpret = function(sCmd)
 
       case 'spin' :
 
-         // Use AJAX [condition 20210509°1051]
+         // Use AJAX [condi 20210509°1051]
          Daf.Term.bSpinAutoRun = true;
          if ( Daf.Term.isPhpAvailable ) {
             Daf.Term.runSpin();
@@ -249,6 +250,7 @@ Daf.Term.interpret = function(sCmd)
 
       default :
 
+         // [seq 20210514°1147]
          if (Daf.Term.bSpinAutoRun) {
             sRet = (sCmd === 'stop')
                   ? 'O.k. — stopping'

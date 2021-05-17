@@ -24,6 +24,14 @@ namespace Trekta\Daftari;
 use Trekta\Daftari as TD;
 ////use Trekta\Daftari\Globals as Glb;
 
+// [seq 20210514°1151]
+if ( ! isset($_SESSION) ) {                                            // Qualified paranoia [seq 20180508°2023] Fix issue 20180508°2021 'session had already started'
+   if (session_start() !== true) {                                     // [line 20110503°1037] Remember ref 20110503°1031 'tedd sperling → simple session example' — Must be first line of code
+      echo('<p class="error">Quirk 20110508°1852 was seen.</p>');      // Fatal error, using css class 'error' [seq 20110508°1841]
+      exit();                                                          // [line 20120916°1701]
+   }
+}
+
 // Work off script-level code [line 20190205°0331]
 Go::enter();
 
@@ -52,8 +60,9 @@ class Go
       {
          case 'roll' :
 
-            // [seq 20210514°11xx]
-            $sReturn = TD\DiceEngine::roll('');
+            // [seq 20210514°1153]
+            ////$sReturn = TD\DiceEngine::roll('');
+            $sReturn = 'You rolled ' . strval(TD\DiceEngine::roll('')) . '' ;
             break;
 
          case 'spin' :
@@ -173,32 +182,24 @@ class Go
 /**
  * This class offers dice rolling service(s)
  *
- * @id 20210514°11xx
+ * @id 20210514°1111
  * @status
  * @callers
  */
 class DiceEngine
 {
-
    /**
     * This method rolls one dice
     *
-    * @id 20210514°11xx
+    * @id 20210514°1113
     * @callers •
-    * @return {String} — The rolled number
+    * @return {Integer} — The rolled number
     */
    public static function roll() : string
    {
-      $sRet = '';
-
-      $iRet = rand(1, 6);
-
-      $sRet = "You rolled " . strval($iRet) . "";
-
-      return $sRet;
+      return $iRolled = rand(1, 6);
    }
 }
-
 
 /**
  * This class shall scan hierarchies, notably the server directory tree
@@ -211,58 +212,44 @@ class Spider
 {
 
    /**
+    *  A first storage to introduce sessions
+    *
+    * @id @20210514°1121
+    * @var {String} —
+    */
+   ////const sSESKEY_Counter = 'Counter';static
+   public static $sSESKEY_Counter = 'Counter';
+
+   /**
     * This method constitutes the scanner's entry point
     *
     * @id 20190209°0431
     * @callers • Go.php
-    * @param $sTarget_ {String} The current target address to spin from
+    * ////@param $sTarget_ {String} The current target address to spin from
     * @return {String} The answer
     */
-   public static function spin($sTarget_) : string //// NetBeans warning '$sTarget_ seems to be unused ..'
+   ////public static function spin($sTarget_) : string //// NetBeans warning '$sTarget_ seems to be unused ..'
+   public static function spin() : string                              // [chg 20210514°1123]
    {
       $sRet = "";
+      ////$iRolled = "0";
 
-      // [seq 20190312°0531]
-      ////$sNext = self::getNextEntry($sCurrFolder, $sCurrFile);
-      ////$sNext = self::getNextEntry();
+      // () Build answer
+      $iRolled = TD\DiceEngine::roll();
 
-      // Build answer
-      ////$sRet = "Spin " . time() . " " . $sNext;
-      $sRet = TD\DiceEngine::roll();
+      // () Maintain session [seq 20210514°1125]
+      if (! isset($_SESSION[TD\Spider::$sSESKEY_Counter])) {
+         $_SESSION[TD\Spider::$sSESKEY_Counter] = 1;
+      }
+      else {
+         $_SESSION[TD\Spider::$sSESKEY_Counter]++;
+      }
 
-      //// // Write back current scan address
-      //// self::$cfg->setValue('SpiderCurrentFolder', $sNext);
+      // () Assemble answer
+      $sRet = 'You rolled ' . strval($iRolled) . ' [' . strval($_SESSION[TD\Spider::$sSESKEY_Counter]) . ']';
 
       return $sRet;
    }
-
-////   /**
-////    * This method retrieves the next item
-////    *
-////    * @id 20190312°0541
-////    * @note At some other places so far we always used readdir(). Here
-////    *   we try scandir(), which is different in the following aspects :
-////    *    • It yields an array with all entries, not one single entry
-////    *    • It has sort options
-////    *    • The manual says, it can also handle URLs
-////    * @callers • self::spin()
-////    * @param $sFolder {String} The current folder
-////    * @param $sFile {String} The current file
-////    * @return {String} The wanted next entry
-////    */
-////   ////private static function getNextEntry($sFolder, $sFile) : string
-////   private static function getNextEntry() : string
-////   {
-////      //
-////      $sNext = 'äkjölkj.xyz';
-////
-////      // [seq 20190312°0551]
-////      ////$aEntries = scandir($sFolder);
-////      $iNext = rand(100, 999);                                         // [chg 20210506°1221]
-////      $sNext = strval($iNext);                                         // [chg 20210506°1221`02]
-////
-////      return $sNext;
-////   }
 }
 
 /* eof */
