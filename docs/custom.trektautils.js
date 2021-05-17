@@ -1,24 +1,11 @@
-// ~ ✂ ~ ~ ~ ~ ~ ~ ~ area 20190106°0307 start ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ✂ ~ ~ ~ ~ ~ ~ ~ Fragment of area 20190106°0307 start ~ ~ ~ ~ ~ ~ ~ ~ ~
 /**!
  * This area Trekta.Utils holds low level functions to be pasted into standalone scripts
  *
- * file : 20190105°1717 daftari/jsi/trektautils.js
+ * file : 20210506°11xx [fragments of 20190105°1717 daftari/jsi/trektautils.js]
  * version : Special edition for PurpleTerms //// v0.2.5 (20210428°1031)
  * copyright : © 2019 - 2021 Norbert C. Maier
- * license : BSD 3-Clause License //// (formerly GNU AGPL v3)
- */
-/**
- * This area is shared via cut-n-paste by the following scripts :
- *   • daftari.js • canvasgear.js • fadeinfiles.js • slidegear.js • trekta-utils.js
- * Note : It is not really clear how to handle the propagation. Possibly
- *       use trekta-utils.js as the master, since it is a standalone file?
- * Note: Not sure about the script duplication in fadeinfiles/doc/demo.html.
- *
- * versions :
- *    • v0.2.5 (20210428°1031) — Streamlining
- *    • 20210418°1111 — Little streamlining
- *    • 20201228°1511
- *    • 20190418°0343
+ * license : BSD 3-Clause License //// (originally GNU AGPL v3)
  */
 
 /**
@@ -42,500 +29,10 @@ var Trekta = Trekta || {};
 Trekta.Utils = Trekta.Utils || {
 
    /**
-    * This function reads a cookie value
-    *
-    * @id 20110510°2127
-    * @ref ref 20110510°2125 'w3schools → JavaScript Cookies'
-    * @callers •
-    * @note See issue 20120902°1221 'Not all browsers have e.indexOf(),
-    *    why does it work here? The answer is: here we retrieve the index
-    *    of a char in a string, not an element in an array.
-    * @param {string} sCookieName — The name of the cookie to be read
-    * @return {string} —
-    */
-   getCookie : function(sCookieName)
-   {
-      'use strict';
-
-      // Prologue [seq 20110510°2128] Still using 'var' instead 'let'
-      var i = 0;
-      var sNam = '';
-      var sRet = '';
-      var sVal = '';
-      var sCookies = document.cookie;                                  // semicolon-delimited string
-
-      // [condi 20201228°1331]
-      // See issue 20201228°1311 'cookie setting with file protocol'
-      // Todo 20201228°1332 : Detection is quick'n'dirty, should be done in a more 'official' way
-      if (sCookies.length > 0) {
-
-         // Find value [seq 20110510°2129]
-         var aCookies = document.cookie.split(';');
-         for (i = 0; i < aCookies.length; i++) {
-            sNam = aCookies[i].substr(0, aCookies[i].indexOf('='));
-            sVal = aCookies[i].substr(aCookies[i].indexOf('=')+1);
-            sNam = sNam.replace(/^\s+|\s+$/g, '');
-            if (sNam === sCookieName) {
-               // Function unescape is deprecated, I boldly replace it by decodeURI [chg 20190423°0641]
-               sRet = decodeURI(sVal);
-               break;
-            }
-         }
-      } else {
-
-         // Provide fallback for possibly failing cookies [seq 20201228°1333]
-         sRet = localStorage.getItem(sCookieName);
-      }
-
-      return sRet;
-   }
-
-   /**
-    * This function reads a cookie as boolean
-    *
-    * @id 20120828°2021
-    * @note This function is a wrapper for Trekta.Utils.getCookie().
-    * @callers • many
-    * @param {string} sCookieName — The name of the cookie to be read
-    * @param {boolean|null} bDefault — The default value
-    * @return {boolean} — The wanted cookie value
-    */
-   , getCookieBool : function(sCookieName, bDefault)
-   {
-      'use strict';
-
-      // Establish optional parameter [line 20120828°2022]
-      bDefault = bDefault || false;
-
-      // Forward to cookie reading function [line 20120828°2023]
-      var sVal = Trekta.Utils.getCookie(sCookieName);
-
-      // Postprocess value [line 20120828°2024]
-      var bReturn = bDefault;
-      if (sVal === 'true') {
-         bReturn = true;
-      } else if (sVal === 'false') {
-         bReturn = false;
-      } else {
-         //Trekta.Utils.setCookie(sCookieName, bDefault.toString() , 7); // iExpirationDays
-         bReturn = bDefault;
-      }
-
-      return bReturn;
-   }
-
-   /**
-    * This function reads a cookie as integer
-    *
-    * @id 20190420°0311
-    * @callers •
-    * @param sCookieName {string} The name of the cookie to be read
-    * @param iDefault {boolean} The default value
-    * @return {number} (integer) — The wanted cookie value
-    */
-   , getCookieInt : function(sCookieName, iDefault)
-   {
-      'use strict';
-
-      // Establish optional parameter [line 20190420°0312]
-      iDefault = iDefault || 0;
-
-      // Forward to cookie reading function [line 20190420°0313]
-      var sVal = Trekta.Utils.getCookie(sCookieName);
-
-      // Postprocess value [line 20190420°0314]
-      var iReturn = iDefault;
-      if (sVal !== '') {
-         iReturn = parseInt(sVal, 10);
-      }
-
-      return iReturn;
-   }
-
-   /**
-    * This function retrieves the filename of the page to be edited
-    *
-    * @id 20110820°1741
-    * @note Remember issue 20110901°1741 'get self filename for default page'
-    * @callers • 20120827°1511 getFilenamePlain • 20150411°0651 provideCornerstonePathes
-    *           • 20120830°0451 editFinishTransmit
-    * @return {string} — E.g. 'daftari/panels/login.html' (with Firefox)
-    */
-   , getFileNameFull : function() // fullyquali ⇒ Trekta.Utils.getFileNameFull
-   {
-      'use strict';
-
-      // read URL of this page, values are e.g. [line 20110820°1742]
-      //   • 'http://localhost/'
-      //   • 'http://localhost/eps/index.html?XDEBUG_SESSION_START=netbeans-xdebug#'
-      //   • 'file:///G:/work/daftaridev/trunk/daftari/docs/moonwalk.html' (not yet working)
-      var sUrl = document.location.href;
-
-      // Remove possible query after the file name [line 20110820°1743]
-      sUrl = sUrl.substring(0, (sUrl.indexOf('?') === -1) ? sUrl.length : sUrl.indexOf('?'));
-
-      // Remove possible anchor at the end [line 20110820°1744]
-      sUrl = sUrl.substring(0, (sUrl.indexOf('#') === -1) ? sUrl.length : sUrl.indexOf('#'));
-
-      // Possibly supplement page name 'index.html' [seq 20190419°0133] (analogy to seq 20181228°0935)
-      if ( sUrl.indexOf('/', sUrl.length - 1) !== -1 ) {
-         sUrl += 'index.html';
-      }
-
-      return sUrl;
-   }
-
-   /**
-    * This function gets the plain filename of the page, e.g. 'help.html'
-    *
-    * @id 20120827°1511
-    * @callers E.g. • dafdispatch.js::workoff_Cake_0_go
-    * @return {string} — The plainfilename, e.g. 'help.html'
-    */
-   , getFilenamePlain : function() // fullyquali ⇒ Trekta.Utils.getFilenamePlain
-   {
-      'use strict';
-
-      var sUrl = Trekta.Utils.getFileNameFull();                       // e.g 'daftari/panels/login.html'
-      var a = sUrl.split('/');
-      sUrl = a[a.length - 1];
-
-      return sUrl;
-   }
-
-   /**
-    * This function escapes a string to be used as HTML output
-    *
-    * @id 20140926°1431
-    * @callers • Cvgr.Func.executeFrame
-    * @todo  In FadeInFiles seq 20151106°1822 and seq 20151106°1821
-    *            shall use this function here. [todo 20190328°0943]
-    * @param {string} sHtml — The HTML fragment to be escaped
-    * @return {string} — The wanted escaped HTML fragment
-    */
-   , htmlEscape : function(sHtml) // fullyquali ⇒ Trekta.Utils.htmlEscape
-   {
-      'use strict';
-
-      sHtml = sHtml.replace(/</g, '&lt;');                             // g = replace all hits, not only the first
-      sHtml = sHtml.replace(/>/g, '&gt;');
-
-      return sHtml;
-   }
-
-   /**
-    * This function tests, whether the given script is already loaded
-    *  or not. This function is unfaithful during the loading phase
-    *
-    * @id 20160503°0231
-    * @note Mind issue 20190405°0331 'isScriptAlreadyLoaded unfaithful'
-    * @status unfaithful
-    * @callers ..
-    * @param {string} sWantedScript — The plain name of the wanted script (not a complete path)
-    * @return {boolean} — Flag telling whether the script is loaded or not.
-    */
-   , isScriptAlreadyLoaded : function (sWantedScript)
-   {
-      'use strict';
-
-      var regexp = null;
-
-      // Build the appropriate regex variable [seq 20160623°0311]
-      // note : See howto 20160621°0141 'programmatically build regex'
-      // note : "/" seems automatically replaced by "\/"!
-      var s = sWantedScript.replace(/\./g, "\\.");                     // e.g. '/slidegear.js' to '/slidegear\.js$'
-      s = s + '$';
-      regexp = new RegExp(s, '');                                      // e.g. /dafutils\.js$/
-
-      // Do the job [algo 20160503°0241 (like algo 20110820°2042 'find specific script')]
-      var scripts = document.getElementsByTagName('SCRIPT');
-      if (scripts && scripts.length > 0) {
-         for (var i1 in scripts) {
-            var i2 = Number.parseInt(i1,10);
-            if (scripts[i2]) {  // [marker 20210416°1633`58 GoCloCom] restricted index type
-               if (scripts[i2].src.match(regexp)) {
-                  return true;
-               }
-            }
-         }
-      }
-      return false;
-   }
-
-   /**
-    * This function outputs a string to some default 'shell' div
-    *
-    * @id 20150321°0311
-    * @note chg 20190412°0253 Shift func outDbgMsg() from dafmenu.js to Trekta.Utils
-    * @param {string} sOut — The text to be output
-    * @return {undefined} —
-    */
-   , outDbgMsg : function (sOut)
-   {
-      'use strict';
-
-      // Obey flag [seq 20150814°0241]
-      if ( ! Trekta.Utils.getCookieBool('checkbox_yellowdebugpane', null)) { // [marker 20210416°1633`34 GoCloCom] added parameter two
-         return;
-      }
-
-      // Test page for availability, otherwise cache the message [seq 20150516°0431]
-      if ( document.readyState !== "complete" ) {
-         Trekta.Utils.InitialMessageCache.push(sOut);
-         return;
-      }
-
-      // Provide target element [line 20150321°0312]
-      // See issue 20160618°0431 'HTML class and id set the same'
-      // '<div class="i20150321o0231_StandardOutputDiv" id="i20150321o0231_StandardOutputDiv"></div>'
-      var ele = Trekta.Utils.outDbgMsg_GuaranteeParentElement();
-
-      // [seq 20150411°0151]
-      // summary : Shim for IE8, which does not know Date.now like other browsers.
-      // see : ref 20150411°0141 'stackoverflow → get timestamp in javascript'
-      if (! Date.now) {
-         Date.now = function () {
-            return new Date().getTime();
-         };
-      }
-      var sTimestamp = Math.floor(Date.now() / 1000);
-      sTimestamp = sTimestamp.toString();
-
-      // [seq 20150321°0313]
-      var sMsgDbg = "[Dbg 20150324°0321] Run function Trekta.Utils.outDbgMsg().";
-      sMsgDbg += "\n ele.id = " + ele.id + "\n outerHTML = " + ele.outerHTML;
-
-      // Possibly prepend cached messages [seq 20150516°0441]
-      if (Trekta.Utils.InitialMessageCache.length > 0) {
-         var sOut22 = '';
-         for ( var i = Trekta.Utils.InitialMessageCache.length - 1; i >= 0; i-- ) {
-            if (sOut22 !== '') { sOut22 = '\n\n' + sOut22; }
-            sOut22 = Trekta.Utils.InitialMessageCache[i] + sOut22;
-         }
-         Trekta.Utils.InitialMessageCache.length = 0;
-
-         // Expeimental cosmetics [seq 20190412°0241]
-         sOut22 = '<div style="background-color:LightGreen; margin:1.1em; padding:0.7em;">' + sOut22 + '</div>';
-         sOut = sOut22 + "\n\n" + sOut;
-      }
-
-      // [algo 20150322°0221] 'replace textfile linebreaks by html tags'
-      //  Just replace the linebreak characters by HTML linebreak tags,
-      //  this is easier than converting them to paragraphs.
-      var sPayload = sOut.replace(/\n/g, '<br />');
-
-      // Wrap output in paragraph [seq 20150321°0314]
-      var s = '<span style="font-size:72%;">' + sTimestamp + '</span>';
-      var sAppend = '<p>' + s + ' ' + sPayload + '</p>';
-
-      // [seq 20150321°0316]
-      var eTarget = document.getElementById(Daf.Dspat.Config.sFurniture_OutputArea_Id); // "i20150321o0231_StandardOutputDiv"
-
-      // Assemble new element content [seq 20150321°0317]
-      sAppend = '\n' + sAppend;
-      eTarget.insertAdjacentHTML('beforeend', sAppend);
-   }
-
-   /**
-    * This function guarantees an element
-    *  If the wanted element does not exist, it is created newly.
-    *
-    * @id 20150323°0321
-    * @status Working
-    * @callers • func Trekta.Utils.outDbgMsg
-    * @return {Object|Node} — The wanted target element
-    */
-   , outDbgMsg_GuaranteeParentElement : function ()
-   {
-      'use strict';
-
-      // todo : Replace detection by not using index number
-      // NetBeans warning "The global variable 'Daf' is not defined." [issue 20210509°0931]
-      var sTargetId = Daf.Dspat.Config.sFurniture_OutputArea_Id;       // "i20150321o0231_StandardOutputDiv"
-
-      var sMsg = "[Dbg 20150323°0411] Helper function Trekta.Utils.outDbgMsg_GuaranteeParentElement().";
-
-      var ele = document.getElementById(sTargetId);                    // 'i20150321o0231_...'
-
-      sMsg += "\n Target ID = '" + sTargetId + "'";
-
-      if (ele) {
-         sMsg += "\n Element does exists.";
-      }
-      else {
-         sMsg += "\n (Msg 20150323°0431 in dafmenu.js)";
-         sMsg += "\n Element does not exist : id=\"" + sTargetId + "\".";
-         sMsg += "\n Element shall be created.";
-
-         // Create HTML fragment [seq 20150325°0311]
-         // note : Here we put '<br />', because this string is immediate, and
-         //    it will not be passed trough the string mangling engine of Trekta.Utils.outDbgMsg(),
-         //    which would have replaced automatically a newline by a br tag.
-         // note : The '&nbsp;' is used, because in a html paragraph, leading
-         //    blanks have no effect. As opposed to being in a pre tag block.
-         //    Perhaps console output were better done in a pre instead a p block?
-         var sHtml = '<div'
-                    + ' id="' + sTargetId + '"'
-                    + ' class="dafBoxDebugOutput"'                     // daftari.css style=".. background-color:LemonChiffon; .."
-                    + '>'
-                    + '<p>'
-                    + '[Msg 20150325°0211] Loading dafmenu.js (1/x).'
-                    + '\n<br />&nbsp; Here comes the yellow Standard Output Box. Some page values are :'
-                    + Daf.Mnu.Jsi.getJsiIntroDebugMessage(true)        // refactor 20180517°191103
-                    + '</p>'
-                    + '</div>'
-                     ;
-
-         // Integrate created fragment
-         var eBody = document.getElementsByTagName('body')[0];
-         var eDiv = document.createElement('div');
-         eDiv.innerHTML = sHtml;
-         eBody.appendChild(eDiv);
-
-         // Retry, now mostly successful
-         ele = document.getElementById(sTargetId);                     // 'i20150321o0231_StandardOutputDiv'
-      }
-      return ele;
-   }
-
-
-   /**
-    * This function loads the given script then calls the given function
-    *
-    * @id 20110821°0121
-    * @version 20190405°0347 Refine onload callback (finished issue 20190405°0333)
-    * @version 20190331°0241 Added parameter for onError callback
-    * @version 20181229°1941 Now with parameter for onload callback function
-    * @see howto 20181229°1943 'summary on pullbehind'
-    * @callers • dafmenu.js::callCanarySqueak • daftari.js::pull-behind slides
-    *    • daftari.js::pull-behind fancytree • canvasgear.js::..
-    * @param {string} sScLoad — The path from page to script, e.g. "./../../daftari/jsi/dafcanary.js", jsi/dafcanary.js'
-    * @param {Function} callbackOnLoad — Optional. Callback function for the script onload event
-    * @param {Function} callbackOnError — Optional. Callback function for the script onerror event
-    * @param {Object} oJobs — Optional. Some identifiyer string or object to be
-    *      passed from initiator to the callbacks (introduced 20190403°0215)
-    * @return {boolean|undefined} — Success flag (just a dummy, always true)
-    */
-   , pullScriptBehind : function ( sScLoad, callbackOnLoad, callbackOnError, oJobs ) // fullyquali ⇒ Trekta.Utils.pullScriptBehind
-   {
-      'use strict';
- ///debugger;
-
-      /*
-      todo 20210426°1011 'let pullScriptBehind caller calculate minification flavour'
-      location : seq 20190408°0135 Process script names considering minification
-      do : Don't calculate minification flavour inside pullScriptBehind, let it the caller do.
-      why : The matter is not that strict, but more complicated, has too many exceptions.
-      status : Open
-      */
-
-      // Process script names considering minification [seq 20190408°0135] [marker 20190408°0137 Two redundant sequences]
-      // note : Three identical seqences 20190408°0131, 20190408°0133 and 20190408°0135
-      // See todo 20210426°1011 'let pullScriptBehind caller calculate minification flavour'
-      if ( Trekta.Utils.bUseMinified ) {                               // [mark 20190408°0147`01]
-
-         var b1 = /.*\/fadeinfiles.combi.js$/.test(sScLoad);
-         var b2 = /.*\/highlight.pack.js$/.test(sScLoad);
-         var b3 = /.*\/showdown.min.js$/.test(sScLoad);
-         var b4 = /.*\/sitmapdaf.js$/.test(sScLoad);
-         var b5 = /.*\/sitmaplangs.js$/.test(sScLoad);
-         var b6 = /.*\/canvasgear.combi.js$/.test(sScLoad);
-         if ( ! (b1 || b2 || b3 || b4 || b5 || b6 )) {
-            sScLoad = sScLoad.replace(/\.js$/, '.min.js');
-         }
-
-      }
-
-      // Avoid multiple loading [seq 20110821°0122]
-      // Remember issue 20190405°0331 'isScriptAlreadyLoaded unfaithful'
-      if ( Trekta.Utils.aPulled.indexOf(sScLoad) >= 0 ) {
-         callbackOnLoad ( sScLoad                                      //
-                         , oJobs                                       //
-                          , true                                       // was already loaded
-                           );
-         return;
-      }
-
-      // Prepare the involved elements [seq 20110821°0123]
-      var head = document.getElementsByTagName('head')[0];
-      var script = document.createElement('script');
-
-      // Set the trivial properties [seq 20110821°0124]
-      script.type = 'text/javascript';
-      script.src = sScLoad;
-
-      // Possibly work without callback [condi 20190404°0831]
-      // This condition was wanted for loading fadeinfiles.js in seq 20190404°0827.
-      //  No, it is not wanted from there. But hm.. the paranoia may be nice anyway.
-      //  Finally, I am not sure now, whether the condition is useful or not.
-      if (typeof callbackOnLoad !== 'undefined') {
-
-         // Set the non-trivial but crucial property [line 20181229°1932]
-         // The custom callback goes piggyback with the mandatory one
-         var cbkCustom = function () { callbackOnLoad ( sScLoad
-                                                       , oJobs
-                                                        , false        // flag 'was already loaded'
-                                                         ); };
-         script.onload = function () { Trekta.Utils.pullScript_onload(sScLoad, cbkCustom); };
-      }
-
-      // Attach onerror handler [condi 20190331°0242]
-      callbackOnError = callbackOnError || null;
-      if ( callbackOnError !== null) {
-         script.onerror =  ( function () { callbackOnError (sScLoad, oJobs); } );
-      }
-
-      // Ignit the pulling [seq 20110821°0125]
-      head.appendChild(script);
-
-      return true;
-   }
-
-   /**
-    * This function constitutes the unconditional onload handler
-    *
-    * @id 20190405°0341
-    * @summary This method is introduced to fix issue 20190405°0331 'isScriptAlreadyLoaded unfaithful'
-    * @callers Onyl • onload event from pullScriptBehind
-    * @param {string} sScript — The script to be pulled behind
-    * @param  {Function} cbkCustom — The callback to be executed after script is loaded
-    * @return {undefined} —
-    */
-   , pullScript_onload : function ( sScript, cbkCustom )
-   {
-      'use strict';
-      Trekta.Utils.aPulled.push(sScript);
-      cbkCustom();
-   }
-
-   /**
-    * This function reads a file via asynchronous Ajax
-    *
-    * @id 20190417°0311
-    * @status  Not really tested
-    * @note    Remember todo 20150517°0121 'implement local file reading after Dean Edwards 20150516°0612'
-    * @note    Remember issue 20140713°1121 'ajax read file via filesystem protocol'
-    * @see     ref 20160611°0341 'stackoverflow → read an external local JSON file'
-    * @see     ref 20140704°0842 'stackoverflow → read local text file'
-    * @see     ref 20140627°1111 'stackoverflow → load div from one page and show in other'
-    * @see     ref 20140625°1731 'stackoverflow → jQuery to load text file data'
-    * @callers • func 20190106°0615 slidegear.js::o2ReadSetup_ImageList
-    * @param   {string} sUrl — File to be read
-    * @param   {Function} cbkLoad — Callback function for the case of success, taking one string parameter with the read content
-    * @param   {Function} cbkFail — Callback function for the case of fail, taking one string parameter
-    * @return  {undefined} —
-    */
-   , readTextFile2 : function(sUrl, cbkLoad, cbkFail)
-   {
-      'use strict';
-      Trekta.Utils.ajax3Send('GET', sUrl, '', cbkLoad, cbkFail);
-   }
-
-   /**
-    * Sends asynchronous Ajax request
+    * This function sends an Ajax request
     *
     * @id 20190405°0231 (after 20140704°1011)
-    * @callers • Trekta.Utils.readTextFile2
+    * @callers • E.g. Trekta.Utils.readTextFile2
     * @param sMethod {string} — Either 'GET' or 'POST' ("GET", "POST", "PUT", "DELETE")
     * @param sUrl {string} — The request URL
     * @param {string} sPayload — The data to transmit, only used with a POST request
@@ -543,7 +40,7 @@ Trekta.Utils = Trekta.Utils || {
     * @param {Function} cbkFail — Callback function for the case of fail, taking one string parameter
     * @return {undefined} —
     */
-   , ajax3Send : function(sMethod, sUrl, sPayload, cbkLoad, cbkFail)
+   ajax3Send : function(sMethod, sUrl, sPayload, cbkLoad, cbkFail)
    {
       'use strict';
 
@@ -710,6 +207,7 @@ Trekta.Utils = Trekta.Utils || {
     * @param {string} sScCanary — The name of the canary script, e.g. '/sitmapdaf.js'.
     * @return {string} — The wanted path, where the given script resides or empty string
     */
+/*
    , retrieveDafBaseFolderAbs : function (sScCanary)
    {
       'use strict';
@@ -756,6 +254,7 @@ Trekta.Utils = Trekta.Utils || {
 
       return sPath;                                                    // e.g. "http://localhost/daftaridev/trunk/daftari/jsi"
    }
+*/
 
    /**
     * This function shortens a long string by placing ellipsis in the middle
@@ -766,6 +265,7 @@ Trekta.Utils = Trekta.Utils || {
     * @param {number} iMaxLen (integer) — The maximum lenght of the output string
     * @return {string} — The wanted shortened string
     */
+/*
    , sConfine : function(sOrig, iMaxLen) // fullyquali ⇒ Trekta.Utils.sConfine
    {
       var sRet = '';
@@ -780,6 +280,7 @@ Trekta.Utils = Trekta.Utils || {
       sRet = sRet.split('>').join('&gt;');
       return sRet;
    }
+*/
 
    /**
     * This function sets a cookie
@@ -793,6 +294,7 @@ Trekta.Utils = Trekta.Utils || {
     * @param {number} iExpirationDays — iExpirationDays is number of days until the cookie expires
     * @return {undefined} —
     */
+/*
    , setCookie : function(sCookieName, sCookieValue, iExpirationDays)
    {
       'use strict';
@@ -820,6 +322,7 @@ Trekta.Utils = Trekta.Utils || {
          localStorage.setItem(sCookieName, sCookieValue);
       }
    }
+*/
 
    /**
     * This function daisychains the given function on the windows.onload events
@@ -858,8 +361,9 @@ Trekta.Utils = Trekta.Utils || {
     * @id 20150516°0451
     * @type {Array} —
     */
+/*
    , InitialMessageCache : Array()
-
+*/
    /**
     * This variable constitutes the onload ready flags for pullScriptBehind
     *
@@ -867,8 +371,9 @@ Trekta.Utils = Trekta.Utils || {
     * @note This flags solves issue 20190405°0331 'isScriptAlreadyLoaded unfaithful'
     * @type {Array} —
     */
+/*
    , aPulled : []
-
+*/
 
    /**
     * This ~constant provides a flag whether the browser is Chrome or not
@@ -883,16 +388,18 @@ Trekta.Utils = Trekta.Utils || {
     *    navigator.userAgent, for some we use navigator.appName. Standardize this.
     * @type {boolean} —
     */
+/*
    , bIs_Browser_Chrome : ( navigator.userAgent.match(/Chrome/) ? true : false )
-
+*/
    /**
     * This ~constant provides a flag whether the browser is Edge or not
     *
     * @id 20190417°0217
     * @type {boolean} —
     */
+/*
    , bIs_Browser_Edge : ( navigator.userAgent.match(/Edge/) ? true : false )
-
+*/
    /**
     * This ~constant provides a flag whether the browser is Internet Exporer or not
     *
@@ -903,19 +410,21 @@ Trekta.Utils = Trekta.Utils || {
     *    For code, compare function getIEVersion() in canvasgearexcanvas.js.
     * @type {boolean} —
     */
+/*
    , bIs_Browser_Explorer : (
        ( navigator.appName.match(/Explorer/)
         || window.msCrypto                                             // only IE11 has this [line 20190417°0215] IE11 has different user agent string than other IE
          ) ? true : false )
-
+*/
    /**
     * This ~constant provides a flag whether the browser is Firefox or not
     *
     * @id 20160624°0121
     * @type {boolean} —
     */
+/*
    , bIs_Browser_Firefox : ( navigator.userAgent.match(/Firefox/) ? true : false )
-
+*/
    /**
     * This property provides a flag whether the browser is Opera or not.
     *  Just nice to know, Opera seems to need no more extras anymore (2019).
@@ -927,32 +436,36 @@ Trekta.Utils = Trekta.Utils || {
     * @id 20190107°0821
     * @type {boolean} —
     */
+/*
    , bIs_Browser_Opera : ( navigator.userAgent.match(/(Opera)|(OPR)/) ? true : false )
-
+*/
    /**
     * This property tells whether to pop up debug messages or not
     *
     * @id 20190311°1521
     * @type {boolean} —
     */
+/*
    , bShow_Debug_Dialogs : false
-
+*/
    /**
     * This property provides a constant false value
     *
     * @id 20190407°0121
     * @type {boolean} —
     */
+/*
    , bToggle_FALSE : false
-
+*/
    /**
     * This property provides a constant false value
     *
     * @id 20190407°0122
     * @type {boolean} —
     */
+/*
    , bToggle_TRUE : true
-
+*/
    /**
     * This flag tells whether to pull-behind minified scripts or not
     *
@@ -960,15 +473,17 @@ Trekta.Utils = Trekta.Utils || {
     * @callers •
     * @type {boolean} —
     */
+/*
    , bUseMinified : false
-
+*/
    /**
     * This const provides the ID for the general output area (yellow pane)
     * @id 20160618°0421
     * @type {string} —
     */
+/*
    , sFurniture_OutputArea_Id : "i20150321o0231_StandardOutputDiv"
-
+*/
    /**
     * This tells ..
     *
@@ -976,8 +491,9 @@ Trekta.Utils = Trekta.Utils || {
     * @callers •
     * @type {string} —
     */
+/*
    , s_DaftariBaseFolderAbs : ''
-
+*/
    /**
     * This tells ..
     *
@@ -985,8 +501,9 @@ Trekta.Utils = Trekta.Utils || {
     * @callers •
     * @type {string} —
     */
+/*
    , s_DaftariBaseFolderRel : ''
-
+*/
 };
 
 /**
@@ -1123,4 +640,4 @@ Trekta.Utils.CmdlinParser = ( function()
       parse : Trekta.Utils.parse
    };
 })();
-// ~ ✂ ~ ~ ~ ~ ~ ~ ~ area 20190106°0307 stop ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ✂ ~ ~ ~ ~ ~ ~ ~ Fragment of area 20190106°0307 stop ~ ~ ~ ~ ~ ~ ~ ~ ~

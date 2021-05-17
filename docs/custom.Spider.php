@@ -3,7 +3,7 @@
 /**
  * This module hosts class Spider
  *
- * file      : 20210506°1211 (after 20190209°0411)
+ * file      : 20210506°11xx [[20210506°1211]] (after 20190209°0411)
  * license : BSD 3-Clause License //// (formerly GNU AGPL v3)
  * copyright : © 2019 - 2021 Norbert C. Maier
  * authors   : ncm

@@ -1,7 +1,7 @@
 ﻿/*!
  * This module operates PurpleTerms
  *
- * file : 20190205°0111 daftari/jsi/dafterm.js
+ * file : 20210506°11xx [fragments of 20190205°0111 daftari/jsi/dafterm.js]
  * license : BSD 3-Clause License // // (formerly GNU AGPL v3)
  * copyright : © 2019 - 2021 Norbert C. Maier
  * authors : ncm

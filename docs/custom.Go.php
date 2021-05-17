@@ -3,7 +3,7 @@
  * This module originally constitutes the Daftari PHP entry point,.
  *  Now it is stripped down and adjusted to serve in a PurpleTerms demo
  *
- * file      : 20210506°1111 (after 20120906°1241)
+ * file      : 20210506°11xx [[20210506°1111]] (after 20120906°1241)
  * license   : BSD-3-Clause // // (formerly GNU AGPL v3)
  * copyright : © 2012 - 2021 Norbert C. Maier
  * authors   : ncm
