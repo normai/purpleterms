@@ -13,6 +13,8 @@ Other pages : &nbsp;
 
 ##### version 2021xxxx°xxxx — v0.3.x.x
  - Merge custom JavaScript and custom PHP files [chg 20210514°0931]
+ - Make Custom Demo passable
+ - Rename files terminal.* to purpleterms.*
  - ..
 
 ##### version 20210513°1651 — v0.3.1.1 Volume control

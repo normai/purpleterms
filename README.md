@@ -46,34 +46,34 @@ Here are the changes since forking from the
 - Numerous small improvements 
 
 I have stirred the code violently but maintained **backward-compatibility**.
- Just replace your old by the new [`terminal.js`](./terminal.js)
- or by [`terminal.min.js`](./terminal.min.js) — And bingo (hopefully).
+ Just replace `terminal.js` by [`purpleterms.js`](./purpleterms.js) or
+ by [`purpleterms.min.js`](./purpleterms.min.js) — And bingo (almost).
 
 The project got a bit inflated with files. Don't let this distract you.
- All that matters and all you need, is one single file: `terminal.js`.
+ All that matters and all you need, is one single file: `purpleterms.js`.
 
 <a name="usage"></a>
 ## Usage
 
-Include `terminal.js` or `terminal.min.js` with a `script` tag into your
- page header. The both files operate equal, except for debugging.
+Include `purpleterms.js` or `purpleterms.min.js` with a `script` tag into
+ your page header. The both files operate equal, except for debugging.
  As a user, you will prefer the minified version, which looks like this&nbsp;:
 
 ```
    <head>
-      <script src="terminaljs/terminal.min.js"></script>
+      <script src="./terminaljs/purpleterms.min.js"></script>
    </head>
 ```
 
 As a developer, you will prefer the source version :
 
 ```
-      <script src="terminaljs/terminal.js"></script>
+      <script src="./terminaljs/purpleterms.js"></script>
 ```
 
 Now PurpleTerms is ready to operate, and you can call it in the page's body.
 
-And what was `terminal.pretty.js` good for? It is of no runtime use, though
+And what was `purpleterms.pretty.js` good for? It is of no runtime use, though
  of course it runs. It is an intermediary transformation, just as a convenience
  for source code readers, who may like to read the JavaScript code without the
  heavy comment clutter. Inspect `build.py` to learn the exact transformation

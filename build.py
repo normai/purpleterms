@@ -37,11 +37,11 @@ if sBinGoCloCom == '' :
 # Build yes or no?
 # Note. This change-detect algorithm is not really water-proof!
 bBuild = False
-for file in ['./terminal.min.js', './terminal.min.js.map', './terminal.pretty.js'] :
+for file in ['./purpleterms.min.js', './purpleterms.min.js.map', './purpleterms.pretty.js'] :
    if not os.path.isfile(file) :
       bBuild = True
    else :
-      if os.path.getmtime('./terminal.js') > os.path.getmtime(file)    \
+      if os.path.getmtime('./purpleterms.js') > os.path.getmtime(file) \
           or os.path.getmtime('./externs.js') > os.path.getmtime(file) \
            :
          bBuild = True
@@ -52,9 +52,9 @@ for file in ['./terminal.min.js', './terminal.min.js.map', './terminal.pretty.js
 # Assemble commandline
 sCmd1 = 'java.exe -jar' + ' ' + sBinGoCloCom                           \
        + ' ' + './externs.js'                                          \
-       + ' ' + './terminal.js'                                         \
-       + ' ' + '--js_output_file' + ' ' + './terminal.min.js'          \
-       + ' ' + '--create_source_map' + ' ' + './terminal.min.js.map'   \
+       + ' ' + './purpleterms.js'                                      \
+       + ' ' + '--js_output_file' + ' ' + './purpleterms.min.js'       \
+       + ' ' + '--create_source_map' + ' ' + './purpleterms.min.js.map' \
        + ' ' + '--formatting' + ' ' + 'PRETTY_PRINT'                   \
        + ' ' + '--compilation_level' + ' ' + 'ADVANCED_OPTIMIZATIONS'  \
        + ' ' + '--charset UTF-8'
@@ -63,8 +63,8 @@ sCmd1 = 'java.exe -jar' + ' ' + sBinGoCloCom                           \
 
 sCmd2 = 'java.exe -jar' + ' ' + sBinGoCloCom                           \
        + ' ' + './externs.js'                                          \
-       + ' ' + './terminal.js'                                         \
-       + ' ' + '--js_output_file' + ' ' + './terminal.pretty.js'       \
+       + ' ' + './purpleterms.js'                                      \
+       + ' ' + '--js_output_file' + ' ' + './purpleterms.pretty.js'    \
        + ' ' + '--formatting' + ' ' + 'PRETTY_PRINT'                   \
        + ' ' + '--compilation_level' + ' ' + 'WHITESPACE_ONLY'         \
        + ' ' + '--charset UTF-8'

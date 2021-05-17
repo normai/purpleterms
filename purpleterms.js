@@ -6,7 +6,7 @@
  */
 
 /**
- *  file : 20190208°1921 terminaljs/terminal.js
+ *  file : 20190208°1921 terminaljs/purpleterms.js
  *  encoding : UTF-8-without-BOM
  */
 

@@ -260,12 +260,13 @@ Pull request [HTTP backend via XHR](https://github.com/eosterberg/terminaljs/pul
  a dollar prompt and utilization of the backspace key.
 
 An XHR or AJAX feature is in fact the reason why I got my hands dirty with
- `terminal.js`. I already have written code to utilize AJAX. That code leaves
- `terminal.js` untouched, instead, a custom JavaScript file in parallel does
+ `terminal.js`, later `purpleterms.js`. I already have written code to utilize
+ AJAX. That code leaves
+ `purpleterms.js` untouched, instead, a custom JavaScript file in parallel does
  the work. See the [Custom Demo](./custom.html) with the [`custom.*`](./) files.
  The feature works only for localhost so far, not online.
 
-Having implemented Yevgen's XHR feature into `terminal.js` brings me to
+Having implemented Yevgen's XHR feature into `purpleterms.js` brings me to
  questions. XHR makes no sense on it`s own right, only together with a backend.
  Since PurpleTerms is a library, not an application, it shall not know, who will
  use it in which way. So the questions are: (1) Where exactly shall the line
@@ -341,7 +342,7 @@ State-of-the-art for identifiying a key is using **`e.code`**.
 Only that breaks IE. Since the program otherwise
 still supports IE>=10, I did not yet throw out **`e.which`**,
 but combined the both à la `if (e.code === 'Enter' || e.which === 13)`.
-_See it in [`terminal.js`](./terminal.js) by searching `20210430°1551`_.
+_See [`purpleterms.js`](./purpleterms.js) searching `20210430°1551`_.
 
 For reading keyboard input, two questions are to tackle:
 1. **How exactly can a key press be caught?**

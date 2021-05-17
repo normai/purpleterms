@@ -19,8 +19,7 @@ Subsections : &nbsp;
  • [Remarks](#remarks) &nbsp;
 
 Firstly, many thanks go to Erik and Yevgen for providing the very cool
- [Terminal.js](https://github.com/eosterberg/terminaljs)
- I could fork from.
+ [Terminal.js](https://github.com/eosterberg/terminaljs) I could fork from.
 
 <pre style="border:1px solid LightSlateGrey; border-radius:0.7em;">
 BSD 3-Clause License
