@@ -49,8 +49,7 @@ Here are the changes since forking from the
 
 - Numerous small improvements 
 
-- <a href="https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/aloha.html">
-<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" width="32" height="32""/></a>
+- [<img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" width="32" height="32">](https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/aloha.html)
 **[Comprehensive demo pages](https://www.trekta.biz/svn/terminaljsdev/trunk/terminaljs/aloha.html)**
 
 I have stirred the code violently but maintained **backward-compatibility**.
