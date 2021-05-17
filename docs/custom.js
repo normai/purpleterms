@@ -56,22 +56,34 @@ Daf.Term.isPhpAvailable = null;
  * @type {string} —
  * @constant —
  */
-Daf.Term.sHelp = "Commands: beep, clear, help, spin.";
+Daf.Term.sHelp = "Commands: beep, bye, clear, help, roll, spin, stop.";
+
+/**
+ *  Exit return string
+ *
+ * @id 20210514°11xx
+ * @type {string} —
+ * @constant —
+ */
+Daf.Term.sBye = 'Bye. Restart with page refresh.';
 
 /**
  *  This method performs the AJAX request
  *
  * @id 20190209°0321
  * @note Compare func 20110816°1623 daftari.js::MakeRequest
+ * @param {String} sCmd  —
  * @return {undefined} —
  */
-Daf.Term.ajaxRequest = function()
+////Daf.Term.ajaxRequest = function()
+Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 20210514°11xx]
 {
    'use strict';
 
    // () Assemble shipment ingredients [seq 20190209°0322]
-   var sTargetUrl = './custom.php' + '?cmd=' + 'spin';
-   var sMsgToSend = 'Hello backend spinner ..';
+   ////var sTargetUrl = './custom.php' + '?cmd=' + 'spin';
+   var sTargetUrl = './custom.php' + '?cmd=' + sCmd;                   // [chg 20210514°11xx]
+   var sMsgToSend = 'Hello backend ..';
 
    // Get Ajax performer object [seq 20190209°0323]
    // See todo 20190209°0836 'XMLHttpRequest availability'
@@ -104,7 +116,9 @@ Daf.Term.ajaxResponse = function(sResponse)
    'use strict';
 
    // Show response [line 20190209°0333]
-   Daf.Term.t21.print('< ' + sResponse);
+   ////Daf.Term.t21.print('< ' + sResponse);
+   Daf.Term.t21.print('👻️ ' + sResponse);                               //// Ghost [chg 20210514°11xx]
+   ////Daf.Term.t21.print('🌐️ ' + sResponse);                           //// Globe with Meridians [chg 20210514°11xx]
 
    // Repeat [line 20190209°0335]
    if (Daf.Term.bSpinAutoRun)
@@ -169,6 +183,11 @@ Daf.Term.inputz = function(sCmd)
       Daf.Term.t21.print(sRet);
    }
 
+   // Exit?
+   if (sRet === Daf.Term.sBye) {
+      return;
+   }
+
    // Wait for next input
    Daf.Term.t21.input(null, Daf.Term.inputz);
 };
@@ -194,6 +213,10 @@ Daf.Term.interpret = function(sCmd)
          sRet = "Can you hear me beeping?";
          break;
 
+      case 'bye' :
+         sRet = Daf.Term.sBye;
+         break;
+
       case 'clear' :
          Daf.Term.t21.clear();
          break;
@@ -202,13 +225,22 @@ Daf.Term.interpret = function(sCmd)
          Daf.Term.t21.print(Daf.Term.sHelp);
          break;
 
+      case 'roll' :
+         if ( Daf.Term.isPhpAvailable ) {
+            Daf.Term.ajaxRequest('roll');
+         }
+         else {
+            sRet = "Cannot roll — PHP not available.";
+         }
+         break;
+
       case 'spin' :
 
          // Use AJAX [condition 20210509°1051]
          Daf.Term.bSpinAutoRun = true;
          if ( Daf.Term.isPhpAvailable ) {
             Daf.Term.runSpin();
-            sRet = "Spinning (Stop with invalid input, may last a second then) .."; // "Scanning ..";
+            sRet = "Spinning (Stop with invalid input, may last a second then) ..";
          }
          else {
             sRet = "Cannot spin — PHP is not available.";
@@ -216,8 +248,12 @@ Daf.Term.interpret = function(sCmd)
          break;
 
       default :
+
          if (Daf.Term.bSpinAutoRun) {
-            sRet = 'Stopped spinning with "' + sCmd + '".';
+            sRet = (sCmd === 'stop')
+                  ? 'O.k. — stopping'
+                   : 'Stopped spinning with "' + sCmd + '".'
+                    ;
             Daf.Term.bSpinAutoRun = false;
          }
          else {
@@ -238,7 +274,7 @@ Daf.Term.runSpin = function()
 {
    'use strict';
 
-   Daf.Term.ajaxRequest();
+   Daf.Term.ajaxRequest('spin');
    return;
 };
 
