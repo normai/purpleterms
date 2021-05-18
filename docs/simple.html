@@ -84,14 +84,14 @@
       // Why does '7777' fire already after 1.7 seconds instead of 7.7?
       // Because time is running from the very top of the program.
       // Until here, all calls are executed in one single swoop.
-      endless(Math.round(7777));
+      endless(Math.round(7777)); // 7777
 
       // (8) Never end outpudding
       // For novices, a funny medidation on recursive asynchronous programming
       function endless(nMs) {
          setTimeout(function () {
             t1.print('Here is a line after ' + nMs + ' milliseconds');
-            nMs = Math.random() * 11111;
+            nMs = Math.random() * 6789; // 11111
             nMs = Math.round(nMs);
             endless(nMs);
          }, nMs);
@@ -100,9 +100,7 @@
    </script>
 
    <p>
-               Sorrily, this demo also demonstrates one current issue,
-               that is to say, if the output goes below the box bottom,
-               the box misses to scroll automatically.
+               .
    </p>
 
    <p class="Good12Bye">

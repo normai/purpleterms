@@ -1,15 +1,19 @@
 Other pages : &nbsp;
- • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api-doc.md) &nbsp;
- • [Dev Doc](./dev-doc.md) &nbsp;
- • [Notes](./notes.md) &nbsp;
- • [Issues](./issues.md) &nbsp;
- • Changes &nbsp;
- • [Credits](./credits.md)
+ •&nbsp;[ReadMe](./../README.md) &nbsp;
+ •&nbsp;[API&nbsp;Doc](./api-doc.md) &nbsp;
+ •&nbsp;[Dev&nbsp;Doc](./dev-doc.md) &nbsp;
+ •&nbsp;[Notes](./notes.md) &nbsp;
+ •&nbsp;[Issues](./issues.md) &nbsp;
+ •&nbsp;Changes &nbsp;
+ •&nbsp;[Credits](./credits.md)
 
 <img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 
 # Changes
+
+##### log
+ - ..
+
 
 ##### version 20210515°0915 — v0.3.2 — Module name `purpleterms.js`
  - Merge custom JavaScript and custom PHP files [chg 20210514°0931]

@@ -1,11 +1,11 @@
 Other pages : &nbsp;
- • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api-doc.md) &nbsp;
- • Dev Doc &nbsp;
- • [Notes](./notes.md) &nbsp;
- • [Issues](./issues.md) &nbsp;
- • [Changes](./changes.md) &nbsp;
- • [Credits](./credits.md)
+ •&nbsp;[ReadMe](./../README.md) &nbsp;
+ •&nbsp;[API&nbsp;Doc](./api-doc.md) &nbsp;
+ •&nbsp;Dev&nbsp;Doc &nbsp;
+ •&nbsp;[Notes](./notes.md) &nbsp;
+ •&nbsp;[Issues](./issues.md) &nbsp;
+ •&nbsp;[Changes](./changes.md) &nbsp;
+ •&nbsp;[Credits](./credits.md)
 
 <img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 

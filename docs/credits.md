@@ -1,11 +1,11 @@
 Other pages : &nbsp;
- • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api-doc.md) &nbsp;
- • [Dev Doc](./dev-doc.md) &nbsp;
- • [Notes](./notes.md) &nbsp;
- • [Issues](./issues.md) &nbsp;
- • [Changes](./changes.md) &nbsp;
- • Credits
+ •&nbsp;[ReadMe](./../README.md) &nbsp;
+ •&nbsp;[API&nbsp;Doc](./api-doc.md) &nbsp;
+ •&nbsp;[Dev&nbsp;Doc](./dev-doc.md) &nbsp;
+ •&nbsp;[Notes](./notes.md) &nbsp;
+ •&nbsp;[Issues](./issues.md) &nbsp;
+ •&nbsp;[Changes](./changes.md) &nbsp;
+ •&nbsp;Credits
 
 <img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 
@@ -13,10 +13,10 @@ Other pages : &nbsp;
 # Credits
 
 Subsections : &nbsp;
- • [License](#license) &nbsp;
- • [Contributors](#contributors) &nbsp;
- • [Third Party Components](#thirdparty) &nbsp;
- • [Remarks](#remarks) &nbsp;
+ •&nbsp;[License](#license) &nbsp;
+ •&nbsp;[Contributors](#contributors) &nbsp;
+ •&nbsp;[Third&nbsp;Party&nbsp;Components](#thirdparty) &nbsp;
+ •&nbsp;[Remarks](#remarks) &nbsp;
 
 Firstly, many thanks go to Erik and Yevgen for providing the very cool
  [Terminal.js](https://github.com/eosterberg/terminaljs) I could fork from.

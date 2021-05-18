@@ -1,28 +1,28 @@
 Other pages : &nbsp;
- • [ReadMe](./../README.md) &nbsp;
- • [API Doc](./api-doc.md) &nbsp;
- • [Dev Doc](./dev-doc.md) &nbsp;
- • Notes &nbsp;
- • [Issues](./issues.md) &nbsp;
- • [Changes](./changes.md) &nbsp;
- • [Credits](./credits.md)
+ •&nbsp;[ReadMe](./../README.md) &nbsp;
+ •&nbsp;[API&nbsp;Doc](./api-doc.md) &nbsp;
+ •&nbsp;[Dev&nbsp;Doc](./dev-doc.md) &nbsp;
+ •&nbsp;Notes &nbsp;
+ •&nbsp;[Issues](./issues.md) &nbsp;
+ •&nbsp;[Changes](./changes.md) &nbsp;
+ •&nbsp;[Credits](./credits.md)
 
 <img src="./20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="128" height="128" alt="Purple-Bellied Lory">
 
 # Notes
 
-Subsections : &nbsp;
-•&nbsp;[Naming](#id20210513o1311) &nbsp;
-•&nbsp;[Cursor blink?](#id20210512o1521) &nbsp;
-•&nbsp;[Browser&nbsp;Compatibility](#notes_browser_compatibility) &nbsp;
-•&nbsp;[Base64](#notes_base64) &nbsp;
-•&nbsp;[Prompt&nbsp;Feature](#id20210509o1511) &nbsp;
-•&nbsp;[Forks&nbsp;List](#fork_list) &nbsp;
-•&nbsp;[AJAX/XHR](#id20210430o1711) &nbsp;
-•&nbsp;[PR&nbsp;'Additional&nbsp;functions'](#id20210430o1821) &nbsp;
-•&nbsp;[Retrieving&nbsp;Keystrokes](#retrieving_keystrokes) &nbsp;
-•&nbsp;_[GFM](#github_flavored_markdown)_ &nbsp;
-•&nbsp;[Session&nbsp;Logs](#id20210512o1911) &nbsp;
+Subsections&nbsp;:&nbsp;
+•&nbsp;[Naming](#id20210513o1311)&nbsp;
+•&nbsp;[Cursor&nbsp;blink?](#id20210512o1521)&nbsp;
+•&nbsp;[Browser&nbsp;Compatibility](#notes_browser_compatibility)&nbsp;
+•&nbsp;[Base64](#notes_base64)&nbsp;
+•&nbsp;[Prompt&nbsp;Feature](#id20210509o1511)&nbsp;
+•&nbsp;[Forks&nbsp;List](#fork_list)&nbsp;
+•&nbsp;[AJAX/XHR](#id20210430o1711)&nbsp;
+•&nbsp;[PR&nbsp;'Additional&nbsp;functions'](#id20210430o1821)&nbsp;
+•&nbsp;[Retrieving&nbsp;Keystrokes](#retrieving_keystrokes)&nbsp;
+•&nbsp;_[GFM](#github_flavored_markdown)_&nbsp;
+•&nbsp;[Session&nbsp;Logs](#id20210512o1911)&nbsp;
 •&nbsp;[References](#id20210512o1611)
 
 _This page contains boring casual developer notes, **totally uninteresting** for library users._
@@ -33,7 +33,7 @@ _This page contains boring casual developer notes, **totally uninteresting** for
 
 **Project name**. At some point in development, for easier referencing, this fork
  should rather have a different name than the original project. The first
- try was 'Termjnal', then 'Terminals', then 'PurpleTerms'.
+ try was 'Termjnal', then 'Terminals', now 'PurpleTerms'.
 
 **Identifyer names**. Identifyers in the code are largely left as they come
  from the original `terminal.js`. New ones I have often type-prefixed , e.g.

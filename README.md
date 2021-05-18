@@ -1,15 +1,15 @@
 Other pages : &nbsp;
- • ReadMe &nbsp;
- • [API Doc](./docs/api-doc.md) &nbsp;
- • [Dev Doc](./docs/dev-doc.md) &nbsp;
- • [Notes](./docs/notes.md) &nbsp;
- • [Issues](./docs/issues.md) &nbsp;
- • [Changes](./docs/changes.md) &nbsp;
- • [Credits](./docs/credits.md)
+ •&nbsp;ReadMe &nbsp;
+ •&nbsp;[API Doc](./docs/api-doc.md) &nbsp;
+ •&nbsp;[Dev Doc](./docs/dev-doc.md) &nbsp;
+ •&nbsp;[Notes](./docs/notes.md) &nbsp;
+ •&nbsp;[Issues](./docs/issues.md) &nbsp;
+ •&nbsp;[Changes](./docs/changes.md) &nbsp;
+ •&nbsp;[Credits](./docs/credits.md)
 
 <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
-# Purple Terminals &nbsp;<sup><sub><sup>v0.3.2</sup></sub></sup>
+# Purple Terminals &nbsp;<sup><sub><sup>v0.3.2~</sup></sub></sup>
 
 Subsections :
  •&nbsp;[Synopsis](#id20210514o1511)
