@@ -70,7 +70,7 @@ Daf.Term.sBye = 'Bye. Restart with page refresh.';
 /**
  *  This method performs the AJAX request
  *
- * @id 20190209°0321
+ * @id 20190209°0321`02
  * @note Compare func 20110816°1623 daftari.js::MakeRequest
  * @param {String} sCmd  —
  * @return {undefined} —
@@ -80,16 +80,16 @@ Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 2
 {
    'use strict';
 
-   // () Assemble shipment ingredients [seq 20190209°0322]
+   // () Assemble shipment ingredients [seq 20190209°0322`02]
    ////var sTargetUrl = './custom.php' + '?cmd=' + 'spin';
    var sTargetUrl = './custom.php' + '?cmd=' + sCmd;                   // [chg 20210514°1135]
    var sMsgToSend = 'Hello backend ..';
 
-   // Get Ajax performer object [seq 20190209°0323]
+   // Get Ajax performer object [seq 20190209°0323`02]
    // See todo 20190209°0836 'XMLHttpRequest availability'
    var xmlHttp = new XMLHttpRequest();
 
-   // Provide response callback [seq 20190209°0324]
+   // Provide response callback [seq 20190209°0324`02]
    xmlHttp.onreadystatechange = function()
    {
       if (xmlHttp.readyState === 4)
@@ -98,7 +98,7 @@ Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 2
       }
    };
 
-   // Finish sending [seq 20190209°0325]
+   // Finish sending [seq 20190209°0325`02]
    xmlHttp.open('POST', sTargetUrl);
    xmlHttp.setRequestHeader('Content-Type', 'text/plain;charset=UTF-8');
    xmlHttp.send(sMsgToSend);
@@ -107,7 +107,7 @@ Daf.Term.ajaxRequest = function(sCmd)                                  // [chg 2
 /**
  *  This method receives the AJAX response
  *
- * @id 20190209°0331
+ * @id 20190209°0331`02
  * @param {string} sResponse — The Ajax result sent from server
  * @return {undefined} —
  */
@@ -115,14 +115,13 @@ Daf.Term.ajaxResponse = function(sResponse)
 {
    'use strict';
 
-   // Show response [line 20190209°0333]
+   // Show response [line 20190209°0333`02]
    ////Daf.Term.t21.print('< ' + sResponse);
    ////Daf.Term.t21.print('👻️ ' + sResponse);                           //// Ghost [emoji 20210514°1141]
    Daf.Term.t21.print('🌐️ ' + sResponse);                               //// Globe with Meridians [emoji 20210514°1143]
 
-   // Repeat [line 20190209°0335]
-   if (Daf.Term.bSpinAutoRun)
-   {
+   // Repeat [line 20190209°0335`02]
+   if (Daf.Term.bSpinAutoRun) {
       setTimeout( Daf.Term.runSpin, 1234 );
    }
 };
@@ -130,7 +129,7 @@ Daf.Term.ajaxResponse = function(sResponse)
 /**
  *  This function performs some dummy action
  *
- * @id 20190205°0131
+ * @id 20190205°0131`02
  * @callers
  * @return {undefined} —
  */
@@ -151,16 +150,16 @@ Daf.Term.execute = function()
       el.style.backgroundColor = 'Tomato';
    }
 
-   // Create a terminal [seq 20190205°0133] after terminaljs/test.html
+   // Create a terminal [seq 20190205°0133`02] after terminaljs/test.html
    Daf.Term.t21 = new Terminal();
    Daf.Term.t21.setHeight("320px");                                    //// 250px
    Daf.Term.t21.setWidth('650px');
    Daf.Term.t21.setBackgroundColor('blue');
-   Daf.Term.t21.blinkingCursor(false);
+   ////Daf.Term.t21.blinkingCursor(false);
    var eDiv = document.getElementById("Furniture_20190205o0211_Terminal");
    eDiv.appendChild(Daf.Term.t21.html);
 
-   // Launch [seq 20190205°0135]
+   // Launch [seq 20190205°0135`02]
    Daf.Term.t21.print('Welcome to PurpleTerms ' + Daf.Term.t21.getVersion() + ' Custom Demo.');
    Daf.Term.t21.input(Daf.Term.sHelp, Daf.Term.inputz);
 };
@@ -168,7 +167,7 @@ Daf.Term.execute = function()
 /**
  *  This function reacts on user input
  *
- * @id 20190205°0221
+ * @id 20190205°0221`02
  * @callers
  * @param {string} sCmd — The user input
  * @return {undefined} —
@@ -195,7 +194,7 @@ Daf.Term.inputz = function(sCmd)
 /**
  *  This function interprets the user input
  *
- * @id 20190205°0231
+ * @id 20190205°0231`02
  * @callers
  * @todo: Possibly evaluate return value [todo 20190205°0232]
  * @param {string} sCmd — The command to act on
@@ -212,19 +211,15 @@ Daf.Term.interpret = function(sCmd)
          Daf.Term.t21.beep();
          sRet = "Can you hear me beeping?";
          break;
-
       case 'bye' :
          sRet = Daf.Term.sBye;
          break;
-
       case 'clear' :
          Daf.Term.t21.clear();
          break;
-
       case 'help' :
          Daf.Term.t21.print(Daf.Term.sHelp);
          break;
-
       // [seq 20210514°1145]
       case 'roll' :
          if ( Daf.Term.isPhpAvailable ) {
@@ -234,9 +229,7 @@ Daf.Term.interpret = function(sCmd)
             sRet = "Cannot roll — PHP not available.";
          }
          break;
-
       case 'spin' :
-
          // Use AJAX [condi 20210509°1051]
          Daf.Term.bSpinAutoRun = true;
          if ( Daf.Term.isPhpAvailable ) {
@@ -247,9 +240,7 @@ Daf.Term.interpret = function(sCmd)
             sRet = "Cannot spin — PHP is not available.";
          }
          break;
-
       default :
-
          // [seq 20210514°1147]
          if (Daf.Term.bSpinAutoRun) {
             sRet = (sCmd === 'stop')
@@ -268,7 +259,7 @@ Daf.Term.interpret = function(sCmd)
 /**
  *  This function executes the scan/spin command
  *
- * @id 20190209°0311
+ * @id 20190209°0311`02
  * @callers
  * @return {undefined} —
  */
@@ -284,24 +275,24 @@ Daf.Term.runSpin = function()
 /**
  *  Flag to run and stop spinner
  *
- * @id 20190209°0351
+ * @id 20190209°0351`02
  * @type {boolean} —
  */
 Daf.Term.bSpinAutoRun = false;
 
 /**
- *  This variable stores some dummy string
+ *  This variable stores some dummy string -- IS NEVER SEEN
  *
- * @id 20190205°0141
+ * @id 20190205°0141`02
  * @callers
  * @type {string} —
  */
 Daf.Term.sDebugWelcome = "[Debug 20190205°0141] Hello, namespace Daf.Term is loaded.";
 
 /**
- *  This variable stores the terminal object — Seems nowhere used?!
+ *  This variable stores the terminal object — Seems NOWHERE used?!
  *
- * @id 20190205°0143
+ * @id 20190205°0143`02
  * @callers
  * @type {Object|null} —
  */
@@ -325,7 +316,7 @@ Daf.Term.t21 = null;
 /**
  * This shall be the root namespace
  *
- * @id 20190106°0311
+ * @id 20190106°0311`02
  * @c_o_n_s_t — Namespace
  */
 var Trekta = Trekta || {};
@@ -336,7 +327,7 @@ var Trekta = Trekta || {};
  *  The section between ~~~ Schnippel ~~~ and ~~~ Schnappel ~~~ can be cut
  *  and pasted to other scripts to provide them independent standalone basics.
  *
- * @id 20190106°0313
+ * @id 20190106°0313`02
  * @c_o_n_s_t — Namespace
  * @const — Namespace
  */
@@ -345,7 +336,7 @@ Trekta.Utils = Trekta.Utils || {
    /**
     * This function sends an Ajax request
     *
-    * @id 20190405°0231 (after 20140704°1011)
+    * @id 20190405°0231`02 (after 20140704°1011)
     * @callers • E.g. Trekta.Utils.readTextFile2
     * @param sMethod {string} — Either 'GET' or 'POST' ("GET", "POST", "PUT", "DELETE")
     * @param sUrl {string} — The request URL
@@ -358,19 +349,19 @@ Trekta.Utils = Trekta.Utils || {
    {
       'use strict';
 
-      // () Prologue [line 20140704°1013]
+      // () Prologue [line 20140704°1013`02]
       // todo : This must be refined .. e.g. with default callbacks
       cbkLoad = (typeof cbkLoad === 'undefined') ? null : cbkLoad ;
       cbkFail = (typeof cbkFail === 'undefined') ? null : cbkFail ;
 
-      // Get the XMLHttpRequest object [line 20190417°0111]
+      // Get the XMLHttpRequest object [line 20190417°0111`02]
       // See todo 20190209°0836 'XMLHttpRequest availability'
       var xmlHttp = new XMLHttpRequest();
 
-      // () Set request parameters [line 20140704°1015]
+      // () Set request parameters [line 20140704°1015`02]
       xmlHttp.open(sMethod, sUrl, true); // true means asynchronous
 
-      // () Probe the ongoing [line 20140704°1016]
+      // () Probe the ongoing [line 20140704°1016`02]
       xmlHttp.onreadystatechange = function ()
       {
          // List after ref 20190412°0132 'MDN → XMLHttp​Request​.ready​State'
@@ -459,7 +450,7 @@ Trekta.Utils = Trekta.Utils || {
          }
       };
 
-      // () Finally perform the request [seq 20140704°1017]
+      // () Finally perform the request [seq 20140704°1017`02]
       try {
          // If file to read does not exist, we get exception "Failed to load
          //  resource: the server responded with a status of 404 (Not Found)"
@@ -469,7 +460,7 @@ Trekta.Utils = Trekta.Utils || {
       }
       catch (ex)
       {
-         // [line 20140704°1103]
+         // [line 20140704°1103`02]
          // note 20160624°0131 : To test below error messages, browse via file protocol
          //    the pages • 20160613°0211 Daftari → Manual → FadeInFiles with Firefox
          //    • and 20150211°1211 Daftari → Manual → Slideshow with Chrome
@@ -479,18 +470,18 @@ Trekta.Utils = Trekta.Utils || {
                      + '<tt>' + ex.message + '</tt>.'                  // e.g. "A network error occurred".
                       ;
 
-         // [condi 20140704°1104]
+         // [condi 20140704°1104`02]
          // ref : screenshot 20160911°1221 'Chrome debugger showing exception'
          // ref : issue 20150516°0531 'Chrome cannot load local files'
          if ( Trekta.Utils.bIs_Browser_Chrome && (location.protocol === 'file:') ) {
-            // [line 20140704°1105]
+            // [line 20140704°1105`02]
             sMsg += "\nYour browser seems to be Chrome, and this does not ~~read files via file protocol."
                   + "\nThere are two <b>solutions</b>: (1) Use a different browser, e.g. Firefox or IE"
                    + "\nor (2) view this page from <tt>localhost</tt> with a HTTP server."
                     ;
          }
          else if ( Trekta.Utils.bIs_Browser_Firefox && (location.protocol === 'file:') ) {
-            // [line 20140704°1106]
+            // [line 20140704°1106`02]
             sMsg += "\nYour browser seems to be <b>Firefox</b>, and this does not ~~read files"
                   + "\nwith a path going below the current directory via file protocol."
                    + "\nThere are two <b>solutions</b>: (1) Use a different browser, e.g. Chrome or IE"
@@ -498,11 +489,11 @@ Trekta.Utils = Trekta.Utils || {
                      ;
          }
          else {
-            // [line 20140704°1107]
+            // [line 20140704°1107`02]
             sMsg += '\n [info 20160622°0131] Failed sending request ' + sUrl + '.';
          }
 
-         // Use callback to deliver error message [line 20190405°0233]
+         // Use callback to deliver error message [line 20190405°0233`02]
          cbkLoad(sMsg); // hm .. perhaps better just use a plain alert()
       }
    }
@@ -510,7 +501,7 @@ Trekta.Utils = Trekta.Utils || {
    /**
     * This function daisychains the given function on the windows.onload events
     *
-    * @id 20160614°0331
+    * @id 20160614°0331`02
     * @todo This bulky function may be obsolet by function Event​Target​.add​Event​Listener.
     *    The function supports below IE9, add​Event​Listener supports IE9 and above.
     * @see ref 20190328°0953 'mdn → addEventListener'
@@ -540,10 +531,11 @@ Trekta.Utils = Trekta.Utils || {
    }
 };
 
+// NOT USED HERE
 /**
  * This ~static ~class provides a method to parse a command string
  *
- * @id 20140926°0641
+ * @id 20140926°0641`02
  * @status Works
  * @note Remember todo 20180618°0751 'make func parse appear in namespace instead global'
  * @chg 20190405°0517 Allow whitespaces
@@ -560,7 +552,7 @@ Trekta.Utils.CmdlinParser = ( function()
    /**
     * This function parses a commandline
     *
-    * @id 20140926°0642
+    * @id 20140926°0642`02
     * @param sCmdlin {string} The string to be parsed
     * @return {Object} — Object with the read key-value-pairs
     */
@@ -571,7 +563,7 @@ Trekta.Utils.CmdlinParser = ( function()
          sCmdlin = '';
       }
 
-      // Prologue [loop 20140926°0654]
+      // Prologue [loop 20140926°0654`02]
       var args = []; // this accumulates the found tokens
       var sQuoting = ''; // stores quote while inside quoted area
       var sToken = ''; // this accumulates characters to one token
@@ -579,38 +571,38 @@ Trekta.Utils.CmdlinParser = ( function()
       // Scan characters [loop 20140926°0643]
       for ( var i1 = 0; i1 < sCmdlin.length; i1++ )
       {
-         // Convenience [line 20190405°0512]
+         // Convenience [line 20190405°0512`02]
          var sChar = sCmdlin.charAt(i1);
 
-         // Process blank [condi 20140926°0644]
+         // Process blank [condi 20140926°0644`02]
          if ( (sChar === ' ') && (sQuoting === '') ) {
 
-            // Ignore whitespace [seq 20190405°0513]
+            // Ignore whitespace [seq 20190405°0513`02]
             if (sToken === '') {
                continue;
             }
 
-            // Finish current token [seq 20140926°0645]
+            // Finish current token [seq 20140926°0645`02]
             args.push(sToken);
             sToken = '';
 
          }
-         // [condi 20190405°0514] experimental
+         // [condi 20190405°0514`02] experimental
          else if ( (sChar === '=') && (sQuoting === '') ) {
 
-            // [seq 20190405°0515]
+            // [seq 20190405°0515`02]
             if (sToken !== '') {
                args.push(sToken);
                sToken = '';
             }
 
-            // Found token delimiter, finish current token [seq 20190405°0516]
+            // Found token delimiter, finish current token [seq 20190405°0516`02]
             args.push('=');
 
          }
          else {
 
-            // Accumulate one token [seq 20140926°0646]
+            // Accumulate one token [seq 20140926°0646`02]
             if ((sChar === "'") || (sChar === '"')) {
                sQuoting = (sQuoting === '') ? sChar : '';              // toggle quoting flag
             }
@@ -622,45 +614,45 @@ Trekta.Utils.CmdlinParser = ( function()
       args.push(sToken);
       // Now the plain token array is ready, the equal sign is also a token.
 
-      // (B) Parse the found tokens [seq 20140926°1111]
+      // (B) Parse the found tokens [seq 20140926°1111`02]
       // summary : This algo points to the first token, then looks ahead for
       //  an equal sign. This has the advantage, that any solitary token is
       //  treated like a key as well, just later it will no more receive a value.
       // hint : One loop finishes one CmdsHash element/cell.
 
-      // (B.1) Prologue [seq 20140926°1112]
+      // (B.1) Prologue [seq 20140926°1112`02]
       var oKvps = [];
       var sCurrKey = '';
 
-      // (B.1) Loop over the token array  [seq 20140926°1113]
+      // (B.1) Loop over the token array  [seq 20140926°1113`02]
       //  Assemble key/value pairs from the equal signs
       for (var i2 = 0; i2 < args.length; i2++) {
 
-         // (B.2) Possibly skip empty elements [seq 20140926°1114]
+         // (B.2) Possibly skip empty elements [seq 20140926°1114`02]
          // note : This cleaning could be done separately before the loop. As
          //    well it is not yet exactly clear, what happens with blank values.
          if (args[i2] === '') {                                        // experimental
             continue;
          }
 
-         // (B.3) Read key name and create key with empty value [seq 20140926°1115]
+         // (B.3) Read key name and create key with empty value [seq 20140926°1115`02]
          sCurrKey = args[i2];
          oKvps[sCurrKey] = '<n/a>';                                    // '<n/a>' is a maker, may be replaced by null or the like
 
-         // (B.4) Is next token an equal sign? [seq 20140926°1116]
+         // (B.4) Is next token an equal sign? [seq 20140926°1116`02]
          if ( args[i2 + 1] === '=' ) {
 
-            // Complete current key/value pair with value [seq 20140926°1117]
+            // Complete current key/value pair with value [seq 20140926°1117`02]
             oKvps[sCurrKey] = args[i2 + 2];
             sCurrKey = '<n?a>';                                        // reset
 
-            // [seq 20140926°1118]
+            // [seq 20140926°1118`02]
             i2++;                                                      // forward to equal sign
             i2++;                                                      // forward to this value
             continue;                                                  // forward to next key
          }
          else {
-            // [seq 20140926°1119]
+            // [seq 20140926°1119`02]
             continue;                                                  // forward to next key
          }
       }
@@ -669,14 +661,14 @@ Trekta.Utils.CmdlinParser = ( function()
    };
 
    // Curiously, if you place the opening curly bracket not behind the return
-   //  but on the next line, the script will be broken [note 20160416°1311]
+   //  but on the next line, the script will be broken [note 20160416°1311`02]
    return {
       parse : Trekta.Utils.parse
    };
 })();
 // ~ ✂ ~ ~ ~ ~ ~ ~ ~ Fragment of area 20190106°0307 stop ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-// Perform [line 20190205°0151]
+// Perform [line 20190205°0151`02]
 Trekta.Utils.windowOnloadDaisychain(Daf.Term.execute);
 
 /* eof */
