@@ -1,8 +1,8 @@
 ﻿/*!
  * This module operates PurpleTerms
  *
- * file : 20210506°1111 [fragments of 20190205°0111 daftari/jsi/dafterm.js]
- * license : BSD 3-Clause License // // (formerly GNU AGPL v3)
+ * file : 20210506°1111 (fragments of file 20190205°0111 daftari/jsi/dafterm.js)
+ * license : BSD 3-Clause License
  * copyright : © 2019 - 2021 Norbert C. Maier
  * authors : ncm
  * status : Under construction
@@ -116,7 +116,6 @@ Daf.Term.ajaxResponse = function(sResponse)
    'use strict';
 
    // Show response [line 20190209°0333`02]
-   ////Daf.Term.t21.print('< ' + sResponse);
    ////Daf.Term.t21.print('👻️ ' + sResponse);                           //// Ghost [emoji 20210514°1141]
    Daf.Term.t21.print('🌐️ ' + sResponse);                               //// Globe with Meridians [emoji 20210514°1143]
 
@@ -152,7 +151,7 @@ Daf.Term.execute = function()
 
    // Create a terminal [seq 20190205°0133`02] after terminaljs/test.html
    Daf.Term.t21 = new Terminal();
-   Daf.Term.t21.setHeight("320px");                                    //// 250px
+   Daf.Term.t21.setHeight("320px");
    Daf.Term.t21.setWidth('650px');
    Daf.Term.t21.setBackgroundColor('blue');
    ////Daf.Term.t21.blinkingCursor(false);
@@ -298,19 +297,16 @@ Daf.Term.sDebugWelcome = "[Debug 20190205°0141] Hello, namespace Daf.Term is lo
  */
 Daf.Term.t21 = null;
 
-////// Perform [line 20190205°0151]
-////Trekta.Utils.windowOnloadDaisychain(Daf.Term.execute);
-
 /* eof */
 
-// ~ ✂ ~ ~ ~ ~ ~ ~ ~ Fragment of area 20190106°0307 start ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ✂ ~ ~ ~ ~ ~ ~ ~ Fragment of area 20190106°0307~~ start ~ ~ ~ ~ ~ ~ ~ ~ ~
 /**!
  * This area Trekta.Utils holds low level functions to be pasted into standalone scripts
  *
  * file : 20210506°1121 [fragments of 20190105°1717 daftari/jsi/trektautils.js]
- * version : Special edition for PurpleTerms //// v0.2.5 (20210428°1031)
+ * version : Special edition for PurpleTerms // v0.2.5 — 20210428°1031
  * copyright : © 2019 - 2021 Norbert C. Maier
- * license : BSD 3-Clause License //// (originally GNU AGPL v3)
+ * license : BSD 3-Clause License // (formerly GNU AGPL v3)
  */
 
 /**
@@ -351,15 +347,15 @@ Trekta.Utils = Trekta.Utils || {
 
       // () Prologue [line 20140704°1013`02]
       // todo : This must be refined .. e.g. with default callbacks
-      cbkLoad = (typeof cbkLoad === 'undefined') ? null : cbkLoad ;
-      cbkFail = (typeof cbkFail === 'undefined') ? null : cbkFail ;
+      cbkLoad = (typeof cbkLoad === 'undefined') ? null : cbkLoad ;    // [mark 20210517°1111`zz] Undefined check
+      cbkFail = (typeof cbkFail === 'undefined') ? null : cbkFail ;    // [mark 20210517°1111`zz] Undefined check
 
       // Get the XMLHttpRequest object [line 20190417°0111`02]
       // See todo 20190209°0836 'XMLHttpRequest availability'
       var xmlHttp = new XMLHttpRequest();
 
       // () Set request parameters [line 20140704°1015`02]
-      xmlHttp.open(sMethod, sUrl, true); // true means asynchronous
+      xmlHttp.open(sMethod, sUrl, true);                               // True means asynchronous
 
       // () Probe the ongoing [line 20140704°1016`02]
       xmlHttp.onreadystatechange = function ()
@@ -382,63 +378,63 @@ Trekta.Utils = Trekta.Utils || {
             // Below the list after ref 20190412°0133 'MDN → HTTP response status codes'
             var bSuccess = false; // pessimistic predetermination
             switch (xmlHttp.status) {
-               // Case '0' may happen e.g. if • HTML file containing the
-               //   script is opened in the browser via the file scheme
-               //  • too much time passes before the server responds
-               case   0 : bSuccess = true; break;
-               case 100 : break; // "Continue"
-               case 101 : break; // "Switching Protocol"
-               case 102 : break; // "Processing (WebDAV)"
-               case 103 : break; // "Early Hints"
-               case 200 : bSuccess = true; break; // "OK"
-               case 201 : break; // "Created"
-               case 202 : break; // "Accepted"
-               case 203 : break; // "Non-Authoritative Information"
-               case 204 : break; // "No Content"
-               case 205 : break; // "Reset Content"
-               case 206 : break; // "Partial Content"
-               case 207 : break; // "Multi-Status (WebDAV)"
-               case 208 : break; // "Multi-Status (WebDAV)"
-               case 226 : break; // "IM Used (HTTP Delta encoding)"
-               case 300 : break; // "Multiple Choice"
-               case 301 : break; // "Moved Permanently"
-               case 302 : break; // "Found"
-               case 303 : break; // "See Other"
-               case 304 : break; // "Not Modified"
-               case 305 : break; // "Use Proxy 👎"
-               case 306 : break; // "unused"
-               case 307 : break; // "Temporary Redirect"
-               case 308 : break; // "Permanent Redirect"
-               case 400 : break; // "Bad Request"
-               case 401 : break; // "Unauthorized"
-               case 402 : break; // "Payment Required"
-               case 403 : break; // "Forbidden"
-               case 404 : break; // "Not Found"
-               case 405 : break; // "Method Not Allowed"
-               case 406 : break; // "Not Acceptable"
-               case 407 : break; // "Proxy Authentication Required"
-               case 408 : break; // "Request Timeout"
-               case 409 : break; // "Conflict"
-               case 410 : break; // "Gone"
-               case 411 : break; // "Length Required"
-               case 412 : break; // "Precondition Failed"
-               case 413 : break; // "Payload Too Large"
-               case 414 : break; // "URI Too Long"
-               case 415 : break; // "Unsupported Media Type"
-               case 416 : break; // "Requested Range Not Satisfiable"
-               case 417 : break; // "Expectation Failed"
-               case 418 : break; // "I"m a teapot"
-               case 421 : break; // "Misdirected Request"
-               case 422 : break; // "Unprocessable Entity (WebDAV)"
-               case 423 : break; // "Locked (WebDAV)"
-               case 424 : break; // "Failed Dependency (WebDAV)"
-               case 425 : break; // "Too Early"
-               case 426 : break; // "Upgrade Required"
-               case 428 : break; // "Precondition Required"
-               case 429 : break; // "Too Many Requests"
-               case 431 : break; // "Request Header Fields Too Large"
-               case 451 : break; // "Unavailable For Legal Reasons"
-               default  : break; // (should never happen)
+               // Case '0' may happen e.g. if • Page is opened via the file
+               //  scheme or • Too much time passes before the server responds
+               //  Is setting success true really a good idea?
+               case   0 : bSuccess = true; break;                      //
+               case 100 : break;                                       // "Continue"
+               case 101 : break;                                       // "Switching Protocol"
+               case 102 : break;                                       // "Processing (WebDAV)"
+               case 103 : break;                                       // "Early Hints"
+               case 200 : bSuccess = true; break;                      // "OK"
+               case 201 : break;                                       // "Created"
+               case 202 : break;                                       // "Accepted"
+               case 203 : break;                                       // "Non-Authoritative Information"
+               case 204 : break;                                       // "No Content"
+               case 205 : break;                                       // "Reset Content"
+               case 206 : break;                                       // "Partial Content"
+               case 207 : break;                                       // "Multi-Status (WebDAV)"
+               case 208 : break;                                       // "Multi-Status (WebDAV)"
+               case 226 : break;                                       // "IM Used (HTTP Delta encoding)"
+               case 300 : break;                                       // "Multiple Choice"
+               case 301 : break;                                       // "Moved Permanently"
+               case 302 : break;                                       // "Found"
+               case 303 : break;                                       // "See Other"
+               case 304 : break;                                       // "Not Modified"
+               case 305 : break;                                       // "Use Proxy 👎"
+               case 306 : break;                                       // "unused"
+               case 307 : break;                                       // "Temporary Redirect"
+               case 308 : break;                                       // "Permanent Redirect"
+               case 400 : break;                                       // "Bad Request"
+               case 401 : break;                                       // "Unauthorized"
+               case 402 : break;                                       // "Payment Required"
+               case 403 : break;                                       // "Forbidden"
+               case 404 : break;                                       // "Not Found"
+               case 405 : break;                                       // "Method Not Allowed"
+               case 406 : break;                                       // "Not Acceptable"
+               case 407 : break;                                       // "Proxy Authentication Required"
+               case 408 : break;                                       // "Request Timeout"
+               case 409 : break;                                       // "Conflict"
+               case 410 : break;                                       // "Gone"
+               case 411 : break;                                       // "Length Required"
+               case 412 : break;                                       // "Precondition Failed"
+               case 413 : break;                                       // "Payload Too Large"
+               case 414 : break;                                       // "URI Too Long"
+               case 415 : break;                                       // "Unsupported Media Type"
+               case 416 : break;                                       // "Requested Range Not Satisfiable"
+               case 417 : break;                                       // "Expectation Failed"
+               case 418 : break;                                       // "I"m a teapot"
+               case 421 : break;                                       // "Misdirected Request"
+               case 422 : break;                                       // "Unprocessable Entity (WebDAV)"
+               case 423 : break;                                       // "Locked (WebDAV)"
+               case 424 : break;                                       // "Failed Dependency (WebDAV)"
+               case 425 : break;                                       // "Too Early"
+               case 426 : break;                                       // "Upgrade Required"
+               case 428 : break;                                       // "Precondition Required"
+               case 429 : break;                                       // "Too Many Requests"
+               case 431 : break;                                       // "Request Header Fields Too Large"
+               case 451 : break;                                       // "Unavailable For Legal Reasons"
+               default  : break;                                       // Should never happen
             }
             if ( bSuccess ) {
                // xmlHttp.status is 0 or 200
@@ -467,7 +463,7 @@ Trekta.Utils = Trekta.Utils || {
          var sMsg = "<b>Sorry, some feature on this page does not work.</b>"
                    + '\nFile <tt>' + sUrl + '</tt> ~~could not be read.'
                     + "\nYour browser said: "
-                     + '<tt>' + ex.message + '</tt>.'                  // e.g. "A network error occurred".
+                     + '<tt>' + ex.message + '</tt>.'                  // E.g. "A network error occurred".
                       ;
 
          // [condi 20140704°1104`02]
@@ -559,7 +555,7 @@ Trekta.Utils.CmdlinParser = ( function()
    Trekta.Utils.parse = function(sCmdlin)
    {
       // Paranoia — Advisably [seq 20140926°0653]
-      if ( typeof sCmdlin === 'undefined' ) {
+      if ( typeof sCmdlin === 'undefined' ) {                          // [mark 20210517°1111`zz] Undefined check
          sCmdlin = '';
       }
 
@@ -604,7 +600,7 @@ Trekta.Utils.CmdlinParser = ( function()
 
             // Accumulate one token [seq 20140926°0646`02]
             if ((sChar === "'") || (sChar === '"')) {
-               sQuoting = (sQuoting === '') ? sChar : '';              // toggle quoting flag
+               sQuoting = (sQuoting === '') ? sChar : '';              // Toggle quoting flag
             }
             else {
                sToken += sChar;
@@ -631,7 +627,7 @@ Trekta.Utils.CmdlinParser = ( function()
          // (B.2) Possibly skip empty elements [seq 20140926°1114`02]
          // note : This cleaning could be done separately before the loop. As
          //    well it is not yet exactly clear, what happens with blank values.
-         if (args[i2] === '') {                                        // experimental
+         if (args[i2] === '') {                                        // Experimental
             continue;
          }
 
@@ -644,16 +640,16 @@ Trekta.Utils.CmdlinParser = ( function()
 
             // Complete current key/value pair with value [seq 20140926°1117`02]
             oKvps[sCurrKey] = args[i2 + 2];
-            sCurrKey = '<n?a>';                                        // reset
+            sCurrKey = '<n?a>';                                        // Reset
 
             // [seq 20140926°1118`02]
-            i2++;                                                      // forward to equal sign
-            i2++;                                                      // forward to this value
-            continue;                                                  // forward to next key
+            i2++;                                                      // Forward to equal sign
+            i2++;                                                      // Forward to this value
+            continue;                                                  // Forward to next key
          }
          else {
             // [seq 20140926°1119`02]
-            continue;                                                  // forward to next key
+            continue;                                                  // Forward to next key
          }
       }
 

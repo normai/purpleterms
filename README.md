@@ -9,7 +9,7 @@ Other pages : &nbsp;
 
 <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
-# Purple Terminals &nbsp;<sup><sub><sup>v0.3.2~</sup></sub></sup>
+# Purple Terms &nbsp;<sup><sub><sup>v0.3.3</sup></sub></sup>
 
 Subsections :
  •&nbsp;[Synopsis](#id20210514o1511)
@@ -172,9 +172,9 @@ If you have understood above mechanism, you may like to see below alternative
          });
 ```
 
-So with the `input()`, you print come message prompting the user to also
- write something and to finish her writing with Enter. Only after the user
- presses the Enter key, all she typed, is captured as input.
+So with the `input()`, you print some message, prompting the user to write
+ something and to finish her writing with Enter. Only after the user presses
+ the Enter key, all she typed, is captured as input.
 
 ### Step 5 — Sense y/n keypress <a name="id20210514o1621"></a>
 

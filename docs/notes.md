@@ -390,7 +390,7 @@ Further reference(s) :
 
 ## GFM — GitHub Flavoured Markdown <a name="github_flavored_markdown"></a> &nbsp; <sup><sub><sup><sup>_Section&nbsp;20210506°0931_</sup></sup></sub></sup>
 
-<img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" style="float:right;" width="64" height="64" alt="Grainy Dummy 1">
 
 This paragraph is **unrelated** to PurpleTerms. This are little experiments
  serving me to understand the differences between
@@ -408,7 +408,7 @@ formatted as code, indented as given, and not whitespace-broken if too long.
 Can an image be right aligned? I am trying `style="float:right;"` and `align="right"`.
 Findings: GiHub does not work with `style="float:right;"`, but with the legacy `align="right"`.
 Showdown works with the both.
-<img src="./20090504o2215.grainydummy180sq.v0.x0128y0128q66.jpg" style="clear:both" align="right" width="64" height="64" alt="Grainy Dummy 2">
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" style="clear:both" align="right" width="64" height="64" alt="Grainy Dummy 2">
 
  This are some '`Prepared Food (Meals) Emoji`' :
   Bacon            🥓 |
@@ -543,14 +543,33 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 ## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><sup><sup>_Subsection&nbsp;20210512°1611_</sup></sup></sub></sup>
 
+---
+
+ • Haoyi's article
+ • [Build your own Command Line with ANSI escape codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+ • by Li Haoyi on 2016&#8209;07&#8209;02
+ • describes **ANSI control characters** in common terminals comprehensively.
+ <sup><sub><sup>Reference&nbsp;20210527o1214</sup></sub></sup>
+
+---
+
+ • StackOverflow thread
+ • [Cross-browser method for detecting the scrollTop of the browser window](https://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window)
+   <sup><sub><sup>ref 20190403°0752</sup></sub></sup>
+ • Finding : Use `pageYOffset` and/or `scrollTop`. I have not yet introduced
+    `pageYOffset` in Daftari. But in CanvasGear there is already a line
+    `scrollTop = window.pageYOffset || document.documentElement.scrollTop`
+ • Usage : Dismantled seq 20190403°0751 'detect scroll properties' in daftari.js
+ • Tags : javascript browsercompatibility scroll
+
+---
+
  • Tutorial
  • [Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume](https://html.com/attributes/audio-volume/)
  • by Adam Wood
- • on n/a
- • <sup><sub>in https://html.com/attributes/audio-volume/</sub></sup>
  • <sup><sub>_[ref 20210513°1612 'Audio volume attribute']_</sub></sup>
 
-<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
+---
 
  • Article
  • [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
@@ -559,6 +578,10 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
  • <sup><sub>in https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1</sub></sup>
  • <sup><sub>used in _func 20210510°1751_ `rollDice()`</sub></sup>
  • <sup><sub>_[ref 20210510°1755 'Dice roll']_</sub></sup>
+
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
+
+&nbsp;
 
 ---
 

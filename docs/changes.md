@@ -15,6 +15,9 @@ Other pages : &nbsp;
  - ..
 
 
+##### version 20210517°1241 — v0.3.3 — Streamline 'undefined' use
+
+
 ##### version 20210515°0915 — v0.3.2 — Module name `purpleterms.js`
  - Merge custom JavaScript and custom PHP files [chg 20210514°0931]
  - Make Custom Demo passable
