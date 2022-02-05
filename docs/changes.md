@@ -11,17 +11,15 @@ Other pages : &nbsp;
 
 # Changes
 
-##### log
- - ..
-
+##### version 20220205°0951 — v0.3.4 — Intermediate
+- Minor documentation edits
 
 ##### version 20210517°1241 — v0.3.3 — Streamline 'undefined' use
 
-
 ##### version 20210515°0915 — v0.3.2 — Module name `purpleterms.js`
- - Merge custom JavaScript and custom PHP files [chg 20210514°0931]
- - Make Custom Demo passable
- - Rename files `terminal.*` to `purpleterms.*` [chg 20210515°0911]
+- Merge custom JavaScript and custom PHP files [chg 20210514°0931]
+- Make Custom Demo passable
+- Rename files `terminal.*` to `purpleterms.*` [chg 20210515°0911]
 
 ##### version 20210513°1651 — v0.3.1.1 Volume control
  - Little fixes

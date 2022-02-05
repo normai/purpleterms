@@ -543,46 +543,49 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 ## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><sup><sup>_Subsection&nbsp;20210512°1611_</sup></sup></sub></sup>
 
----
-
- • Haoyi's article
- • [Build your own Command Line with ANSI escape codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
- • by Li Haoyi on 2016&#8209;07&#8209;02
- • describes **ANSI control characters** in common terminals comprehensively.
+<img src="./icos/20210527o1215.lihaoyi.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20210527°1215" id="">
+ &nbsp; Article
+ [Build your own Command Line with ANSI escape codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+ by Li Haoyi on 2016&#8209;07&#8209;02
+ describes **ANSI control characters** in common terminals comprehensively.
  <sup><sub><sup>Reference&nbsp;20210527o1214</sup></sub></sup>
 
----
-
- • StackOverflow thread
- • [Cross-browser method for detecting the scrollTop of the browser window](https://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window)
-   <sup><sub><sup>ref 20190403°0752</sup></sub></sup>
+<img src="./icos/20110921o1121.stackoverflow.v1.x0048y0048.gif" align="left" width="48" height="48" alt="Logo 20110921°1121" id="">
+ &nbsp; StackOverflow thread
+ [Cross-browser method for detecting the scrollTop of the browser window](https://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window)
+ <sup><sub><sup>ref 20190403°0752</sup></sub></sup>
+ .
  • Finding : Use `pageYOffset` and/or `scrollTop`. I have not yet introduced
     `pageYOffset` in Daftari. But in CanvasGear there is already a line
     `scrollTop = window.pageYOffset || document.documentElement.scrollTop`
  • Usage : Dismantled seq 20190403°0751 'detect scroll properties' in daftari.js
  • Tags : javascript browsercompatibility scroll
 
----
+<img src="./icos/20200702o0323.html-com.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20200702°0323" id="">
+ &nbsp; Tutorial
+ [Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume](https://html.com/attributes/audio-volume/)
+ by Adam Wood
+ <sup><sub>_[ref 20210513°1612 'Audio volume attribute']_</sub></sup>
 
- • Tutorial
- • [Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume](https://html.com/attributes/audio-volume/)
- • by Adam Wood
- • <sup><sub>_[ref 20210513°1612 'Audio volume attribute']_</sub></sup>
+<img src="./icos/20201107o0123.medium.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20201107°0123" id="">
+ &nbsp; Article
+ [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
+ by Romain Guillemot
+ on 2019-Jul-30
+ <sup><sub>*[used in func 20210510°1751 `rollDice`]*</sub></sup>
+ <sup><sub>*[ref 20210510°1755 'Dice roll']*</sub></sup>
 
----
+Pages with some terminal on it:
 
- • Article
- • [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
- • by Romain Guillemot
- • on 2019-Jul-30
- • <sup><sub>in https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1</sub></sup>
- • <sup><sub>used in _func 20210510°1751_ `rollDice()`</sub></sup>
- • <sup><sub>_[ref 20210510°1755 'Dice roll']_</sub></sup>
+<img src="./icos/20210222o1313.symfony.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20210222°1313" id="">
+ &nbsp; Project
+ [**symfony.com**](https://symfony.com/)
+ &nbsp; <sup><sub>*[ref 20220205°0912]*</sub></sup>
 
-<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="96" height="96" alt="Waving Astronaut">
+
+
+<img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="72" height="72" alt="Waving Astronaut">
 
 &nbsp;
 
----
-
-<sup><sub>[file 20210430°1551] ܀Ω</sub></sup>
+<sup><sub><sup>*[file 20210430°1551]* ܀Ω</sup></sub></sup>
