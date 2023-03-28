@@ -9,7 +9,7 @@ Other pages : &nbsp;
 
 <img src="./docs/20210512o1713.purple-bellied-lory.v2.x0256y0256.png" align="right" width="256" height="256" alt="Purple-Bellied Lory">
 
-# Purple Terms &nbsp;<sup><sub><sup>v0.3.4</sup></sub></sup>
+# Purple Terms &nbsp;<sup><sub><sup>v0.3.4.…</sup></sub></sup>
 
 Subsections :
  •&nbsp;[Synopsis](#id20210514o1511)
