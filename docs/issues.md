@@ -13,20 +13,19 @@ Other pages : &nbsp;
 
 ---
 
-#### Todo 'Evaluate replacement by Xtermjs' _<sup><sub><sup>*[issue 20230326°1531]*</sup></sub></sup>_
+#### Todo 'Evaluate replacement by Xtermjs' _<sup><sub>[issue 20230326°1531]</sub></sup>_
 
 Evaluate Xtermsjs and consider to replace this terminal engine by Xtermsjs.
 
 <img src="./icos/20230326o1525.xtermjs.v2.x0048y0048.png" align="left" width="48" height="48" alt="Link icon for Xtermjs">
  &nbsp; Homepage
- [xtermjs.org](https://xtermjs.org/)
- <sup><sub>_[ref 20230326°1524]_</sub></sup>
+ <a href="https://xtermjs.org/">xtermjs.org</a> &nbsp; <sup><sub><i>[ref 20230326°1524]</i></sub></sup>
 
 &nbsp;
 
 ---
 
-#### Issue 'Fully initialize object, only then return it' _<sup><sub><sup>20210509°1731</sup></sub></sup>_
+#### Issue 'Fully initialize object, only then return it' _<sup><sub>[issue 20210509°1731]</sub></sup>_
 
 Matter : It is no good idea, to return from seq 20210509°1641 without the
  this.html having initialized. Properties like setHeight() should
@@ -41,13 +40,13 @@ Matter : It is no good idea, to return from seq 20210509°1641 without the
 
 ---
 
-#### Todo 'Complete Aloha Demo' _<sup><sub><sup>20210509°1351</sup></sub></sup>_
+#### Todo 'Complete Aloha Demo' _<sup><sub>[issue 20210509°1351]</sub></sup>_
 
 Demonstrate complete feature list <del>notably `confirm`<del>.
 
 ---
 
-#### Issue 'Validate user prompt' _<sup><sub><sup>20210509°1555</sup></sub></sup>_
+#### Issue 'Validate user prompt' _<sup><sub>[issue 20210509°1555]</sub></sup>_
 
 In `setInputPrompt()` and `setInputPrompt()`, the user-given parameter
  should be validated somehow, so it cannot disturb the system.
@@ -57,33 +56,33 @@ In `setInputPrompt()` and `setInputPrompt()`, the user-given parameter
 
 ---
 
-#### Todo 'Compact Custom Demo' _<sup><sub><sup>20210509°1341</sup></sub></sup>_
+#### Todo 'Compact Custom Demo' _<sup><sub>[issue 20210509°1341]</sub></sup>_
 
 Merge the two JS files, remove unrelated code.
 
 ---
 
-#### Todo 'Fix backspace behaviour' _<sup><sub><sup>20210509°1331</sup></sub></sup>_
+#### Todo 'Fix backspace behaviour' _<sup><sub>[issue 20210509°1331]</sub></sup>_
 
 Tow points: • The backspace empties the complete line, but it shall remove only one character.
 • The removed content re-appears with the next input.
 
 ---
 
-#### Todo 'Fix missing scroll' _<sup><sub><sup>20210509°1321</sup></sub></sup>_
+#### Todo 'Fix missing scroll' _<sup><sub>[issue 20210509°1321]</sub></sup>_
 
 If the output goes below the box bottom, it disappears.
 But the last line needs to stay always visible.
 
 ---
 
-#### Todo 'Fix missing prompt setter' _<sup><sub><sup>20210509°1311</sup></sub></sup>_
+#### Todo 'Fix missing prompt setter' _<sup><sub>[issue 20210509°1311]</sub></sup>_
 
 Routine work, just must be done.
 
 ---
 
-#### Todo 'Investigate using MIDI for the beep' _<sup><sub><sup>20210509°0921</sup></sub></sup>_
+#### Todo 'Investigate using MIDI for the beep' _<sup><sub>[issue 20210509°0921]</sub></sup>_
 
 Using MIDI for the beep would dramatically reduce file size. Only I'm afraid
  it will be at the expense of browser compatibility. Find inspiration in project
@@ -91,9 +90,9 @@ Using MIDI for the beep would dramatically reduce file size. Only I'm afraid
 
 ---
 
-#### Todo 'Get smaller beep file' _<sup><sub><sup>20210509°0911</sup></sub></sup>_
+#### Todo 'Get smaller beep file' _<sup><sub>[issue 20210509°0911]</sub></sup>_
 
-58.5 KB for one beep is too much. See variable `sBase64_Beep_Mp3` _<sup><sub><sup>20190325°0751_</sup></sub></sup>.
+58.5 KB for one beep is too much. See variable `sBase64_Beep_Mp3` <sup><sub>_[var 20190325°0751]_</sub></sup>.
 An MP3 file around 20 KB should be feasible, perhaps even 10 KB or less.
 
 ---
