@@ -427,17 +427,15 @@ BTW. Practical emoji overviews provides e.g. [Emojigraph](https://emojigraph.org
 
 ---
 
----
-
 ## Session Logs <a name="id20210512o1911"></a>
 
 This are session logs, the most boring section of all documentation.
 
 ---
 
-### Scroll and jump <a name=""></a> &nbsp; <sup><sub><sup><sup>_Session&nbsp;20210511°1521_</sup></sup></sub></sup>
+### Scroll and jump <a name=""></a> &nbsp; <sup><sub>_Session&nbsp;20210511°1521_</sub></sup>
 
-About feature 'Auto scrolling service' <sup><sub><sup><sup>_Feature&nbsp;20210511°1511_</sup></sup></sub></sup>
+About feature 'Auto scrolling service' <sup><sub>_Feature&nbsp;20210511°1511_</sub></sup>
 
 This session shall make automatic scrolling in the box functional.
  So far, the session succeeded only half-way.
@@ -445,16 +443,16 @@ This session shall make automatic scrolling in the box functional.
 (1) First idea, but which makes no sense : Send a CTRL-End to the box.
  To facilitate this, first the box had to listen to this key, what it
  does not (yet).
- <br> • See e.g. https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically [ref 20210511°1418]
- ܀
+ <br> • See e.g. https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically <sup><sub><i>[ref 20210511°1418]</i></sub></sup>
+ ⬞
 
 (2) Then comes a bunch of articles on how to scroll from JavaScript.
  Here the articles bunch, so far without solution :
- <br> • https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page [ref 20210511°1412]
- <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView [ref 20210511°1414] Yield no solution
- <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo [ref 20210511°1416]
- <br> • https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element [ref 20210511°1422]
- ܀
+ <br> • https://stackoverflow.com/questions/11715646/scroll-automatically-to-the-bottom-of-the-page <sup><sub><i>[ref 20210511°1412]</i></sub></sup>
+ <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView <sup><sub><i>[ref 20210511°1414]</i></sub></sup> Yields no solution
+ <br> • https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo <sup><sub><i>[ref 20210511°1416]</i></sub></sup>
+ <br> • https://stackoverflow.com/questions/7600454/how-to-prevent-page-scrolling-when-scrolling-a-div-element <sup><sub><i>[ref 20210511°1422]</i></sub></sup>
+ ⬞
 
 (3) Solve the cursor-must-stay-visible task, but not yet the jump. A line like
  below works, but there is a remaining issue, as the complete page jumps at some
@@ -465,26 +463,26 @@ This session shall make automatic scrolling in the box functional.
  <br> • `this.html.scrollTo(0, this._innerWindow.scrollHeight);`     // Works
  <br> • `this.html.scrollTo(0, this._output.scrollHeight);`          // Works
  <br> • `this._innerWindow.scrollTo(0, this._output.scrollHeight);`  // Fails
- ܀
+ ⬞
 
 (4) The pure CSS **overscroll-behaviour** technique.
  See issue 20210511°1427 'Make overscroll-behaviour work'.
  Would the overscroll CSS incidentially solve the page jump issue?
  I cannot know, since I just could overscroll not make work.
  CSS overscroll were much more elegant, just did not work.
- ܀
+ ⬞
 
 issue 20210511°1427 'Make overscroll-behaviour work'
  <br> • Matter : Style overscroll-behaviour just does not work as expected.
  <br> • Do : Make it working
  <br> • Ben Nadel's article describes overscroll-behaviour with a nice demo.
       Cool CSS in general in the demo, not to mention overscroll.
-      Url : https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm [ref 20210511°1426]
- <br> • See : https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ [ref 20210511°1428]
- <br> • See : https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior [ref 20210511°1424]
+      Url : https://www.bennadel.com/blog/3698-using-css-overscroll-behavior-to-prevent-scrolling-of-parent-containers-from-within-overflow-containers.htm <sup><sub><i>[ref 20210511°1426]</i></sub></sup>
+ <br> • See : https://bennadel.github.io/JavaScript-Demos/demos/chrome-scroll-overscroll-behavior/ <sup><sub><i>[ref 20210511°1428]</i></sub></sup>
+ <br> • See : https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior <sup><sub><i>[ref 20210511°1424]</i></sub></sup>
  <br> • See line line 20210511°1531 CSS overscroll-behaviour
  <br> • Status : Open
- ܀
+ ⬞
 
 issue 20210511°1525 'Get rid of page jumps'
  <br> Matter : If cursor (invisibly) reaches page bottom, the page jumps up.
@@ -513,14 +511,14 @@ issue 20210511°1525 'Get rid of page jumps'
          20 or more input lines, only then behaviour gets crazy. The issue
          may be alleviated anyway, if planned **line-buffer size** is
          implemented.
- ܀
+ ⬞
 
 issue 20210511°1811 'Line buffer size'
  <br> • Planned : Feature 'Line buffer size'. Has default value of e.g. 500,
         can be set other size. If number of lines in the output div reach
         that size, the top lines are deleted.
  <br> • Status : Open
- ܀
+ ⬞
 
 issue 20210511°1611 'Lower boxes shall keep feet still'
  <br> • Do : Make additonal boxes on page bottom not cause jumps on page open.
@@ -530,30 +528,30 @@ issue 20210511°1611 'Lower boxes shall keep feet still'
     starting point for debugging the other issues. It looks like their
     jumping has been solved by the way. All the better.
  <br> • Status : Solved by brute-force in-box scrolling e.g line 20210511°1545
- ܀
+ ⬞
 
 issue 20210511°1621 'Cursor and scroll behaviour in general'
  <br> • Matter : The solution style I followed today is not sustainable.
     It yielded insights into the program structure, but was provisory
     anyway. For a sustainable solution, things must get simplified.
  <br> • Status : Long-running
- ܀
-
+ ⬞
+ 
 ---
 
-## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><sup><sup>_Subsection&nbsp;20210512°1611_</sup></sup></sub></sup>
+## References <a name="id20210512o1611"></a> &nbsp; <sup><sub><i>Subsection&nbsp;20210512°1611</i></sub></sup>
 
 <img src="./icos/20210527o1215.lihaoyi.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20210527°1215" id="">
  &nbsp; Article
- [Build your own Command Line with ANSI escape codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+ <a href="https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html">Build your own Command Line with ANSI escape codes]</a>
  by Li Haoyi on 2016&#8209;07&#8209;02
  describes **ANSI control characters** in common terminals comprehensively.
- <sup><sub><sup>Reference&nbsp;20210527o1214</sup></sub></sup>
+ <sup><sub><i>ref&nbsp;20210527°1214</i></sub></sup>
 
 <img src="./icos/20110921o1121.stackoverflow.v1.x0048y0048.gif" align="left" width="48" height="48" alt="Logo 20110921°1121" id="">
  &nbsp; StackOverflow thread
- [Cross-browser method for detecting the scrollTop of the browser window](https://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window)
- <sup><sub><sup>ref 20190403°0752</sup></sub></sup>
+ <a href="https://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window">Cross-browser method for detecting the scrollTop of the browser window</a>
+ <sup><sub><i>[ref 20190403°0752]</i></sub></sup>
  .
  • Finding : Use `pageYOffset` and/or `scrollTop`. I have not yet introduced
     `pageYOffset` in Daftari. But in CanvasGear there is already a line
@@ -563,29 +561,29 @@ issue 20210511°1621 'Cursor and scroll behaviour in general'
 
 <img src="./icos/20200702o0323.html-com.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20200702°0323" id="">
  &nbsp; Tutorial
- [Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume](https://html.com/attributes/audio-volume/)
+ <a href="https://html.com/attributes/audio-volume/">Audio Volume: Quick & Easy HTML Guide For Setting Initial Volume</a>
  by Adam Wood
- <sup><sub>_[ref 20210513°1612 'Audio volume attribute']_</sub></sup>
+ <sup><sub><i>[ref 20210513°1612 'Audio volume attribute']</i></sub></sup>
+
+&nbsp;
 
 <img src="./icos/20201107o0123.medium.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20201107°0123" id="">
  &nbsp; Article
- [How to roll a dice in JavaScript?](https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1)
+ <a href="https://medium.com/@rocambille/how-to-roll-a-dice-in-javascript-ec543f8ffda1">How to roll a dice in JavaScript?</a>
  by Romain Guillemot
  on 2019-Jul-30
- <sup><sub>*[used in func 20210510°1751 `rollDice`]*</sub></sup>
- <sup><sub>*[ref 20210510°1755 'Dice roll']*</sub></sup>
+ <sup><sub><i>[used in func 20210510°1751 `rollDice`]</i></sub></sup>
+ <sup><sub><i>[ref 20210510°1755 'Dice roll']</i></sub></sup>
 
 Pages with some terminal on it:
 
 <img src="./icos/20210222o1313.symfony.v1.x0048y0048.png" align="left" width="48" height="48" alt="Logo 20210222°1313" id="">
  &nbsp; Project
- [**symfony.com**](https://symfony.com/)
- &nbsp; <sup><sub>*[ref 20220205°0912]*</sub></sup>
-
-
+ <a href="https://symfony.com/">**symfony.com**</a>
+ &nbsp; <sup><sub><i>[ref 20220205°0912]</i></sub></sup>
 
 <img src="./20210512o1743.waving-astronaut.v2.p12.png" align="right" width="72" height="72" alt="Waving Astronaut">
 
 &nbsp;
 
-<sup><sub><sup>*[file 20210430°1551]* ܀Ω</sup></sub></sup>
+<sup><sub>*[file 20210430°1551]* ⬞Ω</sub></sup>
